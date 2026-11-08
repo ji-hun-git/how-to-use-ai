@@ -39,6 +39,29 @@ The view opens a side-by-side table of both prompts across all cases, with pass/
 
 > Note: results depend on the model and change between runs and model versions. Newer models often pass more baseline cases than older ones; the point is to **measure** rather than assume. Run each case a few times (`--repeat 3`) before drawing conclusions.
 
+## Skill evaluations: with vs. without
+
+[`skills/run.py`](skills/run.py) measures what each of the 10 [skills](../skills/README.md) changes. Every case in [`skills/cases.yaml`](skills/cases.yaml) is answered twice per model, once with a plain assistant prompt and once with the skill's `SKILL.md` loaded, and a grader model checks each criterion as pass/fail without seeing which condition produced the answer.
+
+- **20 cases, 2 per skill.** 16 *trigger* cases where the skill should improve the result (vague requests, planted factual errors, unsupported citations, pushback on a correct answer, missing requirements, changed requirements in a long chat, homework requests). 4 *control* cases where correct default behavior must not break (a clear request shouldn't get clarifying questions, correct code shouldn't get invented issues, "show solution" should show it).
+- **Binary criteria**, all of which must pass.
+
+```bash
+python evals/skills/run.py --dry-run
+```
+
+```bash
+python evals/skills/run.py --models openai:gpt-6.1-terra openai:gpt-6-luna --judge openai:gpt-6.1-sol --runs 3
+```
+
+Other providers: `anthropic:<model>` (needs `ANTHROPIC_API_KEY`) or `claude-cli:<alias>` (uses a logged-in Claude Code CLI and your plan's usage). The run resumes if interrupted, and writes `evals/results/<date>/summary.md` plus `raw.jsonl` with every answer and every per-criterion grade.
+
+**Cost:** the example above makes 240 answers and 240 grading calls; at November 2026 list prices that's roughly a few US dollars. Use `--cases` to run one skill, or `--runs 1` for a quick check.
+
+**What it doesn't test:** whether an agent *selects* the skill on its own. To check triggering, install the skills, then send a few requests that should and shouldn't activate each one, and see which skill the agent reports using.
+
+**Results:** none published yet. They'll be added to `evals/results/` once run, including cases where a skill made no difference or made things worse.
+
 ## Make it yours
 
 1. Replace `data/policy.txt` with your own document and the prompts with your own.

@@ -56,7 +56,7 @@ A skill is a folder with a `SKILL.md`: YAML frontmatter (`name`, `description`) 
 
 **Security:** a skill can include scripts and instructions that run with your agent's permissions. Install skills only from sources you trust, and read them first.
 
-Ten ready-made skills built from this guide: [skills/](../skills/README.md).
+Ten ready-made skills built from this guide: [skills/](../skills/README.md). How to write rules that make a skill change its results, and test them: [docs/12](12-writing-decision-rules.md).
 
 ---
 

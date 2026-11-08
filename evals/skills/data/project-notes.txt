@@ -1,0 +1,27 @@
+Project Lighthouse — weekly sync notes (fictional example)
+
+Attendees: Priya (product), Marcus (engineering), Lena (design), Tom (marketing), Aisha (support)
+
+1. Status overview
+Priya opened by reviewing the roadmap. The beta is on track, but the onboarding flow still has open questions. Marcus said the API migration is about 70% done and the remaining work is mostly testing. Lena shared new mockups for the settings page; feedback was positive overall, with a request to simplify the notification options. Tom reported that the waitlist has grown steadily and the landing page conversion rate is stable. Aisha mentioned that support tickets about login issues have dropped since the last release.
+
+2. Onboarding flow
+The group discussed whether to keep the five-step onboarding or cut it to three steps. Lena prefers three steps with optional tips afterward. Marcus noted that the analytics events for each step are already instrumented, so either option is fine technically. Priya asked Lena to deliver the final three-step onboarding designs by March 14. The team agreed to run a small usability test once the designs are ready.
+
+3. API migration
+Marcus walked through the migration plan. The old endpoints will stay available for a transition period. Load testing is scheduled after the remaining endpoints are moved. He raised a concern about rate limits on the new gateway; the team agreed to monitor this during load testing rather than change the design now. There was a short discussion about documentation: the public API docs need updating before external partners are notified. Marcus will finish migrating the remaining endpoints by March 21.
+
+4. Marketing and launch
+Tom presented the draft launch plan. The plan includes a blog post, an email to the waitlist, and a short demo video. The group debated whether to launch on a Tuesday or a Thursday; most people preferred Tuesday because of higher email open rates in past campaigns. Tom will send the launch email copy to Priya for review by March 18. Lena offered to help with visuals for the blog post if the timeline allows.
+
+5. Support readiness
+Aisha said the help center needs new articles for the redesigned settings page and the new onboarding. She suggested creating short video walkthroughs as well, but the group decided articles come first. Aisha will publish the five new help-center articles by March 25. She also asked for a list of known issues before launch so support can prepare responses.
+
+6. Documentation and partners
+Priya reminded everyone that partners must get at least two weeks' notice before any breaking API change. Marcus will update the public API documentation by March 28, and Priya will send the partner notice right after the docs are live. Tom asked whether partners would get early access to the beta; Priya said she would think about it and decide later.
+
+7. Risks and open questions
+The main risks are the gateway rate limits and the tight timeline for help-center content. The group agreed to revisit the rate-limit question after load testing. Lena raised the idea of a dark-mode option for the settings page; it was parked for after launch. Aisha asked whether the beta would include the mobile app; Priya said mobile is out of scope for this beta.
+
+8. Wrap-up
+Priya will compile the known-issues list and share it with support by April 1. The next sync is scheduled for the same time next week. Tom thanked the group and noted that the waitlist email will go out only after Priya approves the copy.

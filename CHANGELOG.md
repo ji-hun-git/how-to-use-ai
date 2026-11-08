@@ -21,6 +21,11 @@ Made the guide usable inside AI tools, not just readable, after comparing it wit
 ### Changed
 - README first screen: one-line installs, before/after evidence, and a failure-mode map
 
+### Also added
+- **Guide 12** ([docs/12](docs/12-writing-decision-rules.md)): writing decision rules (condition → action → exception), exceptions and human sign-off, revising instead of forking skills, and testing that a rule fires
+- **Skill template** ([templates/skill-template.md](templates/skill-template.md))
+- **Skill eval harness** ([evals/skills/](evals/README.md#skill-evaluations-with-vs-without)): 20 with-vs-without cases across all 10 skills, blind grading, resumable runs (results not yet published)
+
 ---
 
 ## 2026-11-09 · English-only edition

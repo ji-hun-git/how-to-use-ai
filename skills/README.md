@@ -82,6 +82,10 @@ Use the short rules in [drop-in/custom-instructions.md](../drop-in/custom-instru
 - Skills trigger automatically from their descriptions. You can also ask for one by name, e.g. "use grounded-answer for this", or in Claude Code type `/` and pick it (plugin skills appear as `/how-to-use-ai:<skill>`).
 - They are deliberately small and single-purpose. Combine them: `task-spec` → work → `fresh-eyes-review`.
 
+## Write your own
+
+To build a skill for your own work, start from [templates/skill-template.md](../templates/skill-template.md) and the guide [docs/12. Writing decision rules](../docs/12-writing-decision-rules.md): a useful skill holds rules that change the result depending on the input, not just a tone and a layout.
+
 ## Format and validation
 
 Each skill follows the [Agent Skills specification](https://agentskills.io/specification): a folder whose name matches the `name` field, YAML frontmatter with `name` and `description` (≤1024 characters, saying what it does and when to use it), and a Markdown body well under 500 lines. `python scripts/validate.py` checks these rules locally, and CI runs it on every push.

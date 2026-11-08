@@ -6,7 +6,7 @@
 
 | Repository | ⭐ | What you get | Evidence & sources | Up to date (2026) | Failure modes covered | Copy-paste prompts | Installable skills / rules | Runnable evals | Course structure | Non-coders |
 |---|---|---|---|---|---|---|---|---|---|---|
-| **how-to-use-ai** (this repo) | new | Guide + 10 skills + drop-in rules + prompt library + eval demo | ● 460+ cited sources, verification status per claim | ● | ● misunderstanding, omission, fabrication, sycophancy | ● 30 prompts + 8 templates | ● 10 skills, Claude Code plugin, AGENTS.md / CLAUDE.md / Cursor / chat versions | ◐ runnable promptfoo demo, no published results yet | ◐ learning paths | ● |
+| **how-to-use-ai** (this repo) | new | Guide + 10 skills + drop-in rules + prompt library + eval demo | ● 460+ cited sources, verification status per claim | ● | ● misunderstanding, omission, fabrication, sycophancy | ● 30 prompts + 8 templates | ● 10 skills, Claude Code plugin, AGENTS.md / CLAUDE.md / Cursor / chat versions | ◐ runnable promptfoo demo and a with-vs-without skill harness; no published results yet | ◐ learning paths | ● |
 | [mattpocock/skills](https://github.com/mattpocock/skills) | 318,372 | Engineering skills from one developer's setup | ◐ | ● | ● (for coding) | ◐ | ● | ○ | ○ | ◐ |
 | [obra/superpowers](https://github.com/obra/superpowers) | 314,491 | Skills that enforce a brainstorm → plan → TDD → review workflow | ○ | ● | ◐ | ○ | ● | ◐ | ○ | ○ |
 | [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills) | 230,864 | One CLAUDE.md based on Karpathy's observations of coding-agent mistakes (not made by Karpathy) | ◐ | ◐ | ● (for coding) | ● | ● | ○ | ○ | ○ |
@@ -35,6 +35,6 @@
 
 ## What we're still missing (honest gaps)
 
-- **Published measurements.** The [eval demo](evals/README.md) is runnable, but we haven't yet published with-vs-without results for each skill across models.
+- **Published measurements.** The [skill eval harness](evals/README.md#skill-evaluations-with-vs-without) is ready and tested, but with-vs-without results across models haven't been published yet.
 - **Interactive exercises.** There are no notebooks or graded exercises.
 - **Visual assets.** Diagrams are Mermaid only; there's no illustrated course.
