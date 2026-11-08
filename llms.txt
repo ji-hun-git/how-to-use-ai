@@ -1,0 +1,36 @@
+# how-to-use-ai
+
+> Evidence-based guide to using AI well: how to instruct models (role, context, instruction, format, constraints, examples) and how to prevent the four documented failure modes (misunderstanding, omission, fabrication/hallucination, sycophancy). Includes installable Agent Skills, a drop-in AGENTS.md rules file, a prompt library, a runnable eval, and sourced research reports (460+ sources, checked 2026-11-09).
+
+## Install
+- [Skills (Agent Skills format)](https://github.com/ji-hun-git/how-to-use-ai/blob/main/skills/README.md): 10 skills; Claude Code plugin, `npx skills add ji-hun-git/how-to-use-ai`, or manual copy
+- [Drop-in rules file](https://github.com/ji-hun-git/how-to-use-ai/blob/main/drop-in/AGENTS.md): 18 evidence-linked rules for AGENTS.md / CLAUDE.md
+- [Custom instructions for chat apps](https://github.com/ji-hun-git/how-to-use-ai/blob/main/drop-in/custom-instructions.md): short and long versions
+
+## Guides
+- [Mindset](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/01-mindset.md): how to think about AI, jagged capabilities, when not to use it
+- [The six elements of a prompt](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/02-prompt-anatomy.md): role, context, instruction, format, constraints, examples
+- [Instructing with examples](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/03-examples-few-shot.md): few-shot rules and pitfalls
+- [Failure modes](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/04-failure-modes.md): misunderstanding, omission, fabrication, sycophancy; causes, prevention, detection, 2026 measurements
+- [Models and reasoning](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/05-models-and-reasoning.md): choosing models and tools, reasoning models, habits to drop
+- [Workflows](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/06-workflows.md): context engineering, five patterns, playbooks, memory
+- [AI coding](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/07-ai-coding.md): agentic engineering, done criteria, verification, 2026 tool changes
+- [Verification and evals](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/08-verification-and-evals.md): verification ladder, evaluating prompts
+- [Security and privacy](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/09-security-privacy.md): prompt injection, lethal trifecta, local laws example
+- [Myths vs. evidence](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/10-myths-vs-evidence.md): which popular tips fail in controlled studies
+- [Where instructions should live](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/11-skills-and-agent-rules.md): prompt vs rules file vs skill vs hook
+
+## Practical
+- [Prompt library](https://github.com/ji-hun-git/how-to-use-ai/blob/main/prompts/README.md): 30 prompts by task
+- [Prompt clinic](https://github.com/ji-hun-git/how-to-use-ai/blob/main/examples/08-prompt-clinic.md): 12 common prompts diagnosed and fixed
+- [Templates](https://github.com/ji-hun-git/how-to-use-ai/tree/main/templates): 8 annotated templates
+- [Cheatsheet](https://github.com/ji-hun-git/how-to-use-ai/blob/main/CHEATSHEET.md): one-page summary
+
+## Evidence
+- [Evidence report](https://github.com/ji-hun-git/how-to-use-ai/blob/main/research/evidence-report.md): sourced report with verification status per claim
+- [2026 update report](https://github.com/ji-hun-git/how-to-use-ai/blob/main/research/2026-update-report.md): what changed in 2026 and current-model measurements
+
+## Optional
+- [How this repo compares](https://github.com/ji-hun-git/how-to-use-ai/blob/main/COMPARISON.md)
+- [Curated resources](https://github.com/ji-hun-git/how-to-use-ai/blob/main/resources/awesome.md)
+- [Runnable eval](https://github.com/ji-hun-git/how-to-use-ai/blob/main/evals/README.md)

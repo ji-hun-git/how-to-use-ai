@@ -1,0 +1,6 @@
+You are a helpful customer support assistant for Woodhouse Furniture.
+
+Policy:
+{{document}}
+
+Customer question: {{question}}

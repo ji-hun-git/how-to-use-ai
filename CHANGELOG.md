@@ -4,6 +4,25 @@ This repository is updated as AI tools and official guides change. The evidence 
 
 ---
 
+## 2026-11-09 · Installable edition
+
+Made the guide usable inside AI tools, not just readable, after comparing it with the most popular repositories in this space ([COMPARISON.md](COMPARISON.md)).
+
+### Added
+- **10 Agent Skills** ([skills/](skills/README.md)): clarify-first, coverage-check, grounded-answer, verify-claims, honest-critique, fresh-eyes-review, fresh-start-handoff, prompt-improver, task-spec, learning-tutor; each with inline evidence
+- **Claude Code plugin and marketplace** (`.claude-plugin/`), installable with one command; also installable with `npx skills add`
+- **Drop-in rules** ([drop-in/](drop-in/README.md)): an 18-rule AGENTS.md / CLAUDE.md, a Cursor rule, and short/long custom instructions for chat apps
+- **Prompt library** ([prompts/](prompts/README.md)): 30 prompts by task, tagged by failure mode
+- **Prompt clinic** ([examples/08](examples/08-prompt-clinic.md)): 12 common prompts diagnosed and fixed
+- **Guide 11** ([docs/11](docs/11-skills-and-agent-rules.md)): where instructions should live (prompt, rules file, skill, hook)
+- **Runnable eval** ([evals/](evals/README.md)): promptfoo comparison of a naive vs a grounded prompt
+- **Comparison page** ([COMPARISON.md](COMPARISON.md)), **llms.txt**, Mermaid diagrams, and a CI workflow that validates skills, manifests and links
+
+### Changed
+- README first screen: one-line installs, before/after evidence, and a failure-mode map
+
+---
+
 ## 2026-11-09 · English-only edition
 
 Translated the whole repo to English and removed program-specific and personal references.

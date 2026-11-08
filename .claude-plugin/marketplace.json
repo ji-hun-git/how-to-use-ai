@@ -1,0 +1,19 @@
+{
+  "name": "how-to-use-ai",
+  "owner": {
+    "name": "ji-hun-git"
+  },
+  "metadata": {
+    "description": "Evidence-based skills for using AI well, from the how-to-use-ai guide.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "how-to-use-ai",
+      "source": "./",
+      "description": "Ten evidence-based skills that prevent misunderstanding, omission, fabrication and sycophancy.",
+      "version": "1.0.0",
+      "license": "MIT"
+    }
+  ]
+}

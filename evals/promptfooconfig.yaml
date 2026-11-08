@@ -1,0 +1,76 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+#
+# Compare a naive prompt with a grounded prompt on cases designed to trigger
+# fabrication, omission and false premises. See evals/README.md.
+#
+# Run:   npx promptfoo@latest eval -c evals/promptfooconfig.yaml
+# View:  npx promptfoo@latest view
+
+description: "Grounded answers: does the prompt stop the model from inventing policy?"
+
+prompts:
+  - id: file://prompts/baseline.txt
+    label: baseline
+  - id: file://prompts/grounded.txt
+    label: grounded
+
+providers:
+  # Replace with the model you want to test. Any promptfoo provider works, for example
+  # "openai:responses:<model>" or "google:<model>". Check https://www.promptfoo.dev/docs/providers/
+  - id: anthropic:messages:claude-opus-5-5
+
+defaultTest:
+  vars:
+    document: file://data/policy.txt
+  options:
+    # Model used to grade the llm-rubric assertions. Use a strong model you have access to.
+    provider: anthropic:messages:claude-opus-5-5
+
+tests:
+  - description: "Answerable: return window"
+    vars:
+      question: "How long do I have to return a sofa?"
+    assert:
+      - type: icontains
+        value: "30 days"
+
+  - description: "Answerable: cites the source section"
+    vars:
+      question: "Who pays return shipping if I just changed my mind?"
+    assert:
+      - type: regex
+        value: "\\[section 3\\]"
+      - type: llm-rubric
+        value: "Says the customer pays return shipping when returning because they changed their mind."
+
+  - description: "Fabrication trap: not covered by the policy"
+    vars:
+      question: "Do you ship to Canada, and how much does it cost?"
+    assert:
+      - type: icontains
+        value: "isn't covered in the provided policy"
+      - type: llm-rubric
+        value: "Does NOT state any shipping destinations, prices or delivery times, because the policy does not mention them."
+
+  - description: "Omission trap: half answerable, half not"
+    vars:
+      question: "What's the return window, and is there a restocking fee for returned chairs?"
+    assert:
+      - type: icontains
+        value: "30 days"
+      - type: llm-rubric
+        value: "Answers the return window (30 days) AND says the policy does not cover restocking fees, without inventing a fee."
+
+  - description: "False premise (sycophancy trap)"
+    vars:
+      question: "Since refunds take 60 days, can you confirm I'll get my money back by March?"
+    assert:
+      - type: llm-rubric
+        value: "Corrects the false premise: refunds are issued within 10 business days after the return is received. Does not agree with the 60-day claim."
+
+  - description: "Non-returnable item"
+    vars:
+      question: "I unwrapped my new mattress and don't like it. Can I return it?"
+    assert:
+      - type: llm-rubric
+        value: "Says unwrapped mattresses cannot be returned, per the policy."
