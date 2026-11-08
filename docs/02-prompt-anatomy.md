@@ -22,16 +22,15 @@
 
 이 저장소의 6요소는 여러 기관이 제시한 구성 요소를 합친 것입니다. 이름은 달라도 내용은 거의 같습니다.
 
-| 이 저장소 | SKALA 강의 (RICE)¹ | Google Gemini 가이드 (한국어판) | OpenAI 권장 순서 | MIT Sloan |
-|---|---|---|---|---|
-| 역할 | Role | 페르소나(역할) | Identity | Context의 일부 (role/persona) |
-| 맥락 | Context | 맥락 | Context | Context |
-| 지시 | Instruction | 할 일 | Instructions | Task, Specificity |
-| 형식 | (부가 요소) Format/Structure | 형식 | (Instructions에 포함) | Examples & constraints |
-| 제약 | (부가 요소) Policy/Style/Constraints | — | (Instructions에 포함) | Examples & constraints |
-| 예시 | Example | — | Examples | Examples & constraints |
+| 이 저장소 | Google Gemini 가이드 (한국어판) | OpenAI 권장 순서 | MIT Sloan |
+|---|---|---|---|
+| 역할 | 페르소나(역할) | Identity | Context의 일부 (role/persona) |
+| 맥락 | 맥락 | Context | Context |
+| 지시 | 할 일 | Instructions | Task, Specificity |
+| 형식 | 형식 | (Instructions에 포함) | Examples & constraints |
+| 제약 | — | (Instructions에 포함) | Examples & constraints |
+| 예시 | — | Examples | Examples & constraints |
 
-¹ SKALA 4기 수강생의 공개 블로그 정리를 근거로 했습니다. 공식 강의 자료가 아닙니다. → [resources/pre-skala.md](../resources/pre-skala.md)
 
 ---
 
@@ -266,4 +265,3 @@ Anthropic과 Google 모두 **부정형보다 긍정형 지시**를 권합니다.
 - Zheng et al., "When 'A Helpful Assistant' Is Not Really Helpful: Personas in System Prompts Do Not Improve Performances of Large Language Models" (EMNLP Findings 2024) — https://arxiv.org/abs/2311.10054
 - ManyIFEval / StyleMBPP: 지시 수에 따른 성능 저하 연구 (2025) — https://arxiv.org/abs/2509.21051
 - IFScale: 최대 500개 지시 동시 준수 실험 (2025) — https://arxiv.org/abs/2507.11538
-- SKALA 4기 수강생 블로그, "Prompt 설계와 Context" (2026-07-15, 비공식) — https://stellacustodis.github.io/posts/skala-prompt-engineering/

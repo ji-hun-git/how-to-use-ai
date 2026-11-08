@@ -2,7 +2,7 @@
 
 AI에게 일을 잘 맡기는 방법을 정리한 한국어 가이드입니다. 지시를 어떻게 쓰고, 결과를 어떻게 확인하는지에 집중합니다.
 
-Anthropic · OpenAI · Google · Microsoft의 공식 문서, 공개된 연구, Andrej Karpathy 같은 실무자의 글을 바탕으로 정리했습니다. 출처는 각 문서 끝에 있고, 2차 자료로만 확인한 수치나 논쟁 중인 연구는 [근거 보고서](research/evidence-report.md#8-검증된-것과-검증되지-않은-것)에 따로 표시했습니다. 연구 결과는 대부분 조사 당시 모델 기준이라, 최신 모델에서 같은 크기로 나타난다고 보장하지 않습니다.
+Anthropic · OpenAI · Google · Microsoft의 공식 문서, 공개된 연구, Andrej Karpathy 같은 실무자의 글을 바탕으로 정리했습니다. 출처는 각 문서 끝에 있고, 2차 자료로만 확인한 수치나 논쟁 중인 연구는 [근거 보고서](research/evidence-report.md#7-검증된-것과-검증되지-않은-것)에 따로 표시했습니다. 연구 결과는 대부분 조사 당시 모델 기준이라, 최신 모델에서 같은 크기로 나타난다고 보장하지 않습니다.
 
 [English](README.en.md) · [한 장 치트시트](CHEATSHEET.md) · [근거 보고서](research/evidence-report.md)
 
@@ -84,8 +84,7 @@ Anthropic · OpenAI · Google · Microsoft의 공식 문서, 공개된 연구, A
 
 ### 자료 (resources)
 
-- [참고 자료 모음 (Awesome List)](resources/awesome.md): 공식 가이드, Karpathy의 영상·글·저장소, MIT · Harvard · Wharton · Stanford 자료, 유명 GitHub 저장소(별 수·상태 확인)
-- [SKALA · Pre-SKALA 학습자를 위한 연결 안내](resources/pre-skala.md): 공개 커리큘럼과 이 저장소 문서 연결, 해커톤 체크리스트
+- [참고 자료 모음](resources/awesome.md): 공식 가이드, Karpathy의 영상·글·저장소, MIT · Harvard · Wharton · Stanford 자료, 유명 GitHub 저장소(별 수·상태 확인)
 
 ### 근거 (research)
 
@@ -105,7 +104,7 @@ Anthropic · OpenAI · Google · Microsoft의 공식 문서, 공개된 연구, A
 
 ## 용어에 대해
 
-"역할 · 맥락 · 지시 · 형식 · 제약 · 예시"는 여러 기관 가이드의 공통 요소를 합친 것이고, "오해 · 누락 · 지어냄"은 이 저장소가 만든 학습용 분류입니다. 효과가 없다고 나온 요령(팁·협박·전문가 역할·추론 모델에 "단계별로 생각해")은 [10. 신화 vs 근거](docs/10-myths-vs-evidence.md)에 따로 정리했습니다. SKALA / Pre-SKALA와의 관계는 [resources/pre-skala.md](resources/pre-skala.md)를 참고하세요 (비공식).
+"역할 · 맥락 · 지시 · 형식 · 제약 · 예시"는 여러 기관 가이드의 공통 요소를 합친 것이고, "오해 · 누락 · 지어냄"은 이 저장소가 만든 학습용 분류입니다. 효과가 없다고 나온 요령(팁·협박·전문가 역할·추론 모델에 "단계별로 생각해")은 [10. 신화 vs 근거](docs/10-myths-vs-evidence.md)에 따로 정리했습니다.
 
 ---
 
@@ -127,9 +126,7 @@ Anthropic · OpenAI · Google · Microsoft의 공식 문서, 공개된 연구, A
 
 AI 도구와 공식 가이드는 몇 달마다 바뀝니다. 이 저장소는 **조사 기준일(현재 2026-11-09)**을 밝히고, 모델 세대가 바뀌어 낡은 조언은 표시하거나 고칩니다. 모델 이름처럼 빨리 바뀌는 정보는 가능한 한 일반적인 표현(일반 모델 / 추론 모델)으로 썼습니다.
 
-## 만든 사람
-
-**Jihun Chae** ([@ji-hun-git](https://github.com/ji-hun-git))
+## 기여
 
 잘못된 내용이나 깨진 링크를 발견하면 [이슈](https://github.com/ji-hun-git/how-to-use-ai/issues)로 알려 주세요.
 

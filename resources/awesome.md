@@ -181,7 +181,6 @@ OpenAI 공동 창업자이자 전 Tesla AI 디렉터. "바이브 코딩", "컨�
 | [teddylee777/langchain-kr](https://github.com/teddylee777/langchain-kr) ⭐2,058 | 한국어 LangChain 튜토리얼 (🟡 최신 LangChain보다 뒤처질 수 있음) |
 | [위키독스: 나 그리고 프롬프트](https://wikidocs.net/book/17643) | 한국어 프롬프트 활용서 |
 
-→ SKALA / Pre-SKALA 관련 자료는 [pre-skala.md](pre-skala.md)에 따로 정리했습니다.
 
 ---
 

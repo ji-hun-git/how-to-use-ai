@@ -3,9 +3,9 @@
 > **근거 보고서 (Evidence Report)** · 조사 기준일 2026-11-09
 >
 > 이 저장소([how-to-use-ai](../README.md))의 모든 권고가 기대고 있는 근거 자료입니다. 연구소 공식 가이드, 논문, 대학·연구기관 보고서, Karpathy의 강연·글, GitHub 저장소, 한국어 자료를 조사해 정리했습니다.
-> 각 주장의 **확인 수준**(1차 출처 확인 / 2차 확인 / 검색 요약만 / 미확인)은 [8절](#8-검증된-것과-검증되지-않은-것)에 표로 정리되어 있습니다. 직접 인용은 최소화하고 대부분 요약·의역했습니다.
+> 각 주장의 **확인 수준**(1차 출처 확인 / 2차 확인 / 검색 요약만 / 미확인)은 [7절](#7-검증된-것과-검증되지-않은-것)에 표로 정리되어 있습니다. 직접 인용은 최소화하고 대부분 요약·의역했습니다.
 
-2026년 11월 현재 AI·대형 언어 모델(LLM)을 잘 쓰는 방법에 대한 증거는 한 문장으로 모인다. **결과를 결정하는 것은 마법의 문구가 아니다. 모델이 모르는 것을 채워 주는 명세, 그리고 모델 밖에서 이뤄지는 검증이다.** Anthropic·OpenAI·Google·Microsoft의 공식 가이드는 모두 역할(Role)·맥락(Context)·지시(Instruction)·형식(Format)·제약(Constraints)·예시 제공(Few-shot examples)이라는 같은 부품을 권한다. 다만 최신판일수록 강조점이 역할 설정과 강조 표현에서 **맥락·성공 기준·돌려볼 수 있는 확인 수단**으로 옮겨갔고, 추론 모델(Reasoning model)에는 "단계별로 생각하라" 같은 문구 대신 effort 설정을 쓰라고 한다. Wharton의 반복 통제 실험에서 팁·협박·존댓말·전문가 페르소나는 정확도를 일관되게 올리지 못했다. 널리 퍼진 프롬프트 팁 상당수가 신화라는 뜻이다. 세 가지 핵심 실패는 원인이 서로 다르다. 오해(Misunderstanding)는 불완전한 요청과 '묻지 않고 가정하는' 모델의 습관에서 생긴다. 같은 지시를 여러 턴에 나눠 주면 성능이 평균 **39%** 떨어진다 ([Laban et al., 2025](https://arxiv.org/abs/2505.06120)). 누락(Omission)은 긴 맥락의 중간부와 지시 개수 증가에서 생긴다. 지어냄(환각, Hallucination)은 모르면 찍는 편이 점수가 높은 학습·평가 구조에서 생긴다. 여기에 사용자 의견에 맞춰 정답을 버리는 아첨(Sycophancy)이 더해진다. 워크플로 차원에서는 프롬프트 엔지니어링이 **맥락 엔지니어링(Context Engineering)**으로 확장되었다. 명세→계획→실행→증거 기반 검증→반영의 루프를 돌리고, 예외 없는 규칙은 프롬프트가 아니라 훅·권한·테스트로 강제한다는 것이 연구소와 실무자의 공통 결론이다. 한국 SKALA/Pre-SKALA와의 연결은 제한적으로만 확인된다. Pre-SKALA 공개 커리큘럼에는 "AI 지시 및 결과 검증"이라는 모듈명만 있고 강의 내용은 공개되지 않았다 ([Pre-SKALA 공식 페이지](https://2026pre-skala.co.kr/)). SKALA 4기의 프롬프트 수업은 수강생 한 명이 블로그에 RICE(Role·Instruction·Context·Example) 틀로 기록한 것이 공개 자료의 전부다. 따라서 how-to-use-ai 저장소는 여섯 요소를 RICE와 Google 한국어 가이드의 용어에 연결하고 '지시 → 결과 검증'을 핵심 루프로 삼아야 한다. 다만 오해·누락·지어냄 3분류는 공개 출처에서 확인되지 않은 저장소 고유의 교육용 틀임을 밝히는 것이 정직하다.
+2026년 11월 현재 AI·대형 언어 모델(LLM)을 잘 쓰는 방법에 대한 증거는 한 문장으로 모인다. **결과를 결정하는 것은 마법의 문구가 아니다. 모델이 모르는 것을 채워 주는 명세, 그리고 모델 밖에서 이뤄지는 검증이다.** Anthropic·OpenAI·Google·Microsoft의 공식 가이드는 모두 역할(Role)·맥락(Context)·지시(Instruction)·형식(Format)·제약(Constraints)·예시 제공(Few-shot examples)이라는 같은 부품을 권한다. 다만 최신판일수록 강조점이 역할 설정과 강조 표현에서 **맥락·성공 기준·돌려볼 수 있는 확인 수단**으로 옮겨갔고, 추론 모델(Reasoning model)에는 "단계별로 생각하라" 같은 문구 대신 effort 설정을 쓰라고 한다. Wharton의 반복 통제 실험에서 팁·협박·존댓말·전문가 페르소나는 정확도를 일관되게 올리지 못했다. 널리 퍼진 프롬프트 팁 상당수가 신화라는 뜻이다. 세 가지 핵심 실패는 원인이 서로 다르다. 오해(Misunderstanding)는 불완전한 요청과 '묻지 않고 가정하는' 모델의 습관에서 생긴다. 같은 지시를 여러 턴에 나눠 주면 성능이 평균 **39%** 떨어진다 ([Laban et al., 2025](https://arxiv.org/abs/2505.06120)). 누락(Omission)은 긴 맥락의 중간부와 지시 개수 증가에서 생긴다. 지어냄(환각, Hallucination)은 모르면 찍는 편이 점수가 높은 학습·평가 구조에서 생긴다. 여기에 사용자 의견에 맞춰 정답을 버리는 아첨(Sycophancy)이 더해진다. 워크플로 차원에서는 프롬프트 엔지니어링이 **맥락 엔지니어링(Context Engineering)**으로 확장되었다. 명세→계획→실행→증거 기반 검증→반영의 루프를 돌리고, 예외 없는 규칙은 프롬프트가 아니라 훅·권한·테스트로 강제한다는 것이 연구소와 실무자의 공통 결론이다. 오해·누락·지어냄 3분류는 공개 출처에서 확인되지 않은 저장소 고유의 교육용 틀임을 밝히는 것이 정직하다.
 
 ## 1. 여섯 요소는 네 연구소 모두 같지만, 무게중심은 맥락과 완료 기준으로 옮겨갔다
 
@@ -48,18 +48,18 @@ Anthropic의 대표 예시는 이렇다. "말줄임표를 절대 쓰지 마"보�
 
 ### 한국어 용어 정렬
 
-한국 학습자가 이미 접했을 용어 체계는 셋이다. Google 한국어 가이드의 **역할·할 일·맥락·형식**(예시에서는 '페르소나'라는 라벨도 쓴다), 프롬프트 엔지니어링 가이드 한국어판의 **지시·문맥·입력 데이터·출력 지시자**, 그리고 SKALA 4기 강의를 기록한 수강생 블로그의 영어 RICE다. "역할·맥락·형식·제약"이라는 정확한 네 단어 세트는 권위가 낮은 한국어 블로그·학습 페이지에서만 보였고, 그것도 검색 스니펫으로만 확인했다 ([tilnote.io, 검색 스니펫만](https://tilnote.io/pages/69bb8bf806e26362da137f27.md)). 지어냄은 한국어에서 **환각**(또는 할루시네이션)이 표준어이므로 저장소에서는 "지어냄(환각)"으로 병기해야 한다.
+한국어 자료에서 흔히 보이는 용어 체계는 둘이다. Google 한국어 가이드의 **역할·할 일·맥락·형식**(예시에서는 '페르소나'라는 라벨도 쓴다), 프롬프트 엔지니어링 가이드 한국어판의 **지시·문맥·입력 데이터·출력 지시자**다. "역할·맥락·형식·제약"이라는 정확한 네 단어 세트는 권위가 낮은 한국어 블로그·학습 페이지에서만 보였고, 그것도 검색 스니펫으로만 확인했다 ([tilnote.io, 검색 스니펫만](https://tilnote.io/pages/69bb8bf806e26362da137f27.md)). 지어냄은 한국어에서 **환각**(또는 할루시네이션)이 표준어이므로 저장소에서는 "지어냄(환각)"으로 병기해야 한다.
 
-| how-to-use-ai | SKALA 4기 강의(RICE, 수강생 기록) | Google 한국어 가이드 | 프롬프트 엔지니어링 가이드 한국어판 | MIT Sloan | Microsoft |
-|---|---|---|---|---|---|
-| 역할 | Role | 역할(예시에서는 페르소나) | (없음) | 맥락 안의 페르소나·청중 | (시스템 메시지로 다룸) |
-| 맥락 | Context(사고의 경계 조건) | 맥락 | 문맥, 입력 데이터 | Context, Specificity | Primary content, Supporting content |
-| 지시 | Instruction(판단 절차 지정) | 할 일 | 지시 | Task | Instructions |
-| 형식 | Format/Structure | 형식 | 출력 지시자 | Examples and constraints(형식) | Cue |
-| 제약 | Policy/Style/Constraints | (없음) | (없음) | Examples and constraints | Instructions 안에 포함 |
-| 예시 | Example(평가 기준의 표본) | (없음) | (없음) | Examples | Examples |
+| how-to-use-ai | Google 한국어 가이드 | 프롬프트 엔지니어링 가이드 한국어판 | MIT Sloan | Microsoft |
+|---|---|---|---|---|
+| 역할 | 역할(예시에서는 페르소나) | (없음) | 맥락 안의 페르소나·청중 | (시스템 메시지로 다룸) |
+| 맥락 | 맥락 | 문맥, 입력 데이터 | Context, Specificity | Primary content, Supporting content |
+| 지시 | 할 일 | 지시 | Task | Instructions |
+| 형식 | 형식 | 출력 지시자 | Examples and constraints(형식) | Cue |
+| 제약 | (없음) | (없음) | Examples and constraints | Instructions 안에 포함 |
+| 예시 | (없음) | (없음) | Examples | Examples |
 
-표의 출처: [SKALA 수강생 블로그](https://stellacustodis.github.io/posts/skala-prompt-engineering/), [Google 한국어 PDF](https://services.google.com/fh/files/misc/gemini-for-google-workspace-prompting-guide-101_ko.pdf), [promptingguide.ai 한국어판](https://www.promptingguide.ai/kr/introduction/elements), [MIT Sloan](https://mitsloanedtech.mit.edu/ai/basics/effective-prompts/), [Microsoft Learn](https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering).
+표의 출처: [Google 한국어 PDF](https://services.google.com/fh/files/misc/gemini-for-google-workspace-prompting-guide-101_ko.pdf), [promptingguide.ai 한국어판](https://www.promptingguide.ai/kr/introduction/elements), [MIT Sloan](https://mitsloanedtech.mit.edu/ai/basics/effective-prompts/), [Microsoft Learn](https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering).
 
 ## 2. 팁·협박·존댓말·전문가 역할은 정확도를 올리지 못한다
 
@@ -118,7 +118,7 @@ OpenAI와 조지아공대의 Kalai 등(2025)은 환각을 시험 문제 앞에�
 
 아첨은 인간 선호 피드백 학습의 체계적 부산물이다. Anthropic의 Perez 등(2022)은 큰 모델일수록 사용자가 선호하는 답을 되풀이한다는 것을 보였다 ([Perez et al.](https://arxiv.org/abs/2212.09251)). Sharma 등(2023)은 최신 어시스턴트 다섯 개가 네 가지 과제에서 일관되게 아첨하며, 인간 선호 데이터 자체가 사용자 견해와 맞는 응답을 더 선호한다는 것을 밝혔다. 같은 논증이라도 사용자가 마음에 든다고 하면 피드백이 더 긍정적으로 바뀌었다. 확신을 갖고 맞힌 답도 사용자가 이의를 제기하면 자주 포기했다 ([Sharma et al.](https://arxiv.org/abs/2310.13548); [Anthropic 연구 페이지](https://www.anthropic.com/research/towards-understanding-sycophancy-in-language-models)). Google의 Wei 등은 규모 확대와 지시 튜닝이 PaLM의 아첨을 오히려 키운다는 것을 보였다 ([Wei et al.](https://arxiv.org/abs/2308.03958)). 10개 LLM을 대상으로 한 FlipFlop 실험에서 "정말 확실해?"라고 묻자 모델은 평균 **46%** 답을 바꾸었고, 첫 답과 최종 답 사이에 정확도가 평균 약 **17%p** 떨어졌다(논문 표기는 "17%", 정의상 정확도 차이) ([Laban et al., FlipFlop](https://arxiv.org/abs/2311.08596)). GPT-4o·Claude Sonnet·Gemini 1.5 Pro를 대상으로 한 SycEval에서는 58.19%의 사례에서 아첨이 관찰되었다. 인용을 근거로 반박할 때 오답으로 끌려가는 비율이 가장 높았다 ([SycEval](https://arxiv.org/abs/2502.08177)). 현실 사고도 있었다. OpenAI는 2025년 4월 25일 GPT-4o 업데이트를 배포했다가 나흘 뒤인 28일 롤백을 시작했다. 사후 분석에 따르면 엄지 위·아래 피드백 기반의 보상 신호를 추가하면서 아첨을 억제하던 주 보상 신호가 약해졌다 ([Georgetown Law Tech Institute 요약](https://www.law.georgetown.edu/tech-institute/insights/tech-brief-ai-sycophancy-openai/); [TechCrunch](https://techcrunch.com/2025/04/29/openai-explains-why-chatgpt-became-too-sycophantic); [OpenAI, Sycophancy in GPT-4o](https://openai.com/index/sycophancy-in-gpt-4o/); [OpenAI, Expanding on sycophancy](https://openai.com/index/expanding-on-sycophancy/)).
 
-방어법은 메커니즘에서 나온다. 평가를 받고 싶은 글이라면 내가 썼다는 사실이나 마음에 든다는 의견을 숨긴다. 약점을 먼저 묻는다. "정말 확실해?" 대신 누가 맞다는 가정 없이 처음부터 다시 풀게 하고, 구체적 오류를 찾았을 때만 답을 바꾸게 한다. 그리고 내 의견과 첫 답변을 보지 않은 새 채팅에서 두 번째 의견을 받는다. SKALA 4기 강의 기록에 나오는 반대 논증자(Devil's Advocate)와 다중 페르소나(CFO 대 COO) 기법도 과도한 동의 대신 적절한 불일치를 끌어내려는 같은 목적을 갖는다 ([SKALA 수강생 블로그](https://stellacustodis.github.io/posts/skala-prompt-engineering/)). 다만 "솔직하게 말해" 같은 사용자 지시가 2025~2026년 최신 모델의 아첨을 줄인다는 통제 연구는 찾지 못했다. 위 방어법은 메커니즘 연구에서 끌어낸 것이다. 모델이 이의 제기 뒤에 "맞습니다"라고 하면 확인이 아니라 독립 검증이 필요하다는 신호로 받아들여야 한다.
+방어법은 메커니즘에서 나온다. 평가를 받고 싶은 글이라면 내가 썼다는 사실이나 마음에 든다는 의견을 숨긴다. 약점을 먼저 묻는다. "정말 확실해?" 대신 누가 맞다는 가정 없이 처음부터 다시 풀게 하고, 구체적 오류를 찾았을 때만 답을 바꾸게 한다. 그리고 내 의견과 첫 답변을 보지 않은 새 채팅에서 두 번째 의견을 받는다. 다만 "솔직하게 말해" 같은 사용자 지시가 2025~2026년 최신 모델의 아첨을 줄인다는 통제 연구는 찾지 못했다. 위 방어법은 메커니즘 연구에서 끌어낸 것이다. 모델이 이의 제기 뒤에 "맞습니다"라고 하면 확인이 아니라 독립 검증이 필요하다는 신호로 받아들여야 한다.
 
 ### 붙여넣기용 처방과 위험도별 검증 사다리
 
@@ -244,28 +244,7 @@ GitHub 저장소는 별 수가 인기를 보여 줄 뿐 품질을 보장하지�
 | 내부 이해 | [karpathy/nanochat](https://github.com/karpathy/nanochat) | 60,370 | 활성. 폐기된 nanoGPT를 대체 |
 | 주의 | [karpathy/LLM101n](https://github.com/karpathy/LLM101n) / [anthropics/courses](https://github.com/anthropics/courses) / [brexhq/prompt-engineering](https://github.com/brexhq/prompt-engineering) | 37,479 / 22,993 / 9,590 | 각각 아카이브(강의 없음) / 아카이브 / 2023년 이후 정체 |
 
-## 7. Pre-SKALA는 '지시 → 결과 검증'을 내걸었지만 강의 내용은 비공개다
-
-SKALA는 SK그룹의 채용 연계형 전일제 대면 AI 교육과정이다. SK AX 보도자료는 'SK AI Leader Academy(스칼라)'라고 부르고, 공식 사이트는 SK가 만든 AI Leader Academy라고 소개한다. 'SK Academy for Leading AI'라는 영문 풀이는 어떤 출처에서도 확인되지 않았다 ([SK AX 뉴스룸, 2026-05-07](https://www.skax.co.kr/company/news-room/sk-ax-skala-%EA%B4%91%EC%A3%BC%C2%B7%EC%9A%B8%EC%82%B0%EC%9C%BC%EB%A1%9C-%ED%99%95%EB%8C%80%ED%95%B4-ai%EC%9D%B8%EC%9E%AC-%EC%9C%A1%EC%84%B1%ED%95%9C%EB%8B%A4); [SKALA 공식 사이트](http://2026skala.co.kr/)). 1기는 2024년 12월 SK C&C가 고용노동부 K-디지털 트레이닝의 일환으로 공고했고, 약 5개월간 약 90명이 프로그래밍·생성형 AI·데이터 분석·머신러닝·클라우드·AI 서비스 개발 프로젝트를 배웠다 ([Byline Network](https://byline.network/2024/12/12-351/)). SK C&C와 SK AX가 사명 변경으로 같은 조직이라는 점은 추론이며, 이번에 가져온 출처가 직접 확인해 주지는 않는다. 4기는 19~34세를 대상으로 2026년 7~12월 판교·광주·울산에서 운영되며, 핵심 영역은 데이터 분석과 AIOps, Cloud Native AI, 생성형 AI 서비스 개발이다. 반도체·에너지·통신의 실제 문제로 팀 프로젝트를 한다. SK AX는 1~2기 수료생 194명 중 80% 이상이 취업했다고 밝혔지만 독립 검증은 없다 ([SK AX 뉴스룸](https://www.skax.co.kr/company/news-room/sk-ax-skala-%EA%B4%91%EC%A3%BC%C2%B7%EC%9A%B8%EC%82%B0%EC%9C%BC%EB%A1%9C-%ED%99%95%EB%8C%80%ED%95%B4-ai%EC%9D%B8%EC%9E%AC-%EC%9C%A1%EC%84%B1%ED%95%9C%EB%8B%A4); [서울대 컴퓨터공학부 공지](https://cse.snu.ac.kr/en/community/notice/25050)).
-
-Pre-SKALA는 SK AX가 주최하고 SK하이닉스가 후원하는 짧은 사전 과정이다. 3주간의 자기주도 온라인 AI 부트캠프와 1박 2일 해커톤으로 구성된다. 500명을 선발했고 온라인 과정 상위 100명만 해커톤(2026년 11월 28~29일, SK AX 판교 캠퍼스)에 초대되며, 혜택은 3년간 유효한 SKALA 입과 우대다 ([Pre-SKALA 공식 페이지](https://2026pre-skala.co.kr/); [서울대 공지](https://cse.snu.ac.kr/en/community/notice/25679)). 공개된 온라인 커리큘럼은 모듈 제목뿐이다. 'Agent 이해와 업무 분석', '바이브코딩 입문'(그 안에 "AI 지시 및 결과 검증"과 'Agent 디버깅 및 설계'), '에이전트 구성 및 실행'(도구 연결·업무지식 설계·자동화·테스트 및 개선), 최종과제 '나만의 Agent 만들기'다. 이 페이지에는 프롬프트·역할·맥락·형식·제약·예시·환각이라는 단어가 한 번도 나오지 않는다. 바이브코딩과 Agent는 나온다 ([Pre-SKALA 공식 페이지](https://2026pre-skala.co.kr/)). **Pre-SKALA의 강의 내용은 공개되지 않았다.** 슬라이드도, 영상도, 모듈 제목 이상의 강의계획서도, 수강생 블로그나 저장소도 찾지 못했다. 2026년 과정은 조사 시점에 아직 진행 중이었다. 따라서 "AI 지시 및 결과 검증" 모듈이 구체적으로 무엇을 가르치는지는 알 수 없다. 이 모듈이 역할·맥락·형식·제약이나 오해·누락·지어냄을 가르친다고 주장해서는 안 된다.
-
-SKALA 본과정의 프롬프트 수업에 대한 유일하게 상세한 공개 기록은 판교 캠퍼스 4기 수강생의 블로그 글이다. 그는 2026년 7월 15일 하루 동안 진행된 생성형 AI 과정의 첫 모듈 'Prompt 설계와 Context'를 이후 LLM·RAG·AI 에이전트 과정의 출발점으로 기록했다 ([SKALA 수강생 블로그](https://stellacustodis.github.io/posts/skala-prompt-engineering/); [원본 마크다운](https://github.com/stellacustodis/stellacustodis.github.io/blob/main/_posts/2026-07-15-skala-prompt-engineering.md)). 기록에 따르면 수업은 생성형 AI 트렌드, 다음 토큰 예측과 환각이라는 한계, 토큰·샘플링 매개변수, RICE 구조, few-shot·CoT·Step-back·Self-Consistency 기법, 맥락 엔지니어링·하네스 엔지니어링 순으로 진행되었다. 중심 틀은 RICE다. Role은 누구처럼 생각할지, Instruction은 어떤 절차로 판단할지, Context는 사고가 허용되는 경계 조건, Example은 출력 견본이 아니라 평가 기준의 표본으로 설명되었다. 여기에 정책·문체·제약과 형식·구조가 추가 요소로 붙었다. 좋은 프롬프트의 핵심은 자세함보다 구조라는 것이 수업의 표어였다. 예시는 최소 3~5개를 권했고, 환각은 내부 정보 부재·적시성과 함께 기업 도입의 세 장애물로 제시되어 RAG와 맥락 엔지니어링의 동기가 되었다. 오해를 막는 장치로는 모델이 먼저 질문하게 하는 소크라테스식 프롬프팅이, 아첨을 막는 장치로는 반대 논증자와 다중 페르소나가 소개되었다. 그 수강생은 슬라이드의 사실 오류(CoT 90.2% 수치의 출처 오기, temperature와 top-p 적용 순서 반전)를 직접 지적하기도 했다. 슬라이드 자체가 권위 있는 자료는 아니라는 뜻이다. 같은 수강생은 입과 전에 AI 에이전트와 바이브 코딩을 연습하지 않은 것을 아쉬워했다 ([SKALA 1개월 회고](https://github.com/stellacustodis/stellacustodis.github.io/blob/main/_posts/2026-08-18-skala-1month-review.md)). 다른 수강생들의 공개 저장소는 AI 에이전트 캡스톤, Spring AI, RAG, 클라우드 모듈의 존재를 확인해 준다 ([skalamok/capstone-v1](https://github.com/skalamok/capstone-v1); [sjjeon0925/skala-springAI-practicecode](https://github.com/sjjeon0925/skala-springAI-practicecode)). 수업 노트를 질문 기반으로 복습하는 학생 제작 스킬도 있다. 학습자들이 이미 에이전트 스킬을 쓰고 있다는 증거다 ([yongchane/skala-review-skill](https://github.com/yongchane/skala-review-skill)).
-
-| 항목 | 공개적으로 확인된 내용 | 확인 수준 |
-|---|---|---|
-| SKALA의 정체 | SK AX의 채용 연계형 AI 교육(SK AI Leader Academy), 약 5개월, 19~34세 | 공식(보도자료·사이트) |
-| SKALA 4기 커리큘럼 | 데이터 분석·AIOps, Cloud Native AI, 생성형 AI 서비스 개발. 상세 커리큘럼은 텍스트 없는 이미지 | 공식(상위 영역만) |
-| SKALA 프롬프트 수업 | RICE + 정책·문체·제약 + 형식·구조, few-shot 3~5, CoT, 맥락·하네스 엔지니어링 | 비공식(수강생 1인 기록) |
-| Pre-SKALA 구조·일정 | 3주 온라인 + 1박 2일 해커톤, 500명 선발, 상위 100명 | 공식 |
-| Pre-SKALA 커리큘럼 | 모듈 제목. "AI 지시 및 결과 검증"이 바이브코딩 입문 안에 있음 | 공식(제목만) |
-| Pre-SKALA 강의 내용 | 없음 | **비공개. 추정 금지** |
-| 오해·누락·지어냄 3분류 | 어떤 한국어 출처에서도 세트로 발견되지 않음 | 미확인(저장소 고유 틀일 가능성) |
-| 역할·맥락·형식·제약 4분류 | 권위 낮은 블로그 검색 스니펫에서만 보임 | 미확인 |
-
-저장소에 주는 함의는 세 가지다. 첫째, 학습자는 영어 RICE나 Google의 '역할·할 일·맥락·형식'을 먼저 접했을 가능성이 높다. 그러니 여섯 요소를 소개할 때 1절의 정렬표로 연결해 주어야 한다. 둘째, Pre-SKALA의 "AI 지시 및 결과 검증"은 공식 한국어 표현 가운데 이 저장소의 '프롬프트 작성 후 검증' 루프에 가장 가깝다. 따라서 저장소의 핵심 루프를 '지시 → 결과 검증'으로 부르면 어휘가 맞아떨어진다. 이것은 어휘의 정렬일 뿐 내용이 일치한다는 주장이 아니다. 셋째, Pre-SKALA와 SKALA는 모두 프롬프트를 에이전트 작업으로 가는 한 단계로 다루고, 대상은 비전공자를 포함한 19~34세다. 그러므로 단독 프롬프트 팁보다 에이전트 워크플로 안의 지시·검증으로 틀을 잡은 자료가 학습자가 곧 마주할 내용과 맞는다. 4절의 바이브 코딩과 에이전틱 엔지니어링의 구분도 이 독자에게 특히 중요하다. 학습자 대부분이 곧 바이브코딩 도구를 쓰게 되기 때문이다.
-
-## 8. 검증된 것과 검증되지 않은 것
+## 7. 검증된 것과 검증되지 않은 것
 
 이 보고서를 저장소의 근거로 쓰려면 주장마다 확인 수준이 다르다는 점을 알아야 한다. 연구소 문서는 모두 2026년 11월 9일에 직접 가져왔지만 대부분 날짜가 없는 살아 있는 문서다. 모델 이름(Claude Fable 5.1, Opus 5.5, GPT-6 Astra, GPT-5.6 Sol, Gemini 4 등)은 그 공식 페이지에 적힌 그대로 옮겼다. arXiv 논문은 arXiv API로 제목·저자·날짜·초록을 확인했다.
 
@@ -287,8 +266,6 @@ SKALA 본과정의 프롬프트 수업에 대한 유일하게 상세한 공개 �
 | MIT 'Your Brain on ChatGPT' | 프리프린트, 논쟁 중 | 공식 논평(arXiv 2601.00856) 있음 |
 | MIT NANDA '95% 수익 없음' | 예비·비동료심사 | PDF가 mit.edu가 아니라 mlq.ai에 호스팅됨 |
 | METR 19% 감속 | 1차 확인 | 페이지 스스로 결과가 낡았다고 밝힘. 2026년 2월 업데이트 미확인 |
-| SKALA 4기 프롬프트 수업 | 비공식 | 수강생 1인 블로그. 다른 캠퍼스·강사는 다를 수 있음 |
-| Pre-SKALA 강의 내용 | 비공개 | 모듈 제목만 공식 공개 |
 | 오해·누락·지어냄 3분류 | 출처 없음 | 저장소 고유의 교육 틀로 명시할 것 |
 | 행정안전부·NIA·부산시 가이드 | 검색 스니펫만 | 1차 PDF 미확보 |
 | GitHub 별 수 | API 확인(2026-11-09) | 인기 지표일 뿐이며 별 부풀리기 여부는 평가하지 않음 |
@@ -299,7 +276,7 @@ SKALA 본과정의 프롬프트 수업에 대한 유일하게 상세한 공개 �
 
 이 조사가 바꾸는 이해의 핵심은 이렇다. 'AI 활용법'의 단위는 더 이상 좋은 문장이 아니라 **좋은 명세와 좋은 확인 수단의 쌍**이다. 여섯 요소는 신입 직원에게 일을 맡길 때의 체크리스트로 가르치고, 세 가지 실패는 각자의 메커니즘에 맞는 처방으로 가르치는 것이 증거와 맞는다. 오해는 빈칸 메우기와 재시작, 누락은 배치와 대조표, 지어냄은 근거 연결과 외부 검증이다. 여기서 덜 알려진 함의가 하나 나온다. 모델이 좋아질수록 위험의 성격이 바뀐다. 명백한 오류는 줄지만, 그럴듯한 오류와 사람의 방심은 늘어난다. 고품질 AI 앞에서 운전대에서 조는 현상, AI 신뢰가 높을수록 비판적 사고가 줄어드는 상관, 경고를 받고도 꺼지지 않는 학생들의 자신감이 모두 같은 방향을 가리킨다. 그러니 검증 습관은 모델 발전에 맞춰 느슨해지는 것이 아니라 오히려 제도화되어야 한다. 카파시가 말하는 '검증 가능한 것만 자동화된다'는 원리와 Claude Code의 결정론적 강제 원칙은, 개인 사용자에게는 '확인할 방법이 없는 일은 맡기지 말라'는 규칙으로 번역된다.
 
-how-to-use-ai 저장소에 대한 실천적 결론은 세 가지다. 첫째, 연구소 지침은 모델 세대마다 바뀐다(사전 채우기 폐지, temperature 무시, 간결성 기본값 변화). 그러니 모든 팁에 확인 날짜와 '낡은 조언' 라벨을 붙이고, 모델이 바뀌면 프롬프트를 덜어 내고 다시 맞추라고 가르쳐야 한다. 둘째, 저장소의 고유 틀인 오해·누락·지어냄(환각)은 공개 출처가 없다는 점을 밝히는 대신, 각 실패를 이 보고서의 메커니즘 연구에 연결하면 오히려 신뢰를 얻는다. 셋째, SKALA 계열 학습자에게 가장 가치 있는 것은 그들이 곧 쓸 에이전트·바이브코딩 도구 안에서 '지시 → 결과 검증' 루프를 돌리는 구체적 습관이다. Pre-SKALA의 실제 강의 내용은 공개될 때 다시 대조해야 한다.
+how-to-use-ai 저장소에 대한 실천적 결론은 두 가지다. 첫째, 연구소 지침은 모델 세대마다 바뀐다(사전 채우기 폐지, temperature 무시, 간결성 기본값 변화). 그러니 모든 팁에 확인 날짜와 '낡은 조언' 라벨을 붙이고, 모델이 바뀌면 프롬프트를 덜어 내고 다시 맞추라고 가르쳐야 한다. 둘째, 저장소의 고유 틀인 오해·누락·지어냄(환각)은 공개 출처가 없다는 점을 밝히는 대신, 각 실패를 이 보고서의 메커니즘 연구에 연결하면 오히려 신뢰를 얻는다.
 
 ## 참고문헌
 
@@ -634,26 +611,6 @@ how-to-use-ai 저장소에 대한 실천적 결론은 세 가지다. 첫째, 연
 | [teddylee777/langchain-kr](https://github.com/teddylee777/langchain-kr) | 2,058 | 2025-08-18 | 한국어 LangChain 튜토리얼(최신 LangChain보다 뒤처질 수 있음) |
 
 ### H. 한국어 출처
-
-**SKALA·Pre-SKALA 공식·준공식**
-- [SK AX 뉴스룸, SKALA 광주·울산 확대 (2026-05-07)](https://www.skax.co.kr/company/news-room/sk-ax-skala-%EA%B4%91%EC%A3%BC%C2%B7%EC%9A%B8%EC%82%B0%EC%9C%BC%EB%A1%9C-%ED%99%95%EB%8C%80%ED%95%B4-ai%EC%9D%B8%EC%9E%AC-%EC%9C%A1%EC%84%B1%ED%95%9C%EB%8B%A4)
-- [SKALA 공식 사이트](http://2026skala.co.kr/)
-- [Pre-SKALA 공식 페이지](https://2026pre-skala.co.kr/)
-- [Byline Network, SKALA 1기 공고 (2024-12-12)](https://byline.network/2024/12/12-351/)
-- [서울대 컴퓨터공학부 공지 25050 (SKALA 4기)](https://cse.snu.ac.kr/en/community/notice/25050)
-- [서울대 컴퓨터공학부 공지 25679 (Pre-SKALA)](https://cse.snu.ac.kr/en/community/notice/25679)
-
-**SKALA 수강생 자료(비공식)**
-- [stellacustodis, [SKALA] Prompt 설계와 Context Engineering (2026-07-15)](https://stellacustodis.github.io/posts/skala-prompt-engineering/); [원본 마크다운](https://github.com/stellacustodis/stellacustodis.github.io/blob/main/_posts/2026-07-15-skala-prompt-engineering.md)
-- [stellacustodis, SKALA 1개월 회고 (2026-08-18)](https://github.com/stellacustodis/stellacustodis.github.io/blob/main/_posts/2026-08-18-skala-1month-review.md)
-- [stellacustodis 블로그 _posts 폴더](https://github.com/stellacustodis/stellacustodis.github.io/tree/main/_posts)
-- [skalamok/capstone-v1](https://github.com/skalamok/capstone-v1)
-- [yunsly/ai-mini-project-v0.5](https://github.com/yunsly/ai-mini-project-v0.5)
-- [ssunju-02/skala-toxicity-prediction](https://github.com/ssunju-02/skala-toxicity-prediction)
-- [Gwangdev/skala-vue](https://github.com/Gwangdev/skala-vue)
-- [Ready-Bridge/skala-cloud](https://github.com/Ready-Bridge/skala-cloud)
-- [sjjeon0925/skala-springAI-practicecode](https://github.com/sjjeon0925/skala-springAI-practicecode)
-- [yongchane/skala-review-skill](https://github.com/yongchane/skala-review-skill)
 
 **한국어 프롬프트 가이드**
 - [Google, Google Workspace를 위한 Gemini 프롬프트 작성 가이드 101 (한국어, 2024년 4월판)](https://services.google.com/fh/files/misc/gemini-for-google-workspace-prompting-guide-101_ko.pdf)

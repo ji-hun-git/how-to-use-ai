@@ -7,7 +7,7 @@
 
 ## 1. 예시는 "평가 기준의 표본"이다
 
-SKALA 강의 정리(수강생 블로그)에서는 예시를 **"평가 기준의 표본"**이라고 정의합니다. 좋은 정의입니다. 예시를 주는 목적은 내용을 베끼게 하려는 것이 아니라, **"이 정도면 합격"이라는 기준을 보여 주는 것**입니다.
+예시는 **"평가 기준의 표본"**으로 생각하면 쉽습니다. 예시를 주는 목적은 내용을 베끼게 하려는 것이 아니라, **"이 정도면 합격"이라는 기준을 보여 주는 것**입니다.
 
 그러니 예시를 고를 때는 이렇게 물어보세요.
 
@@ -19,7 +19,7 @@ SKALA 강의 정리(수강생 블로그)에서는 예시를 **"평가 기준의 
 
 | 규칙 | 출처 |
 |---|---|
-| **3~5개**가 적당하다 | Anthropic, Google 프롬프트 엔지니어링 백서, SKALA 강의 |
+| **3~5개**가 적당하다 | Anthropic, Google 프롬프트 엔지니어링 백서 |
 | 서로 **다양하게** 고른다 (경계 사례 포함) | Anthropic, OpenAI |
 | `<example>` 태그로 감싸서 지시와 구분한다 | Anthropic |
 | 모든 예시의 **형식을 똑같이** 맞춘다 (태그, 줄바꿈, 구분자) | Google |
@@ -142,4 +142,3 @@ AI가 만든 예시를 **내가 검토하고 고친 뒤** 프롬프트에 넣으
 - Nori et al., "From Medprompt to o1" (Microsoft Research, 2024, 프리프린트) — https://arxiv.org/abs/2411.03590
 - Zhao et al., "Calibrate Before Use: Improving Few-Shot Performance of Language Models" (ICML 2021) — https://arxiv.org/abs/2102.09690
 - Schulhoff et al., "The Prompt Report" (2024~2025) — https://arxiv.org/abs/2406.06608
-- SKALA 4기 수강생 블로그, "Prompt 설계와 Context" (비공식) — https://stellacustodis.github.io/posts/skala-prompt-engineering/

@@ -46,7 +46,7 @@ Specify → Plan → Execute → Verify → Learn
 | [`docs/`](docs/) | 10 guides: mindset, the six elements, few-shot examples, the three failure modes, models & reasoning, workflows & context engineering, AI coding (vibe coding → agentic engineering), verification & evals, security & privacy, myths vs. evidence |
 | [`templates/`](templates/) | 8 copy-paste Korean prompt templates (universal prompt, clarify-first, coverage check, grounded answer, honest critique, meta-prompt, coding task, AGENTS.md) |
 | [`examples/`](examples/) | 7 before/after walkthroughs (email, long-document summary, research with sources, data analysis, coding agent, learning with AI, designing your own agent) |
-| [`resources/`](resources/) | A curated resource list (official guides, Karpathy's talks/posts/repos, university resources, GitHub repos with star counts as of 2026-11-09) and a guide mapping the public SKALA / Pre-SKALA curriculum to this repo |
+| [`resources/`](resources/) | A curated resource list (official guides, Karpathy's talks/posts/repos, university resources, GitHub repos with star counts as of 2026-11-09) |
 | [`research/`](research/) | The full evidence report (288 sources, with a verification-status table) |
 
 ---
@@ -73,9 +73,9 @@ Specify → Plan → Execute → Verify → Learn
 
 ---
 
-## Author
+## Contributing
 
-**Jihun Chae** ([@ji-hun-git](https://github.com/ji-hun-git)) · Corrections welcome via [issues](https://github.com/ji-hun-git/how-to-use-ai/issues).
+Corrections and broken-link reports are welcome via [issues](https://github.com/ji-hun-git/how-to-use-ai/issues).
 
 ## License
 
