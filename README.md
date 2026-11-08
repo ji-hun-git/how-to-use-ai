@@ -1,13 +1,10 @@
 # how-to-use-ai
 
-**AI를 제대로 쓰는 법: 근거로 정리한 프롬프트 · 워크플로 · 검증 가이드**
+AI에게 일을 잘 맡기는 방법을 정리한 한국어 가이드입니다. 지시를 어떻게 쓰고, 결과를 어떻게 확인하는지에 집중합니다.
+
+Anthropic · OpenAI · Google · Microsoft의 공식 문서, 공개된 연구, Andrej Karpathy 같은 실무자의 글을 바탕으로 정리했습니다. 출처는 각 문서 끝에 있고, 2차 자료로만 확인한 수치나 논쟁 중인 연구는 [근거 보고서](research/evidence-report.md#8-검증된-것과-검증되지-않은-것)에 따로 표시했습니다. 연구 결과는 대부분 조사 당시 모델 기준이라, 최신 모델에서 같은 크기로 나타난다고 보장하지 않습니다.
 
 [English](README.en.md) · [한 장 치트시트](CHEATSHEET.md) · [근거 보고서](research/evidence-report.md)
-
-![updated](https://img.shields.io/badge/updated-2026--11-blue) ![license](https://img.shields.io/badge/license-MIT-green) ![lang](https://img.shields.io/badge/lang-%ED%95%9C%EA%B5%AD%EC%96%B4-red)
-
-> 인터넷에 떠도는 "프롬프트 꿀팁" 대신, **Anthropic · OpenAI · Google · Microsoft의 공식 가이드**, **MIT · Harvard · Wharton · Stanford의 연구**, **Andrej Karpathy** 같은 실무자의 조언을 직접 확인하고 정리했습니다.
-> 모든 주장에는 출처가 있고, 확인하지 못한 것은 확인하지 못했다고 적었습니다.
 
 ---
 
@@ -17,11 +14,11 @@
 
 ### 1. 이렇게 지시한다: 6요소
 
-| 역할 | 맥락 ★ | 지시 ★ | 형식 ★ | 제약 | 예시 |
+| 역할 | 맥락 | 지시 | 형식 | 제약 | 예시 |
 |---|---|---|---|---|---|
 | 어떤 관점·말투로 | 왜, 누구를 위해, 어떤 상황에서 | 무엇을, 언제 끝나면 완료인지 | 결과물의 구조·분량 | 꼭 지킬 규칙 | 좋은 결과의 견본 3~5개 |
 
-★ 연구 결과로 보면 시간을 쓸 곳은 **맥락 · 지시 · 형식**입니다. "세계 최고의 전문가" 같은 역할 설정은 정확도를 올려 주지 않습니다. → [02. 프롬프트의 6요소](docs/02-prompt-anatomy.md)
+연구로 보면 시간을 쓸 곳은 맥락 · 지시 · 형식입니다. "세계 최고의 전문가" 같은 역할 설정은 통제 실험에서 정확도를 올리지 못했습니다. → [02. 프롬프트의 6요소](docs/02-prompt-anatomy.md)
 
 ### 2. 이렇게 진단한다: AI가 틀리는 세 가지 방식
 
@@ -30,7 +27,7 @@
 | 요청을 다르게 이해했다 | 해야 할 것을 빠뜨렸다 | 없는 것을 만들어냈다 |
 | 맥락·완료 기준을 주고, 질문을 먼저 받고, 꼬이면 정리해서 **새 채팅** | 요구사항에 번호, 자료는 위·질문은 아래, **커버리지 표** | **모른다고 말할 권리**, 자료에만 근거, 인용 먼저, **출처 직접 확인** |
 
-덤으로 **아첨**(내 말에 맞춰 주기)도 있습니다. "정말 확실해?"라고 되물으면 맞는 답도 46% 확률로 뒤집습니다. → [04. 오해 · 누락 · 지어냄](docs/04-failure-modes.md)
+여기에 **아첨**(내 말에 맞춰 주기)도 있습니다. 2023년 실험(10개 모델)에서 "정말 확실해?"라고 되묻자 모델은 평균 46%의 경우 답을 바꿨고, 정확도는 평균 약 17%p 떨어졌습니다. → [04. 오해 · 누락 · 지어냄](docs/04-failure-modes.md)
 
 ### 3. 이렇게 일한다: 기본 루프
 
@@ -58,7 +55,7 @@
 
 ## 목차
 
-### 📘 가이드 (docs)
+### 가이드 (docs)
 
 | # | 문서 | 핵심 질문 |
 |---|---|---|
@@ -73,7 +70,7 @@
 | 09 | [보안과 개인정보](docs/09-security-privacy.md) | 무엇을 넣으면 안 되나? 프롬프트 인젝션은? |
 | 10 | [신화 vs 근거](docs/10-myths-vs-evidence.md) | "팁 줄게", "전문가처럼", "단계별로 생각해"는 정말 효과가 있나? |
 
-### 🧪 예제 (examples): 나쁜 프롬프트가 좋은 프롬프트로 바뀌는 과정
+### 예제 (examples): 나쁜 프롬프트가 좋은 프롬프트로 바뀌는 과정
 
 | # | 예제 | 배우는 것 |
 |---|---|---|
@@ -85,12 +82,12 @@
 | 6 | [AI로 공부하기](examples/06-learning-with-ai.md) | 답이 아니라 이해를 얻는 법 |
 | 7 | [나만의 에이전트 설계하기](examples/07-build-your-own-agent.md) | 업무 분석 → 지시문 → 평가셋 → 보안 |
 
-### 📚 자료 (resources)
+### 자료 (resources)
 
-- [참고 자료 모음 (Awesome List)](resources/awesome.md): 공식 가이드, **Karpathy**의 영상·글·저장소, **MIT · Harvard · Wharton · Stanford** 자료, 유명 GitHub 저장소(별 수·상태 확인)
+- [참고 자료 모음 (Awesome List)](resources/awesome.md): 공식 가이드, Karpathy의 영상·글·저장소, MIT · Harvard · Wharton · Stanford 자료, 유명 GitHub 저장소(별 수·상태 확인)
 - [SKALA · Pre-SKALA 학습자를 위한 연결 안내](resources/pre-skala.md): 공개 커리큘럼과 이 저장소 문서 연결, 해커톤 체크리스트
 
-### 🔬 근거 (research)
+### 근거 (research)
 
 - [근거 보고서](research/evidence-report.md): 이 저장소의 모든 권고가 기대고 있는 조사 보고서. 출처 288개, 주장별 확인 수준 표 포함
 
@@ -106,15 +103,9 @@
 
 ---
 
-## 이 저장소가 다른 점
+## 용어에 대해
 
-1. **근거 기반.** 모든 권고에 출처를 달았습니다. 연구소 가이드는 2026-11-09에 직접 확인했고, 논문은 서지와 초록을 확인했습니다.
-2. **신화를 걸러냅니다.** 와튼의 반복 실험 등 통제된 연구로 효과가 없다고 밝혀진 요령(팁·협박·전문가 역할·추론 모델에 "단계별로 생각해")은 따로 정리했습니다. → [10](docs/10-myths-vs-evidence.md)
-3. **최신 기준입니다.** 2026년 연구소 가이드가 "이제 버리라"고 하는 낡은 습관(대문자 강조, 과잉 검증 지시, 사전 채우기 등)을 표시했습니다.
-4. **정직합니다.** 2차 자료로만 확인한 수치, 확인하지 못한 내용, 논쟁 중인 연구는 그렇다고 적었습니다. → [근거 보고서 8절](research/evidence-report.md#8-검증된-것과-검증되지-않은-것)
-5. **바로 씁니다.** 모든 개념에 복사해서 쓸 수 있는 한국어 프롬프트와 전후 비교 예제가 있습니다.
-
-> ⚠️ **용어에 대해:** "역할 · 맥락 · 지시 · 형식 · 제약 · 예시"는 여러 기관의 공통 요소를 합친 것이고, "오해 · 누락 · 지어냄"은 이 저장소의 학습용 분류 틀입니다. 각 실패 유형의 원인과 대처는 모두 연구 근거에 연결했습니다. SKALA / Pre-SKALA와의 관계는 [resources/pre-skala.md](resources/pre-skala.md)를 참고하세요 (비공식).
+"역할 · 맥락 · 지시 · 형식 · 제약 · 예시"는 여러 기관 가이드의 공통 요소를 합친 것이고, "오해 · 누락 · 지어냄"은 이 저장소가 만든 학습용 분류입니다. 효과가 없다고 나온 요령(팁·협박·전문가 역할·추론 모델에 "단계별로 생각해")은 [10. 신화 vs 근거](docs/10-myths-vs-evidence.md)에 따로 정리했습니다. SKALA / Pre-SKALA와의 관계는 [resources/pre-skala.md](resources/pre-skala.md)를 참고하세요 (비공식).
 
 ---
 
@@ -128,23 +119,7 @@
 | 실패 연구 | [Lost in the Middle](https://arxiv.org/abs/2307.03172) · [Why LMs Hallucinate](https://arxiv.org/abs/2509.04664) · [LLMs Get Lost in Multi-Turn](https://arxiv.org/abs/2505.06120) · [Sycophancy](https://arxiv.org/abs/2310.13548) · [Chain-of-Verification](https://arxiv.org/abs/2309.11495) |
 | GitHub | [dair-ai/Prompt-Engineering-Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) · [anthropics/prompt-eng-interactive-tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial) · [openai/openai-cookbook](https://github.com/openai/openai-cookbook) · [github/spec-kit](https://github.com/github/spec-kit) · [agents.md](https://agents.md/) |
 
-전체 목록: [resources/awesome.md](resources/awesome.md) · 전체 출처 288개: [research/evidence-report.md](research/evidence-report.md#참고문헌)
-
----
-
-## 저장소 구조
-
-```
-how-to-use-ai/
-├── README.md                 ← 지금 보고 있는 문서
-├── README.en.md              ← English overview
-├── CHEATSHEET.md             ← 한 장 요약
-├── docs/                     ← 가이드 10편
-├── templates/                ← 복사해서 쓰는 프롬프트 템플릿 8개
-├── examples/                 ← 전후 비교 예제 7편
-├── resources/                ← 참고 자료 모음, SKALA 연결 안내
-└── research/                 ← 근거 보고서 (출처 288개)
-```
+전체 목록: [resources/awesome.md](resources/awesome.md) · 전체 출처: [research/evidence-report.md](research/evidence-report.md#참고문헌)
 
 ---
 
