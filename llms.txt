@@ -20,11 +20,12 @@
 - [Myths vs. evidence](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/10-myths-vs-evidence.md): which popular tips fail in controlled studies
 - [Where instructions should live](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/11-skills-and-agent-rules.md): prompt vs rules file vs skill vs hook
 - [Writing decision rules](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/12-writing-decision-rules.md): condition → action → exception rules, exceptions and human sign-off, testing that rules fire
+- [Verifying agent runs](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/13-verifying-agent-runs.md): three levels of done, five silent failures, test sets, tracing causes, change logs, measuring benefit
 
 ## Practical
 - [Prompt library](https://github.com/ji-hun-git/how-to-use-ai/blob/main/prompts/README.md): 30 prompts by task
 - [Prompt clinic](https://github.com/ji-hun-git/how-to-use-ai/blob/main/examples/08-prompt-clinic.md): 12 common prompts diagnosed and fixed
-- [Templates](https://github.com/ji-hun-git/how-to-use-ai/tree/main/templates): 9 annotated templates
+- [Templates](https://github.com/ji-hun-git/how-to-use-ai/tree/main/templates): 10 annotated templates
 - [Cheatsheet](https://github.com/ji-hun-git/how-to-use-ai/blob/main/CHEATSHEET.md): one-page summary
 
 ## Evidence

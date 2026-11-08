@@ -30,6 +30,7 @@ import json
 import re
 import subprocess
 import sys
+import tempfile
 import threading
 from pathlib import Path
 
@@ -37,8 +38,12 @@ import yaml
 
 EVALS = Path(__file__).resolve().parent.parent
 ROOT = EVALS.parent
-BASE_SYSTEM = "You are a helpful assistant."
+BASE_SYSTEM = (
+    "You are a helpful assistant in a text chat. In this conversation you cannot run tools, "
+    "browse, or read files; answer in text."
+)
 LOCK = threading.Lock()
+CLEAN_CWD = tempfile.mkdtemp(prefix="skill-evals-")  # empty folder for CLI runs
 
 
 # ------------------------------------------------------------------ loading
@@ -99,10 +104,15 @@ def call_model(provider: str, system: str, messages: list[dict], max_tokens: int
         resp = client.messages.create(model=model, system=system, messages=messages, max_tokens=max_tokens * 4)
         return "".join(b.text for b in resp.content if getattr(b, "type", "") == "text")
     if kind == "claude-cli":
+        # Isolate the run: no tools, no user/plugin settings or hooks, no MCP servers,
+        # and an empty working directory, so only our system prompt shapes the answer.
+        # The prompt goes through stdin: long prompts (e.g. grading a long answer) exceed
+        # the Windows command-line length limit.
         cmd = ["claude", "-p", "--model", model, "--tools", "", "--no-session-persistence",
-               "--system-prompt", system, flatten(messages)]
-        out = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8",
-                             stdin=subprocess.DEVNULL, timeout=600)
+               "--setting-sources", "project", "--strict-mcp-config",
+               "--system-prompt", system]
+        out = subprocess.run(cmd, input=flatten(messages), capture_output=True, text=True,
+                             encoding="utf-8", timeout=600, cwd=CLEAN_CWD)
         if out.returncode != 0 or "Not logged in" in out.stdout:
             raise RuntimeError(f"claude CLI failed: {out.stdout.strip()[:200]} {out.stderr.strip()[:200]}")
         return out.stdout
@@ -164,6 +174,7 @@ def summarize(rows: list[dict], cases: list[dict], out: Path, models: list[str],
         "",
         f"- Models under test: {', '.join(f'`{m}`' for m in models)}",
         f"- Grader: `{judge}` (blind to condition)",
+        f"- Base system prompt (both conditions): \"{BASE_SYSTEM}\"",
         f"- Cases: {len(cases)} ({sum(c['kind'] == 'trigger' for c in cases)} trigger, "
         f"{sum(c['kind'] == 'control' for c in cases)} control), runs per case and condition: {runs}",
         "- A run passes only if every criterion passes. **without** = plain assistant; **with** = SKILL.md loaded.",
@@ -219,7 +230,11 @@ def main() -> int:
     ap.add_argument("--out", default=None, help="output folder (default: evals/results/<today>)")
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--dry-run", action="store_true", help="validate cases and show the plan; no model calls")
+    ap.add_argument("--base-prompt", default=None, help="override the base system prompt used in both conditions")
     args = ap.parse_args()
+    if args.base_prompt:
+        global BASE_SYSTEM
+        BASE_SYSTEM = args.base_prompt
 
     cases = load_cases(args.cases)
     jobs = [(c, m, cond, r) for c in cases for m in args.models for cond in ("without", "with")

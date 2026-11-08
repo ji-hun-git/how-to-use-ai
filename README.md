@@ -4,7 +4,7 @@
 
 Read the guide, or install it into your AI agent in one line.
 
-[![validate](https://github.com/ji-hun-git/how-to-use-ai/actions/workflows/validate.yml/badge.svg)](https://github.com/ji-hun-git/how-to-use-ai/actions/workflows/validate.yml) ![updated](https://img.shields.io/badge/updated-2026--11-blue) ![skills](https://img.shields.io/badge/agent%20skills-10-purple) ![sources](https://img.shields.io/badge/cited%20sources-460%2B-orange) ![license](https://img.shields.io/badge/license-MIT-green)
+[![validate](https://github.com/ji-hun-git/how-to-use-ai/actions/workflows/validate.yml/badge.svg)](https://github.com/ji-hun-git/how-to-use-ai/actions/workflows/validate.yml) ![updated](https://img.shields.io/badge/updated-2026--11-blue) ![skills](https://img.shields.io/badge/agent%20skills-10-purple) [![evals](https://img.shields.io/badge/skill%20evals-published-brightgreen)](evals/results/README.md) ![sources](https://img.shields.io/badge/cited%20sources-460%2B-orange) ![license](https://img.shields.io/badge/license-MIT-green)
 
 [Install](#install-in-one-line) · [Before/after](#before--after) · [The four failure modes](#the-four-failure-modes-and-what-fixes-them) · [Guides](#guides) · [Prompt library](prompts/README.md) · [Cheatsheet](CHEATSHEET.md) · [How it compares](COMPARISON.md)
 
@@ -20,6 +20,8 @@ Read the guide, or install it into your AI agent in one line.
 | **ChatGPT, Claude, Gemini (chat apps)** | Paste the [custom instructions](drop-in/custom-instructions.md) into your settings |
 
 What you get: [10 skills](skills/README.md) that load automatically when a task needs them, or one [18-rule file](drop-in/AGENTS.md) that's always on. Every rule links to the research behind it. Other install options: [skills/README.md](skills/README.md) · [drop-in/README.md](drop-in/README.md).
+
+**Measured, not assumed.** In a blind with-vs-without test, loading the skills raised Claude Haiku from 41/48 to **48/48** passing runs on trigger cases and Claude Sonnet from 42/48 to **47/48**, with no regressions on control cases. The biggest change was tutoring: 0/6 → 6/6. On most cases, current models already did fine without the skills, and the test caught (and we fixed) a flaw in one skill. → [Eval results](evals/results/README.md)
 
 ---
 
@@ -92,9 +94,9 @@ flowchart LR
 | [`skills/`](skills/README.md) | 10 installable Agent Skills (Claude Code plugin, `npx skills`, manual) | [skills/README.md](skills/README.md) |
 | [`drop-in/`](drop-in/README.md) | One rules file for AGENTS.md / CLAUDE.md / Cursor / chat apps | [drop-in/AGENTS.md](drop-in/AGENTS.md) |
 | [`prompts/`](prompts/README.md) | 30 copy-paste prompts by task, tagged by the failure modes they prevent | [prompts/README.md](prompts/README.md) |
-| [`templates/`](templates/) | 9 annotated templates (universal prompt, clarify, coverage, grounding, critique, meta-prompt, coding task, AGENTS.md, skill with decision rules) | [universal prompt](templates/universal-prompt.md) |
+| [`templates/`](templates/) | 10 annotated templates (universal prompt, clarify, coverage, grounding, critique, meta-prompt, coding task, AGENTS.md, skill with decision rules, agent test plan) | [universal prompt](templates/universal-prompt.md) |
 | [`examples/`](examples/) | 8 before/after walkthroughs, including the 12-case prompt clinic | [prompt clinic](examples/08-prompt-clinic.md) |
-| [`docs/`](docs/) | 12 guides | [the four failure modes](docs/04-failure-modes.md) |
+| [`docs/`](docs/) | 13 guides | [the four failure modes](docs/04-failure-modes.md) |
 | [`evals/`](evals/README.md) | A runnable promptfoo test, plus a with-vs-without harness for all 10 skills | [evals/README.md](evals/README.md) |
 | [`research/`](research/) | Two sourced research reports with verification status for each claim | [evidence report](research/evidence-report.md) |
 
@@ -116,6 +118,7 @@ flowchart LR
 | 10 | [Myths vs. evidence](docs/10-myths-vs-evidence.md) | Do "I'll tip you," "act like an expert" and "think step by step" work? |
 | 11 | [Where instructions should live](docs/11-skills-and-agent-rules.md) | Prompt, rules file, skill or hook? |
 | 12 | [Writing decision rules](docs/12-writing-decision-rules.md) | How do you put real judgment into a skill, and prove it works? |
+| 13 | [Verifying agent runs](docs/13-verifying-agent-runs.md) | The run finished without errors. Is the result actually right? |
 
 ### Examples
 
@@ -139,7 +142,7 @@ flowchart LR
 | **5 minutes** | Everyone | Install the [skills](skills/README.md) or paste the [custom instructions](drop-in/custom-instructions.md) → skim the [cheatsheet](CHEATSHEET.md) |
 | **30 minutes** | Beginners | [02. Six elements](docs/02-prompt-anatomy.md) → [Example 1](examples/01-email-step-by-step.md) → [Prompt clinic](examples/08-prompt-clinic.md) → [Universal template](templates/universal-prompt.md) |
 | **2 hours** | Using AI seriously at work | + [01. Mindset](docs/01-mindset.md) → [04. Failure modes](docs/04-failure-modes.md) → [08. Verification](docs/08-verification-and-evals.md) → [10. Myths](docs/10-myths-vs-evidence.md) → Examples 2–4 |
-| **1 day** | Developers and agent builders | + [05](docs/05-models-and-reasoning.md) → [06](docs/06-workflows.md) → [07](docs/07-ai-coding.md) → [09](docs/09-security-privacy.md) → [11](docs/11-skills-and-agent-rules.md) → [12](docs/12-writing-decision-rules.md) → Examples 5 and 7 → [evals](evals/README.md) |
+| **1 day** | Developers and agent builders | + [05](docs/05-models-and-reasoning.md) → [06](docs/06-workflows.md) → [07](docs/07-ai-coding.md) → [09](docs/09-security-privacy.md) → [11](docs/11-skills-and-agent-rules.md) → [12](docs/12-writing-decision-rules.md) → [13](docs/13-verifying-agent-runs.md) → Examples 5 and 7 → [evals](evals/README.md) |
 
 ---
 
@@ -147,9 +150,10 @@ flowchart LR
 
 1. **Evidence first.** 460+ cited sources. Lab guides were checked directly on 2026-11-09, papers by bibliographic details and abstracts, and older statistics are labeled as historical. → [What is verified and what is not](research/evidence-report.md#8-what-is-verified-and-what-is-not)
 2. **Read it or install it.** The same evidence ships as guides, as [skills](skills/README.md), as a [rules file](drop-in/AGENTS.md) and as a [prompt library](prompts/README.md).
-3. **Built around failure modes, not tricks**, including sycophancy, which coding-focused repos rarely cover.
-4. **Myth-busting.** Shows which popular tips fail in controlled studies. → [docs/10](docs/10-myths-vs-evidence.md)
-5. **For everyone.** Writing, research, analysis and learning, not only coding.
+3. **Tested.** The skills are measured with and without, blind-graded, with every answer published, including where they made no difference. → [results](evals/results/README.md)
+4. **Built around failure modes, not tricks**, including sycophancy, which coding-focused repos rarely cover.
+5. **Myth-busting.** Shows which popular tips fail in controlled studies. → [docs/10](docs/10-myths-vs-evidence.md)
+6. **For everyone.** Writing, research, analysis and learning, not only coding.
 
 ### Myths vs. evidence (highlights)
 
@@ -207,9 +211,9 @@ how-to-use-ai/
 ├── skills/                   ← 10 installable Agent Skills
 ├── drop-in/                  ← rules file: AGENTS.md / CLAUDE.md / Cursor / chat apps
 ├── prompts/                  ← 30-prompt library
-├── templates/                ← 9 annotated templates
+├── templates/                ← 10 annotated templates
 ├── examples/                 ← 8 before/after examples
-├── docs/                     ← 12 guides
+├── docs/                     ← 13 guides
 ├── evals/                    ← promptfoo test + skill eval harness
 ├── research/                 ← evidence report + 2026 update report
 ├── scripts/validate.py       ← checks skills, manifests and links (run in CI)

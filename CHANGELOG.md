@@ -24,7 +24,12 @@ Made the guide usable inside AI tools, not just readable, after comparing it wit
 ### Also added
 - **Guide 12** ([docs/12](docs/12-writing-decision-rules.md)): writing decision rules (condition → action → exception), exceptions and human sign-off, revising instead of forking skills, and testing that a rule fires
 - **Skill template** ([templates/skill-template.md](templates/skill-template.md))
-- **Skill eval harness** ([evals/skills/](evals/README.md#skill-evaluations-with-vs-without)): 20 with-vs-without cases across all 10 skills, blind grading, resumable runs (results not yet published)
+- **Guide 13** ([docs/13](docs/13-verifying-agent-runs.md)): verifying agent runs (three levels of done, five silent failures, test sets with must/must-not lines, tracing causes, change logs, measuring benefit) and an [agent test plan template](templates/agent-test-plan.md)
+- **Skill eval harness** ([evals/skills/](evals/README.md#skill-evaluations-with-vs-without)): 20 with-vs-without cases across all 10 skills, blind grading, resumable runs
+- **Published skill eval results** ([evals/results/](evals/results/README.md)): three rounds on Claude Sonnet and Haiku with an Opus grader. Trigger cases with skills: Haiku 41/48 → 48/48, Sonnet 42/48 → 47/48; no control regressions; no measurable difference on 16 of 20 cases
+
+### Fixed
+- **task-spec skill:** the "explore before specifying" step made a model go looking for files when none were available instead of writing the spec. Step 1 now writes the spec with placeholders when the code can't be read. Found by round 1 of the evals and confirmed fixed in round 3
 
 ---
 

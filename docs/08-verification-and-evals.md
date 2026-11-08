@@ -114,6 +114,8 @@ Wharton's Prompting Science Report 1 (2025) asked each question 100 times. Under
 
 ---
 
+> For agents (multi-step runs with tools), see [docs/13. Verifying agent runs](13-verifying-agent-runs.md): three levels of "done", five silent failures, and a test plan you rerun after every change.
+
 ### Sources
 
 - Laban et al., FlipFlop "Are You Sure?" (2023) — https://arxiv.org/abs/2311.08596

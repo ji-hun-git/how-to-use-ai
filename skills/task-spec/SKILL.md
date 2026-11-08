@@ -10,7 +10,7 @@ Most disappointing agent sessions trace back to missing information, no way for 
 
 ## Steps
 
-1. **Explore before specifying.** Read the relevant code, docs or data so the spec refers to real files and behavior. Don't change anything yet.
+1. **Gather facts, but don't stall.** If you can read the code, docs or data, read the relevant parts first so the spec refers to real files and behavior (don't change anything yet). If you can't access them, or the user only wants the instructions written, write the spec now from what you were told: put unknowns in angle brackets (`<file?>`, `<current p95 latency?>`) and list the questions or measurements needed to fill them.
 2. **Write the spec:**
 
    ```markdown

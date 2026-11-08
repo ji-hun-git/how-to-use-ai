@@ -170,7 +170,7 @@ A skill isn't finished when it's saved; it's finished when you've seen its rules
 
 The rule-trigger input matters most: take a case the format-only version got wrong (often your "last time this went wrong" story) and confirm the new rule fixes it.
 
-**Change one rule at a time** and rerun the same inputs. If you change three rules and the result changes, you won't know which rule did it. When a result surprises you, write one sentence: "If I had handled this myself, I would have…", turn it into a condition → action → exception rule, and add it. For larger skills, keep the inputs as a small eval set and rerun it after every change ([docs/08](08-verification-and-evals.md), [evals/](../evals/README.md)).
+**Change one rule at a time** and rerun the same inputs. If you change three rules and the result changes, you won't know which rule did it. When a result surprises you, write one sentence: "If I had handled this myself, I would have…", turn it into a condition → action → exception rule, and add it. For larger skills, keep the inputs as a small eval set and rerun it after every change ([docs/08](08-verification-and-evals.md), [evals/](../evals/README.md)). Verifying whole agent runs, including silent failures and change logs: [docs/13](13-verifying-agent-runs.md).
 
 ---
 

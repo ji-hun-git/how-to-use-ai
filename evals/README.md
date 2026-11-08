@@ -60,7 +60,7 @@ Other providers: `anthropic:<model>` (needs `ANTHROPIC_API_KEY`) or `claude-cli:
 
 **What it doesn't test:** whether an agent *selects* the skill on its own. To check triggering, install the skills, then send a few requests that should and shouldn't activate each one, and see which skill the agent reports using.
 
-**Results:** none published yet. They'll be added to `evals/results/` once run, including cases where a skill made no difference or made things worse.
+**Results:** [evals/results/README.md](results/README.md). On 2026-11-09 the skills raised Claude Haiku from 41/48 to 48/48 and Claude Sonnet from 42/48 to 47/48 on trigger cases, with no control-case regressions. They made no measurable difference on 16 of the 20 cases, and the run caught a flaw in `task-spec` that we fixed and re-tested.
 
 ## Make it yours
 
