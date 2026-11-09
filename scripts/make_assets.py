@@ -9,6 +9,7 @@ Requires matplotlib.   Run:  python scripts/make_assets.py
 """
 from __future__ import annotations
 
+import io
 import json
 import math
 from collections import defaultdict
@@ -164,11 +165,14 @@ def social_preview(overall) -> None:
 def main() -> None:
     OUT.mkdir(exist_ok=True)
     overall, cases = collect()
+    plt.rcParams["svg.hashsalt"] = "how-to-use-ai"  # stable element IDs, so regenerating gives identical files
     for theme in THEMES:
         fig = figure(theme, overall, cases)
         path = OUT / f"fig-results-{theme}.svg"
-        fig.savefig(path, format="svg", bbox_inches="tight", pad_inches=0.3, transparent=True,
+        buf = io.StringIO()
+        fig.savefig(buf, format="svg", bbox_inches="tight", pad_inches=0.3, transparent=True,
                     metadata={"Date": None})
+        path.write_text(buf.getvalue(), encoding="utf-8", newline="\n")
         plt.close(fig)
         print("wrote", path.relative_to(ROOT).as_posix())
     social_preview(overall)
