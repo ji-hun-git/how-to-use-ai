@@ -72,7 +72,7 @@ Could you confirm whether we can go ahead with a 10 a.m. deployment?
 
 **Expected result:** An email that "sounds like you wrote it."
 
-> 💡 If you give **only one** example, the model sometimes copies even its sentence structure. Tell it what to imitate, as in "match the tone only, not the content," or give 2–3 examples.
+> 💡 If you give **only one** example, the model sometimes copies even its sentence structure. Tell it what to imitate, as in "match the tone only, not the content," or give 3–5 varied examples.
 
 ---
 

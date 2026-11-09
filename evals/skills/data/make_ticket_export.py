@@ -221,12 +221,12 @@ def main() -> None:
             "",
         ]
     lines += ["=== PART 2: ACTIVITY LOG, 2026-03-02 TO 2026-03-31 ===", ""] + log + ["", "=== END OF EXPORT ==="]
-    OUT.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    OUT.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")  # LF on every OS
 
     def fmt(xs):
         return "[" + ", ".join(f'"{x}"' for x in sorted(xs)) + "]"
 
-    print(f"wrote {OUT.name}: {N_TICKETS} tickets, {len(log)} log entries, {len(OUT.read_text().split())} words")
+    print(f"wrote {OUT.name}: {N_TICKETS} tickets, {len(log)} log entries, {len(OUT.read_text(encoding='utf-8').split())} words")
     print("expected (open, Priya):", fmt(expected))
     print("  untouched:", fmt(untouched))
     print("  moved in (incl. away and back):", fmt(moved_in + away_and_back))

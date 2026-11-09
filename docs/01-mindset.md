@@ -66,7 +66,7 @@ Karpathy summed it up in a 2026 post: you can outsource your thinking, but **you
 
 ## 5. Adjust autonomy like a slider
 
-In his 2025 YC talk, Karpathy said to use AI **"like an Iron Man suit, not a robot."** Rather than full automation, the human keeps control while the AI amplifies their abilities. He called this the **autonomy slider**.
+In his 2025 YC talk, Karpathy said to build AI tools **more like Iron Man suits than Iron Man robots**. Rather than full automation, the human keeps control while the AI amplifies their abilities. He called this the **autonomy slider**.
 
 | Level | AI's role | Human's role | Example |
 |---|---|---|---|

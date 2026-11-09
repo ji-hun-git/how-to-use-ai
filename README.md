@@ -19,7 +19,7 @@ Read the guide, or install it into your AI agent in one line.
 | **Any coding agent, as an always-on rules file** | `curl -fsSL https://raw.githubusercontent.com/ji-hun-git/how-to-use-ai/main/drop-in/AGENTS.md -o AGENTS.md` (save as `CLAUDE.md` for Claude Code) |
 | **ChatGPT, Claude, Gemini (chat apps)** | Paste the [custom instructions](drop-in/custom-instructions.md) into your settings |
 
-What you get: [10 skills](skills/README.md) that load automatically when a task needs them, or one [18-rule file](drop-in/AGENTS.md) that's always on. Every rule links to the research behind it. Other install options: [skills/README.md](skills/README.md) · [drop-in/README.md](drop-in/README.md).
+What you get: [10 skills](skills/README.md) that load automatically when a task needs them, or one [18-rule file](drop-in/AGENTS.md) that's always on. Each file links to the research behind its rules. Other install options: [skills/README.md](skills/README.md) · [drop-in/README.md](drop-in/README.md).
 
 **Measured, not assumed.** In blind with-vs-without tests on Claude Sonnet and Haiku (36 cases in two suites, 432 graded runs), loading the skills raised passing runs on trigger cases from 158/180 to **175/180**, with no regressions on control cases. The biggest change was tutoring: without the skill, the models handed over the answer in 12 of 12 runs; with it, they gave hints in 12 of 12. On most cases, current models already did fine without the skills, even on a 9,000-word input, and the tests exposed weak spots in three of our skills that we fixed and re-tested. → [Eval results](evals/results/README.md)
 
@@ -30,12 +30,12 @@ What you get: [10 skills](skills/README.md) that load automatically when a task 
 | You write | What tends to happen | Write this instead | Evidence |
 |---|---|---|---|
 | "Give me 5 studies on X with links." | Plausible but invented references. 2026-released models fabricated references in **35%** of responses in one study | "Use search. Only list papers you actually opened; fewer than 5 is fine." | [Topaz et al., 2026 (preprint)](https://arxiv.org/abs/2609.14988) |
-| "Are you sure?" | Correct answers get flipped **46%** of the time (2023 study); current models still cave under sustained pushback | "Re-solve from scratch and show where the first answer was wrong, if it was." | [FlipFlop](https://arxiv.org/abs/2311.08596) · [SPINE, 2026](https://arxiv.org/abs/2609.09090) |
+| "Are you sure?" | Models change their answer **46%** of the time (2023 study); current models still cave under sustained pushback | "Re-solve from scratch and show where the first answer was wrong, if it was." | [FlipFlop](https://arxiv.org/abs/2311.08596) · [SPINE, 2026](https://arxiv.org/abs/2609.09090) |
 | Requirements added one message at a time | Performance drops **39%** on average | "Consolidate everything into one prompt," then start a fresh chat | [Laban et al., ICLR 2026](https://arxiv.org/abs/2505.06120) |
 | "You are a world-class expert…" | No reliable accuracy gain | State the audience, purpose and done criteria | [Wharton Report 4](https://gail.wharton.upenn.edu/research-and-insights/playing-pretend-expert-personas/) |
 | A 20-rule prompt | Compliance with all rules collapses beyond about **5–6** at once | Keep ~5 rules, number them, ask for a coverage table | [Vasileva, 2026 (preprint)](https://arxiv.org/abs/2608.12426) |
 
-12 more, with fixes: [the prompt clinic](examples/08-prompt-clinic.md).
+These and 7 more, with fixes: [the prompt clinic](examples/08-prompt-clinic.md).
 
 ---
 
@@ -99,6 +99,7 @@ flowchart LR
 | [`docs/`](docs/) | 13 guides | [the four failure modes](docs/04-failure-modes.md) |
 | [`evals/`](evals/README.md) | A runnable promptfoo test, plus a with-vs-without harness for all 10 skills | [evals/README.md](evals/README.md) |
 | [`research/`](research/) | Two sourced research reports with verification status for each claim | [evidence report](research/evidence-report.md) |
+| [`resources/`](resources/awesome.md) | Curated list of official guides, courses and repositories, each checked directly | [resources/awesome.md](resources/awesome.md) |
 
 ---
 
@@ -108,11 +109,11 @@ flowchart LR
 |---|---|---|
 | 01 | [Mindset](docs/01-mindset.md) | How should you think of AI? When should you not use it? |
 | 02 | [The six elements of a prompt](docs/02-prompt-anatomy.md) | How do you write Role · Context · Instruction · Format · Constraints · Examples? |
-| 03 | [Instructing with examples](docs/03-examples-few-shot.md) | How many examples, and how do you choose them? |
+| 03 | [Teaching with examples (few-shot)](docs/03-examples-few-shot.md) | How many examples, and how do you choose them? |
 | 04 | [Misunderstanding · Omission · Fabrication](docs/04-failure-modes.md) | Why does AI get things wrong, and how do you prevent and catch it? |
 | 05 | [Models and reasoning](docs/05-models-and-reasoning.md) | Which models and tools? How do reasoning models differ? |
-| 06 | [Workflows](docs/06-workflows.md) | Context engineering, five patterns, playbooks by task, memory |
-| 07 | [AI coding](docs/07-ai-coding.md) | From vibe coding to agentic engineering |
+| 06 | [Workflows](docs/06-workflows.md) | How do you go from a single prompt to a repeatable way of working (context, patterns, memory)? |
+| 07 | [AI coding](docs/07-ai-coding.md) | How do you move from vibe coding to agentic engineering? |
 | 08 | [Verification and evaluation](docs/08-verification-and-evals.md) | How do you verify an answer and evaluate a prompt? |
 | 09 | [Security and privacy](docs/09-security-privacy.md) | What should you never put in? What about prompt injection? |
 | 10 | [Myths vs. evidence](docs/10-myths-vs-evidence.md) | Do "I'll tip you," "act like an expert" and "think step by step" work? |
@@ -216,8 +217,11 @@ how-to-use-ai/
 ├── docs/                     ← 13 guides
 ├── evals/                    ← promptfoo test + skill eval harness
 ├── research/                 ← evidence report + 2026 update report
+├── resources/                ← curated resource list
 ├── scripts/validate.py       ← checks skills, manifests and links (run in CI)
-└── .claude-plugin/           ← Claude Code plugin and marketplace manifests
+├── .github/workflows/        ← CI that runs validate.py on every push
+├── .claude-plugin/           ← Claude Code plugin and marketplace manifests
+└── LICENSE                   ← MIT
 ```
 
 ---

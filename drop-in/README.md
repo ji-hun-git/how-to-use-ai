@@ -41,7 +41,7 @@ mkdir -p .cursor/rules && curl -fsSL https://raw.githubusercontent.com/ji-hun-gi
 |---|---|---|
 | "Be accurate." | "If you can't verify something, say so and mark it unverified." | Gives the model permission to abstain, which counters its incentive to guess |
 | "NEVER make mistakes!!!" | "Run the tests and show me the output before saying it's done." | A check the model can run beats emphasis; current models over-apply ALL-CAPS rules |
-| "Think step by step." (to a reasoning model) | "Done when: … " plus the reasoning-effort setting | Reasoning models already think; they need a target |
+| "Think step by step." (to a reasoning model) | "Done when: …" plus the reasoning-effort setting | Reasoning models already think; they need a target |
 | "You are a world-class expert." | "The reader is a non-technical manager deciding by Friday." | Personas don't reliably improve accuracy; audience and purpose do |
 | "What do you think of my plan?" | "Another team wrote this plan. Find its 3 biggest weaknesses." | Hiding authorship reduces sycophancy |
 | "Are you sure?" | "Re-solve this from scratch and show where the first answer was wrong, if it was." | "Are you sure?" flips correct answers |
@@ -56,4 +56,4 @@ mkdir -p .cursor/rules && curl -fsSL https://raw.githubusercontent.com/ji-hun-gi
 
 ## Tradeoffs
 
-Always-on rules add a little length and the occasional question. If your tasks are tiny and low-stakes, keep only rules 7–12 (fabrication and verification). Keep the file short: long instruction files are followed less reliably, so add project-specific lines sparingly and move must-never-break rules into hooks or permission settings.
+Always-on rules add a little length and the occasional question. If your tasks are tiny and low-stakes, keep only rules 7–13 (fabrication and verification). Keep the file short: long instruction files are followed less reliably, so add project-specific lines sparingly and move must-never-break rules into hooks or permission settings.

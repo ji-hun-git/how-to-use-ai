@@ -35,7 +35,7 @@ Mark with ⚠️ any assumption that would change the result significantly if it
 
 ## D. When the conversation gets tangled: consolidate, then start a new chat
 
-Adding requirements bit by bit over many turns causes a large drop in performance. In one study (Laban et al., 2025), performance fell by an average of 39% when the same request was split across multiple turns.
+Adding requirements bit by bit over many turns causes a large drop in performance. In one study (Laban et al., 2025; published at ICLR 2026), performance fell by an average of 39% when the same request was split across multiple turns.
 
 ```text
 Consolidate every requirement and decision I've given so far into a single prompt, leaving nothing out.

@@ -1,4 +1,4 @@
-# Curated Resources (Awesome List)
+# Curated resources (awesome list)
 
 > Official lab guides, Andrej Karpathy, universities and research institutions, and popular GitHub repositories: **only resources we checked directly**.
 > GitHub star counts and status were checked with the GitHub API on **2026-11-09**. Star counts show popularity, not quality.
@@ -14,12 +14,12 @@
 | Anthropic | [Prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices) | Be clear, give reasons, use 3–5 examples, put long material at the top. Includes a list of "habits to drop" for the newest models |
 | Anthropic | [Prompt engineering overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview) | Before refining prompts, start with success criteria and tests |
 | Anthropic | [Reduce hallucinations](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations) | The right to say "I don't know," quote first, retract what can't be quoted |
-| Anthropic | [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) (2025-09) | Context is a limited attention budget. Use the smallest set of high-signal information |
-| Anthropic | [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) (2024-12) | Five workflow patterns. Start with the simplest |
+| Anthropic | [Effective context engineering for AI agents](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents) (2025-09) | Context is a limited attention budget. Use the smallest set of high-signal information |
+| Anthropic | [Building effective agents](https://www.anthropic.com/research/building-effective-agents) (2024-12) | Five workflow patterns. Start with the simplest |
 | Anthropic | [Claude Code best practices](https://code.claude.com/docs/en/best-practices) | Four causes of failure, asking vs. enforcing, "things you no longer need to do" |
-| Anthropic | [Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) (2026-01) | Start with 20–50 tasks drawn from real failures and grade the outcomes |
+| Anthropic | [Demystifying evals for AI agents](https://www.anthropic.com/research/demystifying-evals-for-ai-agents) (2026-01) | Start with 20–50 tasks drawn from real failures and grade the outcomes |
 | OpenAI | [Prompt engineering guide](https://developers.openai.com/api/docs/guides/prompt-engineering) | Reasoning model = senior colleague, standard model = junior colleague |
-| OpenAI | [Prompt guidance (latest models)](https://developers.openai.com/api/docs/guides/prompt-guidance) · [GPT-5.6 guide](https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6) | Goals and success criteria, trimmed-down prompts, emphatic language only for true invariants |
+| OpenAI | [Prompt guidance (latest models)](https://developers.openai.com/api/docs/guides/latest-model) · [GPT-5.6 guide](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.6#prompting-best-practices) | Goals and success criteria, trimmed-down prompts, emphatic language only for true invariants |
 | OpenAI | [Reasoning best practices](https://developers.openai.com/api/docs/guides/reasoning-best-practices) | Reasoning models don't need CoT instructions; try without examples first (based on the o-series) |
 | OpenAI | [Codex best practices](https://learn.chatgpt.com/guides/best-practices) | Goal · context · constraints · done-criteria template, list of common mistakes |
 | Google | [Prompt design strategies](https://aistudio.google.com/docs/prompting-strategies) | Examples in a consistent format, put material directly in the prompt, handling thinking models |
@@ -90,7 +90,7 @@ OpenAI co-founder and former Director of AI at Tesla. He popularized "vibe codin
 | **Harvard** / BCG | [Navigating the Jagged Technological Frontier](https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged) | The jagged frontier, centaurs vs. cyborgs, falling asleep at the wheel |
 | **Harvard** / P&G | [The Cybernetic Teammate](https://www.nber.org/papers/w33641) | An individual with AI ≈ a team without AI |
 | **Harvard** CS50 | [CS50 AI policy](https://cs50.harvard.edu/x/honesty/) · [Taming the Duck (2026)](https://news.harvard.edu/gazette/story/2026/09/taming-the-duck-for-starters/) | An AI tutor that guides instead of giving answers. "Prompting alone is not enough to enforce behavior" |
-| **Stanford** | [Legal AI hallucination study](https://hai.stanford.edu/news/ai-trial-legal-models-hallucinate-1-out-6-or-more-benchmarking-queries) | Even specialized legal tools hallucinate 17–34% of the time |
+| **Stanford** | [Legal AI hallucination study](https://hai.stanford.edu/news/ai-trial-legal-models-hallucinate-1-out-6-or-more-benchmarking-queries) | Even specialized legal tools hallucinated 17–34% of the time (2024 tools; historical data) |
 | **Stanford** HAI | [AI Index 2026: 12 takeaways](https://hai.stanford.edu/news/inside-the-ai-index-12-takeaways-from-the-2026-report) | Capabilities remain jagged |
 | **Stanford** NLP | [DSPy](https://arxiv.org/abs/2310.03714) · [stanfordnlp/dspy](https://github.com/stanfordnlp/dspy) ⭐38,971 | "Programming, not prompting." Automatic prompt optimization |
 | **Stanford** | [CS336 Language Modeling from Scratch](https://cs336.stanford.edu/) | LLMs from scratch (for developers) |
@@ -190,7 +190,7 @@ In 2026, collections of agent **skills** and **harness engineering** resources e
 | Simon Willison | [Blog](https://simonwillison.net/tags/prompt-engineering/) · [Agentic Engineering Patterns](https://simonwillison.net/guides/agentic-engineering-patterns/) · [The lethal trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) · 🆕 [Vibe coding and agentic engineering are converging (2026-05)](https://simonwillison.net/2026/May/6/vibe-coding-and-agentic-engineering/) · 🆕 [Prompt injection case collection](https://simonwillison.net/tags/prompt-injection/) | The most accurate and consistent record of real-world LLM use and security |
 | Hamel Husain & Shreya Shankar | [LLM Evals FAQ](https://hamel.dev/blog/posts/evals-faq/) · 🆕 [Critique of automated eval tools (2026-09)](https://hamel.dev/blog/posts/claude-auto-evals/) | The practical standard for evals. "Look at your data yourself first" |
 | Ethan Mollick | [One Useful Thing](https://www.oneusefulthing.org/) · 🆕 [Which AI to use: summer 2026 guide](https://www.oneusefulthing.org/p/an-opinionated-guide-to-which-ai-b22) | Wharton professor. AI use from the perspective of everyday office work |
-| 🆕 Anthropic Engineering | [Components of agent memory (2026-11)](https://www.anthropic.com/engineering/components-of-agent-memory) · [Harness design for long-running apps (2026-03)](https://www.anthropic.com/engineering/harness-design-long-running-apps) | Keep memory small; separate the side that generates from the side that evaluates |
+| 🆕 Anthropic Engineering | [Components of agent memory (2026-11)](https://www.anthropic.com/research/components-of-agent-memory) · [Harness design for long-running apps (2026-03)](https://www.anthropic.com/research/harness-design-long-running-apps) | Keep memory small; separate the side that generates from the side that evaluates |
 | Birgitta Böckeler | [Understanding Spec-Driven Development](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html) | A sober assessment of spec-driven development |
 
 ---

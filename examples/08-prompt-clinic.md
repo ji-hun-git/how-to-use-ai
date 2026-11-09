@@ -52,7 +52,7 @@ Write a launch post for {{product}}, aimed at {{audience}} who care about {{bene
 ```text
 Readers are new customers with no technical background, so use everyday words and keep it under 150 words. If a technical term is unavoidable, define it in a few words.
 ```
-**Evidence:** explain the why; reserve absolute words for true invariants ([Anthropic best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices); [OpenAI GPT-5.6 guide](https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6)).
+**Evidence:** explain the why; reserve absolute words for true invariants ([Anthropic best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices); [OpenAI GPT-5.6 guide](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.6#prompting-best-practices)).
 
 ### 7. "Think step by step." (to a reasoning model) 🎯
 **What goes wrong:** Reasoning models already reason. In a 2025 study the phrase changed their accuracy by only +3.1 to −3.3 points while making answers 20–80% slower.

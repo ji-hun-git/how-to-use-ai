@@ -19,7 +19,7 @@ Add the table below at the end of your output.
 | Requirement | Covered? (✅/⚠️/❌) | Where it's addressed | Notes |
 ```
 
-> A **numbered list** of requirements gets skipped far less often than requirements written as long sentences.
+> A **numbered list** makes each requirement easy to see and check off; requirements buried in long sentences are easier to miss.
 
 ## B. Long documents: have it quote the relevant parts first
 

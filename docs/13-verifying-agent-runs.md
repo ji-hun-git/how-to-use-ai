@@ -73,7 +73,7 @@ The "must not include" line is the one people skip, and it's the one that catche
 - **Must include:** all 12 invoice numbers accounted for; a total per supplier that matches a recomputation; the two planted duplicate invoices flagged.
 - **Must not include:** any supplier not present in the files; any total that doesn't match the sum of its invoices; the sample supplier name used in the instructions.
 
-Start with three cases. Grow the set with every real failure you find, and keep cases that pass as regression checks. Anthropic recommends starting agent evaluations with 20–50 tasks drawn from real failures and grading what the agent actually produced, not what it said it did; this repo's [skill evaluations](../evals/README.md#skill-evaluations-with-vs-without) follow the same approach.
+Start with three cases. Grow the set with every real failure you find, and keep cases that pass as regression checks. Anthropic recommends starting agent evaluations with 20–50 tasks drawn from real failures and grading what the agent actually produced, not what it said it did; this repo's [skill evaluations](../evals/README.md#skill-evaluations-with-vs-without) grade the actual output the same way, though their cases are synthetic rather than drawn from real failures.
 
 ---
 
@@ -124,7 +124,7 @@ The log helps when the same problem returns in a different form, keeps your writ
 - **Diagnosis:** the skill said what to do with readable invoices but nothing about unreadable ones, so the agent filled in a value.
 - **Change and result:** added "If an invoice's total can't be read, list it under 'Needs manual check' and exclude it from totals." Rerun: the invoice moved to the manual-check list; totals unchanged otherwise.
 
-**A real example from this repo:** the [skill evaluation log](../evals/results/README.md#change-log-what-the-evaluation-caught) records how a first run exposed both a test-setup problem and a flaw in the `task-spec` skill, and how each was fixed and re-tested separately.
+**A real example from this repo:** the [skill evaluation log](../evals/results/README.md#change-log-what-the-evaluation-caught) records how a first run exposed both a test-setup problem and a flaw in the `task-spec` skill, and how each was fixed and re-tested separately. Later rounds caught gaps in `fresh-start-handoff` and `prompt-improver` the same way.
 
 Keep the log next to the design or skill it changes (for example, in the repository, or a `CHANGELOG.md`), not in a separate scratch note that gets forgotten.
 
@@ -174,10 +174,10 @@ Two or three passes through this loop solve most problems. If not, shrink the ru
 ---
 
 ### Sources
-- Anthropic, Demystifying evals for AI agents (2026-01: grade outcomes, not paths; start with 20–50 tasks from real failures; read the transcripts) — https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
+- Anthropic, Demystifying evals for AI agents (2026-01: grade outcomes, not paths; start with 20–50 tasks from real failures; read the transcripts) — https://www.anthropic.com/research/demystifying-evals-for-ai-agents
 - Hamel Husain & Shreya Shankar, LLM Evals FAQ (error analysis first; binary pass/fail) — https://hamel.dev/blog/posts/evals-faq/
 - Claude Code best practices (give the agent a check it can run; ask for evidence; hard controls vs instructions) — https://code.claude.com/docs/en/best-practices
-- Anthropic, Harness design for long-running apps (2026-03: separate generator and evaluator; change one harness piece at a time) — https://www.anthropic.com/engineering/harness-design-long-running-apps
+- Anthropic, Harness design for long-running apps (2026-03: separate generator and evaluator; change one harness piece at a time) — https://www.anthropic.com/research/harness-design-long-running-apps
 - HalluHard (2026-02, preprint: errors compound over turns, even with search) — https://arxiv.org/abs/2602.01031
 - Meincke et al., Prompting Science Report 1 (2025: same question, 100 runs, results vary) — https://arxiv.org/abs/2503.04818
 - Bai et al., LongWriter (2024: long outputs are bounded; split the work) — https://arxiv.org/abs/2408.07055

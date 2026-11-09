@@ -22,7 +22,7 @@ Agents grading their own work skew positive, and a reviewer that watched the wor
 
 ## Evidence
 
-- Agents reliably skew positive when grading their own work; separate generator and evaluator: Anthropic, Harness design for long-running apps (2026) — https://www.anthropic.com/engineering/harness-design-long-running-apps
+- Agents reliably skew positive when grading their own work; separate generator and evaluator: Anthropic, Harness design for long-running apps (2026) — https://www.anthropic.com/research/harness-design-long-running-apps
 - A fresh reviewer helps more than delegating the same task; review against the spec, report only correctness gaps: Claude Code best practices — https://code.claude.com/docs/en/best-practices
 - Answer verification questions independently so the draft can't bias them: Chain-of-Verification — https://arxiv.org/abs/2309.11495
 - More in the guide: https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/08-verification-and-evals.md

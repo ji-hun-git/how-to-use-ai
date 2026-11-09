@@ -12,7 +12,7 @@
 | Principle | Why |
 |---|---|
 | **Check against outside evidence, not the AI's word** | Asking the same model "Is that right?" is not verification |
-| **Don't ask "Are you sure?"** | It flips correct answers 46% of the time and lowers accuracy by 17% (FlipFlop, 2023) |
+| **Don't ask "Are you sure?"** | Models changed their answers 46% of the time and accuracy dropped 17% (FlipFlop, 2023) |
 | **Have it redo the work independently** | Solving it fresh, without seeing the earlier answer, avoids bias (Chain-of-Verification) |
 | **Run whatever can be run** | Run the code, recalculate the numbers, open the links |
 | **Scale verification to the risk** | You can't verify every answer to the same degree |
@@ -59,7 +59,7 @@ In a **different chat** from the one that wrote the answer, ask "Find the proble
 
 ## Part 2. Evaluating prompts and workflows (evals)
 
-For prompts you use often, templates your team shares, or agents you build yourself, create an **eval set**. That's how you know whether a prompt change **actually made things better**.
+For prompts you use often, templates your team shares, or agents you build yourself, create an **eval set**. That's how you know whether a prompt change **actually made things better**. For runnable examples, see [evals/](../evals/README.md): a promptfoo comparison of two prompts, and the with-vs-without tests this repo uses for its own skills.
 
 ### 1. First: success criteria
 
@@ -124,8 +124,8 @@ Wharton's Prompting Science Report 1 (2025) asked each question 100 times. Under
 - Civic Online Reasoning, Teaching Lateral Reading — https://cor.inquirygroup.org/curriculum/collections/teaching-lateral-reading/
 - Anthropic, Reduce hallucinations — https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations
 - Anthropic, Prompt engineering overview (success criteria first) — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview
-- Anthropic, Demystifying evals for AI agents (2026-01-09) — https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
-- Anthropic, How we built our multi-agent research system (grading rubric) — https://www.anthropic.com/engineering/multi-agent-research-system
+- Anthropic, Demystifying evals for AI agents (2026-01-09) — https://www.anthropic.com/research/demystifying-evals-for-ai-agents
+- Anthropic, How we built our multi-agent research system (grading rubric) — https://www.anthropic.com/research/multi-agent-research-system
 - Hamel Husain & Shreya Shankar, LLM Evals FAQ — https://hamel.dev/blog/posts/evals-faq/
 - OpenAI, Prompt optimizer (narrowly defined graders) — https://developers.openai.com/api/docs/guides/prompt-optimizer
 - Simon Willison, "Here's how I use LLMs to help me write code" (testing is the user's job) — https://simonwillison.net/2025/Mar/11/using-llms-for-code/

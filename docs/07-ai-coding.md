@@ -60,7 +60,7 @@ The official Claude Code documentation (2026) says a disappointing session almos
 ## 3. The basic loop
 
 ```
-0. Prepare        Short AGENTS.md, block access to secret files, sandbox, default approval mode
+0. Prepare        Short AGENTS.md, block access to secret files, sandbox, an approval mode that asks before risky actions
 1. Explore/spec   Have it read the code (plan mode); if requirements are fuzzy, get interviewed and write SPEC.md
 2. Plan           For multi-step work, review the plan before any code is written
 3. Implement      Failing test first (Red → Green), plus criteria it can check on its own
@@ -212,7 +212,7 @@ These are files the agent reads automatically at the start of every session. `AG
 - OpenAI Codex, Best practices — https://learn.chatgpt.com/guides/best-practices
 - AGENTS.md open standard — https://agents.md/
 - Anthropic, Prompting best practices (warning about hard-coding to pass tests) — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
-- Anthropic, Effective harnesses for long-running agents (2025-11-26) — https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
+- Anthropic, Effective harnesses for long-running agents (2025-11-26) — https://www.anthropic.com/research/effective-harnesses-for-long-running-agents
 - GitHub Spec Kit — https://github.com/github/spec-kit
 - Birgitta Böckeler, "Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl" (2025-10-15) — https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html
 - Karpathy, "vibe coding" post (2025-02-02) — https://x.com/karpathy/status/1886192184808149383
@@ -230,7 +230,7 @@ These are files the agent reads automatically at the start of every session. `AG
 - Simon Willison, "More than just code review" (2026-08-22) — https://simonwillison.net/2026/Aug/22/more-than-just-code-review/
 - Simon Willison, Subagents chapter — https://simonwillison.net/guides/agentic-engineering-patterns/subagents/
 - Claude Code, What's new — https://code.claude.com/docs/en/whats-new
-- Claude blog, auto mode becomes the default in Claude Code (2026-08) — https://claude.com/blog/auto-mode-default-in-claude-code
+- Claude blog, auto mode becomes the default in Claude Code (2026-08) — https://claude.com/resources/articles/auto-mode-default-in-claude-code
 - Simon Willison, attack case against Opus 5 auto mode (2026-08-27) — https://simonwillison.net/2026/Aug/27/breaking-claude-code-opus-5-auto-mode/
 - OpenAI Codex, Long-running work (`/goal`) — https://learn.chatgpt.com/docs/long-running-work
 - OpenAI Cookbook, Using Goals in Codex — https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex

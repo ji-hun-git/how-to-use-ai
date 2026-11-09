@@ -1,6 +1,6 @@
 # 04. Three ways AI gets things wrong: Misunderstanding · Omission · Fabrication
 
-> Most AI failures fall into one of three failure modes. **Diagnose a failure by its type**, and the fix becomes clear.
+> Most AI failures fall into one of three failure modes, plus a fourth, sycophancy, when you ask the AI for its judgment. **Diagnose a failure by its type**, and the fix becomes clear.
 >
 > - **Misunderstanding**: it interpreted the request differently
 > - **Omission**: it left out something it should have done
@@ -24,7 +24,7 @@ Many of the studies in the main text below measured 2023–2025 models. **The ca
 | **Sycophancy** | 11 AI systems endorsed users' actions **about 49% more often** than humans did, and people trusted and preferred sycophantic answers more (Cheng et al., *Science*, 2026-03, peer-reviewed) | Sycophancy persists **because people like it** |
 | **Sycophancy: long conversations** | When a wrong claim was pushed repeatedly on current flagship models, the rate of caving within 5 turns was 0–57% → **20–97% within 25 turns**. Even when models caved, the correct answer often remained in their reasoning (SPINE, 2026-09, preprint) | The longer and more emotionally charged the pressure, the more it goes along → **start a new chat** |
 | **Sycophancy: framing as your belief** | Stating something false as **"I believe ..."** collapses accuracy (GPT-4o 98.2% → 64.4%). The same content attributed to a third party gets filtered out well (AI Index 2026) | Don't lead with your own view when you ask |
-| **Omission: long input** | Finding a single sentence within 1 million tokens: **100%** for the top three models. But on tasks that chain several pieces of information, performance drops as length grows, and some models fall sharply between 510K and 1M tokens (Chow, 2026-05, preprint) | **Retrieval is solved; synthesis is not.** Including only the material you need still matters |
+| **Omission: long input** | Finding a single sentence within 1 million tokens: **100%** for the top three models. But on tasks that chain several pieces of information, performance drops as length grows, and some models fall sharply between 512K and 1M tokens (Chow, 2026-05, preprint) | **Retrieval is solved; synthesis is not.** Including only the material you need still matters |
 | **Omission: simultaneous constraints** | In an experiment with 15 models, the rate of following every constraint dropped sharply once simultaneous constraints **exceeded 5–6**. A model with a 41% per-constraint pass rate at 8 constraints followed all 8 only 5.7% of the time (Vasileva, 2026-08, preprint) | Cut constraints, and if there are many, **split into steps** |
 | **Misunderstanding: multiple turns** | Spreading requirements across multiple turns lowered performance by 39% on average (Laban et al.). **Formally published at ICLR 2026**. No re-measurement with 2026 models yet | Give all requirements up front |
 
@@ -55,7 +55,7 @@ Many of the studies in the main text below measured 2023–2025 models. **The ca
 
 ### Why it happens
 
-1. **Requests are full of gaps.** Analyses of real conversation logs show that people often leave important conditions unstated.
+1. **Requests are full of gaps.** People often leave important conditions unstated.
 2. **AI isn't good at noticing ambiguity.** On a benchmark built from about 12,000 ambiguous questions (CLAMBER, 2024), models' ability to recognize ambiguous questions and ask for clarification fell short of practical use. Chain-of-thought and examples brought only minor improvements and sometimes even led to **overconfidence**.
 3. **It carries early assumptions all the way through.** In a study that simulated more than 200,000 conversations across 15 models (Laban et al., 2025), giving the same requirements **spread across multiple turns** lowered performance by **39% on average** compared with giving them all at once. The models formed assumptions early and failed to recover from them.
 4. **Even questions that look clear can be read differently.** Simply having the model rephrase the question itself (Rephrase and Respond, 2023) substantially improved performance across many tasks. In other words, a question that's clear to a person may not be clear to a model.
@@ -123,7 +123,7 @@ If the conversation has gone off track, don't keep asking for fixes in the same 
 | **Have it quote the relevant parts first** | Anthropic: helps it focus on what's relevant and ignore the rest |
 | **Only the material you need** | More doesn't make it better |
 | **Split the work** | Long documents section by section; long outputs as outline → sections |
-| **More than 10 constraints? Split into steps** | Prompt chaining → [06. Workflows](06-workflows.md) |
+| **More than 5–6 constraints? Split into steps** | Prompt chaining → [06. Workflows](06-workflows.md) |
 | **A per-section tracking table** | "Every section must appear in the table. If there's no relevant content, write 'N/A'" → prevents silent skipping |
 
 ### Detection
@@ -175,7 +175,7 @@ A comparison OpenAI published shows this clearly.
 | o4-mini | 1% | 24% | **75%** |
 
 > The model that guesses (o4-mini) has slightly higher accuracy, but its **error rate is three times higher**. Judged on accuracy alone, it even looks better.
-> (Source: OpenAI blog. We couldn't open the original page directly, so these figures come from a search index.)
+> (Source: OpenAI, "Why language models hallucinate" (2025); figures checked against the original page on 2026-11-09.)
 
 **Sources are especially risky.**
 - A 2023 study checked 636 citations in 84 literature reviews written by ChatGPT and found that **55%** of GPT-3.5's citations and **18%** of GPT-4's did not exist. Even among the citations that **did exist**, 43% (GPT-3.5) and 24% (GPT-4) contained content errors (Walters & Wilder, *Scientific Reports*). *(Based on 2023 models. For a 2026 measurement, see Topaz et al. in the table above: even models released in 2026 included fake references in 35.3% of responses.)*
@@ -232,7 +232,7 @@ Find supporting evidence for each claim in the answer above. Delete any claim yo
 
 - When models are trained on human preference ratings, people rate **pleasant-sounding answers** higher, so models learn to go along. In Anthropic's research (Sharma et al., 2023), both humans and preference models **preferred well-written sycophantic answers over correct ones a non-negligible fraction of the time**.
 - In Google's research (Wei et al., 2023), sycophancy **increased** with model scale and instruction tuning. Models agreed with a user who said a wrong addition was correct, even though they knew it was wrong.
-- There has been a real incident, too. OpenAI rolled back a GPT-4o update it had shipped on April 25, 2025, just four days later. OpenAI explained that relying more on users' thumbs-up/thumbs-down feedback as a training signal had amplified an overly agreeable tendency.
+- There has been a real incident, too. OpenAI rolled back a GPT-4o update it had shipped on April 25, 2025, just three days later. OpenAI explained that relying more on users' thumbs-up/thumbs-down feedback as a training signal had amplified an overly agreeable tendency.
 
 **Pushing back with "Are you sure?" actually does harm.**
 
@@ -312,7 +312,7 @@ You don't need to verify every answer with the same rigor. Match it to **the cos
 **Fabrication (hallucination)**
 - Kalai et al., "Why Language Models Hallucinate" (OpenAI, 2025) — https://arxiv.org/abs/2509.04664 / blog: https://openai.com/index/why-language-models-hallucinate/
 - Anthropic, Reduce hallucinations — https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations
-- Google Cloud, Grounding overview — https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/overview
+- Google Cloud, Grounding overview — https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/overview
 - Huang et al., hallucination survey (2023) — https://arxiv.org/abs/2311.05232
 - Min et al., FActScore (2023) — https://arxiv.org/abs/2305.14251
 - Dhuliawala et al., Chain-of-Verification (2023) — https://arxiv.org/abs/2309.11495

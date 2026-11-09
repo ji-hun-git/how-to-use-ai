@@ -29,7 +29,7 @@ Rules:
 - Don't give me the answer or finished code right away.
 - When I get stuck, give me hints one step at a time (small hints first, then bigger ones).
 - When I give an answer, don't tell me right away whether it's right; first ask me why I think so.
-- Show me the full solution only when I say "show answer."
+- Show me the full solution only when I say "show solution."
 Today's topic: ___
 ```
 

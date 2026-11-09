@@ -23,7 +23,7 @@ Here are the habits Andrej Karpathy recommended in his "How I use LLMs" (2025) t
 
 ## 🆕 Snapshot: major models as of November 2026
 
-> Models change every few months. The table below reflects each company's official documentation as of **2026-11-09**. The rest of this repo is written so that it doesn't depend on specific model names.
+> Models change every few months. The table below reflects each company's official documentation as of **2026-11-09**. Outside this guide, model names appear only as dated examples; the advice itself doesn't depend on which model you use.
 
 | Company | Major models | Notes |
 |---|---|---|
@@ -128,8 +128,8 @@ Karpathy's open-source [llm-council](https://github.com/karpathy/llm-council) ha
 - Karpathy, llm-council — https://github.com/karpathy/llm-council
 - OpenAI, Prompt engineering guide (reasoning model = senior coworker analogy) — https://developers.openai.com/api/docs/guides/prompt-engineering
 - OpenAI, Reasoning best practices (written for the o-series; some content reflects earlier generations) — https://developers.openai.com/api/docs/guides/reasoning-best-practices
-- OpenAI, prompt guidance for the latest models — https://developers.openai.com/api/docs/guides/prompt-guidance
-- OpenAI, GPT-5.6 prompt guidance (removing fluff, effort criteria) — https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6
+- OpenAI, prompt guidance for the latest models — https://developers.openai.com/api/docs/guides/latest-model
+- OpenAI, GPT-5.6 prompt guidance (removing fluff, effort criteria) — https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.6#prompting-best-practices
 - Anthropic, Prompting best practices (general instructions > step-by-step instructions, effort, over-verification) — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
 - Claude Code, Best practices ("things you no longer need to do") — https://code.claude.com/docs/en/best-practices
 - Google, Prompt design strategies (thinking models, temperature) — https://aistudio.google.com/docs/prompting-strategies
@@ -137,7 +137,7 @@ Karpathy's open-source [llm-council](https://github.com/karpathy/llm-council) ha
 - Meincke et al., Prompting Science Report 2 "The Decreasing Value of Chain of Thought in Prompting" (Wharton, 2025, preprint) — https://arxiv.org/abs/2506.07142
 
 **2026 update (checked 2026-11-09)**
-- Anthropic, Models overview — https://platform.claude.com/docs/en/about-claude/models/overview
+- Anthropic, Models overview — https://platform.claude.com/docs/en/models/overview
 - Anthropic, API release notes — https://platform.claude.com/docs/en/release-notes/overview
 - Claude app release notes (memory, Cowork, skills) — https://support.claude.com/en/articles/12138966-release-notes
 - OpenAI, Models — https://developers.openai.com/api/docs/models

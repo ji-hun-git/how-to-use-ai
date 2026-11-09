@@ -132,9 +132,10 @@ For each example, give the correct answer and the reason.
 ### Sources
 
 - Anthropic, Prompting best practices (3–5 examples, diversity, tags) — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
-- Anthropic, Effective context engineering (representative examples over lists of rules) — https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+- Anthropic, Effective context engineering (representative examples over lists of rules) — https://www.anthropic.com/research/effective-context-engineering-for-ai-agents
 - OpenAI, Prompt engineering guide — https://developers.openai.com/api/docs/guides/prompt-engineering
 - OpenAI, Reasoning best practices (zero-shot first for reasoning models) — https://developers.openai.com/api/docs/guides/reasoning-best-practices
+- OpenAI, GPT-5.6 prompt guidance (latest model guide) — https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.6#prompting-best-practices
 - OpenAI Cookbook, GPT-4.1 Prompting Guide (models repeating example phrasing; archived document) — https://developers.openai.com/cookbook/examples/gpt4-1_prompting_guide
 - Google, Prompt design strategies (format consistency, overfitting) — https://aistudio.google.com/docs/prompting-strategies
 - Google/Kaggle, Prompt Engineering whitepaper (Lee Boonstra) — https://www.kaggle.com/whitepaper-prompt-engineering

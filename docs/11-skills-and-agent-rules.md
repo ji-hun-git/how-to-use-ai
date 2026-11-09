@@ -86,7 +86,7 @@ Ten ready-made skills built from this guide: [skills/](../skills/README.md). How
 - Claude Code skills — https://code.claude.com/docs/en/skills
 - Agent Skills specification — https://agentskills.io/specification
 - Anthropic, Agent Skills best practices — https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices
-- Anthropic, Equipping agents for the real world with Agent Skills — https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills
-- Anthropic, The components of agent memory (2026-11) — https://www.anthropic.com/engineering/components-of-agent-memory
+- Anthropic, Equipping agents for the real world with Agent Skills — https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills
+- Anthropic, The components of agent memory (2026-11) — https://www.anthropic.com/research/components-of-agent-memory
 - OpenAI Codex best practices — https://learn.chatgpt.com/guides/best-practices
 - AGENTS.md open standard — https://agents.md/

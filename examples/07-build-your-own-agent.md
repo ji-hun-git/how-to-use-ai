@@ -15,7 +15,7 @@
 | Refund and compensation decisions | Manager approval | Low | High | High | ❌ A human decides |
 | Handling upset customers | Experienced staff | Low | High | High | ⚠️ Summaries only |
 
-> **Autonomy slider:** Karpathy says to use AI "like an Iron Man suit, not a robot." Start by delegating **only up to the draft**, then widen its autonomy gradually as you watch the results.
+> **Autonomy slider:** Karpathy suggests building AI tools more like Iron Man suits than Iron Man robots. Start by delegating **only up to the draft**, then widen its autonomy gradually as you watch the results.
 
 ---
 

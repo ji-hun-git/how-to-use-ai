@@ -165,7 +165,7 @@ South Korea's **Framework Act on the Development of Artificial Intelligence and 
 - Meta, "Agents Rule of Two: A Practical Approach to AI Agent Security" (2025-10-31) — https://ai.meta.com/blog/practical-ai-agent-security/
 - Claude Code, Best practices (permission deny rules, sandbox) — https://code.claude.com/docs/en/best-practices
 - OpenAI Codex, Best practices (default approval and sandbox settings) — https://learn.chatgpt.com/guides/best-practices
-- Anthropic, Agent Skills (install only from trusted sources) — https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills
+- Anthropic, Agent Skills (install only from trusted sources) — https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills
 - MIT NANDA, "The GenAI Divide: State of AI in Business 2025" (preliminary report) — https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf
 - MIT Sloan Teaching & Learning Technologies, Addressing AI Hallucinations and Bias — https://mitsloanedtech.mit.edu/ai/basics/addressing-ai-hallucinations-and-bias/
 
@@ -181,4 +181,3 @@ South Korea's **Framework Act on the Development of Artificial Intelligence and 
 - News Seoul, MOIS "AI Ethics Standards for the Public Sector" (2026-10) — https://newsseoul.co.kr/news/view/1065610823822923
 - The Korean Educational Newspaper (Hangyo), KICE Research Report No. 13 (2026-10-08) — https://hangyo.com/news/article.html?no=109594
 - Korean Council for University Education (KCUE), 2026 survey of university presidents (2026-02-26) — https://www.kcue.or.kr/_upload/news/2026/02/27/application_98622bfb32070167ba2133387f8b8f1d.pdf
-- Korea.kr Policy Briefing, press release on the Ministry of the Interior and Safety's ChatGPT usage guide (snippet-only: confirmed from a search summary only) — https://m.korea.kr/briefing/pressReleaseView.do?newsId=156566491

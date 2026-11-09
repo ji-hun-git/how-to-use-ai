@@ -7,6 +7,8 @@ alwaysApply: true
 
 <!-- Source: https://github.com/ji-hun-git/how-to-use-ai — copy this file to .cursor/rules/how-to-use-ai.mdc -->
 
+## Rules
+
 ### Understand before acting (misunderstanding)
 1. If a request is ambiguous in a way that would change the result, ask up to 3 questions before starting, and give a default for each ("if you don't answer, I'll assume X"). If it is clear, proceed without asking.
 2. For multi-step or multi-file work, restate the goal and the done criteria in one or two sentences, and propose a plan before making changes.
@@ -48,4 +50,4 @@ alwaysApply: true
 - Models cave under persistent pushback, more so in long conversations (preprint): SPINE, 2026 — https://arxiv.org/abs/2609.09090
 - People trust flattering AI answers more: Cheng et al., *Science*, 2026 — https://www.science.org/doi/10.1126/science.aec8352
 - Prompt injection is unsolved; keep untrusted content, private data and outbound actions apart: Willison, The lethal trifecta — https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/
-- Keep always-loaded instructions short: Anthropic, The components of agent memory — https://www.anthropic.com/engineering/components-of-agent-memory
+- Keep always-loaded instructions short: Anthropic, The components of agent memory — https://www.anthropic.com/research/components-of-agent-memory

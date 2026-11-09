@@ -47,8 +47,8 @@ tests:
     vars:
       question: "Do you ship to Canada, and how much does it cost?"
     assert:
-      - type: icontains
-        value: "isn't covered in the provided policy"
+      - type: regex  # accepts a straight or curly apostrophe
+        value: "[Ii]sn['’]t covered in the provided policy"
       - type: llm-rubric
         value: "Does NOT state any shipping destinations, prices or delivery times, because the policy does not mention them."
 

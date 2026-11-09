@@ -95,6 +95,6 @@ Each skill follows the [Agent Skills specification](https://agentskills.io/speci
 - Agent Skills specification — https://agentskills.io/specification
 - Claude Code skills and plugin marketplaces — https://code.claude.com/docs/en/skills , https://code.claude.com/docs/en/plugin-marketplaces
 - Codex skills — https://learn.chatgpt.com/docs/build-skills
-- GitHub Copilot agent skills — https://docs.github.com/en/copilot/concepts/agents/about-agent-skills
+- GitHub Copilot agent skills — https://docs.github.com/en/copilot/concepts/customizations/agent-skills
 - Gemini CLI skills — https://geminicli.com/docs/cli/skills/
 - `skills` installer — https://github.com/vercel-labs/skills

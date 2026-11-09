@@ -8,7 +8,7 @@ How to use this file
 - Chat apps (Claude Projects, ChatGPT custom instructions, Gemini): paste the "Rules" section into the instructions field.
 
 Each rule targets one of four documented failure modes: misunderstanding, omission, fabrication (hallucination),
-and sycophancy. The evidence behind every rule is linked at the bottom. The file is short on purpose:
+and sycophancy. The evidence behind the rules is linked at the bottom. The file is short on purpose:
 long instruction files are followed less reliably.
 Source repo: https://github.com/ji-hun-git/how-to-use-ai
 -->
@@ -56,4 +56,4 @@ Source repo: https://github.com/ji-hun-git/how-to-use-ai
 - Models cave under persistent pushback, more so in long conversations (preprint): SPINE, 2026 — https://arxiv.org/abs/2609.09090
 - People trust flattering AI answers more: Cheng et al., *Science*, 2026 — https://www.science.org/doi/10.1126/science.aec8352
 - Prompt injection is unsolved; keep untrusted content, private data and outbound actions apart: Willison, The lethal trifecta — https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/
-- Keep always-loaded instructions short: Anthropic, The components of agent memory — https://www.anthropic.com/engineering/components-of-agent-memory
+- Keep always-loaded instructions short: Anthropic, The components of agent memory — https://www.anthropic.com/research/components-of-agent-memory

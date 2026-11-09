@@ -11,7 +11,7 @@
 | Common trick | Verdict | Evidence |
 |---|---|---|
 | "I'll tip you," "Something terrible will happen if you don't" (rewards and threats) | ❌ No effect | Wharton Report 3 (2025) |
-| Being polite ("please") / or the opposite, being commanding | ➖ No overall difference | Wharton Report 1 (2025) |
+| Being polite ("please"), or the opposite, being commanding | ➖ No overall difference | Wharton Report 1 (2025) |
 | "You are the world's top expert" (expert role) | ❌ No accuracy gain, sometimes a drop | Wharton Report 4 (2025), Zheng et al. (2024) |
 | "Think step by step" (with reasoning models) | ❌ Almost no effect, just more time | Wharton Report 2 (2025), OpenAI, Microsoft |
 | "Think step by step" (with standard models) | ⚠️ Raises the average but sometimes gets easy questions wrong | Wharton Report 2 (2025) |
@@ -106,7 +106,7 @@ In a comparison OpenAI published, a model that answered "I don't know" 52% of th
 
 **Productivity: METR's 2026 update**
 - Regarding the early-2025 experiment (experienced developers were 19% slower), METR said in February 2026 that the result **no longer represents current tools**.
-- A follow-up experiment (57 developers, 800+ tasks) estimated −18% for returning participants and −4% for new participants (time savings), but the confidence intervals were wide and 30–50% of participants left out tasks they didn't want to do without AI, so METR itself called it **"very weak evidence."**
+- A follow-up experiment (57 developers, 800+ tasks) estimated time savings of 18% for returning participants and 4% for new participants, but the confidence intervals were wide and 30–50% of participants left out tasks they didn't want to do without AI, so METR itself called it **"very weak evidence."**
 - In a May 2026 survey (349 people), the median self-reported speedup was 3x, but METR warned it **may be exaggerated**, noting that participants in the 2025 experiment had overestimated AI's effect by about 40 percentage points.
 - **The lesson stands:** perception and reality can differ, so measure it on your own work.
 
@@ -146,11 +146,14 @@ Citing Acar (2023), the MIT Sloan guide says that in the long run, **the ability
 - Laban et al., FlipFlop (2023) — https://arxiv.org/abs/2311.08596
 - Sharma et al., Towards Understanding Sycophancy (Anthropic, 2023) — https://arxiv.org/abs/2310.13548
 - OpenAI, Why language models hallucinate (2025) — https://openai.com/index/why-language-models-hallucinate/
-- OpenAI, GPT-5.6 prompt guidance — https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6
+- OpenAI, GPT-5.6 prompt guidance — https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.6#prompting-best-practices
 - OpenAI, Reasoning best practices — https://developers.openai.com/api/docs/guides/reasoning-best-practices
 - Microsoft, Prompt engineering techniques — https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering
+- Google, Prompt design strategies — https://aistudio.google.com/docs/prompting-strategies
+- Harada et al., "When Instructions Multiply" (ManyIFEval, 2025) — https://arxiv.org/abs/2509.21051
+- IFScale (2025) — https://arxiv.org/abs/2507.11538
 - Anthropic, Prompting best practices — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
-- Anthropic, Effective context engineering for AI agents — https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+- Anthropic, Effective context engineering for AI agents — https://www.anthropic.com/research/effective-context-engineering-for-ai-agents
 - Liu et al., Lost in the Middle (2023) — https://arxiv.org/abs/2307.03172
 - Chroma, Context Rot (2025) — https://research.trychroma.com/context-rot
 - Walters & Wilder, study of fabricated citations (*Scientific Reports*, 2023) — https://www.nature.com/articles/s41598-023-41032-5

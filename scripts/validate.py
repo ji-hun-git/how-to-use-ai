@@ -61,6 +61,7 @@ def check_skills() -> int:
 
 # ------------------------------------------------------- plugin manifests
 def check_manifests() -> None:
+    parsed = {}
     for rel in (".claude-plugin/plugin.json", ".claude-plugin/marketplace.json"):
         path = ROOT / rel
         if not path.exists():
@@ -71,11 +72,11 @@ def check_manifests() -> None:
         except json.JSONDecodeError as e:
             err(f"{rel}: invalid JSON ({e})")
             continue
+        parsed[rel] = data
         if not data.get("name"):
             err(f"{rel}: 'name' is required")
-    market = ROOT / ".claude-plugin/marketplace.json"
-    if market.exists():
-        data = json.loads(market.read_text(encoding="utf-8"))
+    data = parsed.get(".claude-plugin/marketplace.json")  # None if missing or invalid
+    if data is not None:
         if not data.get("owner", {}).get("name"):
             err(".claude-plugin/marketplace.json: owner.name is required")
         for p in data.get("plugins", []):

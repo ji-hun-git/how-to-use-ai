@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """With-vs-without evaluation of the skills in skills/.
 
-For every case in cases.yaml and every model, the model answers twice:
+For every case in the case file (cases.yaml by default) and every model, the model answers twice:
   without: a plain assistant system prompt
   with:    the same prompt plus the skill's SKILL.md
 A grader model then checks each criterion as pass/fail. The grader sees the conversation,
@@ -63,6 +63,8 @@ def load_cases(cases_file: Path, only: list[str] | None) -> list[dict]:
     cases = data["cases"]
     if only:
         cases = [c for c in cases if c["id"] in only or c["skill"] in only]
+    if not cases:
+        sys.exit(f"no cases selected from {cases_file.name} (check --cases)")
     for c in cases:
         skill_file = ROOT / "skills" / c["skill"] / "SKILL.md"
         if not skill_file.exists():
@@ -149,7 +151,10 @@ def code_check(c: dict, answer: str) -> tuple[bool, str]:
     """Deterministic check for things a grader model counts unreliably."""
     text = answer
     if c.get("tag"):
-        blocks = re.findall(rf"<{c['tag']}>(.*?)</{c['tag']}>", answer, re.S | re.I)
+        # The block may not contain another opening tag, so a stray "<tag>" mentioned in prose
+        # before the real block doesn't get swallowed into it.
+        t = re.escape(c["tag"])
+        blocks = re.findall(rf"<{t}>((?:(?!<{t}>).)*?)</{t}>", answer, re.S | re.I)
         if not blocks:
             return False, f"no <{c['tag']}> block in the answer"
         text = blocks[-1].strip()
@@ -195,7 +200,8 @@ def grade(judge: str, case: dict, answer: str) -> list[dict]:
         by_num = {int(r["criterion"]): r for r in json.loads(m.group(0))["results"]}
         for n, (i, _) in enumerate(model_items):
             r = by_num.get(n + 1, {})
-            results[i] = {"criterion": i + 1, "pass": bool(r.get("pass", False)),
+            # str(): a judge that returns "false" as a string must not count as a pass.
+            results[i] = {"criterion": i + 1, "pass": str(r.get("pass")).lower() == "true",
                           "reason": r.get("reason", "missing")}
     return [results[i] for i in range(len(criteria))]
 
@@ -336,6 +342,8 @@ def main() -> int:
     done = {}
     if raw_path.exists():
         for line in raw_path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
             row = json.loads(line)
             done[row["key"]] = row
     todo = [j for j in jobs if job_key(j[0]["id"], j[1], j[2], j[3]) not in done]

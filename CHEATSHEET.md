@@ -1,4 +1,4 @@
-# AI Cheatsheet (one-page summary)
+# AI cheatsheet (one-page summary)
 
 > Print it and keep it next to your monitor. For details, start with the [README](README.md).
 

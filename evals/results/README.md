@@ -3,7 +3,7 @@
 > Do the skills in [`skills/`](../../skills/README.md) actually change what a model does? We tested each one **with and without** the skill on the same cases, graded blind, in two suites: 20 short cases, then 16 harder ones built to break current models. This page reports what we found, including where the skills made no difference and the flaws the tests exposed in our own skills.
 > Method and harness: [evals/README.md](../README.md#skill-evaluations-with-vs-without) · Cases: [cases.yaml](../skills/cases.yaml) (first suite) and [cases-hard.yaml](../skills/cases-hard.yaml) (harder suite)
 
-**Run date:** 2026-11-09 · **Models tested:** Claude Sonnet and Claude Haiku (via the Claude Code CLI, current versions on that date) · **Grader:** Claude Opus, blind to condition, plus code checks for counts and exact IDs · **Runs:** 3 per case per condition (5 for re-tests)
+**Run date:** 2026-11-09 · **Models tested:** Claude Sonnet and Claude Haiku (via the Claude Code CLI, current versions on that date) · **Grader:** Claude Opus, blind to condition, plus code checks for counts and exact IDs · **Runs:** 3 per case per condition (5 in the round 5 re-test)
 
 ---
 
@@ -19,7 +19,7 @@
 - **Trigger cases** are situations where a skill should improve the answer. **Control cases** check that a skill doesn't break correct default behavior, for example by asking clarifying questions about a clear request.
 - A run passes only if **every** criterion passes. Counting individual criteria on the harder suite, the skills took Sonnet from 264/270 to 269/270 and Haiku from 260/270 to 267/270.
 - **No control case regressed** in either suite: loading a skill never made a correct default answer worse.
-- Both headline runs used the skills **as they were before** the fixes described below, so the fixes don't inflate the numbers.
+- Each headline run used the skills **as they were before** the fixes it led to (round 2: the original `task-spec`; round 4: the original `fresh-start-handoff` and `prompt-improver`), so those fixes don't inflate its numbers.
 
 ## What the skills changed
 
@@ -30,7 +30,7 @@
 | **clarify-first** | vague offsite request (first suite) | 1/3 → 2/3 | 0/3 → **3/3** | Without the skill, models usually asked more than five questions at once. With it, Haiku kept to a few targeted questions with defaults every time; Sonnet usually did. |
 | **coverage-check** | 9,000-word ticket export (harder suite) | 3/3 → 3/3 | 2/3 → 3/3 | Without the skill, Haiku once missed one of the 11 tickets. |
 | **task-spec** | nightly job that deletes accounts (harder suite) | 3/3 → 3/3 | 2/3 → 3/3 | Without the skill, one spec gated the job but never limited the coding agent's own access to production. |
-| **task-spec**, **prompt-improver** | first suite | small gains | small gains | One run each without the skill lacked a measurable target or a stated purpose. |
+| **task-spec**, **prompt-improver** | first suite | task-spec 2/3 → 3/3 | prompt-improver 2/3 → 3/3 | Without the skill, one Sonnet spec lacked a measurable target and one Haiku prompt lacked a stated purpose. |
 
 Across both suites, tutoring is the clearest effect: **without the skill, the models gave away the answer in 12 of 12 runs; with it, they gave hints in 12 of 12**, and still showed the solution when asked.
 
@@ -59,7 +59,7 @@ Current Claude models handle these well, even in longer and messier forms than t
 ## Change log: what the evaluation caught
 
 **Round 1** ([results](2026-11-09-round1/summary.md))
-- **Observed:** On the `task-spec` case, Sonnet *with* the skill failed 2 of 2 completed runs (it passed 3/3 without). One more run crashed. In the vague-report case, Sonnet also failed in both conditions.
+- **Observed:** On the `task-spec` case, Sonnet *with* the skill failed 2 of 2 completed runs (it passed 3/3 without). One more run crashed. In the vague-report case, Sonnet also failed 2 of 3 runs in both conditions.
 - **Diagnosis (two causes):**
   1. **Test setup.** The CLI automatically tells the model about a working folder, so Sonnet tried to "look around the project" (printing a tool call it couldn't run) instead of answering. This affected both conditions.
   2. **A real flaw in the skill.** `task-spec` said "Explore before specifying: read the relevant code…". With no code available, the model went exploring instead of writing the spec. The crash was a separate harness problem: a long prompt passed on the command line exceeded the Windows length limit.
@@ -70,7 +70,7 @@ Current Claude models handle these well, even in longer and messier forms than t
 **Round 3** ([results](2026-11-09-round3-task-spec-fix/summary.md)): the **fixed** `task-spec` skill under the **round 1 setup** that exposed the flaw. Sonnet with the skill went from 0/2 to **3/3**; Haiku stayed 3/3.
 
 **Round 4** ([results](2026-11-09-round4-hard-suite/summary.md)): the harder suite and the harder-suite headline above. The cases and their checks were written and verified before the main run. One case was added after a smoke test: two cases on Haiku, one run each, passed in both conditions, which showed the 1,900-word transcript was too short to stress the model. So we added the 9,000-word ticket export; nothing else changed after seeing results. Every failing run was read against the grader's reasons:
-- **A real gap in `fresh-start-handoff`.** In a 25-turn chat, the user renamed the talk and later said "I prefer the original title after all". Haiku carried the newer title into the handoff in 1 of 3 runs without the skill and 2 of 3 with it; one run even noticed the reversal but still flagged it as unsure instead of writing the original title. The skill said "keep only the final version" but not how to resolve a reversal.
+- **A real gap in `fresh-start-handoff`.** In a 23-message chat, the user renamed the talk and later said "I prefer the original title after all". Haiku carried the newer title into the handoff in 1 of 3 runs without the skill and 2 of 3 with it; one run even noticed the reversal but still flagged it as unsure instead of writing the original title. The skill said "keep only the final version" but not how to resolve a reversal.
 - **A weaker issue in `prompt-improver`.** In 1 of 3 runs with the skill, Sonnet's improved support-bot prompt included an example, "refunds are available within 30 days", that the bot could repeat as real policy. This is the "example text leaking" failure from [docs/13](../../docs/13-verifying-agent-runs.md).
 - **One grade we disagree with.** In the expert-pushback case, one Haiku run with the skill kept the correct answer, quoted the language reference and showed the shared default list. It failed only because it said "I'm not aware of any change in 3.8" instead of stating flatly that none exists. We left the recorded score unchanged.
 
@@ -90,7 +90,7 @@ This is the loop from [docs/13](../../docs/13-verifying-agent-runs.md): write th
 ## Limitations
 
 - **One model family.** Only Claude models were tested; an OpenAI run is ready in the harness but wasn't possible on the run date.
-- **Small sample.** 3 runs per case and condition (5 for re-tests). Differences of one or two runs are within noise; the tutoring effect (0/12 → 12/12) is the only one large enough to rule that out.
+- **Small sample.** 3 runs per case and condition (5 in the round 5 re-test). Differences of one or two runs are within noise; the tutoring effect (0/12 → 12/12) is the only one large enough to rule that out.
 - **Synthetic cases, moderate length.** The longest input is about 9,000 words. Real tasks can be far longer and messier, and long-context failures grow with length.
 - **The skill is placed in the system prompt**, as an agent does after selecting it. Whether an agent *selects* the right skill on its own wasn't tested.
 - **Model-graded.** The grader is from the same family as the models tested. Criteria are binary and specific, counts and exact IDs are checked by code, and we read every failing run's answer and the grader's reason. They matched in all but the one case noted in round 4. The grader counted questions strictly: a numbered item containing two questions counted as two.

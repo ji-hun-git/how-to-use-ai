@@ -42,7 +42,7 @@ Answer these about a task you do often. Concrete stories beat general principles
 | **Done:** what must be true for the work to count as finished? | Output requirements and done criteria |
 | **Never:** what must never happen, whatever the input? | Hard limits (and candidates for hard controls, see [docs/11](11-skills-and-agent-rules.md)) |
 
-Start with "the fork" or "the beginner's mistake". Either one usually yields a rule that changes results. You don't have to write polished sentences: describe a case out loud to an AI and ask it to interview you one question at a time and turn your answers into rules (the [clarify-first](../skills/clarify-first/SKILL.md) and [prompt-improver](../skills/prompt-improver/SKILL.md) skills do this). Then check that the rules it wrote match what you meant.
+Start with "the fork" or "the beginner's mistake". Either one usually yields a rule that changes results. You don't have to write polished sentences: describe a case out loud to an AI and ask it to interview you, a few targeted questions at a time, and turn your answers into rules (the [clarify-first](../skills/clarify-first/SKILL.md) and [prompt-improver](../skills/prompt-improver/SKILL.md) skills ask questions this way). Then check that the rules it wrote match what you meant.
 
 ---
 
@@ -90,7 +90,7 @@ Use numbers where your judgment really uses numbers (3 times, 10%, 48 hours), bu
 
 ## 5. Exceptions and where a human must decide
 
-Most fabrications and costly mistakes happen where a skill says nothing about exceptions. Cover three cases explicitly:
+Fabrications and costly mistakes tend to happen where a skill says nothing about exceptions. Cover three cases explicitly:
 
 | Case | Rule to write | Example |
 |---|---|---|
@@ -138,7 +138,7 @@ description: Reviews employee expense reports against the travel and meals polic
 ```
 
 Notes:
-- **Name and description:** the name should say when it's used; the description says what it does and when, in the third person, with words users actually type. If the description is vague, the skill won't be picked when it's needed.
+- **Name and description:** the name should say what it does; the description says what it does and when, in the third person, with words users actually type. If the description is vague, the skill won't be picked when it's needed.
 - **Number the rules** and say whether order matters.
 - **One or two example output lines** stabilize the format more than a paragraph of formatting instructions.
 - Keep the body focused on one job. Ready-made template: [templates/skill-template.md](../templates/skill-template.md).
@@ -191,6 +191,6 @@ The rule-trigger input matters most: take a case the format-only version got wro
 - Agent Skills specification — https://agentskills.io/specification
 - Agent Skills, optimizing descriptions — https://agentskills.io/skill-creation/optimizing-descriptions
 - Claude Code best practices (rules followed most of the time vs. hard controls; checks the agent can run) — https://code.claude.com/docs/en/best-practices
-- Anthropic, Demystifying evals for AI agents (start from real failures; grade outcomes) — https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
+- Anthropic, Demystifying evals for AI agents (start from real failures; grade outcomes) — https://www.anthropic.com/research/demystifying-evals-for-ai-agents
 - Hamel Husain & Shreya Shankar, LLM Evals FAQ (error analysis first; binary checks) — https://hamel.dev/blog/posts/evals-faq/
 - Anthropic, Prompting best practices (explain the reason behind a rule; use examples) — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices

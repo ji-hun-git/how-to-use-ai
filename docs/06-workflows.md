@@ -152,7 +152,7 @@ A prompt that worked once is worth using again. Many services offer ways to save
 | Feature | What it is |
 |---|---|
 | Projects | Bundle instructions and materials, then chat inside that space |
-| Custom GPTs / Gems | Your own chatbot with built-in instructions |
+| Custom GPTs / Gems | Your own chatbot with built-in instructions (Google is migrating Gems to skills) |
 | Skills | A folder that bundles instructions + scripts + materials. The AI loads it when needed |
 | Project memory files | `AGENTS.md` / `CLAUDE.md`, which a coding agent reads every time |
 
@@ -181,19 +181,19 @@ You can do the same in chat. When a conversation gets long, ask "Summarize what 
 - Karpathy, "context engineering" post (2025-06-25) — https://x.com/karpathy/status/1937902205765607626
 - Tobi Lütke, "context engineering" post (2025-06) — https://twitter.com/tobi/status/1935533422589399127
 - Simon Willison, "Context engineering" (2025-06-27) — https://simonwillison.net/2025/Jun/27/context-engineering/
-- Anthropic, Effective context engineering for AI agents (2025-09-29) — https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
-- Anthropic, Building effective agents (2024-12-19) — https://www.anthropic.com/engineering/building-effective-agents
-- Anthropic, How we built our multi-agent research system (2025-06-13) — https://www.anthropic.com/engineering/multi-agent-research-system
-- Anthropic, Effective harnesses for long-running agents (2025-11-26) — https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
-- Anthropic, Equipping agents for the real world with Agent Skills — https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills
+- Anthropic, Effective context engineering for AI agents (2025-09-29) — https://www.anthropic.com/research/effective-context-engineering-for-ai-agents
+- Anthropic, Building effective agents (2024-12-19) — https://www.anthropic.com/research/building-effective-agents
+- Anthropic, How we built our multi-agent research system (2025-06-13) — https://www.anthropic.com/research/multi-agent-research-system
+- Anthropic, Effective harnesses for long-running agents (2025-11-26) — https://www.anthropic.com/research/effective-harnesses-for-long-running-agents
+- Anthropic, Equipping agents for the real world with Agent Skills — https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills
 - Anthropic, Prompting best practices (chaining, subagents) — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
 - Claude Code, Best practices — https://code.claude.com/docs/en/best-practices
 - OpenAI Cookbook, GPT-5 prompting guide (meta-prompting; archived document) — https://developers.openai.com/cookbook/examples/gpt-5/gpt-5_prompting_guide
 - Chroma, Context Rot (2025) — https://research.trychroma.com/context-rot
 
 **2026 update (checked 2026-11-09)**
-- Anthropic, The components of agent memory (2026-11-06) — https://www.anthropic.com/engineering/components-of-agent-memory
-- Anthropic, Harness design for long-running application development (2026-03-24) — https://www.anthropic.com/engineering/harness-design-long-running-apps
+- Anthropic, The components of agent memory (2026-11-06) — https://www.anthropic.com/research/components-of-agent-memory
+- Anthropic, Harness design for long-running application development (2026-03-24) — https://www.anthropic.com/research/harness-design-long-running-apps
 - Chow, Retrieval and multi-step reasoning in 1-million-token contexts (2026-05, preprint) — https://arxiv.org/abs/2605.02173
 - Ethan Mollick, "An Opinionated Guide to Which AI to Use" (2026-07-23) — https://www.oneusefulthing.org/p/an-opinionated-guide-to-which-ai-b22
 - Model Context Protocol, specification changelog (revised 2026-07-28) — https://modelcontextprotocol.io/specification/latest/changelog

@@ -206,7 +206,7 @@ Here's the short version. Details are in [03. Teaching with examples](03-example
 
 ### 7-1. Divide the prompt with delimiters
 
-When context, material, and instructions are mixed in one paragraph, the AI may **mistake sentences in the material for instructions**. Separate them with XML tags or Markdown headings. All four companies give the same advice. Use **only one style** within a single prompt.
+When context, material, and instructions are mixed in one paragraph, the AI may **mistake sentences in the material for instructions**. Separate them with XML tags or Markdown headings. Anthropic, OpenAI, Google and Microsoft all give the same advice. Use **only one style** within a single prompt.
 
 ```xml
 <context>...</context>
@@ -238,7 +238,7 @@ Take 10 seconds before you hit send.
 - [ ] **Instruction:** What to do and when it's done are clear
 - [ ] **Format:** I set the structure and length
 - [ ] **Constraints:** I kept only the truly important rules and included a grounding rule
-- [ ] **Examples:** If style matters, I included 2–3
+- [ ] **Examples:** If style matters, I included 3–5
 - [ ] **Role:** I included one only where tone or perspective matters
 - [ ] **Separation:** I separated material and instructions with tags and put long material on top
 - [ ] **Colleague test:** A colleague without context could understand it
@@ -252,7 +252,7 @@ Take 10 seconds before you hit send.
 
 - Anthropic, Prompting best practices — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
 - Anthropic, Prompt engineering overview — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview
-- Anthropic, Effective context engineering for AI agents (2025-09-29) — https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+- Anthropic, Effective context engineering for AI agents (2025-09-29) — https://www.anthropic.com/research/effective-context-engineering-for-ai-agents
 - OpenAI, Prompt engineering guide — https://developers.openai.com/api/docs/guides/prompt-engineering
 - OpenAI, Structured outputs — https://developers.openai.com/api/docs/guides/structured-outputs
 - Google, Prompt design strategies — https://aistudio.google.com/docs/prompting-strategies

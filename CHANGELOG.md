@@ -4,12 +4,49 @@ This repository is updated as AI tools and official guides change. The evidence 
 
 ---
 
+## 2026-11-09 · Clean-up
+
+A full pass over every file: a second read of all guides, examples, skills, templates, reports and eval code, plus an automated link and format check.
+
+### Fixed
+- **Claims:**
+  - FlipFlop is now described as "models change their answer 46% of the time" (it measured all answer changes, not only correct ones)
+  - The constraint threshold in guide 04 is now 5–6, matching the 2026 evidence used everywhere else
+  - The GPT-4o rollback came three days after the update, not four
+  - OpenAI's abstention figures are checked against the original page
+  - A Karpathy paraphrase is no longer shown as a direct quote
+  - Unsourced absolutes were softened
+- **Consistency:**
+  - Template count (10)
+  - Example counts (3–5)
+  - Guide titles and questions in the README
+  - Rules 7–13 cover fabrication and verification
+  - "Four failure modes" is explained in guide 04
+  - Missing section 7 in the evidence report
+  - Date formats in the 2026 report
+- **Links:** 527 external links checked; 21 permanently redirected links updated to their current addresses; two sources relabeled (one now needs a login, one redirects to a general page); archived repositories marked.
+- **Eval harness:**
+  - A grader verdict of `"false"` sent as a string no longer counts as a pass
+  - Tag extraction ignores a stray tag mentioned in prose
+  - An empty case selection exits with a clear message
+  - Resume tolerates blank lines
+  - The ticket generator writes LF line endings on every OS
+  - The promptfoo check accepts a curly apostrophe
+  - `validate.py` reports an invalid manifest instead of crashing
+- **CI:** `actions/checkout` v7 and `actions/setup-python` v7 (Node 24)
+
+### Changed
+- Plugin version 1.1.0 (skill fixes since 1.0.0), with an `author` field
+- README: `resources/` listed, and the structure tree includes CI and the license
+
+---
+
 ## 2026-11-09 · Harder evals
 
 ### Added
 - **Harder eval suite** ([evals/skills/cases-hard.yaml](evals/skills/cases-hard.yaml)): 16 cases aimed at what still breaks current models:
   - long inputs, including a generated 9,000-word ticket export whose answer is computed by replaying its log
-  - requirements that change and change back over 25 turns
+  - requirements that change and change back over a 23-message chat
   - a 12-constraint email
   - near-miss and false-premise questions
   - subtle errors next to true claims
@@ -40,16 +77,14 @@ Made the guide usable inside AI tools, not just readable, after comparing it wit
 - **Guide 11** ([docs/11](docs/11-skills-and-agent-rules.md)): where instructions should live (prompt, rules file, skill, hook)
 - **Runnable eval** ([evals/](evals/README.md)): promptfoo comparison of a naive vs a grounded prompt
 - **Comparison page** ([COMPARISON.md](COMPARISON.md)), **llms.txt**, Mermaid diagrams, and a CI workflow that validates skills, manifests and links
-
-### Changed
-- README first screen: one-line installs, before/after evidence, and a failure-mode map
-
-### Also added
 - **Guide 12** ([docs/12](docs/12-writing-decision-rules.md)): writing decision rules (condition → action → exception), exceptions and human sign-off, revising instead of forking skills, and testing that a rule fires
 - **Skill template** ([templates/skill-template.md](templates/skill-template.md))
 - **Guide 13** ([docs/13](docs/13-verifying-agent-runs.md)): verifying agent runs (three levels of done, five silent failures, test sets with must/must-not lines, tracing causes, change logs, measuring benefit) and an [agent test plan template](templates/agent-test-plan.md)
 - **Skill eval harness** ([evals/skills/](evals/README.md#skill-evaluations-with-vs-without)): 20 with-vs-without cases across all 10 skills, blind grading, resumable runs
 - **Published skill eval results** ([evals/results/](evals/results/README.md)): three rounds on Claude Sonnet and Haiku with an Opus grader. Trigger cases with skills: Haiku 41/48 → 48/48, Sonnet 42/48 → 47/48; no control regressions; no measurable difference on 16 of 20 cases
+
+### Changed
+- README first screen: one-line installs, before/after evidence, and a failure-mode map
 
 ### Fixed
 - **task-spec skill:** the "explore before specifying" step made a model go looking for files when none were available instead of writing the spec. Step 1 now writes the spec with placeholders when the code can't be read. Found by round 1 of the evals and confirmed fixed in round 3
