@@ -70,6 +70,13 @@ Without the skill, both Claude Sonnet and Claude Haiku handed over the fix in al
 - On 20 of 30 trigger cases, current models already did the right thing without help. The skills matter most where they ask for behavior that differs from the default, such as hinting instead of answering, or asking before writing.
 - The evaluation caught three weak spots in the skills themselves. Each was fixed and re-tested, and the change log says what was changed and why.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/fig-eval-method-dark.svg">
+  <img alt="Figure: each test case is answered by Claude Sonnet and Claude Haiku twice, once with the base system prompt and once with the skill added, 3 runs each; Claude Opus grades every answer blind to the condition, with code checks for counts and exact IDs, and a run passes only if every criterion passes." src="assets/fig-eval-method-light.svg" width="100%">
+</picture>
+
+**Figure 2.** How each case was run and graded. Trigger cases are situations where the skill should help; control cases check that it changes nothing when it shouldn't.
+
 Method, all 36 cases, raw answers and limitations: [evals/results](evals/results/README.md).
 
 ## Install
@@ -120,6 +127,13 @@ The same rules also ship as an [18-rule AGENTS.md](drop-in/AGENTS.md), [30 copy-
 
 Well-known methods, graded by how much they still help with late-2026 models. Many classic papers tested 2022 to 2024 models; where newer evidence exists, the verdict follows it.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/fig-verdicts-dark.svg">
+  <img alt="Figure: verdicts for the 73 methods in docs/14 by group. In total 29 are graded Use, 23 Situational, 10 Mostly built in now and 11 Skip. Prompt optimization has the most Skip verdicts; evaluating with models and sycophancy have the most Use verdicts." src="assets/fig-verdicts-light.svg" width="100%">
+</picture>
+
+**Figure 3.** Verdicts for all 73 methods in [docs/14](docs/14-methods-and-papers.md), by group, drawn from the tables in that guide. The 12 that matter most:
+
 | Method | Verdict for 2026 | What the evidence says | Paper |
 |---|---|---|---|
 | "Think step by step" (zero-shot chain of thought) | Mostly built in now | Reasoning models moved about 3 points on GPQA Diamond and took 20-80% longer | [Meincke et al., 2025 (preprint)](https://arxiv.org/abs/2506.07142) |
@@ -140,6 +154,13 @@ All 73 methods, with the evidence, the 192 sources and copyable prompt patterns,
 ## The four failure modes
 
 Most bad answers fail in one of four ways. Each has a documented cause and a fix.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/fig-failure-modes-dark.svg">
+  <img alt="Figure: four stages of a task and the failure mode at each. The request: misunderstanding, guarded by clarify-first, task-spec and fresh-start-handoff. Working on the input: omission, guarded by coverage-check. The answer: fabrication, guarded by grounded-answer and verify-claims. Review and pushback: sycophancy, guarded by honest-critique and fresh-eyes-review." src="assets/fig-failure-modes-light.svg" width="100%">
+</picture>
+
+**Figure 4.** Where each failure mode enters a task, and the skills that guard against it.
 
 | Failure mode | Why it happens | What fixes it | Guide |
 |---|---|---|---|

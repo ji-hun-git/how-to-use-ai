@@ -8,6 +8,13 @@
 >
 > As a bonus, we also cover **sycophancy** (going along with the user), which often shows up alongside the three.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../assets/fig-failure-modes-dark.svg">
+  <img alt="Figure: four stages of a task and the failure mode at each. The request: misunderstanding, guarded by clarify-first, task-spec and fresh-start-handoff. Working on the input: omission, guarded by coverage-check. The answer: fabrication, guarded by grounded-answer and verify-claims. Review and pushback: sycophancy, guarded by honest-critique and fresh-eyes-review." src="../assets/fig-failure-modes-light.svg" width="100%">
+</picture>
+
+**Figure 1.** Where each failure mode enters a task, and the skills in this repo that guard against it.
+
 ---
 
 ## 2026 update: how current models fare

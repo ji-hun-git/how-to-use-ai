@@ -18,6 +18,13 @@
 - Numbers describe the models each study tested, and old numbers are shown with their model.
 - Where no 2025-2026 study was found, the entry says so. Those verdicts rest on the original paper plus indirect evidence and are the most likely to change.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../assets/fig-verdicts-dark.svg">
+  <img alt="Figure: verdicts for the 73 methods in docs/14 by group. In total 29 are graded Use, 23 Situational, 10 Mostly built in now and 11 Skip. Prompt optimization has the most Skip verdicts; evaluating with models and sycophancy have the most Use verdicts." src="../assets/fig-verdicts-light.svg" width="100%">
+</picture>
+
+**Figure 1.** Verdicts for the 73 methods in this guide, by group. The chart is drawn from the tables below by `scripts/make_assets.py`.
+
 The four failure modes are explained in [04. Failure modes](04-failure-modes.md), and popular tricks in [10. Myths vs. evidence](10-myths-vs-evidence.md). For a wider catalog without verdicts, the Prompt Report lists 58 text prompting techniques ([Schulhoff et al., 2024, preprint](https://arxiv.org/abs/2406.06608)).
 
 ---

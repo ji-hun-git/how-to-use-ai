@@ -16,6 +16,13 @@
 | Harder suite: 16 cases ([round 4](2026-11-09-round4-hard-suite/summary.md)) | Claude Sonnet | 39/42 (93%) | **41/42 (98%)** | 6/6 → 6/6 |
 | | Claude Haiku | 36/42 (86%) | **39/42 (93%)** | 6/6 → 6/6 |
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../assets/fig-results-dark.svg">
+  <img alt="Figure: pass rates without and with the skills. Sonnet first suite 42/48 to 47/48, Haiku first suite 41/48 to 48/48, Sonnet harder suite 39/42 to 41/42, Haiku harder suite 36/42 to 39/42; ten cases changed outcome, seven for the better." src="../../assets/fig-results-light.svg" width="100%">
+</picture>
+
+**Figure 1.** (a) Share of trigger-case runs that passed every check, with 95% Wilson intervals. (b) The 10 trigger cases where the skill changed the outcome, pooled over both models; * marks skills revised in round 5.
+
 - **Trigger cases** are situations where a skill should improve the answer. **Control cases** check that a skill doesn't break correct default behavior, for example by asking clarifying questions about a clear request.
 - A run passes only if **every** criterion passes. Counting individual criteria on the harder suite, the skills took Sonnet from 264/270 to 269/270 and Haiku from 260/270 to 267/270.
 - **No control case regressed** in either suite: loading a skill never made a correct default answer worse.

@@ -43,6 +43,13 @@ The view opens a side-by-side table of both prompts across all cases, with pass/
 
 [`skills/run.py`](skills/run.py) measures what each of the 10 [skills](../skills/README.md) changes. Every case in [`skills/cases.yaml`](skills/cases.yaml) is answered twice per model, once with a plain assistant prompt and once with the skill's `SKILL.md` loaded, and a grader model checks each criterion as pass/fail without seeing which condition produced the answer.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../assets/fig-eval-method-dark.svg">
+  <img alt="Figure: each test case is answered by Claude Sonnet and Claude Haiku twice, once with the base system prompt and once with the skill added, 3 runs each; Claude Opus grades every answer blind to the condition, with code checks for counts and exact IDs, and a run passes only if every criterion passes." src="../assets/fig-eval-method-light.svg" width="100%">
+</picture>
+
+**Figure 1.** How each case is run and graded.
+
 - **20 cases, 1 to 3 per skill.** 16 *trigger* cases where the skill should improve the result (vague requests, planted factual errors, unsupported citations, pushback on a correct answer, missing requirements, changed requirements in a long chat, homework requests). 4 *control* cases where correct default behavior must not break (a clear request shouldn't get clarifying questions, correct code shouldn't get invented issues, "show solution" should show it).
 - **Binary criteria**, all of which must pass.
 - **A harder second suite**, [`skills/cases-hard.yaml`](skills/cases-hard.yaml) (16 cases: 14 trigger, 2 control), built after current models passed most of the first one. It targets what the 2026 evidence says still breaks models:
