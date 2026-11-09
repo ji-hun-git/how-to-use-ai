@@ -1,9 +1,9 @@
 # Skill evaluation results
 
 > Do the skills in [`skills/`](../../skills/README.md) actually change what a model does? We tested each one **with and without** the skill on the same cases, graded blind, in two suites: 20 short cases, then 16 harder ones built to break current models. This page reports what we found, including where the skills made no difference and the flaws the tests exposed in our own skills.
-> Method and harness: [evals/README.md](../README.md#skill-evaluations-with-vs-without) · Cases: [cases.yaml](../skills/cases.yaml) (first suite) and [cases-hard.yaml](../skills/cases-hard.yaml) (harder suite)
+> Method and harness: [evals/README.md](../README.md#skill-evaluations-with-vs-without), Cases: [cases.yaml](../skills/cases.yaml) (first suite) and [cases-hard.yaml](../skills/cases-hard.yaml) (harder suite)
 
-**Run date:** 2026-11-09 · **Models tested:** Claude Sonnet and Claude Haiku (via the Claude Code CLI, current versions on that date) · **Grader:** Claude Opus, blind to condition, plus code checks for counts and exact IDs · **Runs:** 3 per case per condition (5 in the round 5 re-test)
+**Run date:** 2026-11-09. **Models tested:** Claude Sonnet and Claude Haiku (via the Claude Code CLI, current versions on that date). **Grader:** Claude Opus, blind to condition, plus code checks for counts and exact IDs. **Runs:** 3 per case per condition (5 in the round 5 re-test)
 
 ---
 

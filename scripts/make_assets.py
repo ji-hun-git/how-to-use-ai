@@ -1,193 +1,180 @@
 #!/usr/bin/env python3
-"""Generate the README images in assets/ (light and dark variants).
+"""Generate the README figure and the social preview from the published eval data.
 
-  banner-{light,dark}.svg        header banner
-  eval-results-{light,dark}.svg  with-vs-without results chart (numbers below, from evals/results/README.md)
-  social-preview.svg             1280x640 image for the repository's social preview (render to PNG to upload)
+  assets/fig-results-light.svg, assets/fig-results-dark.svg   Figure 1, one file per GitHub theme
+  assets/social-preview.png                                   1280x640 image for the repository's social preview
 
-Run:  python scripts/make_assets.py
-Update RESULTS when new eval results are published.
+Every number is read from evals/results/*/raw.jsonl, so the figure can't drift from the data.
+Requires matplotlib.   Run:  python scripts/make_assets.py
 """
 from __future__ import annotations
 
+import json
+import math
+from collections import defaultdict
 from pathlib import Path
-from xml.sax.saxutils import escape
 
-OUT = Path(__file__).resolve().parent.parent / "assets"
+import matplotlib
 
-SANS = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif"
-MONO = "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace"
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt  # noqa: E402
+from matplotlib.lines import Line2D  # noqa: E402
 
+ROOT = Path(__file__).resolve().parent.parent
+OUT = ROOT / "assets"
+RESULTS = ROOT / "evals" / "results"
+SUITES = [("First suite", "2026-11-09-round2"), ("Harder suite", "2026-11-09-round4-hard-suite")]
+MODELS = [("Sonnet", "claude-cli:sonnet"), ("Haiku", "claude-cli:haiku")]
+LABELS = {  # case id -> short label for panel (b); * = skill revised after this run (see the change log)
+    "tutor-homework": "learning-tutor: homework request",
+    "tutor-debug-attempt": "learning-tutor: student's buggy code",
+    "clarify-vague-offsite": "clarify-first: vague request",
+    "improve-weak-prompt": "prompt-improver: weak prompt",
+    "spec-vague-coding-task": "task-spec: vague coding task",
+    "coverage-ticket-export": "coverage-check: 9,000-word export",
+    "spec-destructive-job": "task-spec: destructive job",
+    "critique-expert-pushback": "honest-critique: expert pushback",
+    "handoff-reversals": "fresh-start-handoff: reversed edits*",
+    "improve-support-bot-prompt": "prompt-improver: support-bot prompt*",
+}
 THEMES = {
-    "light": {
-        "bg": "#ffffff", "panel": "#f6f8fa", "border": "#d0d7de", "text": "#1f2328", "muted": "#59636e",
-        "track": "#eaeef2", "without": "#afb8c1",
-        "accents": ["#0969da", "#bc4c00", "#cf222e", "#8250df"], "brand": "#0969da", "good": "#1a7f37",
-    },
-    "dark": {
-        "bg": "#0d1117", "panel": "#161b22", "border": "#30363d", "text": "#e6edf3", "muted": "#9198a1",
-        "track": "#21262d", "without": "#57606a",
-        "accents": ["#4493f8", "#db6d28", "#f85149", "#ab7df8"], "brand": "#4493f8", "good": "#3fb950",
-    },
+    "light": dict(text="#1f2328", muted="#59636e", grid="#d8dee4", without="#8c959f", with_="#0550ae", down="#bc4c00"),
+    "dark": dict(text="#e6edf3", muted="#9198a1", grid="#30363d", without="#8b949e", with_="#4493f8", down="#f0883e"),
 }
 
-FAILURES = [  # failure mode, the skill that fixes it first
-    ("Misunderstanding", "clarify-first"),
-    ("Omission", "coverage-check"),
-    ("Fabrication", "grounded-answer"),
-    ("Sycophancy", "honest-critique"),
-]
 
-# Trigger cases, passing runs without -> with the skill (evals/results/README.md, 2026-11-09).
-RESULTS = [
-    ("First suite · 20 short cases", "Claude Sonnet", (42, 48), (47, 48)),
-    ("First suite · 20 short cases", "Claude Haiku", (41, 48), (48, 48)),
-    ("Harder suite · 16 long or tricky cases", "Claude Sonnet", (39, 42), (41, 42)),
-    ("Harder suite · 16 long or tricky cases", "Claude Haiku", (36, 42), (39, 42)),
-]
-TUTORING = ((0, 12), (12, 12))
-CONTROLS = ((36, 36), (36, 36))
+def load(run_dir: str) -> list[dict]:
+    path = RESULTS / run_dir / "raw.jsonl"
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
-def t(x, y, s, size, fill, family=SANS, weight=400, anchor="start", spacing=None, opacity=None):
-    extra = f' letter-spacing="{spacing}"' if spacing is not None else ""
-    extra += f' fill-opacity="{opacity}"' if opacity is not None else ""
-    return (f'<text x="{x}" y="{y}" font-family="{family}" font-size="{size}" font-weight="{weight}" '
-            f'fill="{fill}" text-anchor="{anchor}"{extra}>{escape(s)}</text>')
+def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
+    """95% Wilson score interval for k successes out of n."""
+    p = k / n
+    centre = (p + z * z / (2 * n)) / (1 + z * z / n)
+    half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / (1 + z * z / n)
+    return max(0.0, centre - half), min(1.0, centre + half)
 
 
-def failure_cards(c, x0, y0, w, h, gap, title_size=23, skill_size=15):
-    parts = []
-    for i, (name, skills) in enumerate(FAILURES):
-        x = x0 + (i % 2) * (w + gap)
-        y = y0 + (i // 2) * (h + gap)
-        accent = c["accents"][i]
-        parts += [
-            f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="{c["panel"]}" stroke="{c["border"]}"/>',
-            f'<rect x="{x}" y="{y + 18}" width="5" height="{h - 36}" rx="2.5" fill="{accent}"/>',
-            t(x + 26, y + 40, f"0{i + 1}", 14, accent, MONO, 700, spacing=1),
-            t(x + 26, y + 40 + title_size + 8, name, title_size, c["text"], SANS, 650),
-            t(x + 26, y + h - 22, f"→ {skills}", skill_size, c["muted"], MONO),
-        ]
-    return parts
+def collect():
+    overall, cases = [], []
+    for suite, run_dir in SUITES:
+        rows = [r for r in load(run_dir) if r["kind"] == "trigger"]
+        for name, model in MODELS:
+            cnt = {}
+            for cond in ("without", "with"):
+                sub = [r for r in rows if r["model"] == model and r["condition"] == cond]
+                cnt[cond] = (sum(r["passed"] for r in sub), len(sub))
+            overall.append((f"{name}, {suite.lower()}", cnt["without"], cnt["with"]))
+        per = defaultdict(lambda: {"without": [0, 0], "with": [0, 0]})
+        for r in rows:
+            per[r["case"]][r["condition"]][0] += r["passed"]
+            per[r["case"]][r["condition"]][1] += 1
+        for case, c in per.items():
+            if c["without"][0] != c["with"][0]:
+                cases.append((LABELS.get(case, case), tuple(c["without"]), tuple(c["with"])))
+    cases.sort(key=lambda x: (x[2][0] - x[1][0], x[2][0]), reverse=True)
+    return overall, cases
 
 
-def banner(theme: str) -> str:
-    c = THEMES[theme]
-    W, H = 1280, 400
-    p = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" '
-        f'aria-label="how-to-use-ai: an evidence-based guide, tested Agent Skills and rules that stop AI from '
-        f'misunderstanding, omitting, fabricating and flattering">',
-        f'<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="24" fill="{c["bg"]}" stroke="{c["border"]}"/>',
-        t(64, 104, "EVIDENCE-BASED · TESTED · 2026", 15, c["brand"], SANS, 700, spacing=2.5),
-        t(62, 168, "how-to-use-ai", 60, c["text"], MONO, 700, spacing=-1),
-        t(64, 222, "Stop AI from misunderstanding you,", 25, c["text"], SANS, 500),
-        t(64, 256, "skipping things, making things up", 25, c["text"], SANS, 500),
-        t(64, 290, "and just agreeing with you.", 25, c["text"], SANS, 500),
-        t(64, 342, "Guide · 10 Agent Skills · Drop-in rules · 460+ sources", 19, c["muted"], SANS, 500),
-    ]
-    p += failure_cards(c, 676, 64, 262, 124, 16)
-    p.append("</svg>")
-    return "\n".join(p) + "\n"
+def style(ax, t):
+    for side in ("top", "right", "left"):
+        ax.spines[side].set_visible(False)
+    ax.spines["bottom"].set_color(t["muted"])
+    ax.tick_params(colors=t["muted"], labelcolor=t["text"], length=3)
+    ax.tick_params(axis="y", length=0)
+    ax.grid(axis="x", color=t["grid"], linewidth=0.6)
+    ax.set_axisbelow(True)
 
 
-def results_chart(theme: str) -> str:
-    c = THEMES[theme]
-    W, H = 1280, 724
-    bx, bw = 380, 600  # bar start and width of 100%
-    p = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" '
-        f'aria-label="Passing runs on trigger cases without and with the skills: first suite Sonnet 42/48 to 47/48, '
-        f'Haiku 41/48 to 48/48; harder suite Sonnet 39/42 to 41/42, Haiku 36/42 to 39/42. Tutoring 0/12 to 12/12. '
-        f'Control cases 36/36 either way.">',
-        f'<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="24" fill="{c["bg"]}" stroke="{c["border"]}"/>',
-        t(64, 72, "Same task, skill off vs. on", 30, c["text"], SANS, 700),
-        t(64, 108, "Share of runs that passed every check · trigger cases · blind-graded · 2026-11-09", 19, c["muted"]),
-        f'<rect x="{W - 380}" y="56" width="18" height="18" rx="3" fill="{c["without"]}"/>',
-        t(W - 354, 72, "Without skill", 18, c["muted"], SANS, 500),
-        f'<rect x="{W - 214}" y="56" width="18" height="18" rx="3" fill="{c["brand"]}"/>',
-        t(W - 188, 72, "With skill", 18, c["muted"], SANS, 500),
-    ]
-    top, step = 150, 100
-    # gridlines
-    for frac, label in ((0, "0%"), (0.5, "50%"), (1, "100%")):
-        x = bx + bw * frac
-        p.append(f'<line x1="{x}" y1="{top - 14}" x2="{x}" y2="{top + step * 4 - 18}" stroke="{c["border"]}" '
-                 f'stroke-dasharray="4 6"/>')
-        p.append(t(x, top + step * 4 + 2, label, 15, c["muted"], SANS, 500, anchor="middle"))
-    for i, (suite, model, wo, wi) in enumerate(RESULTS):
-        y = top + i * step
-        p.append(t(64, y + 20, model, 21, c["text"], SANS, 650))
-        p.append(t(64, y + 48, suite, 16, c["muted"]))
-        for j, ((num, den), fill) in enumerate(((wo, c["without"]), (wi, c["brand"]))):
-            by = y + j * 32
-            width = bw * num / den
-            p.append(f'<rect x="{bx}" y="{by}" width="{bw}" height="24" rx="6" fill="{c["track"]}"/>')
-            p.append(f'<rect x="{bx}" y="{by}" width="{width:.1f}" height="24" rx="6" fill="{fill}"/>')
-            pct = round(100 * num / den)
-            p.append(t(bx + bw + 18, by + 19, f"{num}/{den} · {pct}%", 19,
-                       c["text"] if j else c["muted"], MONO, 700 if j else 500))
-    # callout cards
-    cy, ch = top + step * 4 + 30, 134
-    cards = [
-        ("Tutoring (learning-tutor)", f"{TUTORING[0][0]}/{TUTORING[0][1]} → {TUTORING[1][0]}/{TUTORING[1][1]}",
-         "runs that gave hints instead of handing over the answer", c["good"]),
-        ("Control cases", f"{CONTROLS[0][0]}/{CONTROLS[0][1]} → {CONTROLS[1][0]}/{CONTROLS[1][1]}",
-         "no regressions: a skill never broke a correct default", c["brand"]),
-    ]
-    for k, (title, big, sub, accent) in enumerate(cards):
-        x = 64 + k * 584
-        p += [
-            f'<rect x="{x}" y="{cy}" width="568" height="{ch}" rx="14" fill="{c["panel"]}" stroke="{c["border"]}"/>',
-            f'<rect x="{x}" y="{cy + 18}" width="5" height="{ch - 36}" rx="2.5" fill="{accent}"/>',
-            t(x + 26, cy + 38, title, 18, c["muted"], SANS, 600),
-            t(x + 26, cy + 84, big, 38, accent, MONO, 700),
-            t(x + 26, cy + 114, sub, 17, c["muted"]),
-        ]
-    p.append("</svg>")
-    return "\n".join(p) + "\n"
+def figure(theme: str, overall, cases):
+    t = THEMES[theme]
+    plt.rcParams.update({"font.family": ["Arial", "Helvetica", "DejaVu Sans"], "font.size": 10.5,
+                         "svg.fonttype": "path", "text.color": t["text"]})
+    fig, (a, b) = plt.subplots(2, 1, figsize=(8.0, 8.2),
+                               gridspec_kw={"height_ratios": [len(overall) * 1.55, len(cases)], "hspace": 0.5})
+
+    # (a) all trigger cases, with 95% Wilson intervals
+    style(a, t)
+    for i, (label, wo, wi) in enumerate(overall):
+        y = len(overall) - 1 - i
+        for (k, n), dy, color, face in ((wo, 0.14, t["without"], "none"), (wi, -0.14, t["with_"], t["with_"])):
+            lo, hi = wilson(k, n)
+            a.plot([lo * 100, hi * 100], [y + dy, y + dy], color=color, linewidth=1.2, solid_capstyle="butt")
+            a.plot(k / n * 100, y + dy, "o", markersize=6.5, markerfacecolor=face, markeredgecolor=color,
+                   markeredgewidth=1.4)
+    a.set_yticks(range(len(overall)))
+    a.set_yticklabels([f"{o[0]}\n{o[1][0]}/{o[1][1]} → {o[2][0]}/{o[2][1]}" for o in reversed(overall)],
+                      linespacing=1.5)
+    a.set_xlim(55, 101)
+    a.set_xticks(range(55, 101, 5))
+    a.set_ylim(-0.6, len(overall) - 0.4)
+    a.set_xlabel("Runs that passed every check (%), with 95% CI", color=t["text"])
+    a.set_title("(a) All trigger cases", loc="left", fontsize=11.5, fontweight="bold", color=t["text"], pad=10)
+
+    # (b) cases where the skill changed the outcome
+    style(b, t)
+    for i, (label, wo, wi) in enumerate(cases):
+        y = len(cases) - 1 - i
+        color = t["with_"] if wi[0] >= wo[0] else t["down"]
+        b.annotate("", xy=(wi[0], y), xytext=(wo[0], y),
+                   arrowprops=dict(arrowstyle="-|>", color=color, linewidth=1.3, shrinkA=4, shrinkB=4,
+                                   mutation_scale=10))
+        b.plot(wo[0], y, "o", markersize=6.5, markerfacecolor="none", markeredgecolor=t["without"], markeredgewidth=1.4)
+        b.plot(wi[0], y, "o", markersize=6.5, markerfacecolor=color, markeredgecolor=color)
+    b.set_yticks(range(len(cases)))
+    b.set_yticklabels([c[0] for c in reversed(cases)])
+    b.set_xlim(-0.3, 6.3)
+    b.set_xticks(range(7))
+    b.set_ylim(-0.6, len(cases) - 0.4)
+    b.set_xlabel("Runs passed, of 6 (two models, 3 runs each)", color=t["text"])
+    b.set_title("(b) Cases where the skill changed the outcome", loc="left", fontsize=11.5, fontweight="bold",
+                color=t["text"], pad=10)
+
+    handles = [Line2D([], [], marker="o", linestyle="", markersize=6.5, markerfacecolor="none",
+                      markeredgecolor=t["without"], markeredgewidth=1.4, label="Without skill"),
+               Line2D([], [], marker="o", linestyle="", markersize=6.5, color=t["with_"], label="With skill"),
+               Line2D([], [], marker="o", linestyle="", markersize=6.5, color=t["down"], label="With skill, worse")]
+    fig.legend(handles=handles, loc="lower center", ncol=3, frameon=False, bbox_to_anchor=(0.5, -0.02),
+               labelcolor=t["text"])
+    fig.align_ylabels([a, b])
+    return fig
 
 
-def social_preview() -> str:
-    c = THEMES["light"]
-    W, H = 1280, 640
-    p = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">',
-        f'<rect width="{W}" height="{H}" fill="{c["bg"]}"/>',
-        f'<rect x="0" y="0" width="{W}" height="10" fill="{c["brand"]}"/>',
-        t(80, 120, "EVIDENCE-BASED · TESTED · 2026", 20, c["brand"], SANS, 700, spacing=3),
-        t(76, 210, "how-to-use-ai", 88, c["text"], MONO, 700, spacing=-2),
-        t(80, 280, "Stop AI from misunderstanding you, skipping things,", 32, c["text"], SANS, 500),
-        t(80, 324, "making things up and just agreeing with you.", 32, c["text"], SANS, 500),
-    ]
-    # four cards in one row
-    w, h, gap = 266, 130, 16
-    for i, (name, skills) in enumerate(FAILURES):
-        x, y = 80 + i * (w + gap), 380
-        accent = c["accents"][i]
-        p += [
-            f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="{c["panel"]}" stroke="{c["border"]}"/>',
-            f'<rect x="{x}" y="{y + 20}" width="5" height="{h - 40}" rx="2.5" fill="{accent}"/>',
-            t(x + 24, y + 42, f"0{i + 1}", 15, accent, MONO, 700, spacing=1),
-            t(x + 24, y + 76, name, 24, c["text"], SANS, 650),
-            t(x + 24, y + h - 22, f"→ {skills}", 15, c["muted"], MONO),
-        ]
-    p.append(t(80, 584, "Guide · 10 tested Agent Skills · Drop-in rules · github.com/ji-hun-git/how-to-use-ai",
-               20, c["muted"], SANS, 500))
-    p.append("</svg>")
-    return "\n".join(p) + "\n"
+def social_preview(overall) -> None:
+    plt.rcParams.update({"font.family": ["Arial", "Helvetica", "DejaVu Sans"]})
+    fig = plt.figure(figsize=(12.8, 6.4), dpi=100)
+    fig.patch.set_facecolor("#ffffff")
+    ink, muted, accent = "#1f2328", "#59636e", "#0550ae"
+    wo = sum(o[1][0] for o in overall), sum(o[1][1] for o in overall)
+    wi = sum(o[2][0] for o in overall), sum(o[2][1] for o in overall)
+    fig.text(0.07, 0.80, "how-to-use-ai", fontsize=54, fontweight="bold", color=ink, family="monospace")
+    for i, line in enumerate(["Evidence-based guide and tested Agent Skills that make AI",
+                              "assistants ask before guessing, cover every requirement,",
+                              "cite what they claim, and hold their ground when they're right."]):
+        fig.text(0.07, 0.62 - i * 0.075, line, fontsize=24, color=ink)
+    fig.add_artist(Line2D([0.07, 0.93], [0.30, 0.30], color="#d0d7de", linewidth=1.2))
+    fig.text(0.07, 0.19, f"Skills on vs. off, blind-graded:  {wo[0]}/{wo[1]} → {wi[0]}/{wi[1]} passing runs",
+             fontsize=20, color=accent, fontweight="bold")
+    fig.text(0.07, 0.09, "github.com/ji-hun-git/how-to-use-ai", fontsize=18, color=muted)
+    fig.savefig(OUT / "social-preview.png", dpi=100, facecolor="#ffffff")
+    plt.close(fig)
 
 
 def main() -> None:
     OUT.mkdir(exist_ok=True)
-    files = {"social-preview.svg": social_preview()}
+    overall, cases = collect()
     for theme in THEMES:
-        files[f"banner-{theme}.svg"] = banner(theme)
-        files[f"eval-results-{theme}.svg"] = results_chart(theme)
-    for name, svg in files.items():
-        (OUT / name).write_text(svg, encoding="utf-8", newline="\n")
-        print("wrote", (OUT / name).relative_to(OUT.parent).as_posix())
+        fig = figure(theme, overall, cases)
+        path = OUT / f"fig-results-{theme}.svg"
+        fig.savefig(path, format="svg", bbox_inches="tight", pad_inches=0.3, transparent=True,
+                    metadata={"Date": None})
+        plt.close(fig)
+        print("wrote", path.relative_to(ROOT).as_posix())
+    social_preview(overall)
+    print("wrote assets/social-preview.png")
+    for label, wo, wi in overall + cases:
+        print(f"  {label}: {wo[0]}/{wo[1]} -> {wi[0]}/{wi[1]}")
 
 
 if __name__ == "__main__":

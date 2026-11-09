@@ -76,7 +76,7 @@ Title: Q3 results report
 
 ### 3-3. Examples that show the reasoning
 
-For tasks that require reasoning, show examples in the order **problem → approach → answer**. Anthropic explains that the model's own thinking then comes to resemble the examples.
+For tasks that require reasoning, show examples in the order **problem → approach → answer**. Anthropic explains that the model's own thinking then comes to resemble the examples. With reasoning models, though, worked examples mainly set the format and can lower accuracy ([DeepSeek-AI, Nature 2025](https://arxiv.org/abs/2501.12948)), so try without them first and keep them only if a comparison shows they help ([14. Methods](14-methods-and-papers.md#2-examples-wording-and-personas)).
 
 ### 3-4. Your own writing as examples (matching a style)
 
@@ -101,9 +101,11 @@ Don't borrow their content or topics.
 | Instructions and examples **conflict** | Long examples, but the instruction says "keep it short" | Revise the examples to match the instructions |
 | Reasoning model performance **actually drops** | The examples interfere with the model's own reasoning | Try without examples and compare |
 
-> 📌 The way results get pulled by the label distribution or order of examples has been studied for a long time (Zhao et al., "Calibrate Before Use," 2021). The effect is weaker in recent models, but it's still worth checking for **classification tasks**.
+> [!NOTE]
+> The way results get pulled by the label distribution or order of examples has been studied for a long time (Zhao et al., "Calibrate Before Use," 2021). A 2024 study found that sensitivity to formatting and order persisted with model scale and instruction tuning ([Sclar et al., ICLR 2024](https://arxiv.org/abs/2310.11324)), so it's still worth checking, especially for **classification tasks**.
 
-> 📌 In a preprint by Microsoft researchers (2024), giving few-shot examples to a reasoning model (o1) **actually lowered its performance.** That's why "no examples first" is the default for reasoning models.
+> [!NOTE]
+> In a preprint by Microsoft researchers (2024), giving few-shot examples to a reasoning model (o1) **actually lowered its performance.** That's why "no examples first" is the default for reasoning models.
 
 ---
 

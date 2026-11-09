@@ -1,11 +1,12 @@
 # Example 8. Prompt clinic: 12 common prompts, diagnosed and fixed
 
 > Each case: the prompt people actually write → what goes wrong (and which failure mode) → a fixed version → the evidence.
-> Failure modes: 🎯 misunderstanding · 📋 omission · 🔍 fabrication · 🪞 sycophancy. Background: [docs/04](../docs/04-failure-modes.md).
+> Background on the failure modes: [docs/04](../docs/04-failure-modes.md).
 
 ---
 
-### 1. "Summarize this." 🎯📋
+### 1. "Summarize this."
+**Failure mode:** misunderstanding, omission  
 **What goes wrong:** No reader, purpose or length, so you get a generic summary that over-weights the start and end of the document and may add conclusions that aren't in it.
 **Fixed:**
 ```text
@@ -14,7 +15,8 @@ For a manager who missed the meeting and needs the decisions in 2 minutes: quote
 ```
 **Evidence:** long documents first, question last (up to 30% better in Anthropic's tests); middle content is used worst ([Lost in the Middle](https://arxiv.org/abs/2307.03172)). → [Example 2](02-document-summary.md)
 
-### 2. "Give me 5 studies on X with links." 🔍
+### 2. "Give me 5 studies on X with links."
+**Failure mode:** fabrication  
 **What goes wrong:** Without search, the model produces plausible-looking but invented references. Even 2026-released models fabricated references in 35% of responses in one study (preprint).
 **Fixed:**
 ```text
@@ -22,7 +24,8 @@ Use web search. Find studies on X published since 2023. Only list papers you act
 ```
 **Evidence:** [Topaz et al., 2026](https://arxiv.org/abs/2609.14988); 2,266 court cases involving AI-fabricated citations ([database](https://www.damiencharlotin.com/hallucinations/)). → [Example 3](03-research-with-sources.md)
 
-### 3. "Are you sure?" 🪞
+### 3. "Are you sure?"
+**Failure mode:** sycophancy  
 **What goes wrong:** It reads as social pressure. In a 2023 study, models changed their answer 46% of the time and accuracy dropped 17%.
 **Fixed:**
 ```text
@@ -30,7 +33,8 @@ Re-solve this from scratch without assuming your first answer is right or wrong.
 ```
 **Evidence:** [FlipFlop](https://arxiv.org/abs/2311.08596); current models still collapse under sustained pushback ([SPINE, 2026 preprint](https://arxiv.org/abs/2609.09090)).
 
-### 4. "I wrote this. What do you think?" 🪞
+### 4. "I wrote this. What do you think?"
+**Failure mode:** sycophancy  
 **What goes wrong:** Stating authorship and asking an open question invites praise. People also trust flattering answers more ([*Science*, 2026](https://www.science.org/doi/10.1126/science.aec8352)).
 **Fixed:**
 ```text
@@ -38,7 +42,8 @@ Another team submitted this proposal. First define 5 criteria a strong proposal 
 ```
 → [templates/honest-critique.md](../templates/honest-critique.md)
 
-### 5. "You are a world-class marketing genius. Write our launch post." 🎯
+### 5. "You are a world-class marketing genius. Write our launch post."
+**Failure mode:** misunderstanding  
 **What goes wrong:** The persona doesn't improve accuracy, and the real information (product, audience, goal, tone, length) is missing.
 **Fixed:**
 ```text
@@ -46,7 +51,8 @@ Write a launch post for {{product}}, aimed at {{audience}} who care about {{bene
 ```
 **Evidence:** expert personas didn't reliably improve factual accuracy ([Wharton Report 4](https://gail.wharton.upenn.edu/research-and-insights/playing-pretend-expert-personas/); [Zheng et al.](https://arxiv.org/abs/2311.10054)).
 
-### 6. "IMPORTANT!!! NEVER use jargon!!! ALWAYS be concise!!!" 🎯
+### 6. "IMPORTANT!!! NEVER use jargon!!! ALWAYS be concise!!!"
+**Failure mode:** misunderstanding  
 **What goes wrong:** Current models over-apply emphasized rules and become rigid; the reason for the rule is missing, so they can't generalize it.
 **Fixed:**
 ```text
@@ -54,17 +60,20 @@ Readers are new customers with no technical background, so use everyday words an
 ```
 **Evidence:** explain the why; reserve absolute words for true invariants ([Anthropic best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices); [OpenAI GPT-5.6 guide](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.6#prompting-best-practices)).
 
-### 7. "Think step by step." (to a reasoning model) 🎯
+### 7. "Think step by step." (to a reasoning model)
+**Failure mode:** misunderstanding  
 **What goes wrong:** Reasoning models already reason. In a 2025 study the phrase changed their accuracy by only +3.1 to −3.3 points while making answers 20–80% slower.
 **Fixed:** State the goal and the done criteria, and raise the app's reasoning-effort setting if the problem is hard.
 **Evidence:** [Wharton Report 2](https://arxiv.org/abs/2506.07142). → [docs/05](../docs/05-models-and-reasoning.md)
 
-### 8. A 20-rule prompt 📋
+### 8. A 20-rule prompt
+**Failure mode:** omission  
 **What goes wrong:** The more constraints a prompt has, the less likely all are met; reliable compliance broke down beyond about 5–6 simultaneous constraints in a 2026 preprint.
 **Fixed:** Keep the ~5 rules that matter most, number them, ask for a coverage table at the end, and move the rest to a second pass.
 **Evidence:** [Vasileva, 2026](https://arxiv.org/abs/2608.12426); [IFScale](https://arxiv.org/abs/2507.11538). → [templates/coverage-check.md](../templates/coverage-check.md)
 
-### 9. Adding requirements one message at a time 🎯
+### 9. Adding requirements one message at a time
+**Failure mode:** misunderstanding  
 **What goes wrong:** The model locks in early assumptions; performance dropped 39% on average when the same request was spread across turns.
 **Fixed:**
 ```text
@@ -73,7 +82,8 @@ Consolidate everything I've asked for so far into one complete prompt.
 Then paste it into a new chat.
 **Evidence:** [Laban et al., ICLR 2026](https://arxiv.org/abs/2505.06120). → [skills/fresh-start-handoff](../skills/fresh-start-handoff/SKILL.md)
 
-### 10. "What's the average growth rate in this table?" 🔍🎯
+### 10. "What's the average growth rate in this table?"
+**Failure mode:** fabrication, misunderstanding  
 **What goes wrong:** Mental arithmetic errors, and an undefined metric (year over year? compound?).
 **Fixed:**
 ```text
@@ -81,7 +91,8 @@ Compute growth as (2026 total / 2025 total) − 1 per region by running code. Ch
 ```
 → [Example 4](04-data-analysis.md)
 
-### 11. "Fix the login bug." (to a coding agent) 🎯🔍
+### 11. "Fix the login bug." (to a coding agent)
+**Failure mode:** misunderstanding, fabrication  
 **What goes wrong:** No symptom, location or definition of fixed; the agent guesses, and may "fix" something else or claim success without testing.
 **Fixed:**
 ```text
@@ -89,7 +100,8 @@ Login returns 500 after the session expires. Look at src/auth/. First write a fa
 ```
 **Evidence:** [Claude Code best practices](https://code.claude.com/docs/en/best-practices). → [Example 5](05-coding-agent.md)
 
-### 12. "Explain this to me." (while studying) 🎯
+### 12. "Explain this to me." (while studying)
+**Failure mode:** misunderstanding  
 **What goes wrong:** A full answer feels like learning but can reduce what you can do on your own: unrestricted AI help raised practice scores but cut later exam scores by 17% in one trial.
 **Fixed:**
 ```text

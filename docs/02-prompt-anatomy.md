@@ -1,4 +1,4 @@
-# 02. The six elements of a prompt: Role · Context · Instruction · Format · Constraints · Examples
+# 02. The six elements of a prompt: Role, Context, Instruction, Format, Constraints, Examples
 
 > A good prompt is defined not by its length but by **how little the AI has to guess**.
 > The six elements are a checklist for reducing that guesswork. You don't need all six every time, but **if an element is missing, it should be missing on purpose.**
@@ -16,7 +16,8 @@
 | **Constraints** | What must it follow or avoid? | ★★☆ | Incidents, rule violations |
 | **Role** | What perspective and tone? | ★☆☆ | Tone mismatch (little to do with accuracy) |
 
-> ⚠️ Many courses put "assign a role" first, but the research shows that role is **the element with the least effect on accuracy**. Keep the order "Role · Context · Instruction · Format · Constraints · Examples" because it's easy to remember, but **spend your time on Context, Instruction, and Format**. (Evidence in Section 1 below.)
+> [!WARNING]
+> Many courses put "assign a role" first, but the research shows that role is **the element with the least effect on accuracy**. Keep the order "Role, Context, Instruction, Format, Constraints, Examples" because it's easy to remember, but **spend your time on Context, Instruction, and Format**. (Evidence in Section 1 below.)
 
 ### How this maps to other frameworks
 
@@ -168,7 +169,7 @@ A prompt full of Markdown tends to get an answer full of Markdown. Write your pr
 
 ### 5-1. The fewer the constraints, the better they're followed
 
-The more instructions you give, **the lower the chance that all of them are followed.** Several studies (ManyIFEval 2025, IFScale 2025) found that performance declined steadily as the number of instructions grew; in an experiment with 500 instructions, even the best model followed only 68%. 🆕 In a 2026 experiment with 15 models, the rate of following every constraint dropped sharply once the number of simultaneous constraints **exceeded 5–6** (Vasileva, 2026, preprint). **Keep only the truly important constraints, around five of them, and if you need more, split the task into steps.**
+The more instructions you give, **the lower the chance that all of them are followed.** Several studies (ManyIFEval 2025, IFScale 2025) found that performance declined steadily as the number of instructions grew; in an experiment with 500 instructions, even the best model followed only 68%. In a 2026 experiment with 15 models, the rate of following every constraint dropped sharply once the number of simultaneous constraints **exceeded 5–6** (Vasileva, 2026, preprint). **Keep only the truly important constraints, around five of them, and if you need more, split the task into steps.**
 
 ### 5-2. Drop ALL CAPS and "NEVER!!!" emphasis (as of 2026)
 
@@ -186,7 +187,7 @@ Emphasis such as `IMPORTANT`, `MUST`, and `NEVER` used to help, but current guid
 If something isn't in the material I provided, don't guess. Write "Not in the material."
 ```
 
-This one line is the cheapest way to reduce fabrication (hallucination). → [04. Misunderstanding · Omission · Fabrication](04-failure-modes.md)
+This one line is the cheapest way to reduce fabrication (hallucination). → [04. Misunderstanding, Omission, Fabrication](04-failure-modes.md)
 
 ---
 

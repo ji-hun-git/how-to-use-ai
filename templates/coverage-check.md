@@ -3,7 +3,7 @@
 > **Omission**: skipping some of the requirements, missing content in the middle of long material, or cutting the output off partway.
 > Causes and evidence are covered in [docs/04-failure-modes.md](../docs/04-failure-modes.md#2-omission).
 
-The more instructions you give, the lower the chance that all of them are followed. In long material, the **middle section** is what gets missed most often (Lost in the Middle).
+The more instructions you give, the lower the chance that all of them are followed. In long material, accuracy drops as the input grows, and older models were especially likely to miss the **middle** (Lost in the Middle, 2023; Context Rot, 2025).
 
 ---
 

@@ -1,17 +1,17 @@
 # Prompt library: 30 evidence-based prompts by task
 
-> Copy, fill in the `{{blanks}}`, and paste. Every prompt is built from the six elements (role, context, instruction, format, constraints, examples) and tagged with the failure modes it guards against:
-> 🎯 misunderstanding · 📋 omission · 🔍 fabrication (hallucination) · 🪞 sycophancy
+> Copy, fill in the `{{blanks}}`, and paste. Every prompt is built from the six elements (role, context, instruction, format, constraints, examples) and tagged with the failure modes it guards against: misunderstanding, omission, fabrication (hallucination) and sycophancy.
 >
-> Why these patterns work: [docs/02 (six elements)](../docs/02-prompt-anatomy.md) · [docs/04 (failure modes)](../docs/04-failure-modes.md). Longer, annotated versions: [templates/](../templates/).
+> Why these patterns work: [docs/02 (six elements)](../docs/02-prompt-anatomy.md), [docs/04 (failure modes)](../docs/04-failure-modes.md). Longer, annotated versions: [templates/](../templates/).
 
-**Contents:** [Writing](#writing) · [Summarizing](#summarizing) · [Research](#research) · [Analysis & decisions](#analysis--decisions) · [Coding](#coding) · [Learning](#learning) · [Thinking partner](#thinking-partner) · [Building agents](#building-agents)
+**Contents:** [Writing](#writing), [Summarizing](#summarizing), [Research](#research), [Analysis & decisions](#analysis--decisions), [Coding](#coding), [Learning](#learning), [Thinking partner](#thinking-partner), [Building agents](#building-agents)
 
 ---
 
 ## Writing
 
-### 1. Email that gets a decision 🎯🪞
+### 1. Email that gets a decision
+*Guards against: misunderstanding, sycophancy.*
 ```text
 Write an email to {{recipient and their role}} about {{topic}}.
 Context: {{what happened, why it matters, what options exist}}. They prefer the conclusion first.
@@ -19,7 +19,8 @@ Format: subject line + at most 5 sentences: conclusion, reason, options, the dec
 Constraints: state facts plainly, apologize at most once, don't blame anyone.
 ```
 
-### 2. Rewrite for a different audience 🎯
+### 2. Rewrite for a different audience
+*Guards against: misunderstanding.*
 ```text
 Rewrite the text below for {{audience}}, who {{what they know / don't know}}.
 Goal: after reading, they should be able to {{action or decision}}.
@@ -28,7 +29,8 @@ Length: about {{n}} words.
 <text>{{paste}}</text>
 ```
 
-### 3. Draft in my voice 🎯
+### 3. Draft in my voice
+*Guards against: misunderstanding.*
 ```text
 Below are 3 samples of my writing. Note sentence length, tone and recurring phrases, then write {{piece}} about {{topic}} in the same style.
 Copy the style, not the content or exact sentences.
@@ -37,7 +39,8 @@ Copy the style, not the content or exact sentences.
 <example>{{sample 3}}</example>
 ```
 
-### 4. Outline first, then sections 📋
+### 4. Outline first, then sections
+*Guards against: omission.*
 ```text
 I need a {{document type}} on {{topic}} for {{audience}}, about {{length}}.
 Step 1: give me only an outline with section headings and one line on what each covers. Wait for my approval.
@@ -48,7 +51,8 @@ Step 2: when I say "next", write one section at a time.
 
 ## Summarizing
 
-### 5. Decision-ready summary of a long document 📋🔍
+### 5. Decision-ready summary of a long document
+*Guards against: omission, fabrication.*
 ```text
 <document>{{paste long document}}</document>
 
@@ -62,7 +66,8 @@ This summary is for {{reader}}, who has 2 minutes and needs to know what was dec
 If an owner or deadline isn't in the document, write "TBD". Don't infer it.
 ```
 
-### 6. Meeting notes → action items 📋🔍
+### 6. Meeting notes → action items
+*Guards against: omission, fabrication.*
 ```text
 <transcript>{{paste}}</transcript>
 Extract every action item as: action | owner | due date | quote from the transcript.
@@ -70,7 +75,8 @@ Only include items someone actually committed to. If owner or date is missing, w
 End with: "Possibly missed:" listing anything ambiguous.
 ```
 
-### 7. Compare two documents 📋🔍
+### 7. Compare two documents
+*Guards against: omission, fabrication.*
 ```text
 <document index="1" source="{{name}}">{{...}}</document>
 <document index="2" source="{{name}}">{{...}}</document>
@@ -83,7 +89,8 @@ If a document doesn't address a criterion, write "not addressed". Don't fill gap
 
 ## Research
 
-### 8. Research with verifiable sources 🔍
+### 8. Research with verifiable sources
+*Guards against: fabrication.*
 ```text
 Research {{question}} (use web search). Prefer primary sources: papers, official reports, government data, official docs.
 Output a table: claim | source (title, publisher, date) | URL | primary or secondary | confidence.
@@ -91,14 +98,16 @@ Only include sources you actually opened. If you couldn't verify a number, mark 
 End with: where sources disagree, and what evidence would settle it.
 ```
 
-### 9. Find the evidence against 🪞🔍
+### 9. Find the evidence against
+*Guards against: sycophancy, fabrication.*
 ```text
 Here is my current conclusion: {{conclusion}}.
 Search for the strongest evidence and arguments AGAINST it. For each: the claim, the source (URL), and how strong it is.
 Then tell me whether my conclusion survives, needs qualifying, or should be dropped.
 ```
 
-### 10. Fact-check a draft 🔍
+### 10. Fact-check a draft
+*Guards against: fabrication.*
 ```text
 Fact-check the text below.
 1. List every checkable claim, one per line (names, dates, numbers, quotes, citations).
@@ -108,7 +117,8 @@ Fact-check the text below.
 <text>{{paste}}</text>
 ```
 
-### 11. Explain a paper honestly 🔍🎯
+### 11. Explain a paper honestly
+*Guards against: fabrication, misunderstanding.*
 ```text
 <paper>{{paste paper or abstract + methods}}</paper>
 Explain this paper for {{audience}}: question, method, sample, main result (with numbers), limitations stated by the authors, and whether it's peer-reviewed.
@@ -119,7 +129,8 @@ Separate what the paper shows from what it doesn't show. Quote the sentence behi
 
 ## Analysis & decisions
 
-### 12. Data analysis with code 🔍📋🎯
+### 12. Data analysis with code
+*Guards against: fabrication, omission, misunderstanding.*
 ```text
 The attached {{file}} contains {{what}}. (Units: {{units}}.)
 0. Check the data first: rows/columns, missing values, duplicates, outliers, unit problems. Propose fixes and wait for my OK.
@@ -129,7 +140,8 @@ The attached {{file}} contains {{what}}. (Units: {{units}}.)
 If the data can't explain why something happened, say "can't tell from the data".
 ```
 
-### 13. Decision matrix 🎯🪞
+### 13. Decision matrix
+*Guards against: misunderstanding, sycophancy.*
 ```text
 I'm choosing between {{options}} for {{goal}}. Constraints: {{budget, time, must-haves}}.
 1. Propose 5–7 criteria with weights and explain each weight; let me adjust.
@@ -138,14 +150,16 @@ I'm choosing between {{options}} for {{goal}}. Constraints: {{budget, time, must
 Don't favor the option I seem to prefer.
 ```
 
-### 14. Pre-mortem 🪞
+### 14. Pre-mortem
+*Guards against: sycophancy.*
 ```text
 Imagine it's {{date}} and {{project/plan}} has failed badly.
 Write the 7 most likely reasons it failed, ranked by likelihood × impact. For each: the early warning sign and one thing we can do now to prevent it.
 <plan>{{paste}}</plan>
 ```
 
-### 15. Spreadsheet formula 🎯🔍
+### 15. Spreadsheet formula
+*Guards against: misunderstanding, fabrication.*
 ```text
 In {{Excel / Google Sheets}}, columns: {{A = ..., B = ...}}. I want {{result}} in column {{X}}.
 Give the formula, explain each part in one line, and give 2 test rows with the expected output so I can check it.
@@ -156,7 +170,8 @@ If my request is ambiguous (e.g., how to treat blanks), state your assumption.
 
 ## Coding
 
-### 16. Bug fix spec for an agent 🎯🔍
+### 16. Bug fix spec for an agent
+*Guards against: misunderstanding, fabrication.*
 ```text
 Bug: {{symptom}}. Reproduce: {{steps}}. Error: {{exact message}}.
 Look at {{files/dirs}}. Don't change code yet: first explain the likely cause with file and line references.
@@ -164,7 +179,8 @@ Then: write a failing test that reproduces the bug, run it and show it fails; ma
 Don't edit the test to make it pass. Report remaining risks.
 ```
 
-### 17. Feature with done criteria 🎯📋
+### 17. Feature with done criteria
+*Guards against: misunderstanding, omission.*
 ```text
 Goal: {{feature}} so that {{user benefit}}.
 Context: {{relevant files, existing patterns to follow}}.
@@ -173,7 +189,8 @@ Done when: {{runnable checks: tests pass, command output, screenshot matches}}.
 Plan first and wait for my approval before writing code.
 ```
 
-### 18. Code review that matters 🪞
+### 18. Code review that matters
+*Guards against: sycophancy.*
 ```text
 Review this diff for correctness, security and maintainability, in that order.
 List only issues that would cause a bug, a security problem, or real maintenance pain, each with file:line, why it matters, and a fix.
@@ -181,13 +198,15 @@ Skip style nitpicks. If there are no significant issues, say so.
 <diff>{{paste}}</diff>
 ```
 
-### 19. Explain unfamiliar code 🔍
+### 19. Explain unfamiliar code
+*Guards against: fabrication.*
 ```text
 Explain what {{file/function}} does for someone new to this codebase: purpose, inputs/outputs, key steps, side effects, and how it's called.
 Only describe code you've actually read; if something depends on code you haven't opened, say so and open it first.
 ```
 
-### 20. Write tests for edge cases 📋
+### 20. Write tests for edge cases
+*Guards against: omission.*
 ```text
 Write tests for {{function}} in {{file}}. Cover: normal cases, boundaries, empty/invalid input, and {{domain-specific edge cases}}.
 First list the cases you'll test as a numbered list, then write the tests, then run them and show the output.
@@ -198,21 +217,24 @@ Don't mock {{X}}.
 
 ## Learning
 
-### 21. Tutor mode 🎯
+### 21. Tutor mode
+*Guards against: misunderstanding.*
 ```text
 Be my tutor for {{topic}}. My level: {{level}}.
 Don't give me answers or finished code directly. When I'm stuck, give one small hint at a time.
 When I answer, ask me why before telling me if I'm right. Show the full solution only if I type "show solution".
 ```
 
-### 22. Check my understanding 🪞
+### 22. Check my understanding
+*Guards against: sycophancy.*
 ```text
 I'll explain {{concept}} in my own words. Point out (1) what's wrong, (2) what's missing, (3) what's vague.
 No praise; if there are no gaps, just say "no gaps".
 My explanation: {{...}}
 ```
 
-### 23. Quiz me on my weak spots 🎯
+### 23. Quiz me on my weak spots
+*Guards against: misunderstanding.*
 ```text
 Write 5 questions on {{topic}} that target common misconceptions. Ask one at a time; after each of my answers, grade it and explain briefly.
 ```
@@ -221,13 +243,15 @@ Write 5 questions on {{topic}} that target common misconceptions. Ask one at a t
 
 ## Thinking partner
 
-### 24. Stress-test my plan (third-person framing) 🪞
+### 24. Stress-test my plan (third-person framing)
+*Guards against: sycophancy.*
 ```text
 Another team submitted the plan below. As a skeptical {{reviewer type}}, give its 3 biggest weaknesses with evidence and a fix for each, then the strongest argument that it will fail.
 <plan>{{paste}}</plan>
 ```
 
-### 25. Brainstorm, then filter 🎯
+### 25. Brainstorm, then filter
+*Guards against: misunderstanding.*
 ```text
 Goal: {{goal}}. Constraints: {{constraints}}.
 1. Generate 20 varied ideas, one line each (include some unconventional ones).
@@ -235,12 +259,14 @@ Goal: {{goal}}. Constraints: {{constraints}}.
 3. Score the ideas and return the top 5 with the reason each made the cut.
 ```
 
-### 26. Steelman both sides 🪞
+### 26. Steelman both sides
+*Guards against: sycophancy.*
 ```text
 Give the strongest case for and the strongest case against {{position}}, as an expert on each side would argue it. Then list the facts that would change which side is right.
 ```
 
-### 27. Untangle a long chat 🎯📋
+### 27. Untangle a long chat
+*Guards against: misunderstanding, omission.*
 ```text
 Consolidate everything I've asked for and every decision we've made in this conversation into one complete prompt I can paste into a new chat. Don't leave anything out; list open questions at the end.
 ```
@@ -249,7 +275,8 @@ Consolidate everything I've asked for and every decision we've made in this conv
 
 ## Building agents
 
-### 28. Agent system prompt 🎯🔍📋
+### 28. Agent system prompt
+*Guards against: misunderstanding, fabrication, omission.*
 ```text
 Write a system prompt for an agent that {{job}} for {{users}}.
 Include: role and goal; context and the policies it must follow (only from the documents I provide); step-by-step task; output format (JSON schema below); constraints (what it must never decide on its own and when to hand off to a human); 2–3 varied examples.
@@ -258,14 +285,16 @@ Add: "If the policy doesn't cover a case, say so and escalate; don't invent poli
 <schema>{{paste}}</schema>
 ```
 
-### 29. Build an evaluation set 📋
+### 29. Build an evaluation set
+*Guards against: omission.*
 ```text
 For the agent/prompt below, write 20 test cases as a table: input | expected behavior | which failure it checks (misunderstanding / omission / fabrication / sycophancy / safety).
 Include easy cases, ambiguous cases, out-of-scope requests, and adversarial inputs (e.g., text that tries to override instructions).
 <prompt>{{paste}}</prompt>
 ```
 
-### 30. Improve a prompt 🎯📋🔍🪞
+### 30. Improve a prompt
+*Guards against: misunderstanding, omission, fabrication, sycophancy.*
 ```text
 Improve the prompt below.
 1. Predict the 3 most likely bad outputs it would produce and why (misunderstanding, omission, fabrication, sycophancy).

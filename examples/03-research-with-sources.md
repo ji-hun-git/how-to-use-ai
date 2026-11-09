@@ -15,7 +15,7 @@
 
 ---
 
-## ✅ Research prompt
+## Research prompt
 
 ```xml
 <context>

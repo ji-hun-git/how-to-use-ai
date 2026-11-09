@@ -44,7 +44,7 @@ mkdir -p .cursor/rules && curl -fsSL https://raw.githubusercontent.com/ji-hun-gi
 | "Think step by step." (to a reasoning model) | "Done when: …" plus the reasoning-effort setting | Reasoning models already think; they need a target |
 | "You are a world-class expert." | "The reader is a non-technical manager deciding by Friday." | Personas don't reliably improve accuracy; audience and purpose do |
 | "What do you think of my plan?" | "Another team wrote this plan. Find its 3 biggest weaknesses." | Hiding authorship reduces sycophancy |
-| "Are you sure?" | "Re-solve this from scratch and show where the first answer was wrong, if it was." | "Are you sure?" flips correct answers |
+| "Are you sure?" | "Check that against the source (or a test, or a calculation) and tell me what changes." | "Are you sure?" flips correct answers, and self-review with nothing new to check against tends to make answers worse |
 
 ## How to know it's working
 

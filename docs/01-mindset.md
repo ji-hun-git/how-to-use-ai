@@ -31,7 +31,7 @@ An experiment by Harvard Business School and BCG with 758 consultants (Dell'Acqu
 
 AI can do well on work that looks hard and still get work that looks easy wrong. So **don't judge by a gut feeling that "it'll surely get this right."** Use it yourself and learn how far AI can be trusted in your own work.
 
-> 🆕 This study was formally published in *Organization Science* in March 2026. And in 2026 the frontier is still jagged. According to the Stanford AI Index 2026, AI reached gold-medal level at the International Mathematical Olympiad, yet even the top model **read analog clocks correctly only 50.1%** of the time.
+> This study was formally published in *Organization Science* in March 2026. And in 2026 the frontier is still jagged. According to the Stanford AI Index 2026, AI reached gold-medal level at the International Mathematical Olympiad, yet even the top model **read analog clocks correctly only 50.1%** of the time.
 
 The researchers described two kinds of people who use AI well.
 
@@ -57,7 +57,7 @@ Both got good results. What they had in common: **they knew where to trust AI an
 Karpathy summed it up in a 2026 post: you can outsource your thinking, but **you can't outsource your understanding.**
 
 - In an experiment by Wharton (University of Pennsylvania) researchers with about 1,000 high school students in Türkiye (Bastani et al., *PNAS*, 2025), students who studied with an AI that handed them answers improved their practice scores substantially but scored **17% lower on the exam taken without AI.** A tutor-style AI that gave only hints, by contrast, did not lower exam scores.
-- 🆕 2026 research points the same way. In Anthropic's randomized experiment (2026-01, 52 junior developers), the group that learned a new library with AI scored 50% on a comprehension quiz, 17 percentage points below the group that coded by hand (67%). However, those who **asked conceptual questions or asked for explanations after receiving code** scored higher.
+- 2026 research points the same way. In Anthropic's randomized experiment (2026-01, 52 junior developers), the group that learned a new library with AI scored 50% on a comprehension quiz, 17 percentage points below the group that coded by hand (67%). However, those who **asked conceptual questions or asked for explanations after receiving code** scored higher.
 - In other words, the question is not whether you use AI but **how** you use it. → [Example 6: Learning with AI](../examples/06-learning-with-ai.md)
 
 **In practice:** for important work, **think it through or write a draft yourself first**, then show it to the AI. Reverse the order and the AI's answer becomes the frame for your own thinking.
@@ -88,7 +88,8 @@ In his 2025 YC talk, Karpathy said to build AI tools **more like Iron Man suits 
 | Putting **confidential or personal data** into tools your company hasn't approved | [09. Security and privacy](09-security-privacy.md) |
 | Short tasks that are faster to do yourself | Explaining takes longer |
 
-> 💡 "Using AI always makes you faster" isn't true either. In a 2025 experiment by the nonprofit research organization METR, experienced developers **felt** AI made them 20% faster, but they were actually 19% **slower**. In February 2026, METR said this result no longer represents current tools; a follow-up experiment suggested a possible speedup, but METR itself called that "very weak evidence." The lesson stands: **perceived speed and actual speed can differ.**
+> [!TIP]
+> "Using AI always makes you faster" isn't true either. In a 2025 experiment by the nonprofit research organization METR, experienced developers **felt** AI made them 20% faster, but they were actually 19% **slower**. In February 2026, METR said this result no longer represents current tools; a follow-up experiment suggested a possible speedup, but METR itself called that "very weak evidence." The lesson stands: **perceived speed and actual speed can differ.**
 
 ---
 

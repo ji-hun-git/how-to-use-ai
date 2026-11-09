@@ -4,7 +4,7 @@
 
 ---
 
-## ✍️ Instruct: the six elements
+## Instruct: the six elements
 
 | | Question | One-line tip |
 |---|---|---|
@@ -15,13 +15,13 @@
 | **Constraints** | What rules must be followed? | The fewer, the better they're followed. Instead of ALL CAPS or "NEVER!!!", add a one-line reason |
 | **Examples** | What does a good result look like? | 3–5, varied, wrapped in tags. With reasoning models, try without examples first |
 
-**Placement:** long material at the **top**, the question at the **very bottom** · separate material and instructions with `<tags>`
+**Placement:** long material at the **top**, the question at the **very bottom**; separate material and instructions with `<tags>`
 
 **All-purpose line:** `If you're not sure about something, mark it "needs verification," and if anything is ambiguous, ask me up to 3 questions first.`
 
 ---
 
-## 🚨 Diagnose failures: Misunderstanding · Omission · Fabrication
+## Diagnose failures: Misunderstanding, Omission, Fabrication
 
 | Symptom | Diagnosis | Fix |
 |---|---|---|
@@ -32,7 +32,7 @@
 
 ---
 
-## 🔁 The working loop
+## The working loop
 
 ```
 Specify → Plan → Execute → Verify → Learn
@@ -41,7 +41,7 @@ Specify → Plan → Execute → Verify → Learn
 
 ---
 
-## ✅ Verification ladder
+## Verification ladder
 
 | Risk | Minimum verification |
 |---|---|
@@ -51,7 +51,7 @@ Specify → Plan → Execute → Verify → Learn
 
 ---
 
-## 🧠 Habits to drop in 2026
+## Habits to drop in 2026
 
 - ❌ "Think step by step" (reasoning models) → use the reasoning effort setting
 - ❌ "I'll tip you," "Something terrible happens if you don't" → no effect
@@ -62,7 +62,7 @@ Specify → Plan → Execute → Verify → Learn
 
 ---
 
-## 🔒 Safety
+## Safety
 
 - Never put in passwords, keys, personal data, or confidential information (use only company-approved tools)
 - **The lethal trifecta:** private data + untrusted input + sending data out → remove one of the three
@@ -71,7 +71,7 @@ Specify → Plan → Execute → Verify → Learn
 
 ---
 
-## 🆕 Things to remember in 2026
+## Things to remember in 2026
 
 - Even the newest models **still fabricate references** (35% even for models released in 2026) → keep opening sources yourself
 - 1M-token context: **retrieval works, but synthesis is weak** → include only the material you need

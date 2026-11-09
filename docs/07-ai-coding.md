@@ -16,7 +16,7 @@
 
 > Simon Willison's rule (2025): **Don't commit code you couldn't explain to someone else.**
 
-### 🆕 What changed in 2026: from reading every line to verifying with evidence
+### What changed in 2026: from reading every line to verifying with evidence
 
 In 2026, practitioners' advice moved a step further.
 
@@ -78,7 +78,7 @@ The official Claude Code documentation (2026) says a disappointing session almos
 ## Done when     Tests that must pass, how to verify
 ```
 
-→ Full template: [templates/coding-task.md](../templates/coding-task.md) · Full example: [examples/05-coding-agent.md](../examples/05-coding-agent.md)
+→ Full template: [templates/coding-task.md](../templates/coding-task.md), Full example: [examples/05-coding-agent.md](../examples/05-coding-agent.md)
 
 ### Give specific instructions
 
@@ -104,7 +104,8 @@ Agents often say "Done" when the work doesn't actually function. Give them **cri
 
 Whatever method you use, **demand evidence**. Ask to see **the commands that were run and their output**, not just "Tests passed."
 
-> ⚠️ Agents sometimes **hard-code values or edit the tests** to make tests pass. Anthropic recommends telling the agent that tests only check correctness and don't define the solution, and that if it thinks a test is wrong, it should report that instead of working around it.
+> [!WARNING]
+> Agents sometimes **hard-code values or edit the tests** to make tests pass. Anthropic recommends telling the agent that tests only check correctness and don't define the solution, and that if it thinks a test is wrong, it should report that instead of working around it.
 
 ### Red/Green TDD
 
@@ -135,7 +136,7 @@ You write a spec first and implement against it. GitHub's [Spec Kit](https://git
 
 These are files the agent reads automatically at the start of every session. `AGENTS.md` is an open standard shared by many tools (maintained by the Agentic AI Foundation under the Linux Foundation), and Claude Code reads `CLAUDE.md`.
 
-**Shared recommendations (Anthropic · OpenAI · agents.md)**
+**Shared recommendations (Anthropic, OpenAI and agents.md)**
 - **Keep it short.** Under 200 lines is recommended for CLAUDE.md
 - **Don't write down what the code already tells you.** The Claude Code docs say explicitly that architecture overviews are no longer needed
 - **Add one line each time a mistake recurs**
@@ -146,7 +147,7 @@ These are files the agent reads automatically at the start of every session. `AG
 
 ---
 
-## 7. 🆕 Tool changes in 2026
+## 7. Tool changes in 2026
 
 | Change | Details |
 |---|---|
@@ -198,9 +199,9 @@ These are files the agent reads automatically at the start of every session. `AG
 ## 10. Realistic expectations about productivity
 
 - In METR's early-2025 experiment, experienced open-source developers were **19% slower** when using AI. They themselves felt 20% faster.
-- 🆕 In February 2026, METR said this result **no longer represents current tools**. A follow-up experiment (57 people, 800+ tasks) estimated time savings of 18% and 4%, but the confidence intervals were wide and participant selection bias was large, so METR itself called it "very weak evidence." In a May 2026 survey, the median self-reported speedup was 3x, but METR warned that this, too, may be an overestimate.
+- In February 2026, METR said this result **no longer represents current tools**. A follow-up experiment (57 people, 800+ tasks) estimated time savings of 18% and 4%, but the confidence intervals were wide and participant selection bias was large, so METR itself called it "very weak evidence." In a May 2026 survey, the median self-reported speedup was 3x, but METR warned that this, too, may be an overestimate.
 - Karpathy says that from around December 2025, agent output became large, coherent, and reliable enough that the unit of work shifted from "a few lines of code" to "delegating large units such as features, refactors, and tests." Still, he stresses that **agents are interns who make frequent mistakes**, and that the spec, review, and accountability remain the human's job.
-- 🆕 In October 2026, Karpathy gave three reasons people experience AI capability so differently: ① the size and duration of the problems they hand off, ② the domain (AI is strongest in coding and math, which tests can verify), and ③ the tier of tool they use (free vs paid vs internal). Someone who has only asked a free chatbot small questions and someone who has handed big tasks to a paid agent tool **are looking at different AIs**.
+- In October 2026, Karpathy gave three reasons people experience AI capability so differently: ① the size and duration of the problems they hand off, ② the domain (AI is strongest in coding and math, which tests can verify), and ③ the tier of tool they use (free vs paid vs internal). Someone who has only asked a free chatbot small questions and someone who has handed big tasks to a paid agent tool **are looking at different AIs**.
 
 > Bottom line: Don't trust how fast it feels. **Measure it on your own work.**
 

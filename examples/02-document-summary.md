@@ -4,7 +4,7 @@
 
 ---
 
-## ❌ The usual approach
+## The usual approach
 
 ```text
 (paste document)
@@ -17,7 +17,7 @@ Summarize this.
 
 ---
 
-## ✅ Improved prompt
+## Improved prompt
 
 ```xml
 <documents>

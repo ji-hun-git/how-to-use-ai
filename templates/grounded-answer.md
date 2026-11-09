@@ -40,7 +40,8 @@ Attach a source (URL or bibliographic details) to every factual claim.
 If you can't actually verify a source, write "source unverified" next to that claim.
 ```
 
-> ⚠️ The sources the AI provides may themselves be fabricated. In one 2023 study, 55% of the references cited by GPT-3.5 and 18% of those cited by GPT-4 did not actually exist. **Open the links yourself.** Asking with search turned on is much safer.
+> [!WARNING]
+> The sources the AI provides may themselves be fabricated. In one 2023 study, 55% of the references cited by GPT-3.5 and 18% of those cited by GPT-4 did not actually exist. **Open the links yourself.** Asking with search turned on is much safer.
 
 ## E. Chain-of-Verification
 

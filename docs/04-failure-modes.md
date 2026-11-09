@@ -1,4 +1,4 @@
-# 04. Three ways AI gets things wrong: Misunderstanding · Omission · Fabrication
+# 04. Three ways AI gets things wrong: Misunderstanding, Omission, Fabrication
 
 > Most AI failures fall into one of three failure modes, plus a fourth, sycophancy, when you ask the AI for its judgment. **Diagnose a failure by its type**, and the fix becomes clear.
 >
@@ -10,7 +10,7 @@
 
 ---
 
-## 🆕 2026 update: how current models fare
+## 2026 update: how current models fare
 
 Many of the studies in the main text below measured 2023–2025 models. **The causes and remedies still hold**, but the numbers may differ for current models. Here is what 2026 measurements on current models found.
 
@@ -136,7 +136,8 @@ Add a table at the end of the output: | Requirement | Addressed? (✅/⚠️/❌
 Compare the output you just wrote against my original request line by line, and tell me what's missing and anything you added that I didn't ask for.
 ```
 
-> 💡 **2026 caveat:** Anthropic advises that Claude Opus 5 reviews its own work well without being told to, so verification instructions written for older models can cause **over-verification** (this guidance applies to Opus 5 specifically; self-checking itself is still recommended). Self-check instructions help most **when there are many requirements or you're using a smaller model**.
+> [!TIP]
+> **2026 caveat:** Anthropic advises that Claude Opus 5 reviews its own work well without being told to, so verification instructions written for older models can cause **over-verification** (this guidance applies to Opus 5 specifically; self-checking itself is still recommended). Self-check instructions help most **when there are many requirements or you're using a smaller model**.
 
 ### Recovery
 
@@ -202,11 +203,12 @@ A comparison OpenAI published shows this clearly.
 |---|---|---|
 | **Open the sources yourself** | Click the links, search the paper titles, look up the case numbers. Check **not only that a source exists but that it actually says that** | Walters & Wilder: many errors even in real citations |
 | **Ask several times and compare** | Ask the same question in 2–3 new chats. Names, dates, and numbers that change from answer to answer are the most suspect | SelfCheckGPT, self-consistency, Anthropic "Best-of-N" |
-| **Chain of verification questions** | Draft → generate verification questions → answer them **independently** → revise | Chain-of-Verification (Meta AI, 2023) |
+| **Chain of verification questions** | Draft → generate verification questions → answer them **independently**, from sources or search where possible → revise | Chain-of-Verification (Meta AI, 2023) |
 | **Break it into atomic facts** | Split long text into "atomic facts" and check each one | FActScore (2023): only 58% of the facts in ChatGPT-written biographies were supported |
 | **Lateral reading** | Check against **other independent sources**, not the AI's own words | The method professional fact-checkers use (Civic Online Reasoning) |
 
-> ⚠️ Getting **the same answer several times does not prove it's true.** Models can be consistently wrong. Consistency checks are only **a tool for finding suspicious spots**.
+> [!WARNING]
+> Getting **the same answer several times does not prove it's true.** Models can be consistently wrong. Consistency checks are only **a tool for finding suspicious spots**.
 
 ### Recovery
 
@@ -253,13 +255,14 @@ Find supporting evidence for each claim in the answer above. Delete any claim yo
 | **Don't keep pushing in long conversations** | The longer the conversation and the more emotional the pressure, the more models cave (SPINE 2026). Make important judgments in a **new chat** |
 | **Ask for criticism explicitly** | "The 3 weakest points, with evidence" |
 | **Set the evaluation criteria first** | Scoring against criteria set in advance makes it less swayed by the mood of the conversation |
-| **Have it re-solve independently instead of pushing back** | "Really?" ❌ → "Solve it again from scratch, and if your answer differs from the earlier one, explain which is right and why" ✅ |
+| **Point to evidence instead of pushing back** | "Really?" ❌ → "Your step 3 gives 42, but the table says 24. Which is right, and why?" ✅ Self-review with no outside evidence tends to lower accuracy ([Huang et al., ICLR 2024](https://arxiv.org/abs/2310.01798)) |
 | **Get a second opinion in a new chat or from another model** | Let it judge without knowing what you think |
 | **Treat "You're right!" as a signal** | If the AI agrees right after you push back, that's a **signal to check for yourself** |
 
 → Snippet collection: [templates/honest-critique.md](../templates/honest-critique.md)
 
-> 📌 We have not yet found a controlled study that directly measures whether phrases like "Be honest" or "Don't flatter me" reduce sycophancy in current models. The methods above are based on the **mechanisms** that produce sycophancy.
+> [!NOTE]
+> We have not yet found a controlled study that directly measures whether phrases like "Be honest" or "Don't flatter me" reduce sycophancy in current models. The methods above are based on the **mechanisms** that produce sycophancy.
 
 ---
 
@@ -289,7 +292,7 @@ You don't need to verify every answer with the same rigor. Match it to **the cos
 - SPINE: multi-turn sycophancy collapse (2026-09, preprint) — https://arxiv.org/abs/2609.09090
 - Chow, retrieval and multi-step reasoning in 1M-token contexts (2026-05, preprint) — https://arxiv.org/abs/2605.02173
 - Vasileva, "Large Language Models Can Follow Instructions, But Not Many at Once" (2026-08, preprint) — https://arxiv.org/abs/2608.12426
-- Laban et al., ICLR 2026 publication record — https://hyper.ai/en/papers/iclr__2026__VKGTGGcwl6
+- Laban et al., ICLR 2026 (oral) record on OpenReview — https://openreview.net/forum?id=VKGTGGcwl6
 
 **Misunderstanding**
 - Laban et al., "LLMs Get Lost In Multi-Turn Conversation" (2025) — https://arxiv.org/abs/2505.06120

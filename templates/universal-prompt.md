@@ -1,6 +1,6 @@
 # Universal prompt template
 
-> A template built on the six elements, **Role · Context · Instruction · Format · Constraints · Examples**, plus **verification**.
+> A template built on the six elements, **Role, Context, Instruction, Format, Constraints, Examples**, plus **verification**.
 > You don't have to fill in every slot. Delete the ones you don't need. For a short question, the three-line version is enough.
 > Why each element matters is explained in [docs/02-prompt-anatomy.md](../docs/02-prompt-anatomy.md).
 

@@ -27,9 +27,10 @@ In a September 2025 post, Anthropic compared the context window to a **limited a
 | **Turn procedures into reusable units** | Saved prompt templates | Skills |
 | **Enforce must-follow rules with settings, not text** | Use only company-approved tools | Hooks, permission deny rules, CI |
 
-> 💡 In 2026, context windows have grown to 1 million tokens and automatic compaction exists, so running **out** of context is rare. Still, the shared recommendation is that **keeping context narrow gives better answers at lower cost**. A 2026 study found that top models located a single sentence within 1 million tokens 100% of the time, but on **tasks that require reasoning across multiple pieces of information**, performance dropped as length increased. → [04 🆕 table](04-failure-modes.md#-2026-update-how-current-models-fare)
+> [!TIP]
+> In 2026, context windows have grown to 1 million tokens and automatic compaction exists, so running **out** of context is rare. Still, the shared recommendation is that **keeping context narrow gives better answers at lower cost**. A 2026 study found that top models located a single sentence within 1 million tokens 100% of the time, but on **tasks that require reasoning across multiple pieces of information**, performance dropped as length increased. → [04 table](04-failure-modes.md#2026-update-how-current-models-fare)
 
-### 🆕 Managing memory (Anthropic, 2026-11)
+### Managing memory (Anthropic, 2026-11)
 
 As **memory features** in AI services and agents have become common, Anthropic set out design principles for agent memory in November 2026. They apply just as well to everyday users.
 
@@ -56,9 +57,11 @@ Anthropic's "Building effective agents" (2024-12) presents five basic patterns f
 | **Orchestrator-workers** | A lead splits the work, workers do it, the lead combines it | Deep research features, subagents in coding agents | Verifying the final result |
 | **Evaluator-optimizer** | One generates, another evaluates, and they repeat | Write in chat A, evaluate against a rubric in a new chat B | I write the rubric |
 
-> 📌 Anthropic's 2026 documentation says current models handle most multi-step reasoning **internally**. Chaining is still useful **when you want to see intermediate results yourself**. The most common chain is **draft → review against criteria → revise**.
+> [!NOTE]
+> Anthropic's 2026 documentation says current models handle most multi-step reasoning **internally**. Chaining is still useful **when you want to see intermediate results yourself**. The most common chain is **draft → review against criteria → revise**.
 
-> 📌 Multi-agent setups are expensive. In Anthropic's research-system case, the multi-agent system used about **15 times** as many tokens as a regular chat. It pays off for large research tasks that split into independent parts, but fits poorly with work that needs shared context (most coding).
+> [!NOTE]
+> Multi-agent setups are expensive. In Anthropic's research-system case, the multi-agent system used about **15 times** as many tokens as a regular chat. It pays off for large research tasks that split into independent parts, but fits poorly with work that needs shared context (most coding).
 
 ---
 
@@ -170,7 +173,7 @@ A large task that takes more than a day can't be finished in one conversation. A
 
 You can do the same in chat. When a conversation gets long, ask "Summarize what we've decided so far, what's left, and what to watch out for," then paste the result into a new chat.
 
-🆕 Anthropic's March 2026 post (harness design for long-running apps) adds two more points.
+Anthropic's March 2026 post (harness design for long-running apps) adds two more points.
 - **Separate the generator from the evaluator.** Agents show a clear tendency to **lean favorable** when evaluating their own work. In chat, evaluate in a different chat from the one that did the writing.
 - **Turn subjective quality into explicit criteria.** Instead of "good design," give a list of evaluation criteria. The post also recommends re-checking this setup when the model changes.
 

@@ -18,14 +18,14 @@
 | ALL CAPS, "NEVER!!!", "IMPORTANT" emphasis | ❌ Current models overreact | Anthropic (dial back phrasing like "CRITICAL: You MUST"), OpenAI (absolute language only for true invariants) |
 | Verifying with "Are you sure?" | ❌ Flips correct answers | FlipFlop (2023), SPINE (2026: even current models give in when pushed long enough) |
 | The longer and more detailed the prompt, the better | ❌ Padding hurts | OpenAI model-specific guides, Anthropic context engineering |
-| The more material you add, the better | ❌ The model misses content in the middle, and gains are marginal | Lost in the Middle (2023), Context Rot (2025) |
-| 🆕 With a 1-million-token model, you can put in everything | ⚠️ Retrieval works, but **synthesis and reasoning get weaker as length grows** | Chow (2026) |
+| The more material you add, the better | ❌ Accuracy falls as input grows, even when the answer is easy to find; older models also missed the middle | Context Rot (2025), Lost in the Middle (2023) |
+| With a 1-million-token model, you can put in everything | ⚠️ Retrieval works, but **synthesis and reasoning get weaker as length grows** | Chow (2026) |
 | Specifying the output format is a minor detail | ❌ **Format instructions are a performance factor** | Wharton Report 1 (2025) |
 | If it works once or twice, it works | ❌ The same question gives different answers each time | Wharton Report 1 (2025) |
 | If the AI cites sources, it's trustworthy | ❌ It sometimes fabricates the sources themselves | Walters & Wilder (2023), **Topaz et al. (2026: even models released in 2026 included fake references in 35% of responses)** |
-| 🆕 Current models barely hallucinate anymore | ❌ Hallucination has dropped, but varies widely by situation | Vectara (2026: 7–14% when summarizing documents), HalluHard (2026: about 30% even with search on) |
+| Current models barely hallucinate anymore | ❌ Hallucination has dropped, but varies widely by situation | Vectara (2026: 7–14% when summarizing documents), HalluHard (2026: about 30% even with search on) |
 | Using AI always makes you faster | ⚠️ A 2025 experiment found people were actually slower; 2026 follow-up studies suggest they may be faster, but the evidence is weak | METR (2025, 2026), HBS/BCG (2023, formally published 2026) |
-| 🆕 An AI that agrees with me is a good AI | ❌ People **trust sycophancy more**, but their judgment gets worse | Cheng et al. (*Science*, 2026) |
+| An AI that agrees with me is a good AI | ❌ People **trust sycophancy more**, but their judgment gets worse | Cheng et al. (*Science*, 2026) |
 | The more examples, the better | ⚠️ 3–5 is about right; with reasoning models, try without examples first | Anthropic, Google, OpenAI |
 | A model that says "I don't know" is a weak model | ❌ Models that say "I don't know" are wrong less often | OpenAI (2025), Artificial Analysis (2026) |
 
@@ -102,7 +102,7 @@ The 2026 guides recommend dialing back emphasis that was added for older models.
 
 In a comparison OpenAI published, a model that answered "I don't know" 52% of the time had an error rate of 26%, while a model that said "I don't know" only 1% of the time had an error rate of **75%**. Accuracy was similar. **Saying "I don't know" is a feature.** Give the model that option in your prompts too.
 
-## 11. 🆕 New evidence from 2026
+## 11. New evidence from 2026
 
 **Productivity: METR's 2026 update**
 - Regarding the early-2025 experiment (experienced developers were 19% slower), METR said in February 2026 that the result **no longer represents current tools**.
@@ -117,7 +117,8 @@ In a comparison OpenAI published, a model that answered "I don't know" 52% of th
 **Sycophancy: it persists because people like it (*Science*, 2026-03)**
 - 11 AI models affirmed users' actions about 49% more than humans did, and in experiments with 2,405 participants, people **trusted and preferred** sycophantic answers more. In other words, it's easy to mistake a pleasant answer for a good one.
 
-> 📌 Wharton researchers have not yet re-measured Reports 1–4 (tips, politeness, expert roles, CoT) on 2026 models.
+> [!NOTE]
+> Wharton researchers have not yet re-measured Reports 1–4 (tips, politeness, expert roles, CoT) on 2026 models.
 
 ---
 

@@ -1,7 +1,7 @@
 {
   "name": "how-to-use-ai",
   "description": "Evidence-based skills that stop the four documented AI failure modes: misunderstanding, omission, fabrication (hallucination) and sycophancy. Clarify first, coverage checks, grounded answers, claim verification, honest critique, fresh-eyes review, fresh-start handoffs, prompt improvement, task specs and tutoring.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": {
     "name": "ji-hun-git",
     "url": "https://github.com/ji-hun-git"

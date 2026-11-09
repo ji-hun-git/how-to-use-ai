@@ -55,9 +55,9 @@ Summarize the changes.
 - What you couldn't verify, and remaining risks
 ```
 
-👀 **Your job:** You should be able to say **how you confirmed** that this change is correct. Look at the test results and the execution evidence, and for core parts where a mistake is costly, like money calculations, read the diff yourself. "Opening a PR with AI code you haven't checked" is one of the anti-patterns Simon Willison highlights. (By 2026, even Willison no longer reads every line, but in its place he emphasizes **verifying with evidence** → [07. AI coding](../docs/07-ai-coding.md#-what-changed-in-2026-from-reading-every-line-to-verifying-with-evidence))
+👀 **Your job:** You should be able to say **how you confirmed** that this change is correct. Look at the test results and the execution evidence, and for core parts where a mistake is costly, like money calculations, read the diff yourself. "Opening a PR with AI code you haven't checked" is one of the anti-patterns Simon Willison highlights. (By 2026, even Willison no longer reads every line, but in its place he emphasizes **verifying with evidence** → [07. AI coding](../docs/07-ai-coding.md#what-changed-in-2026-from-reading-every-line-to-verifying-with-evidence))
 
-> 🆕 With 2026 tools: you can set a `/goal` of "all cart tests pass + the negative-total reproduction test passes," or get an independent review from a fresh subagent with `/code-review` before you finish.
+> With 2026 tools: you can set a `/goal` of "all cart tests pass + the negative-total reproduction test passes," or get an independent review from a fresh subagent with `/code-review` before you finish.
 
 ## Step 6. Commit
 

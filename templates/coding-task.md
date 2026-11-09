@@ -1,7 +1,7 @@
 # Coding agent task template
 
 > A template for handing work to coding agents such as Claude Code, Codex, Gemini CLI, and Cursor.
-> The four-part structure of **Goal · Context · Constraints · Done when** is the format recommended by OpenAI's Codex guide, while "plan first" and "give it a way to verify" are central to Anthropic's Claude Code guide.
+> The four-part structure of **Goal, Context, Constraints, Done when** is the format recommended by OpenAI's Codex guide, while "plan first" and "give it a way to verify" are central to Anthropic's Claude Code guide.
 > For details, see [docs/07-ai-coding.md](../docs/07-ai-coding.md).
 
 ---

@@ -16,9 +16,11 @@
 
 **Principle:** Find out which AI tools and plans your company has approved (enterprise plans that don't use your data for training), and handle work materials only within them.
 
-> 📌 In 2026, many AI services ship by default with **memory features that remember your conversations** and **connections to external apps** such as email, drive, and calendar. They're convenient, but information you enter once can be used in other conversations. Periodically check in the settings what has been stored in memory, and disconnect any connections you don't need.
+> [!NOTE]
+> In 2026, many AI services ship by default with **memory features that remember your conversations** and **connections to external apps** such as email, drive, and calendar. They're convenient, but information you enter once can be used in other conversations. Periodically check in the settings what has been stored in memory, and disconnect any connections you don't need.
 
-> 📌 According to MIT NANDA's 2025 report, only 40% of companies had bought official AI subscriptions, but at **more than 90% of companies**, employees were using personal AI tools for work ("shadow AI"). Putting company materials into a personal account because it's convenient is the most common path to an incident.
+> [!NOTE]
+> According to MIT NANDA's 2025 report, only 40% of companies had bought official AI subscriptions, but at **more than 90% of companies**, employees were using personal AI tools for work ("shadow AI"). Putting company materials into a personal account because it's convenient is the most common path to an incident.
 
 ### Example (South Korea): the PIPC guide for users (2026-05)
 

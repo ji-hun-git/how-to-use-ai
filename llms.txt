@@ -20,6 +20,7 @@
 - [Myths vs. evidence](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/10-myths-vs-evidence.md): which popular tips fail in controlled studies
 - [Where instructions should live](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/11-skills-and-agent-rules.md): prompt vs rules file vs skill vs hook
 - [Writing decision rules](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/12-writing-decision-rules.md): condition → action → exception rules, exceptions and human sign-off, testing that rules fire
+- [Methods and the papers behind them](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/14-methods-and-papers.md): 73 prompting, grounding, verification, agent and context methods graded for 2026, with 192 sources
 - [Verifying agent runs](https://github.com/ji-hun-git/how-to-use-ai/blob/main/docs/13-verifying-agent-runs.md): three levels of done, five silent failures, test sets, tracing causes, change logs, measuring benefit
 
 ## Practical

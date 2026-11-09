@@ -1,6 +1,6 @@
 # Retire stale numbers, move verification into the tools
 
-> **2026 update report** · Research cutoff 2026-11-09
+> **2026 update report.** Research cutoff: 2026-11-09.
 >
 > A supplement to the [base evidence report](evidence-report.md) that covers what changed in 2026 (especially May through November), corrections, and measurements on the latest models. Where the two reports differ, this one takes precedence. The changes applied to the repository are listed in the [CHANGELOG](../CHANGELOG.md). Direct quotes are kept to a minimum; most content is summarized or paraphrased.
 

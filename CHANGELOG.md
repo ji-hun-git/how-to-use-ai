@@ -4,7 +4,30 @@ This repository is updated as AI tools and official guides change. The evidence 
 
 ---
 
-## 2026-11-09 · Design
+## 2026-11-09: Methods guide and a plainer design
+
+### Added
+- **[Guide 14: Methods and the papers behind them](docs/14-methods-and-papers.md).** 73 methods in 12 groups (prompting and reasoning, examples, grounding, verification, abstention, sycophancy, tools and agents, multi-agent, context, prompt optimization, evaluation, reasoning effort), each graded Use, Situational, Mostly built in now or Skip for late-2026 models, with 192 sources. Every paper was checked on its arXiv or publisher page, and every link resolves.
+- **A methods table in the README** with the 12 methods readers most need.
+
+### Changed
+- **README** rewritten in the plain style of official project READMEs: a factual opening, a real before-and-after excerpt from the evaluation, and Figure 1 in place of the decorative banner and chart.
+- **Figure 1** is drawn from `raw.jsonl` by [`scripts/make_assets.py`](scripts/make_assets.py), with 95% Wilson intervals and every case whose outcome changed, including the three that got worse.
+- **Style:** removed middle-dot separators, emoji in headings and "new" markers across the repo. Prompt tags are now written out ("Guards against: …"), and callouts use GitHub's note, tip and warning blocks.
+- **Advice updated to match the new evidence:**
+  - "Re-solve it from scratch" is replaced by checking against a source, test or calculation, since self-review with nothing new to check against lowers accuracy (Huang et al., ICLR 2024)
+  - Chain-of-Verification is now described as strongest with documents, search or code
+  - The omission explanation now leads with input length rather than position
+  - Order sensitivity of examples persists (Sclar et al., ICLR 2024)
+  - Worked reasoning examples are optional for reasoning models
+  - The advice is now to start at default reasoning effort and raise it after a failed check (Kapoor et al., ICLR 2026)
+  - The value of multi-model setups is now credited to independent answers and voting rather than debate (Choi et al., NeurIPS 2025)
+- **Skills:** the `coverage-check` rationale line now reflects the length finding (no change to its steps). Plugin version 1.2.0.
+- **Sources:** the Laban et al. venue now links to its ICLR 2026 OpenReview record.
+
+---
+
+## 2026-11-09: Design
 
 ### Added
 - **README redesign:**
@@ -23,7 +46,7 @@ This repository is updated as AI tools and official guides change. The evidence 
 
 ---
 
-## 2026-11-09 · Clean-up
+## 2026-11-09: Clean-up
 
 A full pass over every file: a second read of all guides, examples, skills, templates, reports and eval code, plus an automated link and format check.
 
@@ -60,7 +83,7 @@ A full pass over every file: a second read of all guides, examples, skills, temp
 
 ---
 
-## 2026-11-09 · Harder evals
+## 2026-11-09: Harder evals
 
 ### Added
 - **Harder eval suite** ([evals/skills/cases-hard.yaml](evals/skills/cases-hard.yaml)): 16 cases aimed at what still breaks current models:
@@ -83,7 +106,7 @@ A full pass over every file: a second read of all guides, examples, skills, temp
 
 ---
 
-## 2026-11-09 · Installable edition
+## 2026-11-09: Installable edition
 
 Made the guide usable inside AI tools, not just readable, after comparing it with the most popular repositories in this space ([COMPARISON.md](COMPARISON.md)).
 
@@ -110,23 +133,23 @@ Made the guide usable inside AI tools, not just readable, after comparing it wit
 
 ---
 
-## 2026-11-09 · English-only edition
+## 2026-11-09: English-only edition
 
 Translated the whole repo to English and removed program-specific and personal references.
 
 ---
 
-## 2026-11-09 · 2026 update
+## 2026-11-09: 2026 update
 
 Re-researched and incorporated the official guides, research, tool changes, and South Korean laws and guidelines published in 2026 (especially May–November). Evidence: [2026 update report](research/2026-update-report.md)
 
 ### Added
-- **Measurements on the newest models** ([04](docs/04-failure-modes.md#-2026-update-how-current-models-fare)): hallucination rates for 2026 models (Vectara, AI Index 2026, AA-Omniscience), a 2026 study on fabricated references, 2,266 court incidents, the *Science* 2026 sycophancy study, sycophancy collapse in long conversations (SPINE), research on 1M-token context, and the limit of 5–6 simultaneous constraints
-- **Snapshot of major models** ([05](docs/05-models-and-reasoning.md#-snapshot-major-models-as-of-november-2026)): Anthropic, OpenAI, and Google models as of November 2026, plus new features such as memory, skills, and scheduled runs
-- **AI coding tool changes** ([07](docs/07-ai-coding.md#7--tool-changes-in-2026)): `/goal`, Stop hooks, `/code-review`, auto mode as the default, Gemini CLI → Antigravity CLI, and the shift from "reading every line" to "verifying with evidence"
-- **Managing memory** ([06](docs/06-workflows.md#-managing-memory-anthropic-2026-11)): Anthropic's principles for agent memory, separating the generator from the evaluator
+- **Measurements on the newest models** ([04](docs/04-failure-modes.md#2026-update-how-current-models-fare)): hallucination rates for 2026 models (Vectara, AI Index 2026, AA-Omniscience), a 2026 study on fabricated references, 2,266 court incidents, the *Science* 2026 sycophancy study, sycophancy collapse in long conversations (SPINE), research on 1M-token context, and the limit of 5–6 simultaneous constraints
+- **Snapshot of major models** ([05](docs/05-models-and-reasoning.md#snapshot-major-models-as-of-november-2026)): Anthropic, OpenAI, and Google models as of November 2026, plus new features such as memory, skills, and scheduled runs
+- **AI coding tool changes** ([07](docs/07-ai-coding.md#7-tool-changes-in-2026)): `/goal`, Stop hooks, `/code-review`, auto mode as the default, Gemini CLI → Antigravity CLI, and the shift from "reading every line" to "verifying with evidence"
+- **Managing memory** ([06](docs/06-workflows.md#managing-memory-anthropic-2026-11)): Anthropic's principles for agent memory, separating the generator from the evaluator
 - **Local laws and guidelines (example: South Korea)** ([09](docs/09-security-privacy.md#5-local-laws-and-guidelines-example-south-korea-2026)): the AI Basic Act (in force since 2026-01-22), the PIPC user guide (2026-05), the revised guidelines for writing privacy policies, public-sector AI guides and ethics standards, and materials from KICE and KCUE
-- **2026 myths vs. evidence** ([10](docs/10-myths-vs-evidence.md#11--new-evidence-from-2026)): METR's 2026 follow-up results, Wharton Report 5, the *Science* sycophancy study
+- **2026 myths vs. evidence** ([10](docs/10-myths-vs-evidence.md#11-new-evidence-from-2026)): METR's 2026 follow-up results, Wharton Report 5, the *Science* sycophancy study
 - **Learning research** ([Example 6](examples/06-learning-with-ai.md)): Anthropic's 2026 learning experiment, a randomized trial of a university AI tutor
 - **Resources** ([awesome](resources/awesome.md)): Karpathy's 2026 activity (joining Anthropic, agentic engineering, HackerTube), repositories that took off in 2026 (checked directly), 2026 research and independent evaluations
 
@@ -142,6 +165,6 @@ Figures measured on older 2023–2025 models (FlipFlop 46%, fabricated citations
 
 ---
 
-## 2026-11-09 · First release
+## 2026-11-09: First release
 
 - 10 guides, 8 templates, 7 examples, a curated resource list, and the evidence report (288 sources)

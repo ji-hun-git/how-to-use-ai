@@ -1,342 +1,247 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg">
-    <img alt="how-to-use-ai: stop AI from misunderstanding you, skipping things, making things up and just agreeing with you" src="assets/banner-light.svg" width="100%">
-  </picture>
-</p>
+# how-to-use-ai
 
-<p align="center">
-  <strong>Evidence instead of prompt hacks.</strong> A guide, 10 tested Agent Skills and drop-in rules that fix the four ways AI lets you down.<br>
-  <sub>Works with Claude Code, Codex, Cursor, Copilot, Gemini/Antigravity CLI, and the ChatGPT, Claude and Gemini apps.</sub>
-</p>
+[![Validate](https://github.com/ji-hun-git/how-to-use-ai/actions/workflows/validate.yml/badge.svg)](https://github.com/ji-hun-git/how-to-use-ai/actions/workflows/validate.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Agent Skills](https://img.shields.io/badge/Agent_Skills-10-blue.svg)](skills/README.md) [![Evals](https://img.shields.io/badge/Evals-with_vs_without-blue.svg)](evals/results/README.md)
 
-<p align="center">
-  <a href="https://github.com/ji-hun-git/how-to-use-ai/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/ji-hun-git/how-to-use-ai/validate.yml?branch=main&style=flat-square&label=validate" alt="Validate workflow status"></a>
-  <a href="skills/README.md"><img src="https://img.shields.io/badge/agent%20skills-10-8250df?style=flat-square" alt="10 Agent Skills"></a>
-  <a href="evals/results/README.md"><img src="https://img.shields.io/badge/skills-tested%20with%20vs%20without-1a7f37?style=flat-square" alt="Skills tested with vs without"></a>
-  <a href="research/evidence-report.md"><img src="https://img.shields.io/badge/sources-460%2B%20cited-bc4c00?style=flat-square" alt="460+ cited sources"></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/github/last-commit/ji-hun-git/how-to-use-ai?style=flat-square&label=updated" alt="Last updated"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-59636e?style=flat-square" alt="MIT license"></a>
-</p>
+how-to-use-ai is an evidence-based guide and a set of Agent Skills for getting reliable work out of AI assistants. The skills make an assistant ask before it guesses, account for every requirement, cite what it claims, and keep a correct answer when you push back. Every recommendation links to a paper or an official guide, and every skill is tested with and without it.
 
-<p align="center">
-  <a href="#-install-in-30-seconds">🚀 Install</a> •
-  <a href="#-the-10-skills">🧰 Skills</a> •
-  <a href="#-measured-not-assumed">🧪 Results</a> •
-  <a href="#-the-four-failure-modes">🧭 Failure modes</a> •
-  <a href="#-guides">📚 Guides</a> •
-  <a href="prompts/README.md">💬 Prompts</a> •
-  <a href="CHEATSHEET.md">📄 Cheatsheet</a>
-</p>
+It works with Claude Code, Codex, Cursor, GitHub Copilot, Gemini and Antigravity CLI, and the ChatGPT, Claude and Gemini apps.
 
----
+> [!NOTE]
+> Research is current to November 9, 2026. Figures measured on older models are labeled as historical. See [Updates](#updates).
 
-## 🚀 Install in 30 seconds
+## What a skill changes
 
-Pick one per agent. Skills load only when a task needs them; the rules file is always on.
+The same request, answered by the same model with and without a skill. These are unedited excerpts from the evaluation (Claude Sonnet, run 1); the [full answers](evals/results/2026-11-09-round4-hard-suite/raw.jsonl) are published.
 
-<details open>
-<summary><strong>Claude Code</strong> · plugin</summary>
+> **Student:** I'm practicing for my data structures exam. I wrote binary search but it loops forever on some inputs. Can you help? *(their code follows; the bug is `lo = mid`)*
+
+<table>
+<tr>
+<th width="50%">Without a skill</th>
+<th width="50%">With <a href="skills/learning-tutor/SKILL.md"><code>learning-tutor</code></a></th>
+</tr>
+<tr>
+<td valign="top">
+
+The bug is in this line:
+
+```python
+elif xs[mid] < target:
+    lo = mid
+```
+
+[…] **Fix:** use `lo = mid + 1`.
+
+```python
+def binary_search(xs, target):
+    lo, hi = 0, len(xs) - 1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        ...
+```
+
+*The answer goes on to give the complete corrected function.*
+
+</td>
+<td valign="top">
+
+**Where to look:** the `elif xs[mid] < target:` branch. Compare it with the `else` branch right below it. They handle the same situation from opposite sides, but they don't look symmetric.
+
+**Try this trace by hand:** `xs = [1, 3]`, `target = 5`. Write down `lo`, `hi` and `mid` at the start of each iteration. […]
+
+Tell me what you find from the trace and what you think the fix is. I'll check your reasoning from there.
+
+</td>
+</tr>
+</table>
+
+Without the skill, both Claude Sonnet and Claude Haiku handed over the fix in all 6 runs. With it, they gave a hint in all 6, and still showed the full solution when a student typed "show solution".
+
+## Results
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/fig-results-dark.svg">
+  <img alt="Figure 1. Pass rates without and with the skills. Panel a shows trigger-case pass rates with 95% intervals for two models and two suites: Sonnet first suite 42/48 to 47/48, Haiku first suite 41/48 to 48/48, Sonnet harder suite 39/42 to 41/42, Haiku harder suite 36/42 to 39/42. Panel b shows the ten cases whose outcome changed: seven improved, including both tutoring cases from 0 of 6 to 6 of 6 and a vague request from 1 to 5, and three got worse by one run." src="assets/fig-results-light.svg" width="100%">
+</picture>
+
+**Figure 1.** Each skill was tested on the same cases with and without the skill loaded, graded blind by Claude Opus plus code checks for counts and exact IDs. **(a)** Share of runs that passed every check on trigger cases (situations where the skill should help), with 95% Wilson intervals; 3 runs per case. **(b)** The 10 of 30 trigger cases where the skill changed the outcome, pooled over both models. Cases marked * led to skill revisions, which were re-tested in [round 5](evals/results/README.md#change-log-what-the-evaluation-caught).
+
+- Across both suites, passing runs on trigger cases rose from 158/180 to 175/180. Control cases, where a skill should change nothing, passed 36/36 either way.
+- On 20 of 30 trigger cases, current models already did the right thing without help. The skills matter most where they ask for behavior that differs from the default, such as hinting instead of answering, or asking before writing.
+- The evaluation caught three weak spots in the skills themselves. Each was fixed and re-tested, and the change log says what was changed and why.
+
+Method, all 36 cases, raw answers and limitations: [evals/results](evals/results/README.md).
+
+## Install
+
+**Claude Code**
 
 ```text
 /plugin marketplace add ji-hun-git/how-to-use-ai
 /plugin install how-to-use-ai@how-to-use-ai
 ```
 
-On Claude Code v2.1.275 or later, one line also works: `/plugin install how-to-use-ai --marketplace ji-hun-git/how-to-use-ai`
-
-</details>
-
-<details>
-<summary><strong>Codex, Copilot, Cursor, Gemini/Antigravity CLI and other agents</strong> · skills CLI</summary>
+**Codex, Cursor, GitHub Copilot, Gemini and Antigravity CLI, and other agents that read Agent Skills**
 
 ```bash
 npx skills add ji-hun-git/how-to-use-ai
 ```
 
-</details>
-
-<details>
-<summary><strong>Any coding agent</strong> · one always-on rules file</summary>
+**Any coding agent, as one always-on rules file** (save it as `CLAUDE.md` for Claude Code)
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/ji-hun-git/how-to-use-ai/main/drop-in/AGENTS.md -o AGENTS.md
 ```
 
-Save it as `CLAUDE.md` for Claude Code. For Cursor, use [the Cursor rule](drop-in/cursor/how-to-use-ai.mdc).
+**ChatGPT, Claude or Gemini apps:** paste the [custom instructions](drop-in/custom-instructions.md) into your settings.
 
-</details>
+Manual installation and per-agent folders are covered in [skills/README.md](skills/README.md) and [drop-in/README.md](drop-in/README.md).
 
-<details>
-<summary><strong>ChatGPT, Claude or Gemini apps</strong> · custom instructions</summary>
+## Skills
 
-Paste the short or long version of the [custom instructions](drop-in/custom-instructions.md) into your settings.
+Skills load only when their task comes up. Each one cites the research it is built on.
 
-</details>
-
-Manual install and per-agent folders: [skills/README.md](skills/README.md) · [drop-in/README.md](drop-in/README.md)
-
----
-
-## 🧰 The 10 skills
-
-Short, focused instructions that load only when their task comes up. Each one links to the research behind it.
-
-| Skill | Prevents | Kicks in when |
+| Skill | Guards against | Use it when |
 |---|---|---|
-| [clarify-first](skills/clarify-first/SKILL.md) | 🔵&nbsp;Misunderstanding | A request is vague or big: asks up to 3 questions, with defaults |
-| [task-spec](skills/task-spec/SKILL.md) | 🔵&nbsp;Misunderstanding | Briefing a coding agent: goal, limits, a checkable "done" |
-| [fresh-start-handoff](skills/fresh-start-handoff/SKILL.md) | 🔵&nbsp;Misunderstanding | A long chat goes in circles: one prompt to restart cleanly |
-| [coverage-check](skills/coverage-check/SKILL.md) | 🟠&nbsp;Omission | Long input or many requirements: ends with a coverage table |
-| [grounded-answer](skills/grounded-answer/SKILL.md) | 🔴&nbsp;Fabrication | Answering from documents: quotes first, cites every claim |
-| [verify-claims](skills/verify-claims/SKILL.md) | 🔴&nbsp;Fabrication | Fact-checking before you publish: claim by claim, with verdicts |
-| [honest-critique](skills/honest-critique/SKILL.md) | 🟣&nbsp;Sycophancy | "Is this good?" or pushback: biggest problems first |
-| [fresh-eyes-review](skills/fresh-eyes-review/SKILL.md) | 🟣&nbsp;Sycophancy | Final check of finished work against the spec, not the chat |
-| [prompt-improver](skills/prompt-improver/SKILL.md) | All four | Writing or fixing a prompt: fills the gaps, trims the rest |
-| [learning-tutor](skills/learning-tutor/SKILL.md) | Learning loss | You're learning: hints first, full solution only on request |
+| [clarify-first](skills/clarify-first/SKILL.md) | Misunderstanding | A request is vague or large. It asks up to three questions, each with a default. |
+| [task-spec](skills/task-spec/SKILL.md) | Misunderstanding | You hand work to a coding agent. It writes goal, context, constraints and a checkable "done". |
+| [fresh-start-handoff](skills/fresh-start-handoff/SKILL.md) | Misunderstanding | A long chat keeps going in circles. It writes one prompt to restart cleanly. |
+| [coverage-check](skills/coverage-check/SKILL.md) | Omission | There are many requirements or a long input. It ends with a coverage table. |
+| [grounded-answer](skills/grounded-answer/SKILL.md) | Fabrication | You answer from documents. It quotes first and cites every claim. |
+| [verify-claims](skills/verify-claims/SKILL.md) | Fabrication | You fact-check before publishing. It checks claim by claim. |
+| [honest-critique](skills/honest-critique/SKILL.md) | Sycophancy | You ask "is this good?" or push back. It leads with the biggest problems. |
+| [fresh-eyes-review](skills/fresh-eyes-review/SKILL.md) | Sycophancy | You do a final check. It reviews against the spec, not the conversation. |
+| [prompt-improver](skills/prompt-improver/SKILL.md) | All four | You write or fix a prompt. It fills the gaps and trims the rest. |
+| [learning-tutor](skills/learning-tutor/SKILL.md) | Lost learning | You are learning. It gives hints first and the solution on request. |
 
-Prefer one file? The same evidence ships as an [18-rule AGENTS.md](drop-in/AGENTS.md), [30 copy-paste prompts](prompts/README.md) and [10 templates](templates/).
+The same rules also ship as an [18-rule AGENTS.md](drop-in/AGENTS.md), [30 copy-paste prompts](prompts/README.md) and [10 annotated templates](templates/).
 
----
+## Methods and the papers behind them
 
-## 🧪 Measured, not assumed
+Well-known methods, graded by how much they still help with late-2026 models. Many classic papers tested 2022 to 2024 models; where newer evidence exists, the verdict follows it.
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/eval-results-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/eval-results-light.svg">
-    <img alt="Passing runs on trigger cases without vs with the skills: first suite Sonnet 42/48 to 47/48, Haiku 41/48 to 48/48; harder suite Sonnet 39/42 to 41/42, Haiku 36/42 to 39/42. Tutoring 0/12 to 12/12. Control cases 36/36 either way." src="assets/eval-results-light.svg" width="100%">
-  </picture>
-</p>
+| Method | Verdict for 2026 | What the evidence says | Paper |
+|---|---|---|---|
+| "Think step by step" (zero-shot chain of thought) | Mostly built in now | Reasoning models moved about 3 points on GPQA Diamond and took 20-80% longer | [Meincke et al., 2025 (preprint)](https://arxiv.org/abs/2506.07142) |
+| Reasoning-effort setting | Use | Higher effort reduced accuracy in most runs across 9 agent benchmarks, so tune it per task | [Kapoor et al., ICLR 2026](https://arxiv.org/abs/2510.11977) |
+| Self-consistency (majority vote over samples) | Situational | A 64-sample vote lifted DeepSeek-R1-Zero on AIME 2024 from 71.0% to 86.7%, but cost grows with every sample | [DeepSeek-AI, Nature 2025](https://arxiv.org/abs/2501.12948) |
+| Expert personas ("You are a world-class...") | Skip (for accuracy) | No significant effect on GPQA Diamond or MMLU-Pro in 5 of 6 models | [Basil et al., 2025 (preprint)](https://arxiv.org/abs/2512.05858) |
+| Search grounding | Use | GPT-4o scored 0.6% on BrowseComp without browsing; a multi-step research agent scored 51.5% | [Wei et al., 2025 (preprint)](https://arxiv.org/abs/2504.12516) |
+| Allow "I don't know" | Use | Reasoning fine-tuning cut abstention by 24% across 20 frontier models | [Kirichenko et al., 2025 (preprint)](https://arxiv.org/abs/2506.09038) |
+| Tool-checked self-correction | Use | ChatGPT's HotpotQA F1 rose from 42.8 to 52.9 with tools, only to 46.1 without | [Gou et al., ICLR 2024](https://arxiv.org/abs/2305.11738) |
+| "Review your answer" with no new information | Skip | GPT-4 on GSM8K fell from 95.5 to 89.0 over two rounds | [Huang et al., ICLR 2024](https://arxiv.org/abs/2310.01798) |
+| Hide authorship, third-person framing | Use | A third-person perspective cut sycophancy by up to 63.8% | [Hong et al., Findings of EMNLP 2025](https://arxiv.org/abs/2505.23840) |
+| Fresh chat with one summary | Use | Instructions spread over turns cut performance by 39% on average | [Laban et al., ICLR 2026](https://arxiv.org/abs/2505.06120) |
+| Multi-agent debate | Skip | Majority voting explains most of the gain across seven benchmarks | [Choi et al., NeurIPS 2025](https://arxiv.org/abs/2508.17536) |
+| Lean context | Use | 11 of 13 long-context models fell below half their short-context score at 32K tokens | [Modarressi et al., ICML 2025](https://arxiv.org/abs/2502.05167) |
 
-We ran every skill on the same tasks with and without it, graded blind: 36 cases in two suites, 432 graded runs on Claude Sonnet and Haiku. The skills raised passing runs on trigger cases from 158/180 to **175/180** and never broke a correct default. The biggest change was tutoring: without the skill, the models handed over the answer in 12 of 12 runs; with it, they gave hints in 12 of 12. On most cases, current models already did fine without the skills, even on a 9,000-word input, and the tests exposed weak spots in three of our skills that we fixed and re-tested.
+All 73 methods, with the evidence, the 192 sources and copyable prompt patterns, are in [docs/14](docs/14-methods-and-papers.md).
 
-→ [Full results, raw answers and change log](evals/results/README.md)
+## The four failure modes
 
----
+Most bad answers fail in one of four ways. Each has a documented cause and a fix.
 
-## 🔁 Before / after
+| Failure mode | Why it happens | What fixes it | Guide |
+|---|---|---|---|
+| **Misunderstanding** | Requests leave gaps, and models assume instead of asking, then lock in early assumptions | State the goal, audience and done criteria up front; ask up to three questions; restart long chats | [docs/04](docs/04-failure-modes.md#1-misunderstanding) |
+| **Omission** | Accuracy drops as inputs get longer, and compliance falls as rules pile up | Number the requirements, put documents first and the question last, end with a coverage table | [docs/04](docs/04-failure-modes.md#2-omission) |
+| **Fabrication** | Training and evaluation reward a confident guess over "I don't know" | Allow abstaining, quote before answering, cite or retract, open every source | [docs/04](docs/04-failure-modes.md#3-fabrication-hallucination) |
+| **Sycophancy** | Preference training rewards agreement, and people trust flattery more | Set criteria first, hide who wrote the work, change answers only on new evidence | [docs/04](docs/04-failure-modes.md#4-bonus-sycophancy) |
+
+This four-part taxonomy is the repo's own way of teaching the material. The causes and fixes under each are linked to research in [docs/04](docs/04-failure-modes.md).
+
+## Common prompts, and what to write instead
 
 | You write | What tends to happen | Write this instead | Evidence |
 |---|---|---|---|
-| "Give me 5 studies on X with links." | Plausible but invented references. 2026-released models fabricated references in **35%** of responses in one study | "Use search. Only list papers you actually opened; fewer than 5 is fine." | [Topaz et al., 2026 (preprint)](https://arxiv.org/abs/2609.14988) |
-| "Are you sure?" | Models change their answer **46%** of the time (2023 study); current models still cave under sustained pushback | "Re-solve from scratch and show where the first answer was wrong, if it was." | [FlipFlop](https://arxiv.org/abs/2311.08596) · [SPINE, 2026](https://arxiv.org/abs/2609.09090) |
-| Requirements added one message at a time | Performance drops **39%** on average | "Consolidate everything into one prompt," then start a fresh chat | [Laban et al., ICLR 2026](https://arxiv.org/abs/2505.06120) |
-| "You are a world-class expert…" | No reliable accuracy gain | State the audience, purpose and done criteria | [Wharton Report 4](https://gail.wharton.upenn.edu/research-and-insights/playing-pretend-expert-personas/) |
-| A 20-rule prompt | Compliance with all rules collapses beyond about **5–6** at once | Keep ~5 rules, number them, ask for a coverage table | [Vasileva, 2026 (preprint)](https://arxiv.org/abs/2608.12426) |
+| "Give me 5 studies on X with links." | Plausible but invented references: models released in 2026 fabricated references in 35% of responses in one study | "Search, and list only papers you actually opened. Fewer than 5 is fine." | [Topaz et al., 2026 (preprint)](https://arxiv.org/abs/2609.14988) |
+| "Are you sure?" | Models change their answer 46% of the time (2023), current models still give way under sustained pushback, and self-review with nothing new to check against tends to make answers worse | "Check step 3 against the table (or a test, or a calculation) and tell me what changes." | [FlipFlop](https://arxiv.org/abs/2311.08596), [SPINE, 2026](https://arxiv.org/abs/2609.09090), [Huang et al., ICLR 2024](https://arxiv.org/abs/2310.01798) |
+| Requirements added one message at a time | Performance drops 39% on average | Put everything in one prompt, then start a fresh chat | [Laban et al., ICLR 2026](https://arxiv.org/abs/2505.06120) |
+| "You are a world-class expert…" | No reliable gain in accuracy | State the audience, the purpose and what "done" means | [Wharton, Report 4](https://gail.wharton.upenn.edu/research-and-insights/playing-pretend-expert-personas/) |
+| A prompt with 20 rules | Compliance with all of them collapses beyond about 5 or 6 | Keep about five rules, number them, and ask for a coverage table | [Vasileva, 2026 (preprint)](https://arxiv.org/abs/2608.12426) |
 
-These and 7 more, with fixes: [the prompt clinic](examples/08-prompt-clinic.md).
+Twelve common prompts, each diagnosed and fixed, are in the [prompt clinic](examples/08-prompt-clinic.md).
 
----
+## Guides
 
-## 🧭 The four failure modes
-
-Almost every bad AI answer is one of four things. Each has a documented cause and a fix, and each fix is available as a prompt, a skill and a rule.
-
-```mermaid
-flowchart LR
-    Q{What went wrong?} -->|"Answered a different question"| M["Misunderstanding<br/>clarify-first · task-spec"]
-    Q -->|"Left things out"| O["Omission<br/>coverage-check"]
-    Q -->|"Made things up"| F["Fabrication<br/>grounded-answer · verify-claims"]
-    Q -->|"Just agreed with you"| S["Sycophancy<br/>honest-critique · fresh-eyes-review"]
-```
-
-| Failure mode | Why it happens | Fix | Skill | Guide |
-|---|---|---|---|---|
-| 🔵&nbsp;**Misunderstanding** | Requests leave gaps; models assume instead of asking, and lock in early assumptions | Goal, audience and done criteria up front; up to 3 questions with defaults; restart long chats | [clarify-first](skills/clarify-first/SKILL.md), [task-spec](skills/task-spec/SKILL.md), [fresh-start-handoff](skills/fresh-start-handoff/SKILL.md) | [docs/04 §1](docs/04-failure-modes.md#1-misunderstanding) |
-| 🟠&nbsp;**Omission** | The middle of long inputs is used least; compliance falls as rules pile up | Number requirements, documents first and question last, work in sections, coverage table | [coverage-check](skills/coverage-check/SKILL.md) | [docs/04 §2](docs/04-failure-modes.md#2-omission) |
-| 🔴&nbsp;**Fabrication** (hallucination) | Training and evaluation reward guessing over "I don't know" | Permission to abstain, quote first, cite or retract, open every source | [grounded-answer](skills/grounded-answer/SKILL.md), [verify-claims](skills/verify-claims/SKILL.md) | [docs/04 §3](docs/04-failure-modes.md#3-fabrication-hallucination) |
-| 🟣&nbsp;**Sycophancy** | Preference training rewards agreement; people trust flattery more | Hide authorship, criteria first, change answers only on new evidence, fresh-eyes review | [honest-critique](skills/honest-critique/SKILL.md), [fresh-eyes-review](skills/fresh-eyes-review/SKILL.md) | [docs/04 §4](docs/04-failure-modes.md#4-bonus-sycophancy) |
-
-"Misunderstanding · Omission · Fabrication (+ Sycophancy)" is this repo's own teaching taxonomy; the causes and fixes under each are linked to research.
-
----
-
-## ⏱️ The 30-second version
-
-> **Good AI use isn't a clever sentence. It's good instructions plus good verification.**
-
-**1. Instruct with six elements.** Spend your effort on the three starred ones.
-
-| Role | Context ★ | Instruction ★ | Format ★ | Constraints | Examples |
-|---|---|---|---|---|---|
-| Perspective and tone (doesn't improve accuracy) | Why, for whom, what situation, source material | What to do, and what "done" means | Structure and length | Only the rules that matter, with reasons | 2–5 varied samples |
-
-**2. Work in a loop.**
-
-```mermaid
-flowchart LR
-    A["Specify<br/>goal · context · done criteria"] --> B["Plan<br/>approve before big changes"]
-    B --> C["Execute<br/>with a check it can run"]
-    C --> D["Verify<br/>with outside evidence"]
-    D --> E["Learn<br/>update rules and templates"]
-    E --> A
-```
-
-**3. Verify in proportion to the stakes.** Skim drafts; check numbers and citations in work documents; open every source and recompute every number for anything legal, medical, financial or public. → [docs/08](docs/08-verification-and-evals.md)
-
----
-
-## 📚 Guides
-
-| # | Guide | Key question |
+| | Guide | Question it answers |
 |---|---|---|
-| 01 | [Mindset](docs/01-mindset.md) | How should you think of AI? When should you not use it? |
-| 02 | [The six elements of a prompt](docs/02-prompt-anatomy.md) | How do you write Role · Context · Instruction · Format · Constraints · Examples? |
+| 01 | [Mindset](docs/01-mindset.md) | How should you think about AI, and when should you not use it? |
+| 02 | [The six elements of a prompt](docs/02-prompt-anatomy.md) | How do you write role, context, instruction, format, constraints and examples? |
 | 03 | [Teaching with examples (few-shot)](docs/03-examples-few-shot.md) | How many examples, and how do you choose them? |
-| 04 | [Misunderstanding · Omission · Fabrication](docs/04-failure-modes.md) | Why does AI get things wrong, and how do you prevent and catch it? |
-| 05 | [Models and reasoning](docs/05-models-and-reasoning.md) | Which models and tools? How do reasoning models differ? |
-| 06 | [Workflows](docs/06-workflows.md) | How do you go from a single prompt to a repeatable way of working (context, patterns, memory)? |
+| 04 | [Failure modes](docs/04-failure-modes.md) | Why does AI get things wrong, and how do you prevent and catch it? |
+| 05 | [Models and reasoning](docs/05-models-and-reasoning.md) | Which models and tools, and how do reasoning models differ? |
+| 06 | [Workflows](docs/06-workflows.md) | How do you go from one prompt to a repeatable way of working? |
 | 07 | [AI coding](docs/07-ai-coding.md) | How do you move from vibe coding to agentic engineering? |
-| 08 | [Verification and evaluation](docs/08-verification-and-evals.md) | How do you verify an answer and evaluate a prompt? |
-| 09 | [Security and privacy](docs/09-security-privacy.md) | What should you never put in? What about prompt injection? |
-| 10 | [Myths vs. evidence](docs/10-myths-vs-evidence.md) | Do "I'll tip you," "act like an expert" and "think step by step" work? |
+| 08 | [Verification and evaluation](docs/08-verification-and-evals.md) | How do you check an answer and evaluate a prompt? |
+| 09 | [Security and privacy](docs/09-security-privacy.md) | What should you never paste in, and what is prompt injection? |
+| 10 | [Myths vs. evidence](docs/10-myths-vs-evidence.md) | Do tips, personas and "think step by step" actually work? |
 | 11 | [Where instructions should live](docs/11-skills-and-agent-rules.md) | Prompt, rules file, skill or hook? |
-| 12 | [Writing decision rules](docs/12-writing-decision-rules.md) | How do you put real judgment into a skill, and prove it works? |
-| 13 | [Verifying agent runs](docs/13-verifying-agent-runs.md) | The run finished without errors. Is the result actually right? |
+| 12 | [Writing decision rules](docs/12-writing-decision-rules.md) | How do you put real judgment into a skill and prove it works? |
+| 13 | [Verifying agent runs](docs/13-verifying-agent-runs.md) | The run finished without errors. Is the result right? |
+| 14 | [Methods and the papers behind them](docs/14-methods-and-papers.md) | Which well-known methods still work in 2026, and what is the evidence? |
 
 <details>
-<summary><strong>8 worked examples</strong></summary>
+<summary><strong>Worked examples</strong></summary>
 
-| # | Example | What you learn |
+| | Example | What you learn |
 |---|---|---|
-| 1 | [Work email, one element at a time](examples/01-email-step-by-step.md) | How the six elements change the result |
+| 1 | [Work email, one element at a time](examples/01-email-step-by-step.md) | How each of the six elements changes the result |
 | 2 | [Summarizing a long document](examples/02-document-summary.md) | Preventing omission and fabrication together |
 | 3 | [Research with sources](examples/03-research-with-sources.md) | Filtering out fake sources |
 | 4 | [Data analysis](examples/04-data-analysis.md) | Calculations in code, assumptions in the open |
-| 5 | [Fixing a bug with a coding agent](examples/05-coding-agent.md) | Explore → plan → test → implement → verify |
+| 5 | [Fixing a bug with a coding agent](examples/05-coding-agent.md) | Explore, plan, test, implement, verify |
 | 6 | [Learning with AI](examples/06-learning-with-ai.md) | Gaining understanding, not just answers |
-| 7 | [Designing your own agent](examples/07-build-your-own-agent.md) | Task analysis → instructions → evaluation set → security |
-| 8 | [Prompt clinic](examples/08-prompt-clinic.md) | 12 common prompts diagnosed and fixed |
+| 7 | [Designing your own agent](examples/07-build-your-own-agent.md) | From task analysis to an evaluation set |
+| 8 | [Prompt clinic](examples/08-prompt-clinic.md) | Twelve common prompts, diagnosed and fixed |
 
 </details>
-
-### 🗺️ Learning paths
-
-| Time | For | Order |
-|---|---|---|
-| **5 minutes** | Everyone | Install the [skills](skills/README.md) or paste the [custom instructions](drop-in/custom-instructions.md) → skim the [cheatsheet](CHEATSHEET.md) |
-| **30 minutes** | Beginners | [02. Six elements](docs/02-prompt-anatomy.md) → [Example 1](examples/01-email-step-by-step.md) → [Prompt clinic](examples/08-prompt-clinic.md) → [Universal template](templates/universal-prompt.md) |
-| **2 hours** | Using AI seriously at work | + [01. Mindset](docs/01-mindset.md) → [04. Failure modes](docs/04-failure-modes.md) → [08. Verification](docs/08-verification-and-evals.md) → [10. Myths](docs/10-myths-vs-evidence.md) → Examples 2–4 |
-| **1 day** | Developers and agent builders | + [05](docs/05-models-and-reasoning.md) → [06](docs/06-workflows.md) → [07](docs/07-ai-coding.md) → [09](docs/09-security-privacy.md) → [11](docs/11-skills-and-agent-rules.md) → [12](docs/12-writing-decision-rules.md) → [13](docs/13-verifying-agent-runs.md) → Examples 5 and 7 → [evals](evals/README.md) |
-
----
-
-## 💡 Why this repo
-
-1. **Evidence first.** 460+ cited sources. Lab guides were checked directly on 2026-11-09, papers by bibliographic details and abstracts, and older statistics are labeled as historical. → [What is verified and what is not](research/evidence-report.md#8-what-is-verified-and-what-is-not)
-2. **Read it or install it.** The same evidence ships as guides, as [skills](skills/README.md), as a [rules file](drop-in/AGENTS.md) and as a [prompt library](prompts/README.md).
-3. **Tested.** The skills are measured with and without, blind-graded, with every answer published, including where they made no difference. → [results](evals/results/README.md)
-4. **Built around failure modes, not tricks**, including sycophancy, which coding-focused repos rarely cover.
-5. **Myth-busting.** Shows which popular tips fail in controlled studies. → [docs/10](docs/10-myths-vs-evidence.md)
-6. **For everyone.** Writing, research, analysis and learning, not only coding.
-
-How this repo compares with the most popular ones, and when another is the better choice: [COMPARISON.md](COMPARISON.md).
 
 <details>
-<summary><strong>Myths vs. evidence (highlights)</strong></summary>
+<summary><strong>Where to start</strong></summary>
 
-| Popular tip | Verdict | Evidence |
+| Time | For | Read |
 |---|---|---|
-| "I'll tip you" / threats | No reliable effect | Wharton Report 3 (2025) |
-| Being polite (or bossy) | No overall difference | Wharton Report 1 (2025) |
-| "You are the world's best expert" | No accuracy gain, sometimes worse | Wharton Report 4 (2025), Zheng et al. (2024) |
-| "Think step by step" on reasoning models | Almost no effect, only more time | Wharton Report 2 (2025), OpenAI, Microsoft |
-| ALL CAPS, "NEVER!!!", "IMPORTANT" | Newest models over-apply it | Anthropic, OpenAI |
-| Specifying output format is trivial | **Wrong: format instructions improve accuracy** | Wharton Report 1 (2025) |
-| "Are you really sure?" as a check | Flips correct answers | FlipFlop (2023), SPINE (2026) |
+| 5 minutes | Everyone | Install the [skills](skills/README.md) or paste the [custom instructions](drop-in/custom-instructions.md), then skim the [cheatsheet](CHEATSHEET.md) |
+| 30 minutes | Beginners | [02](docs/02-prompt-anatomy.md), [example 1](examples/01-email-step-by-step.md), the [prompt clinic](examples/08-prompt-clinic.md) and the [universal template](templates/universal-prompt.md) |
+| 2 hours | Using AI seriously at work | Add [01](docs/01-mindset.md), [04](docs/04-failure-modes.md), [08](docs/08-verification-and-evals.md), [10](docs/10-myths-vs-evidence.md), the short version of [14](docs/14-methods-and-papers.md#the-short-version) and examples 2 to 4 |
+| 1 day | Developers and agent builders | Add [05](docs/05-models-and-reasoning.md), [06](docs/06-workflows.md), [07](docs/07-ai-coding.md), [09](docs/09-security-privacy.md), [11](docs/11-skills-and-agent-rules.md), [12](docs/12-writing-decision-rules.md), [13](docs/13-verifying-agent-runs.md), [14](docs/14-methods-and-papers.md), examples 5 and 7, and the [evals](evals/README.md) |
 
 </details>
 
----
+## How the evidence is handled
 
-## 🆕 2026 update (2026-11-09)
+- **Primary sources first.** Official guides from Anthropic, OpenAI, Google and Microsoft were checked directly on November 9, 2026. Papers are cited by title, venue and link, and preprints are marked as preprints. The [evidence report](research/evidence-report.md) lists 460+ sources with what each one supports.
+- **Old numbers are labeled.** A statistic measured on 2023 models is shown as historical, next to the newest measurement where one exists.
+- **Myths are tested, not repeated.** Popular tips such as offering a tip, threatening the model or assigning an expert persona are checked against controlled studies in [docs/10](docs/10-myths-vs-evidence.md).
+- **Skills are measured.** Each skill is evaluated with and without it, and the cases, raw answers and grades are published, including where the skill made no difference or made things worse.
 
-| What changed | Summary |
+[COMPARISON.md](COMPARISON.md) sets this repo next to the most popular related repositories, including when another one is the better choice.
+
+## Repository contents
+
+| Folder | Contents |
 |---|---|
-| **Hallucination is down, not gone** | The newest models say "I don't know" more often, but 2026-released models still fabricated references in 35% of responses in one study, and court filings with AI-fabricated case law reached 2,266 → [04](docs/04-failure-modes.md#-2026-update-how-current-models-fare) |
-| **Sycophancy grows in long conversations** | Under persistent pushback, even the newest models caved in 20–97% of cases within 25 turns; people trust sycophantic answers more (*Science* 2026) → make important judgments in a **fresh chat** |
-| **1M tokens: retrieval solved, synthesis not** | Finding one fact in long material is near-perfect; reasoning across many pieces still degrades → include only what's needed |
-| **AI coding: from "reading every line" to "verifying with evidence"** | `/goal`, Stop hooks and independent review agents are now standard → [07](docs/07-ai-coding.md#-what-changed-in-2026-from-reading-every-line-to-verifying-with-evidence) |
-| **Local laws (example: South Korea)** | The AI Basic Act took effect 2026-01-22; labeling duties fall on AI providers → [09](docs/09-security-privacy.md#5-local-laws-and-guidelines-example-south-korea-2026) |
+| [`skills/`](skills/README.md) | 10 Agent Skills, installable as a Claude Code plugin, with `npx skills`, or by copying |
+| [`drop-in/`](drop-in/README.md) | The same rules as one file for AGENTS.md, CLAUDE.md, Cursor and chat apps |
+| [`docs/`](docs/) | 14 guides |
+| [`prompts/`](prompts/README.md) | 30 copy-paste prompts by task |
+| [`templates/`](templates/) | 10 annotated templates |
+| [`examples/`](examples/) | 8 worked examples, including the prompt clinic |
+| [`evals/`](evals/README.md) | A promptfoo comparison and the with-vs-without skill harness, with [results](evals/results/README.md) |
+| [`research/`](research/) | The [evidence report](research/evidence-report.md) and the [2026 update report](research/2026-update-report.md) |
+| [`resources/`](resources/awesome.md) | Curated official guides, courses and repositories |
 
-Full history: [CHANGELOG](CHANGELOG.md) · Evidence: [2026 update report](research/2026-update-report.md)
+A one-page summary is in [CHEATSHEET.md](CHEATSHEET.md), and a machine-readable index for AI tools is in [llms.txt](llms.txt).
 
----
+## Updates
 
-## 🔗 Key sources
+AI tools and official guidance change every few months. This repo states its research date, records every change in the [CHANGELOG](CHANGELOG.md), and fixes or flags advice that has gone stale. Fast-changing details such as model names are kept out of the core advice where possible.
 
-<details>
-<summary><strong>Official guides, Karpathy, universities and research</strong></summary>
+## Contributing
 
-| Category | Representative sources |
-|---|---|
-| Official lab guides | [Anthropic](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices) · [OpenAI](https://developers.openai.com/api/docs/guides/prompt-engineering) · [Google](https://aistudio.google.com/docs/prompting-strategies) · [Microsoft](https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering) · [Claude Code](https://code.claude.com/docs/en/best-practices) · [Codex](https://learn.chatgpt.com/guides/best-practices) |
-| Andrej Karpathy | [How I use LLMs](https://www.youtube.com/watch?v=EWvNQjAaOHw) · [Deep Dive into LLMs](https://www.youtube.com/watch?v=7xTGNNLPyMI) · [Sequoia Ascent 2026](https://karpathy.bearblog.dev/sequoia-ascent-2026/) · [nanochat](https://github.com/karpathy/nanochat) · [llm-council](https://github.com/karpathy/llm-council) |
-| Universities and research | [MIT Sloan](https://mitsloanedtech.mit.edu/ai/basics/effective-prompts/) · [Wharton Prompting Science Reports](https://arxiv.org/abs/2503.04818) · [Harvard/BCG Jagged Frontier](https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged) · [Stanford legal AI hallucinations](https://hai.stanford.edu/news/ai-trial-legal-models-hallucinate-1-out-6-or-more-benchmarking-queries) · [The Prompt Report](https://arxiv.org/abs/2406.06608) |
-| Research on failures | [Lost in the Middle](https://arxiv.org/abs/2307.03172) · [Why LMs Hallucinate](https://arxiv.org/abs/2509.04664) · [LLMs Get Lost in Multi-Turn](https://arxiv.org/abs/2505.06120) · [Sycophancy](https://arxiv.org/abs/2310.13548) · [Chain-of-Verification](https://arxiv.org/abs/2309.11495) |
-| Standards | [Agent Skills](https://agentskills.io/specification) · [AGENTS.md](https://agents.md/) |
+Reports of wrong or outdated claims, broken links and skills that misfire are welcome. [Open an issue](https://github.com/ji-hun-git/how-to-use-ai/issues/new/choose) using one of the forms; [CONTRIBUTING.md](CONTRIBUTING.md) explains what makes a report easy to act on. Security problems go through [private reporting](SECURITY.md).
 
-</details>
+## License
 
-Full list: [resources/awesome.md](resources/awesome.md) · All sources: [evidence report](research/evidence-report.md#references) and [2026 update report](research/2026-update-report.md)
-
----
-
-## 🗂️ What's inside
-
-| Folder | What it is | Start here |
-|---|---|---|
-| [`skills/`](skills/README.md) | 10 installable Agent Skills (Claude Code plugin, `npx skills`, manual) | [skills/README.md](skills/README.md) |
-| [`drop-in/`](drop-in/README.md) | One rules file for AGENTS.md / CLAUDE.md / Cursor / chat apps | [drop-in/AGENTS.md](drop-in/AGENTS.md) |
-| [`prompts/`](prompts/README.md) | 30 copy-paste prompts by task, tagged by the failure modes they prevent | [prompts/README.md](prompts/README.md) |
-| [`templates/`](templates/) | 10 annotated templates (universal prompt, clarify, coverage, grounding, critique, meta-prompt, coding task, AGENTS.md, skill with decision rules, agent test plan) | [universal prompt](templates/universal-prompt.md) |
-| [`examples/`](examples/) | 8 before/after walkthroughs, including the 12-case prompt clinic | [prompt clinic](examples/08-prompt-clinic.md) |
-| [`docs/`](docs/) | 13 guides | [the four failure modes](docs/04-failure-modes.md) |
-| [`evals/`](evals/README.md) | A runnable promptfoo test, plus a with-vs-without harness for all 10 skills | [evals/README.md](evals/README.md) |
-| [`research/`](research/) | Two sourced research reports with verification status for each claim | [evidence report](research/evidence-report.md) |
-| [`resources/`](resources/awesome.md) | Curated list of official guides, courses and repositories, each checked directly | [resources/awesome.md](resources/awesome.md) |
-
-<details>
-<summary><strong>Repository structure</strong></summary>
-
-```
-how-to-use-ai/
-├── README.md                 ← you are here
-├── CHEATSHEET.md             ← one-page summary
-├── COMPARISON.md             ← how this repo compares with popular ones
-├── CHANGELOG.md              ← change history
-├── CONTRIBUTING.md           ← how to report errors and suggest changes
-├── llms.txt                  ← machine-readable index for AI tools
-├── skills/                   ← 10 installable Agent Skills
-├── drop-in/                  ← rules file: AGENTS.md / CLAUDE.md / Cursor / chat apps
-├── prompts/                  ← 30-prompt library
-├── templates/                ← 10 annotated templates
-├── examples/                 ← 8 before/after examples
-├── docs/                     ← 13 guides
-├── evals/                    ← promptfoo test + skill eval harness
-├── research/                 ← evidence report + 2026 update report
-├── resources/                ← curated resource list
-├── assets/                   ← README images (generated by scripts/make_assets.py)
-├── scripts/                  ← validate.py (run in CI) and make_assets.py
-├── .github/                  ← CI workflow and issue forms
-├── .claude-plugin/           ← Claude Code plugin and marketplace manifests
-└── LICENSE                   ← MIT
-```
-
-</details>
-
----
-
-## 🤝 Contributing and updates
-
-Found a wrong or outdated claim, a broken link, or a skill that misfires? [Open an issue](https://github.com/ji-hun-git/how-to-use-ai/issues/new/choose); there's a short form for each. See [CONTRIBUTING.md](CONTRIBUTING.md) for what makes a report easy to act on.
-
-AI tools and official guides change every few months. This repo states its **research date (currently 2026-11-09)**, records changes in the [CHANGELOG](CHANGELOG.md), and flags or fixes advice that has gone stale. Fast-changing details such as model names are kept out of the core advice wherever possible.
-
-## 📄 License
-
-[MIT](LICENSE). Rights to external material quoted or summarized in each document remain with the original authors.
-
-<p align="center"><sub>If this repo helped you, a ⭐ helps others find it.</sub></p>
+[MIT](LICENSE). Rights to external material quoted or summarized remain with the original authors.

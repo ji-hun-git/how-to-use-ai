@@ -13,7 +13,7 @@
 |---|---|
 | **Check against outside evidence, not the AI's word** | Asking the same model "Is that right?" is not verification |
 | **Don't ask "Are you sure?"** | Models changed their answers 46% of the time and accuracy dropped 17% (FlipFlop, 2023) |
-| **Have it redo the work independently** | Solving it fresh, without seeing the earlier answer, avoids bias (Chain-of-Verification) |
+| **Have it redo the work independently** | Solving it fresh, without seeing the earlier answer, avoids bias (Chain-of-Verification). It works best when the checks use a document, search or code: self-review with nothing outside the model can lower accuracy ([Huang et al., ICLR 2024](https://arxiv.org/abs/2310.01798)) |
 | **Run whatever can be run** | Run the code, recalculate the numbers, open the links |
 | **Scale verification to the risk** | You can't verify every answer to the same degree |
 
@@ -42,6 +42,8 @@ Next to each fact, mark it as [sourced / from memory / inferred].
 
 **③ Chain-of-Verification**
 1. Draft → 2. Write verification questions → 3. Answer them independently, **without looking at the earlier answer** → 4. Revise based on the differences
+
+Answer the verification questions from a document, a search or code wherever you can. With nothing outside the model to check against, self-review can make answers worse ([Huang et al., ICLR 2024](https://arxiv.org/abs/2310.01798)); see [14. Methods and the papers behind them](14-methods-and-papers.md#4-verification-and-self-correction).
 
 **④ Multiple runs, multiple models**
 Ask the same question in 2–3 new chats, or to models from other companies. **Where the answers differ** is the most suspect spot. (Agreement doesn't prove correctness.)

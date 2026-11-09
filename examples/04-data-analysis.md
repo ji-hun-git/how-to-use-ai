@@ -5,7 +5,7 @@
 
 ---
 
-## ❌ The usual approach
+## The usual approach
 
 ```text
 (paste an Excel table as text)
@@ -18,7 +18,7 @@ Tell me the average sales and growth rate by region.
 
 ---
 
-## ✅ Improved prompt
+## Improved prompt
 
 ```xml
 <context>
@@ -68,4 +68,5 @@ I'm building a table for the quarterly report.
 - [ ] I read the code to check that the filter conditions (period, region) match my intent
 - [ ] I checked that the supporting numbers in "notable points" actually appear in the table
 
-> 💡 Upload data containing personal information or company secrets only to AI services your company has approved. For details, see [docs/09-security-privacy.md](../docs/09-security-privacy.md).
+> [!TIP]
+> Upload data containing personal information or company secrets only to AI services your company has approved. For details, see [docs/09-security-privacy.md](../docs/09-security-privacy.md).

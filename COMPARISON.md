@@ -2,11 +2,11 @@
 
 > A fair look at the most popular repositories for learning and improving how people work with AI, as of **2026-11-09**. Star counts come from the GitHub API on that date. The ratings are our own assessment from reading each repository; they describe fit for purpose, not overall quality. Many of these projects are excellent, and several are listed in our [resources](resources/awesome.md).
 
-**Legend:** ● strong · ◐ partial · ○ not a focus
+**Legend:** ● strong, ◐ partial, ○ not a focus
 
 | Repository | ⭐ | What you get | Evidence & sources | Up to date (2026) | Failure modes covered | Copy-paste prompts | Installable skills / rules | Runnable evals | Course structure | Non-coders |
 |---|---|---|---|---|---|---|---|---|---|---|
-| **how-to-use-ai** (this repo) | new | Guide + 10 skills + drop-in rules + prompt library + eval demo | ● 460+ cited sources, verification status per claim | ● | ● misunderstanding, omission, fabrication, sycophancy | ● 30 prompts + 10 templates | ● 10 skills, Claude Code plugin, AGENTS.md / CLAUDE.md / Cursor / chat versions | ● with-vs-without skill evals with published results and raw answers | ◐ learning paths | ● |
+| **how-to-use-ai** (this repo) | new | Guide + 10 skills + drop-in rules + prompt library + 73-method catalog graded for 2026 + eval demo | ● 460+ cited sources, verification status per claim | ● | ● misunderstanding, omission, fabrication, sycophancy | ● 30 prompts + 10 templates | ● 10 skills, Claude Code plugin, AGENTS.md / CLAUDE.md / Cursor / chat versions | ● with-vs-without skill evals with published results and raw answers | ◐ learning paths | ● |
 | [mattpocock/skills](https://github.com/mattpocock/skills) | 318,372 | Engineering skills from one developer's setup | ◐ | ● | ● (for coding) | ◐ | ● | ○ | ○ | ◐ |
 | [obra/superpowers](https://github.com/obra/superpowers) | 314,491 | Skills that enforce a brainstorm → plan → TDD → review workflow | ○ | ● | ◐ | ○ | ● | ◐ | ○ | ○ |
 | [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills) | 230,864 | One CLAUDE.md based on Karpathy's observations of coding-agent mistakes (not made by Karpathy) | ◐ | ◐ | ● (for coding) | ● | ● | ○ | ○ | ○ |

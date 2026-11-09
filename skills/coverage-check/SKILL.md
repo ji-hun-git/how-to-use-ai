@@ -6,7 +6,7 @@ license: MIT
 
 # Coverage check
 
-The more requirements a task has, the less likely all of them are met, and content in the middle of long inputs is used least. Make coverage explicit instead of hoping for it.
+The more requirements a task has, the less likely all of them are met, and the longer the input, the less reliably all of it is used. Make coverage explicit instead of hoping for it.
 
 ## Steps
 

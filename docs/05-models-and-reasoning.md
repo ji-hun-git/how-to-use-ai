@@ -21,7 +21,7 @@ Here are the habits Andrej Karpathy recommended in his "How I use LLMs" (2025) t
 
 ---
 
-## 🆕 Snapshot: major models as of November 2026
+## Snapshot: major models as of November 2026
 
 > Models change every few months. The table below reflects each company's official documentation as of **2026-11-09**. Outside this guide, model names appear only as dated examples; the advice itself doesn't depend on which model you use.
 
@@ -46,7 +46,7 @@ Here are the habits Andrej Karpathy recommended in his "How I use LLMs" (2025) t
 | Ideas, drafts, translation, polishing tone | Fast model | There's no single right answer, and you can check the result right away |
 | Latest news, statistics, product information | **Turn on search** | A model's training data has a cutoff date |
 | Calculations, table analysis, charts | **Turn on code execution** | Language models are weak at mental arithmetic |
-| Math, logic, complex coding, strategic analysis | **Reasoning model / high reasoning effort** | It checks multiple steps on its own |
+| Math, logic, complex coding, strategic analysis | **Reasoning model**, at the default effort first | It checks multiple steps on its own. Raise the effort after a failed check rather than by default: higher effort lowered accuracy in most runs across 9 agent benchmarks ([Kapoor et al., ICLR 2026](https://arxiv.org/abs/2510.11977)) |
 | Research reports that pull together many sources | Deep research feature + **source verification** | Convenient, but it doesn't screen for source quality → [Example 3](../examples/03-research-with-sources.md) |
 | Q&A over your own documents | File attachments / projects feature | Limits the grounding to your material |
 | Codebase work | Coding agent | It can read files and run tests → [07. AI coding](07-ai-coding.md) |
@@ -118,6 +118,8 @@ Karpathy's open-source [llm-council](https://github.com/karpathy/llm-council) ha
 1. Ask the same question in 2–3 services.
 2. Mark where the answers differ. → Those are **the spots that most need checking**.
 3. Show one model the other models' answers and have it analyze the differences.
+
+Most of the gain from multi-model setups comes from independent answers and voting rather than from models debating ([Choi et al., NeurIPS 2025](https://arxiv.org/abs/2508.17536)), so step 2, finding where independent answers disagree, does most of the work.
 
 ---
 
