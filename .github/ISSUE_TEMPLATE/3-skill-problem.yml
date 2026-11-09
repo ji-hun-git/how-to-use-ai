@@ -1,0 +1,50 @@
+name: Skill or rule problem
+description: A skill or rule misfires, doesn't trigger, or makes an answer worse.
+title: "[Skill] "
+labels: ["skill"]
+body:
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which skill or file?
+      options:
+        - clarify-first
+        - coverage-check
+        - grounded-answer
+        - verify-claims
+        - honest-critique
+        - fresh-eyes-review
+        - fresh-start-handoff
+        - prompt-improver
+        - task-spec
+        - learning-tutor
+        - drop-in/AGENTS.md or the Cursor rule
+        - custom instructions for chat apps
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Agent and model
+      placeholder: Claude Code with Sonnet, Codex with GPT-6.1 Terra, Cursor…
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: What you asked
+      description: Paste the request. A case that reproduces the problem can go straight into the eval suite.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true

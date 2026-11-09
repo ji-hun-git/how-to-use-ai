@@ -1,0 +1,36 @@
+name: Broken link
+description: A link is dead, moved, or no longer says what the text claims.
+title: "[Link] "
+labels: ["broken link"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Where is the link?
+      placeholder: research/evidence-report.md, References
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: The link
+      placeholder: https://…
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What happens?
+      options:
+        - Not found (404) or the site is gone
+        - Redirects to a different or general page
+        - Behind a login or paywall now
+        - Loads, but no longer says what the text claims
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: replacement
+    attributes:
+      label: Replacement, if you found one
+      placeholder: https://…

@@ -1,0 +1,16 @@
+name: Suggestion
+description: A missing topic, a better example, or a source worth adding.
+title: "[Suggestion] "
+labels: ["suggestion"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you add or change?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it helps, and the evidence
+      description: Who it helps, and any sources behind it.

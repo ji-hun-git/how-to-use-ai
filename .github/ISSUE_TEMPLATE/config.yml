@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Read the guides
+    url: https://github.com/ji-hun-git/how-to-use-ai#-guides
+    about: Most "how do I…" questions are answered in the 13 guides and the cheatsheet.
+  - name: Report a security problem privately
+    url: https://github.com/ji-hun-git/how-to-use-ai/security/advisories/new
+    about: For skills or rules that could make an agent cause harm. Please don't file these publicly.

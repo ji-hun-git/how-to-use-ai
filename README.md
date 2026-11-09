@@ -1,31 +1,122 @@
-# how-to-use-ai
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg">
+    <img alt="how-to-use-ai: stop AI from misunderstanding you, skipping things, making things up and just agreeing with you" src="assets/banner-light.svg" width="100%">
+  </picture>
+</p>
 
-**Stop AI from misunderstanding you, skipping things, making things up and just agreeing with you, with evidence instead of prompt hacks.**
+<p align="center">
+  <strong>Evidence instead of prompt hacks.</strong> A guide, 10 tested Agent Skills and drop-in rules that fix the four ways AI lets you down.<br>
+  <sub>Works with Claude Code, Codex, Cursor, Copilot, Gemini/Antigravity CLI, and the ChatGPT, Claude and Gemini apps.</sub>
+</p>
 
-Read the guide, or install it into your AI agent in one line.
+<p align="center">
+  <a href="https://github.com/ji-hun-git/how-to-use-ai/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/ji-hun-git/how-to-use-ai/validate.yml?branch=main&style=flat-square&label=validate" alt="Validate workflow status"></a>
+  <a href="skills/README.md"><img src="https://img.shields.io/badge/agent%20skills-10-8250df?style=flat-square" alt="10 Agent Skills"></a>
+  <a href="evals/results/README.md"><img src="https://img.shields.io/badge/skills-tested%20with%20vs%20without-1a7f37?style=flat-square" alt="Skills tested with vs without"></a>
+  <a href="research/evidence-report.md"><img src="https://img.shields.io/badge/sources-460%2B%20cited-bc4c00?style=flat-square" alt="460+ cited sources"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/github/last-commit/ji-hun-git/how-to-use-ai?style=flat-square&label=updated" alt="Last updated"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-59636e?style=flat-square" alt="MIT license"></a>
+</p>
 
-[![validate](https://github.com/ji-hun-git/how-to-use-ai/actions/workflows/validate.yml/badge.svg)](https://github.com/ji-hun-git/how-to-use-ai/actions/workflows/validate.yml) ![updated](https://img.shields.io/badge/updated-2026--11-blue) ![skills](https://img.shields.io/badge/agent%20skills-10-purple) [![evals](https://img.shields.io/badge/skill%20evals-published-brightgreen)](evals/results/README.md) ![sources](https://img.shields.io/badge/cited%20sources-460%2B-orange) ![license](https://img.shields.io/badge/license-MIT-green)
-
-[Install](#install-in-one-line) · [Before/after](#before--after) · [The four failure modes](#the-four-failure-modes-and-what-fixes-them) · [Guides](#guides) · [Prompt library](prompts/README.md) · [Cheatsheet](CHEATSHEET.md) · [How it compares](COMPARISON.md)
+<p align="center">
+  <a href="#-install-in-30-seconds">🚀 Install</a> •
+  <a href="#-the-10-skills">🧰 Skills</a> •
+  <a href="#-measured-not-assumed">🧪 Results</a> •
+  <a href="#-the-four-failure-modes">🧭 Failure modes</a> •
+  <a href="#-guides">📚 Guides</a> •
+  <a href="prompts/README.md">💬 Prompts</a> •
+  <a href="CHEATSHEET.md">📄 Cheatsheet</a>
+</p>
 
 ---
 
-## Install in one line
+## 🚀 Install in 30 seconds
 
-| You use | Run or do this |
-|---|---|
-| **Claude Code** | `/plugin install how-to-use-ai --marketplace ji-hun-git/how-to-use-ai` |
-| **Codex, Copilot, Gemini CLI, Cursor and other agents** | `npx skills add ji-hun-git/how-to-use-ai` |
-| **Any coding agent, as an always-on rules file** | `curl -fsSL https://raw.githubusercontent.com/ji-hun-git/how-to-use-ai/main/drop-in/AGENTS.md -o AGENTS.md` (save as `CLAUDE.md` for Claude Code) |
-| **ChatGPT, Claude, Gemini (chat apps)** | Paste the [custom instructions](drop-in/custom-instructions.md) into your settings |
+Pick one per agent. Skills load only when a task needs them; the rules file is always on.
 
-What you get: [10 skills](skills/README.md) that load automatically when a task needs them, or one [18-rule file](drop-in/AGENTS.md) that's always on. Each file links to the research behind its rules. Other install options: [skills/README.md](skills/README.md) · [drop-in/README.md](drop-in/README.md).
+<details open>
+<summary><strong>Claude Code</strong> · plugin</summary>
 
-**Measured, not assumed.** In blind with-vs-without tests on Claude Sonnet and Haiku (36 cases in two suites, 432 graded runs), loading the skills raised passing runs on trigger cases from 158/180 to **175/180**, with no regressions on control cases. The biggest change was tutoring: without the skill, the models handed over the answer in 12 of 12 runs; with it, they gave hints in 12 of 12. On most cases, current models already did fine without the skills, even on a 9,000-word input, and the tests exposed weak spots in three of our skills that we fixed and re-tested. → [Eval results](evals/results/README.md)
+```text
+/plugin marketplace add ji-hun-git/how-to-use-ai
+/plugin install how-to-use-ai@how-to-use-ai
+```
+
+On Claude Code v2.1.275 or later, one line also works: `/plugin install how-to-use-ai --marketplace ji-hun-git/how-to-use-ai`
+
+</details>
+
+<details>
+<summary><strong>Codex, Copilot, Cursor, Gemini/Antigravity CLI and other agents</strong> · skills CLI</summary>
+
+```bash
+npx skills add ji-hun-git/how-to-use-ai
+```
+
+</details>
+
+<details>
+<summary><strong>Any coding agent</strong> · one always-on rules file</summary>
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ji-hun-git/how-to-use-ai/main/drop-in/AGENTS.md -o AGENTS.md
+```
+
+Save it as `CLAUDE.md` for Claude Code. For Cursor, use [the Cursor rule](drop-in/cursor/how-to-use-ai.mdc).
+
+</details>
+
+<details>
+<summary><strong>ChatGPT, Claude or Gemini apps</strong> · custom instructions</summary>
+
+Paste the short or long version of the [custom instructions](drop-in/custom-instructions.md) into your settings.
+
+</details>
+
+Manual install and per-agent folders: [skills/README.md](skills/README.md) · [drop-in/README.md](drop-in/README.md)
 
 ---
 
-## Before / after
+## 🧰 The 10 skills
+
+Short, focused instructions that load only when their task comes up. Each one links to the research behind it.
+
+| Skill | Prevents | Kicks in when |
+|---|---|---|
+| [clarify-first](skills/clarify-first/SKILL.md) | 🔵&nbsp;Misunderstanding | A request is vague or big: asks up to 3 questions, with defaults |
+| [task-spec](skills/task-spec/SKILL.md) | 🔵&nbsp;Misunderstanding | Briefing a coding agent: goal, limits, a checkable "done" |
+| [fresh-start-handoff](skills/fresh-start-handoff/SKILL.md) | 🔵&nbsp;Misunderstanding | A long chat goes in circles: one prompt to restart cleanly |
+| [coverage-check](skills/coverage-check/SKILL.md) | 🟠&nbsp;Omission | Long input or many requirements: ends with a coverage table |
+| [grounded-answer](skills/grounded-answer/SKILL.md) | 🔴&nbsp;Fabrication | Answering from documents: quotes first, cites every claim |
+| [verify-claims](skills/verify-claims/SKILL.md) | 🔴&nbsp;Fabrication | Fact-checking before you publish: claim by claim, with verdicts |
+| [honest-critique](skills/honest-critique/SKILL.md) | 🟣&nbsp;Sycophancy | "Is this good?" or pushback: biggest problems first |
+| [fresh-eyes-review](skills/fresh-eyes-review/SKILL.md) | 🟣&nbsp;Sycophancy | Final check of finished work against the spec, not the chat |
+| [prompt-improver](skills/prompt-improver/SKILL.md) | All four | Writing or fixing a prompt: fills the gaps, trims the rest |
+| [learning-tutor](skills/learning-tutor/SKILL.md) | Learning loss | You're learning: hints first, full solution only on request |
+
+Prefer one file? The same evidence ships as an [18-rule AGENTS.md](drop-in/AGENTS.md), [30 copy-paste prompts](prompts/README.md) and [10 templates](templates/).
+
+---
+
+## 🧪 Measured, not assumed
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/eval-results-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/eval-results-light.svg">
+    <img alt="Passing runs on trigger cases without vs with the skills: first suite Sonnet 42/48 to 47/48, Haiku 41/48 to 48/48; harder suite Sonnet 39/42 to 41/42, Haiku 36/42 to 39/42. Tutoring 0/12 to 12/12. Control cases 36/36 either way." src="assets/eval-results-light.svg" width="100%">
+  </picture>
+</p>
+
+We ran every skill on the same tasks with and without it, graded blind: 36 cases in two suites, 432 graded runs on Claude Sonnet and Haiku. The skills raised passing runs on trigger cases from 158/180 to **175/180** and never broke a correct default. The biggest change was tutoring: without the skill, the models handed over the answer in 12 of 12 runs; with it, they gave hints in 12 of 12. On most cases, current models already did fine without the skills, even on a 9,000-word input, and the tests exposed weak spots in three of our skills that we fixed and re-tested.
+
+→ [Full results, raw answers and change log](evals/results/README.md)
+
+---
+
+## 🔁 Before / after
 
 | You write | What tends to happen | Write this instead | Evidence |
 |---|---|---|---|
@@ -39,7 +130,7 @@ These and 7 more, with fixes: [the prompt clinic](examples/08-prompt-clinic.md).
 
 ---
 
-## The four failure modes and what fixes them
+## 🧭 The four failure modes
 
 Almost every bad AI answer is one of four things. Each has a documented cause and a fix, and each fix is available as a prompt, a skill and a rule.
 
@@ -53,16 +144,16 @@ flowchart LR
 
 | Failure mode | Why it happens | Fix | Skill | Guide |
 |---|---|---|---|---|
-| **Misunderstanding** | Requests leave gaps; models assume instead of asking, and lock in early assumptions | Goal, audience and done criteria up front; up to 3 questions with defaults; restart long chats | [clarify-first](skills/clarify-first/SKILL.md), [task-spec](skills/task-spec/SKILL.md), [fresh-start-handoff](skills/fresh-start-handoff/SKILL.md) | [docs/04 §1](docs/04-failure-modes.md#1-misunderstanding) |
-| **Omission** | The middle of long inputs is used least; compliance falls as rules pile up | Number requirements, documents first and question last, work in sections, coverage table | [coverage-check](skills/coverage-check/SKILL.md) | [docs/04 §2](docs/04-failure-modes.md#2-omission) |
-| **Fabrication** (hallucination) | Training and evaluation reward guessing over "I don't know" | Permission to abstain, quote first, cite or retract, open every source | [grounded-answer](skills/grounded-answer/SKILL.md), [verify-claims](skills/verify-claims/SKILL.md) | [docs/04 §3](docs/04-failure-modes.md#3-fabrication-hallucination) |
-| **Sycophancy** | Preference training rewards agreement; people trust flattery more | Hide authorship, criteria first, change answers only on new evidence, fresh-eyes review | [honest-critique](skills/honest-critique/SKILL.md), [fresh-eyes-review](skills/fresh-eyes-review/SKILL.md) | [docs/04 §4](docs/04-failure-modes.md#4-bonus-sycophancy) |
+| 🔵&nbsp;**Misunderstanding** | Requests leave gaps; models assume instead of asking, and lock in early assumptions | Goal, audience and done criteria up front; up to 3 questions with defaults; restart long chats | [clarify-first](skills/clarify-first/SKILL.md), [task-spec](skills/task-spec/SKILL.md), [fresh-start-handoff](skills/fresh-start-handoff/SKILL.md) | [docs/04 §1](docs/04-failure-modes.md#1-misunderstanding) |
+| 🟠&nbsp;**Omission** | The middle of long inputs is used least; compliance falls as rules pile up | Number requirements, documents first and question last, work in sections, coverage table | [coverage-check](skills/coverage-check/SKILL.md) | [docs/04 §2](docs/04-failure-modes.md#2-omission) |
+| 🔴&nbsp;**Fabrication** (hallucination) | Training and evaluation reward guessing over "I don't know" | Permission to abstain, quote first, cite or retract, open every source | [grounded-answer](skills/grounded-answer/SKILL.md), [verify-claims](skills/verify-claims/SKILL.md) | [docs/04 §3](docs/04-failure-modes.md#3-fabrication-hallucination) |
+| 🟣&nbsp;**Sycophancy** | Preference training rewards agreement; people trust flattery more | Hide authorship, criteria first, change answers only on new evidence, fresh-eyes review | [honest-critique](skills/honest-critique/SKILL.md), [fresh-eyes-review](skills/fresh-eyes-review/SKILL.md) | [docs/04 §4](docs/04-failure-modes.md#4-bonus-sycophancy) |
 
 "Misunderstanding · Omission · Fabrication (+ Sycophancy)" is this repo's own teaching taxonomy; the causes and fixes under each are linked to research.
 
 ---
 
-## The 30-second version
+## ⏱️ The 30-second version
 
 > **Good AI use isn't a clever sentence. It's good instructions plus good verification.**
 
@@ -87,23 +178,7 @@ flowchart LR
 
 ---
 
-## What's inside
-
-| Folder | What it is | Start here |
-|---|---|---|
-| [`skills/`](skills/README.md) | 10 installable Agent Skills (Claude Code plugin, `npx skills`, manual) | [skills/README.md](skills/README.md) |
-| [`drop-in/`](drop-in/README.md) | One rules file for AGENTS.md / CLAUDE.md / Cursor / chat apps | [drop-in/AGENTS.md](drop-in/AGENTS.md) |
-| [`prompts/`](prompts/README.md) | 30 copy-paste prompts by task, tagged by the failure modes they prevent | [prompts/README.md](prompts/README.md) |
-| [`templates/`](templates/) | 10 annotated templates (universal prompt, clarify, coverage, grounding, critique, meta-prompt, coding task, AGENTS.md, skill with decision rules, agent test plan) | [universal prompt](templates/universal-prompt.md) |
-| [`examples/`](examples/) | 8 before/after walkthroughs, including the 12-case prompt clinic | [prompt clinic](examples/08-prompt-clinic.md) |
-| [`docs/`](docs/) | 13 guides | [the four failure modes](docs/04-failure-modes.md) |
-| [`evals/`](evals/README.md) | A runnable promptfoo test, plus a with-vs-without harness for all 10 skills | [evals/README.md](evals/README.md) |
-| [`research/`](research/) | Two sourced research reports with verification status for each claim | [evidence report](research/evidence-report.md) |
-| [`resources/`](resources/awesome.md) | Curated list of official guides, courses and repositories, each checked directly | [resources/awesome.md](resources/awesome.md) |
-
----
-
-## Guides
+## 📚 Guides
 
 | # | Guide | Key question |
 |---|---|---|
@@ -121,7 +196,8 @@ flowchart LR
 | 12 | [Writing decision rules](docs/12-writing-decision-rules.md) | How do you put real judgment into a skill, and prove it works? |
 | 13 | [Verifying agent runs](docs/13-verifying-agent-runs.md) | The run finished without errors. Is the result actually right? |
 
-### Examples
+<details>
+<summary><strong>8 worked examples</strong></summary>
 
 | # | Example | What you learn |
 |---|---|---|
@@ -134,9 +210,9 @@ flowchart LR
 | 7 | [Designing your own agent](examples/07-build-your-own-agent.md) | Task analysis → instructions → evaluation set → security |
 | 8 | [Prompt clinic](examples/08-prompt-clinic.md) | 12 common prompts diagnosed and fixed |
 
----
+</details>
 
-## Learning paths
+### 🗺️ Learning paths
 
 | Time | For | Order |
 |---|---|---|
@@ -147,7 +223,7 @@ flowchart LR
 
 ---
 
-## Why this repo
+## 💡 Why this repo
 
 1. **Evidence first.** 460+ cited sources. Lab guides were checked directly on 2026-11-09, papers by bibliographic details and abstracts, and older statistics are labeled as historical. → [What is verified and what is not](research/evidence-report.md#8-what-is-verified-and-what-is-not)
 2. **Read it or install it.** The same evidence ships as guides, as [skills](skills/README.md), as a [rules file](drop-in/AGENTS.md) and as a [prompt library](prompts/README.md).
@@ -156,7 +232,10 @@ flowchart LR
 5. **Myth-busting.** Shows which popular tips fail in controlled studies. → [docs/10](docs/10-myths-vs-evidence.md)
 6. **For everyone.** Writing, research, analysis and learning, not only coding.
 
-### Myths vs. evidence (highlights)
+How this repo compares with the most popular ones, and when another is the better choice: [COMPARISON.md](COMPARISON.md).
+
+<details>
+<summary><strong>Myths vs. evidence (highlights)</strong></summary>
 
 | Popular tip | Verdict | Evidence |
 |---|---|---|
@@ -168,7 +247,7 @@ flowchart LR
 | Specifying output format is trivial | **Wrong: format instructions improve accuracy** | Wharton Report 1 (2025) |
 | "Are you really sure?" as a check | Flips correct answers | FlipFlop (2023), SPINE (2026) |
 
-How this repo compares with the most popular ones, and when another is the better choice: [COMPARISON.md](COMPARISON.md).
+</details>
 
 ---
 
@@ -186,7 +265,10 @@ Full history: [CHANGELOG](CHANGELOG.md) · Evidence: [2026 update report](resear
 
 ---
 
-## Key sources
+## 🔗 Key sources
+
+<details>
+<summary><strong>Official guides, Karpathy, universities and research</strong></summary>
 
 | Category | Representative sources |
 |---|---|
@@ -196,11 +278,28 @@ Full history: [CHANGELOG](CHANGELOG.md) · Evidence: [2026 update report](resear
 | Research on failures | [Lost in the Middle](https://arxiv.org/abs/2307.03172) · [Why LMs Hallucinate](https://arxiv.org/abs/2509.04664) · [LLMs Get Lost in Multi-Turn](https://arxiv.org/abs/2505.06120) · [Sycophancy](https://arxiv.org/abs/2310.13548) · [Chain-of-Verification](https://arxiv.org/abs/2309.11495) |
 | Standards | [Agent Skills](https://agentskills.io/specification) · [AGENTS.md](https://agents.md/) |
 
+</details>
+
 Full list: [resources/awesome.md](resources/awesome.md) · All sources: [evidence report](research/evidence-report.md#references) and [2026 update report](research/2026-update-report.md)
 
 ---
 
-## Repository structure
+## 🗂️ What's inside
+
+| Folder | What it is | Start here |
+|---|---|---|
+| [`skills/`](skills/README.md) | 10 installable Agent Skills (Claude Code plugin, `npx skills`, manual) | [skills/README.md](skills/README.md) |
+| [`drop-in/`](drop-in/README.md) | One rules file for AGENTS.md / CLAUDE.md / Cursor / chat apps | [drop-in/AGENTS.md](drop-in/AGENTS.md) |
+| [`prompts/`](prompts/README.md) | 30 copy-paste prompts by task, tagged by the failure modes they prevent | [prompts/README.md](prompts/README.md) |
+| [`templates/`](templates/) | 10 annotated templates (universal prompt, clarify, coverage, grounding, critique, meta-prompt, coding task, AGENTS.md, skill with decision rules, agent test plan) | [universal prompt](templates/universal-prompt.md) |
+| [`examples/`](examples/) | 8 before/after walkthroughs, including the 12-case prompt clinic | [prompt clinic](examples/08-prompt-clinic.md) |
+| [`docs/`](docs/) | 13 guides | [the four failure modes](docs/04-failure-modes.md) |
+| [`evals/`](evals/README.md) | A runnable promptfoo test, plus a with-vs-without harness for all 10 skills | [evals/README.md](evals/README.md) |
+| [`research/`](research/) | Two sourced research reports with verification status for each claim | [evidence report](research/evidence-report.md) |
+| [`resources/`](resources/awesome.md) | Curated list of official guides, courses and repositories, each checked directly | [resources/awesome.md](resources/awesome.md) |
+
+<details>
+<summary><strong>Repository structure</strong></summary>
 
 ```
 how-to-use-ai/
@@ -208,6 +307,7 @@ how-to-use-ai/
 ├── CHEATSHEET.md             ← one-page summary
 ├── COMPARISON.md             ← how this repo compares with popular ones
 ├── CHANGELOG.md              ← change history
+├── CONTRIBUTING.md           ← how to report errors and suggest changes
 ├── llms.txt                  ← machine-readable index for AI tools
 ├── skills/                   ← 10 installable Agent Skills
 ├── drop-in/                  ← rules file: AGENTS.md / CLAUDE.md / Cursor / chat apps
@@ -218,20 +318,25 @@ how-to-use-ai/
 ├── evals/                    ← promptfoo test + skill eval harness
 ├── research/                 ← evidence report + 2026 update report
 ├── resources/                ← curated resource list
-├── scripts/validate.py       ← checks skills, manifests and links (run in CI)
-├── .github/workflows/        ← CI that runs validate.py on every push
+├── assets/                   ← README images (generated by scripts/make_assets.py)
+├── scripts/                  ← validate.py (run in CI) and make_assets.py
+├── .github/                  ← CI workflow and issue forms
 ├── .claude-plugin/           ← Claude Code plugin and marketplace manifests
 └── LICENSE                   ← MIT
 ```
 
+</details>
+
 ---
 
-## Update policy
+## 🤝 Contributing and updates
+
+Found a wrong or outdated claim, a broken link, or a skill that misfires? [Open an issue](https://github.com/ji-hun-git/how-to-use-ai/issues/new/choose); there's a short form for each. See [CONTRIBUTING.md](CONTRIBUTING.md) for what makes a report easy to act on.
 
 AI tools and official guides change every few months. This repo states its **research date (currently 2026-11-09)**, records changes in the [CHANGELOG](CHANGELOG.md), and flags or fixes advice that has gone stale. Fast-changing details such as model names are kept out of the core advice wherever possible.
 
-Found an error or a broken link? Open an issue: https://github.com/ji-hun-git/how-to-use-ai/issues
-
-## License
+## 📄 License
 
 [MIT](LICENSE). Rights to external material quoted or summarized in each document remain with the original authors.
+
+<p align="center"><sub>If this repo helped you, a ⭐ helps others find it.</sub></p>

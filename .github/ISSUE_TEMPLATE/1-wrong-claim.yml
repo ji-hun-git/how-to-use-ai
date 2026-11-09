@@ -1,0 +1,37 @@
+name: Wrong or outdated claim
+description: A statement, number or recommendation is incorrect, or newer evidence has changed it.
+title: "[Claim] "
+labels: ["wrong claim"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping keep the guide accurate. Primary sources (papers, official docs, changelogs) make a fix fast.
+  - type: input
+    id: location
+    attributes:
+      label: Where is it?
+      description: File and section, or a link to the line.
+      placeholder: docs/04-failure-modes.md, "2026 update" table
+    validations:
+      required: true
+  - type: textarea
+    id: quote
+    attributes:
+      label: What does it say?
+      description: Quote the exact text.
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What's wrong, and what should it say?
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Links, and what each one says. Note if a source is a preprint.
+    validations:
+      required: true
