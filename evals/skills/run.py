@@ -15,6 +15,17 @@ Examples
   python evals/skills/run.py --models openai:gpt-6.1-terra openai:gpt-6-luna --judge openai:gpt-6.1-sol --runs 3
   python evals/skills/run.py --models anthropic:claude-sonnet-5-5 --judge anthropic:claude-opus-5-5
   python evals/skills/run.py --models claude-cli:sonnet --judge claude-cli:opus --runs 2
+  python evals/skills/run.py --cases-file evals/skills/cases-hard.yaml --models claude-cli:haiku --judge claude-cli:opus
+
+Criteria
+  A plain string is graded by the grader model (yes/no).
+  A mapping is checked by code, for things a model grades unreliably (counting words, banned words):
+    {check: word_range, tag: email, min: 120, max: 160, skip_first_line: true, label: ...}
+    {check: regex, tag: email, pattern: '(?m)^- ', min: 3, max: 3, label: ...}
+    {check: contains, tag: email, values: [...], label: ...}      # all must appear (case-insensitive)
+    {check: not_contains, tag: email, values: [...], label: ...}  # none may appear (case-insensitive)
+  `tag` (optional) limits the check to the text inside the last <tag>...</tag> block of the answer;
+  if the block is missing, the check fails.
 
 Providers
   openai:<model>      needs OPENAI_API_KEY       (pip install openai)
@@ -47,8 +58,8 @@ CLEAN_CWD = tempfile.mkdtemp(prefix="skill-evals-")  # empty folder for CLI runs
 
 
 # ------------------------------------------------------------------ loading
-def load_cases(only: list[str] | None) -> list[dict]:
-    data = yaml.safe_load((EVALS / "skills" / "cases.yaml").read_text(encoding="utf-8"))
+def load_cases(cases_file: Path, only: list[str] | None) -> list[dict]:
+    data = yaml.safe_load(cases_file.read_text(encoding="utf-8"))
     cases = data["cases"]
     if only:
         cases = [c for c in cases if c["id"] in only or c["skill"] in only]
@@ -127,24 +138,66 @@ JUDGE_SYSTEM = (
 )
 
 
+WORD_RE = re.compile(r"[A-Za-z0-9$]+(?:['’.,/:-][A-Za-z0-9]+)*")
+
+
+def criterion_text(c) -> str:
+    return c if isinstance(c, str) else f"[code check] {c['label']}"
+
+
+def code_check(c: dict, answer: str) -> tuple[bool, str]:
+    """Deterministic check for things a grader model counts unreliably."""
+    text = answer
+    if c.get("tag"):
+        blocks = re.findall(rf"<{c['tag']}>(.*?)</{c['tag']}>", answer, re.S | re.I)
+        if not blocks:
+            return False, f"no <{c['tag']}> block in the answer"
+        text = blocks[-1].strip()
+    kind = c["check"]
+    if kind == "word_range":
+        body = text.split("\n", 1)[1] if c.get("skip_first_line") and "\n" in text else text
+        n = len(WORD_RE.findall(body))
+        ok = c.get("min", 0) <= n <= c.get("max", 10**9)
+        return ok, f"{n} words (allowed {c.get('min', 0)}-{c.get('max', 'any')})"
+    if kind == "regex":
+        n = len(re.findall(c["pattern"], text))
+        lo, hi = c.get("min", 1), c.get("max")
+        ok = n >= lo and (hi is None or n <= hi)
+        return ok, f"{n} match(es) for {c['pattern']!r} (allowed {lo}-{hi if hi is not None else 'any'})"
+    if kind == "contains":
+        missing = [v for v in c["values"] if v.lower() not in text.lower()]
+        return not missing, "all present" if not missing else f"missing: {missing}"
+    if kind == "not_contains":
+        found = [v for v in c["values"] if v.lower() in text.lower()]
+        return not found, "none present" if not found else f"found: {found}"
+    raise ValueError(f"unknown check '{kind}'")
+
+
 def grade(judge: str, case: dict, answer: str) -> list[dict]:
-    convo = "\n\n".join(f"[{m['role']}]\n{m['content']}" for m in case["_messages"])
-    crit = "\n".join(f"{i + 1}. {c}" for i, c in enumerate(case["criteria"]))
-    prompt = (
-        f"<conversation>\n{convo}\n</conversation>\n\n<answer>\n{answer}\n</answer>\n\n"
-        f"<criteria>\n{crit}\n</criteria>\n\nGrade every criterion."
-    )
-    raw = call_model(judge, JUDGE_SYSTEM, [{"role": "user", "content": prompt}], max_tokens=1500)
-    m = re.search(r"\{.*\}", raw, re.S)
-    if not m:
-        raise RuntimeError(f"judge returned no JSON: {raw[:200]}")
-    results = json.loads(m.group(0))["results"]
-    by_num = {int(r["criterion"]): r for r in results}
-    return [
-        {"criterion": i + 1, "pass": bool(by_num.get(i + 1, {}).get("pass", False)),
-         "reason": by_num.get(i + 1, {}).get("reason", "missing")}
-        for i in range(len(case["criteria"]))
-    ]
+    criteria = case["criteria"]
+    results: dict[int, dict] = {}
+    model_items = [(i, c) for i, c in enumerate(criteria) if isinstance(c, str)]
+    for i, c in enumerate(criteria):
+        if not isinstance(c, str):
+            ok, why = code_check(c, answer)
+            results[i] = {"criterion": i + 1, "pass": ok, "reason": f"[code] {why}"}
+    if model_items:
+        convo = "\n\n".join(f"[{m['role']}]\n{m['content']}" for m in case["_messages"])
+        crit = "\n".join(f"{n + 1}. {c}" for n, (_, c) in enumerate(model_items))
+        prompt = (
+            f"<conversation>\n{convo}\n</conversation>\n\n<answer>\n{answer}\n</answer>\n\n"
+            f"<criteria>\n{crit}\n</criteria>\n\nGrade every criterion."
+        )
+        raw = call_model(judge, JUDGE_SYSTEM, [{"role": "user", "content": prompt}], max_tokens=1500)
+        m = re.search(r"\{.*\}", raw, re.S)
+        if not m:
+            raise RuntimeError(f"judge returned no JSON: {raw[:200]}")
+        by_num = {int(r["criterion"]): r for r in json.loads(m.group(0))["results"]}
+        for n, (i, _) in enumerate(model_items):
+            r = by_num.get(n + 1, {})
+            results[i] = {"criterion": i + 1, "pass": bool(r.get("pass", False)),
+                          "reason": r.get("reason", "missing")}
+    return [results[i] for i in range(len(criteria))]
 
 
 # ------------------------------------------------------------------ running
@@ -163,7 +216,8 @@ def run_one(case: dict, model: str, condition: str, run: int, judge: str) -> dic
     }
 
 
-def summarize(rows: list[dict], cases: list[dict], out: Path, models: list[str], judge: str, runs: int) -> None:
+def summarize(rows: list[dict], cases: list[dict], out: Path, models: list[str], judge: str, runs: int,
+              cases_file: Path) -> None:
     def rate(subset):
         n = len(subset)
         p = sum(r["passed"] for r in subset)
@@ -175,6 +229,7 @@ def summarize(rows: list[dict], cases: list[dict], out: Path, models: list[str],
         f"- Models under test: {', '.join(f'`{m}`' for m in models)}",
         f"- Grader: `{judge}` (blind to condition)",
         f"- Base system prompt (both conditions): \"{BASE_SYSTEM}\"",
+        f"- Case file: `{cases_file.name}`",
         f"- Cases: {len(cases)} ({sum(c['kind'] == 'trigger' for c in cases)} trigger, "
         f"{sum(c['kind'] == 'control' for c in cases)} control), runs per case and condition: {runs}",
         "- A run passes only if every criterion passes. **without** = plain assistant; **with** = SKILL.md loaded.",
@@ -209,6 +264,27 @@ def summarize(rows: list[dict], cases: list[dict], out: Path, models: list[str],
             wi = rate([r for r in rows if r["model"] == m and r["case"] == c["id"] and r["condition"] == "with"])
             cells.append(f"{wo[0]}/{wo[1]} → {wi[0]}/{wi[1]}")
         lines.append(f"| {c['id']} | {c['kind']} | " + " | ".join(cells) + " |")
+
+    def crit(subset):
+        return sum(g["pass"] for r in subset for g in r["grades"]), sum(len(r["grades"]) for r in subset)
+
+    lines += ["", "## Criteria met (partial credit)", "",
+              "A run fails if any criterion fails; this table counts the individual criteria that were met.", "",
+              "| Case | " + " | ".join(f"`{m}` without → with" for m in models) + " |",
+              "|---|" + "---|" * len(models)]
+    for c in cases:
+        cells = []
+        for m in models:
+            wo = crit([r for r in rows if r["model"] == m and r["case"] == c["id"] and r["condition"] == "without"])
+            wi = crit([r for r in rows if r["model"] == m and r["case"] == c["id"] and r["condition"] == "with"])
+            cells.append(f"{wo[0]}/{wo[1]} → {wi[0]}/{wi[1]}")
+        lines.append(f"| {c['id']} | " + " | ".join(cells) + " |")
+    cells = []
+    for m in models:
+        wo = crit([r for r in rows if r["model"] == m and r["condition"] == "without"])
+        wi = crit([r for r in rows if r["model"] == m and r["condition"] == "with"])
+        cells.append(f"**{wo[0]}/{wo[1]} → {wi[0]}/{wi[1]}**")
+    lines.append("| **All cases** | " + " | ".join(cells) + " |")
     lines += [
         "", "## Limitations", "",
         "- Small sample: a few runs per case. Treat differences of one or two runs as noise.",
@@ -216,7 +292,8 @@ def summarize(rows: list[dict], cases: list[dict], out: Path, models: list[str],
         "- A model grades the answers. Criteria are binary and specific, but spot-check `raw.jsonl` against your own judgment.",
         "- Cases are synthetic and short; real tasks are longer and messier.",
         "",
-        "Raw answers and per-criterion grades: [raw.jsonl](raw.jsonl). Cases: [cases.yaml](../../skills/cases.yaml).",
+        f"Raw answers and per-criterion grades: [raw.jsonl](raw.jsonl). "
+        f"Cases: [{cases_file.name}](../../skills/{cases_file.name}).",
     ]
     (out / "summary.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -226,6 +303,8 @@ def main() -> int:
     ap.add_argument("--models", nargs="+", default=["openai:gpt-6.1-terra"])
     ap.add_argument("--judge", default="openai:gpt-6.1-sol")
     ap.add_argument("--runs", type=int, default=3)
+    ap.add_argument("--cases-file", default=str(EVALS / "skills" / "cases.yaml"),
+                    help="YAML file with the cases (default: evals/skills/cases.yaml)")
     ap.add_argument("--cases", nargs="*", help="case ids or skill names to include")
     ap.add_argument("--out", default=None, help="output folder (default: evals/results/<today>)")
     ap.add_argument("--workers", type=int, default=6)
@@ -236,17 +315,19 @@ def main() -> int:
         global BASE_SYSTEM
         BASE_SYSTEM = args.base_prompt
 
-    cases = load_cases(args.cases)
+    cases_file = Path(args.cases_file).resolve()
+    cases = load_cases(cases_file, args.cases)
     jobs = [(c, m, cond, r) for c in cases for m in args.models for cond in ("without", "with")
             for r in range(1, args.runs + 1)]
+    graded = sum(any(isinstance(cr, str) for cr in j[0]["criteria"]) for j in jobs)
     print(f"{len(cases)} cases x {len(args.models)} model(s) x 2 conditions x {args.runs} run(s) "
-          f"= {len(jobs)} answers + {len(jobs)} grading calls")
+          f"= {len(jobs)} answers + {graded} grading calls (code checks need none)")
     if args.dry_run:
         c = cases[0]
         print(f"\nExample (case {c['id']}, condition 'with'):\n--- system ---\n{system_prompt(c, 'with')[:600]}...\n"
               f"--- messages ---\n{json.dumps(c['_messages'], ensure_ascii=False)[:600]}\n--- criteria ---")
         for i, cr in enumerate(c["criteria"], 1):
-            print(f"{i}. {cr}")
+            print(f"{i}. {criterion_text(cr)}")
         return 0
 
     out = Path(args.out) if args.out else EVALS / "results" / dt.date.today().isoformat()
@@ -278,7 +359,7 @@ def main() -> int:
             print(f"[{i}/{len(todo)}] {'PASS' if row['passed'] else 'fail'} {c['id']} {m} {cond} run{r}")
 
     rows = [done[k] for k in (job_key(j[0]["id"], j[1], j[2], j[3]) for j in jobs) if k in done]
-    summarize(rows, cases, out, args.models, args.judge, args.runs)
+    summarize(rows, cases, out, args.models, args.judge, args.runs, cases_file)
     print(f"\nWrote {out / 'summary.md'} ({len(rows)}/{len(jobs)} runs complete, {failures} failed)")
     return 1 if failures else 0
 

@@ -1,0 +1,77 @@
+BRIGHTLINE ANALYTICS — MASTER SUBSCRIPTION AGREEMENT (fictional example)
+
+This Master Subscription Agreement (the "Agreement") is entered into between Brightline Analytics, Inc. ("Provider") and Harbor Goods Co. ("Customer"), effective March 1, 2026 (the "Effective Date").
+
+1. DEFINITIONS
+1.1 "Service" means Provider's hosted analytics platform described in the Order Form, including updates Provider makes generally available.
+1.2 "Customer Data" means data that Customer or its Users submit to the Service.
+1.3 "Users" means Customer's employees and contractors whom Customer authorizes to use the Service.
+1.4 "Order Form" means the ordering document signed by both parties that references this Agreement.
+1.5 "Scheduled Maintenance" has the meaning given in Section 7.2.
+
+2. TERM AND RENEWAL
+2.1 Initial Term. The initial term begins on the Effective Date and ends on February 28, 2027 (the "Initial Term").
+2.2 Renewal. After the Initial Term, this Agreement renews automatically for successive renewal terms of twelve (12) months each, unless either party gives the other written notice of non-renewal at least sixty (60) days before the end of the then-current term.
+2.3 Notices of non-renewal must be sent as described in Section 14.2.
+
+3. FEES
+3.1 Customer will pay the annual subscription fee stated in the Order Form, which for the Initial Term is USD 48,000.
+3.2 Fees for a renewal term may increase by no more than five percent (5%) over the fees for the previous term, provided Provider notifies Customer of the increase at least ninety (90) days before the renewal date.
+3.3 Fees exclude taxes. Customer is responsible for all sales, use and similar taxes, except taxes on Provider's income.
+
+4. PAYMENT
+4.1 Provider will invoice the annual fee in advance at the start of each term.
+4.2 Invoices are due thirty (30) days after the invoice date.
+4.3 Overdue amounts accrue interest at one percent (1%) per month, or the maximum rate allowed by law, whichever is lower.
+4.4 If any amount is more than thirty (30) days overdue, Provider may suspend the Service after giving Customer ten (10) days' written notice.
+
+5. CUSTOMER RESPONSIBILITIES
+5.1 Customer is responsible for its Users' compliance with this Agreement and for the accuracy of Customer Data.
+5.2 Customer will not (a) resell or sublicense the Service, (b) access the Service by automated means except through Provider's documented API, or (c) use the Service to store payment card data.
+5.3 Customer will keep login credentials confidential and notify Provider promptly of any unauthorized use.
+
+6. PROVIDER RESPONSIBILITIES
+6.1 Provider will provide the Service in accordance with the documentation and applicable law.
+6.2 Provider will provide email support on business days from 8:00 to 18:00 Eastern Time. Response targets are listed in the Support Policy.
+6.3 Provider will maintain administrative, physical and technical safeguards designed to protect Customer Data, as described in the Security Addendum.
+
+7. SERVICE AVAILABILITY
+7.1 Provider will use commercially reasonable efforts to make the Service available 99.9% of the time in each calendar month, excluding Scheduled Maintenance.
+7.2 "Scheduled Maintenance" means maintenance that Provider announces at least forty-eight (48) hours in advance and performs outside 8:00–18:00 Eastern Time on business days, not exceeding eight (8) hours per month.
+7.3 Provider will publish monthly availability figures on its status page.
+7.4 If availability falls below 99.0% in three (3) consecutive calendar months, Customer may terminate this Agreement under Section 11.2. This termination right is Customer's sole and exclusive remedy for unavailability of the Service.
+
+8. CONFIDENTIALITY
+8.1 Each party will protect the other party's confidential information with at least the care it uses for its own confidential information, and no less than reasonable care.
+8.2 Confidential information does not include information that is or becomes public through no fault of the receiving party, was known to the receiving party without restriction, or is independently developed.
+8.3 A party may disclose confidential information when required by law, after giving the other party reasonable notice where legally allowed.
+
+9. CUSTOMER DATA
+9.1 Customer owns Customer Data. Provider may use Customer Data only to provide and support the Service.
+9.2 Provider may engage subprocessors. Provider will give Customer at least fifteen (15) days' notice before adding a new subprocessor, and Customer may object on reasonable data-protection grounds.
+9.3 Export. During the term and for thirty (30) days after termination or expiration, Customer may export Customer Data using the Service's export tools.
+9.4 Deletion. Provider will delete Customer Data within ninety (90) days after termination or expiration, except copies retained in backups, which are deleted in the normal backup cycle.
+
+10. LIMITATION OF LIABILITY
+10.1 Each party's total liability arising out of this Agreement will not exceed the fees paid or payable by Customer in the twelve (12) months before the event giving rise to the claim.
+10.2 Neither party is liable for indirect, incidental, special or consequential damages, or for lost profits.
+10.3 The limits in this Section 10 do not apply to breaches of Section 8 or to Customer's payment obligations.
+
+11. TERMINATION
+11.1 For breach. Either party may terminate this Agreement if the other party materially breaches it and does not cure the breach within thirty (30) days after receiving written notice describing the breach.
+11.2 For availability. Customer may terminate this Agreement as described in Section 7.4 by written notice given within thirty (30) days after the end of the third consecutive month.
+11.3 No other termination. Neither party may terminate this Agreement for convenience during a term.
+11.4 Effect. On termination, Customer's right to use the Service ends, except for data export under Section 9.3. If Customer terminates under Section 11.1 or 11.2, Provider will refund the prepaid fees for the remainder of the term on a pro-rata basis. Otherwise, fees paid are non-refundable.
+
+12. WARRANTIES
+12.1 Each party warrants that it has the authority to enter into this Agreement.
+12.2 Provider warrants that the Service will perform materially as described in the documentation. Customer's remedy for breach of this warranty is for Provider to correct the non-conformity or, if Provider cannot do so within a reasonable time, to terminate under Section 11.1.
+12.3 Except as stated in this Section 12, the Service is provided "as is".
+
+13. GOVERNING LAW
+This Agreement is governed by the laws of the State of Delaware, without regard to its conflict-of-laws rules.
+
+14. GENERAL
+14.1 Assignment. Neither party may assign this Agreement without the other party's consent, except to a successor in a merger or sale of substantially all of its assets.
+14.2 Notices. Notices must be in writing and sent by email to the addresses in the Order Form, with a copy by courier for notices of breach, termination or non-renewal. Notices are effective on receipt.
+14.3 Entire agreement. This Agreement, the Order Form and the documents it references are the entire agreement between the parties and replace any prior agreements on the same subject.

@@ -1,0 +1,174 @@
+Northwind Clinic booking app — weekly planning call (fictional example)
+Date: Monday, February 2, 2026
+Attendees: Lucia (product lead), Rosa (content design), Ken (infrastructure), Dev (backend), Omar (QA and analytics), Mia (patient support)
+Auto-generated transcript, lightly cleaned up.
+
+[00:00] Lucia: Okay, I think everyone's here. Let's get going, we have a lot to get through and I want to keep it under an hour. Quick reminder of where we are: the pilot with the two clinics starts on March 2, so everything we talk about today is about getting ready for that. I'll go roughly in the order of the agenda doc, but feel free to jump in.
+
+[00:42] Lucia: First thing, the consent screen. Legal came back with their comments on Friday. The short version is that the current copy is too long and too technical, and they want the opt-in for SMS reminders to be separate from the general terms. Rosa, you've seen the comments?
+
+[01:05] Rosa: Yes, I went through them this morning. Most of it is reasonable. The separate SMS opt-in is easy. The harder part is that they want plain language at roughly an eighth-grade reading level, and some of the required phrases are pretty dense. I think I can get a draft that works for both.
+
+[01:31] Lucia: Great. Can you have a draft of the new consent-screen copy by next Monday, the 9th?
+
+[01:36] Rosa: The 9th works.
+
+[01:38] Lucia: Perfect. Omar, anything from the QA side on consent?
+
+[01:44] Omar: Only that whatever Rosa writes, it has to work with a screen reader. The current version has a checkbox label that VoiceOver reads as just "checkbox", which is not great.
+
+[01:58] Rosa: Noted, I'll make sure the labels are explicit.
+
+[02:05] Lucia: Okay. Next: infrastructure. Ken, where are we on staging?
+
+[02:11] Ken: So, the staging environment. The plan was for me to have it set up by Wednesday, the 4th, so Omar can start testing against something that looks like production. The problem is I'm out from tomorrow through Friday. Family thing, it came up over the weekend.
+
+[02:29] Lucia: Oh no, hope everything's okay.
+
+[02:31] Ken: It's fine, thanks. But it does mean staging won't happen on my side this week.
+
+[02:37] Dev: I can take it. I've done most of the Terraform for the dev environment anyway, staging is mostly the same with different sizes.
+
+[02:44] Ken: That would be great. The config is in the infra repo, I'll leave notes in the README tonight.
+
+[02:50] Lucia: So Dev owns the staging setup now, same date, the 4th?
+
+[02:54] Dev: Yeah, the 4th is fine.
+
+[02:56] Lucia: Thanks, Dev. Ken, anything else before you disappear for the week?
+
+[03:01] Ken: Just that the database backups are now running nightly and I tested a restore last Thursday, it took about twenty minutes. So we're in decent shape there.
+
+[03:12] Lucia: Good to hear. Mia, you wanted to talk about vendors?
+
+[03:16] Mia: Yeah. So last week I said I'd put together a short survey for the three SMS vendors we're considering: pricing, delivery rates, support hours, that kind of thing. I've started a draft.
+
+[03:28] Lucia: Right. Let's keep that going for now.
+
+[03:32] Mia: Okay. The other thing from support: patients keep asking what happens if they cancel late. Right now the FAQ still describes the old rule, the 24-hour one, and the clinics changed it to 48 hours in January.
+
+[03:46] Lucia: That's bad, we should fix that before the pilot. Can you update the FAQ page with the new cancellation rules?
+
+[03:51] Mia: Sure. I want to check the exact wording with both clinic managers first, because one of them has an exception for same-day emergencies. Give me until the 18th?
+
+[04:02] Lucia: The 18th is fine.
+
+[04:04] Omar: Can I jump in on that? If the FAQ changes, the in-app help screen links to specific anchors on that page. If the headings change, the links break.
+
+[04:13] Mia: Good point. I'll keep the existing headings where I can and tell you if anything moves.
+
+[04:18] Lucia: Okay. Now, reminders. Dev, the timezone thing.
+
+[04:22] Dev: Yeah, so this is the bug where reminders go out an hour early for patients whose phones are set to a different timezone than the clinic. It's because we store the appointment time in UTC but the reminder scheduler uses the server's local offset. It's not hard to fix, it's just fiddly to test around daylight saving changes.
+
+[04:44] Lucia: How long do you need?
+
+[04:46] Dev: I can have it fixed by Friday, the 6th. That includes tests for the daylight saving edge cases.
+
+[04:52] Lucia: Okay, the 6th. Does that collide with staging?
+
+[04:56] Dev: No, staging is mostly waiting on things to provision. I'll do both.
+
+[05:01] Lucia: While we're on reminders, I want to settle the timing question that came up in the retro. Right now the reminder goes out 24 hours before the appointment. Some people suggested 48 hours, since that's now the cancellation cutoff.
+
+[05:15] Mia: From the support side, I'd say patients want the reminder close to the appointment. When we tested 48 hours at my last job, people forgot anyway.
+
+[05:24] Omar: The no-show data from the clinics' old system is a bit noisy, but the pattern I see is that most no-shows are people who booked more than two weeks ahead. The timing of the reminder didn't make much difference in their data.
+
+[05:38] Rosa: Could we send two? One at 48 hours that mentions the cancellation cutoff, and one at 24 hours?
+
+[05:44] Dev: Technically easy. But every extra SMS costs money, and the clinics are paying per message during the pilot.
+
+[05:51] Lucia: Let's not change it before the pilot. We keep the single reminder at 24 hours, and we look at the no-show numbers after the first month. If they're bad, we revisit the two-reminder idea.
+
+[06:03] Rosa: Fine.
+
+[06:05] Lucia: Okay. Omar, accessibility.
+
+[06:08] Omar: So I want to do a proper accessibility audit of the whole booking flow before the pilot, not just the consent screen. Keyboard navigation, screen readers, color contrast, error messages, the date picker especially. Date pickers are always a disaster.
+
+[06:24] Lucia: Agreed. When can you have that done?
+
+[06:27] Omar: I need staging for it, so realistically after Dev's done. Let's say the 16th.
+
+[06:32] Lucia: The 16th for the audit, great. And I think you also had something about analytics?
+
+[06:37] Omar: Yeah, the clinic managers asked for a way to see booking volume and no-show rates. I built a dashboard last week. I just need to share the link with them and walk them through it.
+
+[06:48] Lucia: Can you send them the link this week?
+
+[06:50] Omar: I'll share it by Thursday.
+
+[06:52] Lucia: Thanks. [cross-talk] Sorry, someone's unmuted. Okay.
+
+[07:00] Rosa: While we're on the clinic managers, did anyone hear back about the Spanish translations?
+
+[07:05] Lucia: Right, the SMS templates. So the plan was for you to get the reminder SMS templates translated into Spanish by the 13th, using the agency.
+
+[07:13] Rosa: Yes, I sent them the source text last week.
+
+[07:16] Lucia: Okay, good. Let's move on to the pilot logistics, and we can come back to translations at the end if there's time.
+
+[07:23] Lucia: For the pilot, I need to go on site at least once before launch, to see how the front desk actually handles bookings and to check the tablet setup in the waiting room. I'll book a visit with the Elm Street clinic. I'll have that booked by the 11th at the latest.
+
+[07:41] Mia: Can I come along? It would help to hear what questions patients ask at the desk.
+
+[07:45] Lucia: Definitely, I'll add you to the invite.
+
+[07:48] Dev: On the tablets, are they running the web app or the native app?
+
+[07:52] Lucia: The native app, in kiosk mode. The web app isn't part of the pilot.
+
+[07:57] Dev: Okay, that simplifies things.
+
+[08:00] Lucia: Next item. Ken, before you go: the data retention question from the clinics. They asked how long we keep appointment history and what happens when a patient asks to be deleted.
+
+[08:12] Ken: Right. We need a runbook for that, step by step, including the backups, because deleted records stay in backups for 35 days. I can write it after I'm back. End of the month?
+
+[08:24] Lucia: End of the month works. Say the 27th, since the 28th is a Saturday.
+
+[08:28] Ken: The 27th, sure.
+
+[08:30] Lucia: Okay. Load testing. Dev, I know you're loaded up this week, but at some point we need to know the booking API can handle both clinics on a Monday morning, which is their peak.
+
+[08:41] Dev: Yeah, I want to do that. I can run a load test of the booking API once staging is stable. I don't want to commit to a date yet though, it depends on how staging goes.
+
+[08:50] Lucia: That's fair. No hard date for now, just get to it when you can, before the pilot obviously.
+
+[08:55] Dev: Sure.
+
+[08:57] Omar: Can I ask what numbers we're targeting? Otherwise the load test doesn't tell us much.
+
+[09:02] Dev: Good question. I'll use last year's peak booking numbers from the clinics' old system and double them as the target.
+
+[09:09] Lucia: Sounds sensible. Okay, a few smaller things. Someone suggested dark mode for the app in the retro. I think that's nice to have but it's not happening before the pilot. Let's park it, maybe someone can look at it in Q2.
+
+[09:24] Rosa: Fine by me.
+
+[09:26] Lucia: And push notifications in addition to SMS: same thing, parked until after the pilot. We'll see what the clinics say.
+
+[09:33] Mia: Agreed, SMS is what patients expect right now.
+
+[09:36] Lucia: Back to vendors for a second. Mia, I talked to legal right before this call, and they already have everything they need from the SMS vendors from the contract review: pricing, delivery rates, data processing terms, all of it. So let's drop the vendor survey, it would just duplicate their work.
+
+[09:52] Mia: Oh, okay. That's fine, honestly, it frees up some time.
+
+[09:56] Lucia: Sorry for the back and forth. And Rosa, back to translations: did the agency give a date?
+
+[10:01] Rosa: Yes, I checked my email just now. Their translator is out until the 18th, so the 13th won't happen. They can deliver on the 20th.
+
+[10:09] Lucia: Hmm. The pilot is March 2, so the 20th still gives us time to load them into the system. Let's make the 20th the new date.
+
+[10:16] Rosa: Okay, the 20th.
+
+[10:18] Lucia: Anything else? Omar?
+
+[10:20] Omar: Just a reminder that I'll need test accounts for both clinics on staging. Dev, can you include those when you set it up?
+
+[10:26] Dev: Yes, I'll seed two clinic accounts and some fake patients as part of the staging setup.
+
+[10:31] Lucia: Great. Okay, I think that's everything. Thanks, everyone. Ken, take care, see you next week.
+
+[10:36] Ken: Thanks, all.
+
+[End of transcript]

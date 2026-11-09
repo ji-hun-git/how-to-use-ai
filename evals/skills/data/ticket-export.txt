@@ -1,0 +1,1049 @@
+Listly support tracker: ticket export (fictional example)
+Exported: 2026-03-31 18:30. Contains the ticket list as of 2026-03-01, followed by the full activity log for March 2026.
+Statuses: Open, In progress, Waiting on customer, Closed. Every status except Closed counts as open.
+
+=== PART 1: TICKETS AS OF 2026-03-01 ===
+
+LST-1001 | Onboarding: share link expires too early
+  Created: 2026-02-15 | Assignee: Aisha | Status: Waiting on customer | Priority: P3
+  Customer reports the issue happens every time on their account.
+
+LST-1002 | Billing: dates shown in the wrong timezone
+  Created: 2026-01-26 | Assignee: Sofia | Status: Waiting on customer | Priority: P2
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1003 | Export: share link expires too early
+  Created: 2026-01-18 | Assignee: Marcus | Status: In progress | Priority: P3
+  Customer sent a screen recording; see attachment.
+
+LST-1004 | Sync: reminder fires an hour late
+  Created: 2026-02-18 | Assignee: Sofia | Status: In progress | Priority: P3
+  Workaround exists but customers find it confusing.
+
+LST-1005 | Export: duplicate items after reconnecting
+  Created: 2026-01-19 | Assignee: Tom | Status: Closed | Priority: P2
+  Workaround exists but customers find it confusing.
+
+LST-1006 | Attachments: password reset link not received
+  Created: 2026-02-04 | Assignee: Tom | Status: In progress | Priority: P4
+  Low impact, but it shows up in support chats regularly.
+
+LST-1007 | Billing: reminder fires an hour late
+  Created: 2026-02-02 | Assignee: Jonas | Status: Closed | Priority: P3
+  Customer reports the issue happens every time on their account.
+
+LST-1008 | Sharing: search ignores accented characters
+  Created: 2026-02-21 | Assignee: Priya | Status: Waiting on customer | Priority: P3
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1009 | Sharing: dates shown in the wrong timezone
+  Created: 2026-02-25 | Assignee: Aisha | Status: Open | Priority: P2
+  Customer sent a screen recording; see attachment.
+
+LST-1010 | API: password reset link not received
+  Created: 2026-02-08 | Assignee: Marcus | Status: Closed | Priority: P1
+  Low impact, but it shows up in support chats regularly.
+
+LST-1011 | Calendar: upload fails for files over 20 MB
+  Created: 2026-02-24 | Assignee: Jonas | Status: Waiting on customer | Priority: P3
+  Customer sent a screen recording; see attachment.
+
+LST-1012 | Onboarding: crash when the list is empty
+  Created: 2026-01-11 | Assignee: Aisha | Status: Closed | Priority: P4
+  Workaround exists but customers find it confusing.
+
+LST-1013 | Reports: page loads slowly for large accounts
+  Created: 2026-01-08 | Assignee: Sofia | Status: Closed | Priority: P2
+  Low impact, but it shows up in support chats regularly.
+
+LST-1014 | Login: button does nothing on first tap
+  Created: 2026-01-23 | Assignee: Sofia | Status: Closed | Priority: P3
+  Customer sent a screen recording; see attachment.
+
+LST-1015 | Sync: crash when the list is empty
+  Created: 2026-01-12 | Assignee: Aisha | Status: Open | Priority: P2
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1016 | Mobile app: crash when the list is empty
+  Created: 2026-02-01 | Assignee: Tom | Status: Waiting on customer | Priority: P1
+  Low impact, but it shows up in support chats regularly.
+
+LST-1017 | Login: filter resets after refresh
+  Created: 2026-02-15 | Assignee: Lena | Status: Open | Priority: P3
+  Reported by three different customers this week.
+
+LST-1018 | Sharing: totals do not match the invoice
+  Created: 2026-01-05 | Assignee: Wei | Status: In progress | Priority: P2
+  Reported by three different customers this week.
+
+LST-1019 | Search: password reset link not received
+  Created: 2026-02-23 | Assignee: Marcus | Status: Waiting on customer | Priority: P4
+  Customer reports the issue happens every time on their account.
+
+LST-1020 | Web app: CSV file is missing the header row
+  Created: 2026-02-22 | Assignee: Wei | Status: In progress | Priority: P3
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1021 | Reports: totals do not match the invoice
+  Created: 2026-01-23 | Assignee: Sofia | Status: Open | Priority: P4
+  Started after the last release according to the customer.
+
+LST-1022 | Web app: error message is unclear
+  Created: 2026-02-21 | Assignee: Jonas | Status: Closed | Priority: P1
+  Reported by three different customers this week.
+
+LST-1023 | Attachments: upload fails for files over 20 MB
+  Created: 2026-01-05 | Assignee: Lena | Status: Closed | Priority: P2
+  Customer sent a screen recording; see attachment.
+
+LST-1024 | Reports: filter resets after refresh
+  Created: 2026-01-15 | Assignee: Marcus | Status: Waiting on customer | Priority: P1
+  Workaround exists but customers find it confusing.
+
+LST-1025 | Sync: crash when the list is empty
+  Created: 2026-02-17 | Assignee: Jonas | Status: Waiting on customer | Priority: P3
+  Low impact, but it shows up in support chats regularly.
+
+LST-1026 | Sharing: button does nothing on first tap
+  Created: 2026-02-01 | Assignee: Jonas | Status: In progress | Priority: P3
+  Started after the last release according to the customer.
+
+LST-1027 | Notifications: sort order changes randomly
+  Created: 2026-01-14 | Assignee: Jonas | Status: Closed | Priority: P2
+  Customer reports the issue happens every time on their account.
+
+LST-1028 | Sharing: CSV file is missing the header row
+  Created: 2026-02-22 | Assignee: Priya | Status: Closed | Priority: P4
+  Workaround exists but customers find it confusing.
+
+LST-1029 | Attachments: password reset link not received
+  Created: 2026-02-06 | Assignee: Priya | Status: Open | Priority: P3
+  Reported by three different customers this week.
+
+LST-1030 | Onboarding: password reset link not received
+  Created: 2026-01-22 | Assignee: Jonas | Status: In progress | Priority: P4
+  Reported by three different customers this week.
+
+LST-1031 | Search: dark text on dark background
+  Created: 2026-02-19 | Assignee: Marcus | Status: In progress | Priority: P4
+  Customer reports the issue happens every time on their account.
+
+LST-1032 | Sharing: share link expires too early
+  Created: 2026-01-28 | Assignee: Sofia | Status: In progress | Priority: P2
+  Low impact, but it shows up in support chats regularly.
+
+LST-1033 | Billing: duplicate items after reconnecting
+  Created: 2026-01-08 | Assignee: Aisha | Status: Waiting on customer | Priority: P4
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1034 | Notifications: wrong language after switching accounts
+  Created: 2026-01-14 | Assignee: Marcus | Status: Closed | Priority: P3
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1035 | Settings: email arrives twice
+  Created: 2026-02-04 | Assignee: Priya | Status: Closed | Priority: P2
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1036 | Notifications: email arrives twice
+  Created: 2026-01-06 | Assignee: Jonas | Status: In progress | Priority: P3
+  Workaround exists but customers find it confusing.
+
+LST-1037 | API: share link expires too early
+  Created: 2026-02-07 | Assignee: Jonas | Status: In progress | Priority: P3
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1038 | Notifications: email arrives twice
+  Created: 2026-01-30 | Assignee: Wei | Status: In progress | Priority: P3
+  Customer reports the issue happens every time on their account.
+
+LST-1039 | Search: page loads slowly for large accounts
+  Created: 2026-02-02 | Assignee: Marcus | Status: Open | Priority: P2
+  Started after the last release according to the customer.
+
+LST-1040 | Notifications: CSV file is missing the header row
+  Created: 2026-01-09 | Assignee: Marcus | Status: Waiting on customer | Priority: P2
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1041 | Attachments: crash when the list is empty
+  Created: 2026-02-17 | Assignee: Priyanka | Status: Closed | Priority: P3
+  Customer reports the issue happens every time on their account.
+
+LST-1042 | Search: search ignores accented characters
+  Created: 2026-01-09 | Assignee: Tom | Status: In progress | Priority: P3
+  Started after the last release according to the customer.
+
+LST-1043 | API: upload fails for files over 20 MB
+  Created: 2026-01-18 | Assignee: Wei | Status: Closed | Priority: P3
+  Reported by three different customers this week.
+
+LST-1044 | Settings: dark text on dark background
+  Created: 2026-01-31 | Assignee: Priya | Status: Closed | Priority: P3
+  Low impact, but it shows up in support chats regularly.
+
+LST-1045 | Reports: email arrives twice
+  Created: 2026-01-27 | Assignee: Jonas | Status: In progress | Priority: P2
+  Reported by three different customers this week.
+
+LST-1046 | Sync: filter resets after refresh
+  Created: 2026-02-21 | Assignee: Lena | Status: Closed | Priority: P2
+  Started after the last release according to the customer.
+
+LST-1047 | API: error message is unclear
+  Created: 2026-01-10 | Assignee: Marcus | Status: Waiting on customer | Priority: P3
+  Customer reports the issue happens every time on their account.
+
+LST-1048 | Search: filter resets after refresh
+  Created: 2026-02-04 | Assignee: Jonas | Status: In progress | Priority: P2
+  Low impact, but it shows up in support chats regularly.
+
+LST-1049 | Mobile app: dark text on dark background
+  Created: 2026-01-28 | Assignee: Marcus | Status: In progress | Priority: P2
+  Customer sent a screen recording; see attachment.
+
+LST-1050 | Reports: dark text on dark background
+  Created: 2026-02-14 | Assignee: Tom | Status: Open | Priority: P2
+  Workaround exists but customers find it confusing.
+
+LST-1051 | Mobile app: email arrives twice
+  Created: 2026-02-17 | Assignee: Jonas | Status: Waiting on customer | Priority: P3
+  Reported by three different customers this week.
+
+LST-1052 | Onboarding: permissions not applied to new members
+  Created: 2026-01-17 | Assignee: Marcus | Status: In progress | Priority: P2
+  Started after the last release according to the customer.
+
+LST-1053 | Mobile app: filter resets after refresh
+  Created: 2026-01-12 | Assignee: Marcus | Status: Closed | Priority: P3
+  Reported by three different customers this week.
+
+LST-1054 | Sharing: wrong language after switching accounts
+  Created: 2026-01-06 | Assignee: Lena | Status: Waiting on customer | Priority: P1
+  Reported by three different customers this week.
+
+LST-1055 | Search: rate limit hit during bulk import
+  Created: 2026-01-30 | Assignee: Lena | Status: Open | Priority: P4
+  Started after the last release according to the customer.
+
+LST-1056 | Sync: CSV file is missing the header row
+  Created: 2026-01-15 | Assignee: Priya | Status: In progress | Priority: P3
+  Customer reports the issue happens every time on their account.
+
+LST-1057 | Web app: page loads slowly for large accounts
+  Created: 2026-02-17 | Assignee: Sofia | Status: In progress | Priority: P3
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1058 | API: sort order changes randomly
+  Created: 2026-02-16 | Assignee: Sofia | Status: Waiting on customer | Priority: P3
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1059 | Reports: dates shown in the wrong timezone
+  Created: 2026-02-16 | Assignee: Priya | Status: Closed | Priority: P2
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1060 | Notifications: upload fails for files over 20 MB
+  Created: 2026-01-22 | Assignee: Aisha | Status: Waiting on customer | Priority: P4
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1061 | Calendar: filter resets after refresh
+  Created: 2026-01-29 | Assignee: Jonas | Status: Waiting on customer | Priority: P1
+  Customer sent a screen recording; see attachment.
+
+LST-1062 | Billing: upload fails for files over 20 MB
+  Created: 2026-01-06 | Assignee: Jonas | Status: Closed | Priority: P4
+  Reported by three different customers this week.
+
+LST-1063 | Notifications: dates shown in the wrong timezone
+  Created: 2026-01-10 | Assignee: Tom | Status: Closed | Priority: P3
+  Customer sent a screen recording; see attachment.
+
+LST-1064 | Sharing: crash when the list is empty
+  Created: 2026-01-05 | Assignee: Lena | Status: In progress | Priority: P3
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1065 | Mobile app: duplicate items after reconnecting
+  Created: 2026-02-04 | Assignee: Marcus | Status: Open | Priority: P3
+  Started after the last release according to the customer.
+
+LST-1066 | Billing: sort order changes randomly
+  Created: 2026-01-22 | Assignee: Priya | Status: Closed | Priority: P2
+  Customer sent a screen recording; see attachment.
+
+LST-1067 | Attachments: sort order changes randomly
+  Created: 2026-02-18 | Assignee: Sofia | Status: In progress | Priority: P3
+  Customer reports the issue happens every time on their account.
+
+LST-1068 | Notifications: permissions not applied to new members
+  Created: 2026-01-27 | Assignee: Wei | Status: Waiting on customer | Priority: P3
+  Customer reports the issue happens every time on their account.
+
+LST-1069 | Sharing: error message is unclear
+  Created: 2026-01-16 | Assignee: Priya | Status: Waiting on customer | Priority: P3
+  Reported by three different customers this week.
+
+LST-1070 | Sync: share link expires too early
+  Created: 2026-01-16 | Assignee: Jonas | Status: Closed | Priority: P1
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1071 | Notifications: totals do not match the invoice
+  Created: 2026-02-07 | Assignee: Tom | Status: Waiting on customer | Priority: P1
+  Reported by three different customers this week.
+
+LST-1072 | Billing: email arrives twice
+  Created: 2026-02-22 | Assignee: Aisha | Status: In progress | Priority: P2
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1073 | Export: page loads slowly for large accounts
+  Created: 2026-02-25 | Assignee: Wei | Status: Waiting on customer | Priority: P3
+  Reported by three different customers this week.
+
+LST-1074 | Onboarding: totals do not match the invoice
+  Created: 2026-02-05 | Assignee: Tom | Status: Waiting on customer | Priority: P3
+  Started after the last release according to the customer.
+
+LST-1075 | Sync: filter resets after refresh
+  Created: 2026-02-12 | Assignee: Tom | Status: Open | Priority: P2
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1076 | Export: permissions not applied to new members
+  Created: 2026-01-21 | Assignee: Tom | Status: Waiting on customer | Priority: P3
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1077 | API: duplicate items after reconnecting
+  Created: 2026-02-05 | Assignee: Tom | Status: Closed | Priority: P3
+  Started after the last release according to the customer.
+
+LST-1078 | Attachments: CSV file is missing the header row
+  Created: 2026-01-05 | Assignee: Lena | Status: Open | Priority: P4
+  Reported by three different customers this week.
+
+LST-1079 | Notifications: totals do not match the invoice
+  Created: 2026-01-09 | Assignee: Priyanka | Status: Closed | Priority: P1
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1080 | Billing: share link expires too early
+  Created: 2026-02-12 | Assignee: Tom | Status: Waiting on customer | Priority: P3
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1081 | Export: permissions not applied to new members
+  Created: 2026-01-26 | Assignee: Priya | Status: In progress | Priority: P3
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1082 | Login: error message is unclear
+  Created: 2026-01-18 | Assignee: Aisha | Status: Waiting on customer | Priority: P3
+  Customer sent a screen recording; see attachment.
+
+LST-1083 | Reports: search ignores accented characters
+  Created: 2026-01-15 | Assignee: Marcus | Status: In progress | Priority: P4
+  Customer reports the issue happens every time on their account.
+
+LST-1084 | Reports: CSV file is missing the header row
+  Created: 2026-02-12 | Assignee: Marcus | Status: Open | Priority: P2
+  Workaround exists but customers find it confusing.
+
+LST-1085 | Export: password reset link not received
+  Created: 2026-01-30 | Assignee: Sofia | Status: Waiting on customer | Priority: P2
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1086 | Export: upload fails for files over 20 MB
+  Created: 2026-01-10 | Assignee: Lena | Status: Open | Priority: P4
+  Low impact, but it shows up in support chats regularly.
+
+LST-1087 | Sync: button does nothing on first tap
+  Created: 2026-01-20 | Assignee: Marcus | Status: In progress | Priority: P4
+  Customer sent a screen recording; see attachment.
+
+LST-1088 | Onboarding: crash when the list is empty
+  Created: 2026-01-11 | Assignee: Marcus | Status: Waiting on customer | Priority: P4
+  Workaround exists but customers find it confusing.
+
+LST-1089 | Mobile app: crash when the list is empty
+  Created: 2026-01-15 | Assignee: Priya | Status: In progress | Priority: P1
+  Customer reports the issue happens every time on their account.
+
+LST-1090 | Export: wrong language after switching accounts
+  Created: 2026-01-09 | Assignee: Sofia | Status: Closed | Priority: P2
+  Reported by three different customers this week.
+
+LST-1091 | Attachments: search ignores accented characters
+  Created: 2026-01-20 | Assignee: Wei | Status: Waiting on customer | Priority: P4
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1092 | Web app: filter resets after refresh
+  Created: 2026-01-27 | Assignee: Sofia | Status: Open | Priority: P4
+  Reported by three different customers this week.
+
+LST-1093 | Onboarding: upload fails for files over 20 MB
+  Created: 2026-01-31 | Assignee: Lena | Status: Waiting on customer | Priority: P1
+  Started after the last release according to the customer.
+
+LST-1094 | API: CSV file is missing the header row
+  Created: 2026-02-22 | Assignee: Jonas | Status: Closed | Priority: P4
+  Customer sent a screen recording; see attachment.
+
+LST-1095 | Sync: dark text on dark background
+  Created: 2026-01-06 | Assignee: Tom | Status: In progress | Priority: P3
+  Low impact, but it shows up in support chats regularly.
+
+LST-1096 | Notifications: filter resets after refresh
+  Created: 2026-02-06 | Assignee: Wei | Status: In progress | Priority: P1
+  Reported by three different customers this week.
+
+LST-1097 | Reports: wrong language after switching accounts
+  Created: 2026-01-10 | Assignee: Marcus | Status: Closed | Priority: P3
+  Reported by three different customers this week.
+
+LST-1098 | Search: reminder fires an hour late
+  Created: 2026-02-05 | Assignee: Marcus | Status: Closed | Priority: P4
+  Low impact, but it shows up in support chats regularly.
+
+LST-1099 | Search: filter resets after refresh
+  Created: 2026-02-11 | Assignee: Sofia | Status: Waiting on customer | Priority: P1
+  Workaround exists but customers find it confusing.
+
+LST-1100 | Calendar: filter resets after refresh
+  Created: 2026-01-11 | Assignee: Jonas | Status: In progress | Priority: P3
+  Started after the last release according to the customer.
+
+LST-1101 | Notifications: duplicate items after reconnecting
+  Created: 2026-01-15 | Assignee: Marcus | Status: Closed | Priority: P3
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1102 | Calendar: error message is unclear
+  Created: 2026-01-23 | Assignee: Jonas | Status: Waiting on customer | Priority: P2
+  Started after the last release according to the customer.
+
+LST-1103 | Export: wrong language after switching accounts
+  Created: 2026-01-23 | Assignee: Jonas | Status: Waiting on customer | Priority: P3
+  Customer sent a screen recording; see attachment.
+
+LST-1104 | Billing: email arrives twice
+  Created: 2026-01-31 | Assignee: Marcus | Status: Open | Priority: P3
+  Customer reports the issue happens every time on their account.
+
+LST-1105 | Onboarding: password reset link not received
+  Created: 2026-01-09 | Assignee: Priya | Status: Open | Priority: P3
+  Customer sent a screen recording; see attachment.
+
+LST-1106 | Attachments: password reset link not received
+  Created: 2026-01-12 | Assignee: Jonas | Status: In progress | Priority: P3
+  Workaround exists but customers find it confusing.
+
+LST-1107 | Notifications: upload fails for files over 20 MB
+  Created: 2026-01-15 | Assignee: Lena | Status: Closed | Priority: P3
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1108 | API: upload fails for files over 20 MB
+  Created: 2026-01-24 | Assignee: Marcus | Status: Open | Priority: P1
+  Customer reports the issue happens every time on their account.
+
+LST-1109 | Notifications: search ignores accented characters
+  Created: 2026-01-17 | Assignee: Marcus | Status: Closed | Priority: P2
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1110 | Notifications: permissions not applied to new members
+  Created: 2026-02-24 | Assignee: Wei | Status: Closed | Priority: P1
+  Started after the last release according to the customer.
+
+LST-1111 | Onboarding: error message is unclear
+  Created: 2026-01-05 | Assignee: Jonas | Status: In progress | Priority: P1
+  Started after the last release according to the customer.
+
+LST-1112 | Login: sort order changes randomly
+  Created: 2026-02-14 | Assignee: Marcus | Status: Waiting on customer | Priority: P1
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1113 | Web app: email arrives twice
+  Created: 2026-01-23 | Assignee: Aisha | Status: Open | Priority: P3
+  Low impact, but it shows up in support chats regularly.
+
+LST-1114 | Attachments: dark text on dark background
+  Created: 2026-01-12 | Assignee: Marcus | Status: Waiting on customer | Priority: P1
+  Customer sent a screen recording; see attachment.
+
+LST-1115 | Onboarding: button does nothing on first tap
+  Created: 2026-02-14 | Assignee: Jonas | Status: Waiting on customer | Priority: P3
+  Customer reports the issue happens every time on their account.
+
+LST-1116 | Settings: permissions not applied to new members
+  Created: 2026-01-10 | Assignee: Wei | Status: Closed | Priority: P1
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1117 | Billing: dark text on dark background
+  Created: 2026-02-14 | Assignee: Aisha | Status: Closed | Priority: P4
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1118 | Onboarding: filter resets after refresh
+  Created: 2026-01-06 | Assignee: Priya | Status: Waiting on customer | Priority: P2
+  Started after the last release according to the customer.
+
+LST-1119 | Search: filter resets after refresh
+  Created: 2026-02-14 | Assignee: Jonas | Status: In progress | Priority: P4
+  Started after the last release according to the customer.
+
+LST-1120 | Mobile app: page loads slowly for large accounts
+  Created: 2026-01-09 | Assignee: Jonas | Status: In progress | Priority: P3
+  Workaround exists but customers find it confusing.
+
+LST-1121 | Sync: search ignores accented characters
+  Created: 2026-02-05 | Assignee: Wei | Status: In progress | Priority: P2
+  Customer reports the issue happens every time on their account.
+
+LST-1122 | Export: filter resets after refresh
+  Created: 2026-01-24 | Assignee: Tom | Status: Waiting on customer | Priority: P3
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1123 | Settings: totals do not match the invoice
+  Created: 2026-01-14 | Assignee: Aisha | Status: Closed | Priority: P1
+  Customer sent a screen recording; see attachment.
+
+LST-1124 | Export: share link expires too early
+  Created: 2026-01-23 | Assignee: Tom | Status: In progress | Priority: P3
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1125 | Billing: page loads slowly for large accounts
+  Created: 2026-02-07 | Assignee: Wei | Status: In progress | Priority: P3
+  Started after the last release according to the customer.
+
+LST-1126 | Export: page loads slowly for large accounts
+  Created: 2026-01-31 | Assignee: Lena | Status: Waiting on customer | Priority: P2
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1127 | Sync: rate limit hit during bulk import
+  Created: 2026-02-11 | Assignee: Tom | Status: Closed | Priority: P2
+  Workaround exists but customers find it confusing.
+
+LST-1128 | Notifications: rate limit hit during bulk import
+  Created: 2026-02-19 | Assignee: Sofia | Status: Waiting on customer | Priority: P3
+  Started after the last release according to the customer.
+
+LST-1129 | Attachments: dark text on dark background
+  Created: 2026-01-13 | Assignee: Lena | Status: Closed | Priority: P3
+  Low impact, but it shows up in support chats regularly.
+
+LST-1130 | Search: search ignores accented characters
+  Created: 2026-02-09 | Assignee: Aisha | Status: In progress | Priority: P3
+  Started after the last release according to the customer.
+
+LST-1131 | Login: search ignores accented characters
+  Created: 2026-01-24 | Assignee: Priya | Status: In progress | Priority: P3
+  Reported by three different customers this week.
+
+LST-1132 | Login: duplicate items after reconnecting
+  Created: 2026-02-24 | Assignee: Priya | Status: Closed | Priority: P1
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1133 | Search: share link expires too early
+  Created: 2026-02-04 | Assignee: Tom | Status: Waiting on customer | Priority: P3
+  Reported by three different customers this week.
+
+LST-1134 | Web app: totals do not match the invoice
+  Created: 2026-01-29 | Assignee: Jonas | Status: Waiting on customer | Priority: P1
+  Started after the last release according to the customer.
+
+LST-1135 | Calendar: password reset link not received
+  Created: 2026-02-18 | Assignee: Sofia | Status: Open | Priority: P3
+  Workaround exists but customers find it confusing.
+
+LST-1136 | Attachments: sort order changes randomly
+  Created: 2026-02-12 | Assignee: Aisha | Status: Closed | Priority: P3
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1137 | Notifications: filter resets after refresh
+  Created: 2026-01-30 | Assignee: Wei | Status: Open | Priority: P4
+  Started after the last release according to the customer.
+
+LST-1138 | Reports: CSV file is missing the header row
+  Created: 2026-01-19 | Assignee: Sofia | Status: Waiting on customer | Priority: P2
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1139 | Attachments: dates shown in the wrong timezone
+  Created: 2026-02-01 | Assignee: Jonas | Status: Open | Priority: P2
+  Started after the last release according to the customer.
+
+LST-1140 | Mobile app: error message is unclear
+  Created: 2026-02-04 | Assignee: Priyanka | Status: Open | Priority: P4
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1141 | Search: reminder fires an hour late
+  Created: 2026-01-20 | Assignee: Jonas | Status: Open | Priority: P2
+  Started after the last release according to the customer.
+
+LST-1142 | Mobile app: button does nothing on first tap
+  Created: 2026-02-21 | Assignee: Aisha | Status: Closed | Priority: P3
+  Customer reports the issue happens every time on their account.
+
+LST-1143 | Calendar: email arrives twice
+  Created: 2026-01-21 | Assignee: Aisha | Status: In progress | Priority: P3
+  Customer reports the issue happens every time on their account.
+
+LST-1144 | Settings: totals do not match the invoice
+  Created: 2026-01-28 | Assignee: Jonas | Status: In progress | Priority: P2
+  Started after the last release according to the customer.
+
+LST-1145 | Login: share link expires too early
+  Created: 2026-02-06 | Assignee: Lena | Status: Closed | Priority: P3
+  Workaround exists but customers find it confusing.
+
+LST-1146 | Export: duplicate items after reconnecting
+  Created: 2026-01-25 | Assignee: Jonas | Status: Closed | Priority: P2
+  Started after the last release according to the customer.
+
+LST-1147 | Settings: sort order changes randomly
+  Created: 2026-02-17 | Assignee: Sofia | Status: Closed | Priority: P3
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1148 | Search: filter resets after refresh
+  Created: 2026-01-19 | Assignee: Sofia | Status: In progress | Priority: P4
+  Customer sent a screen recording; see attachment.
+
+LST-1149 | Attachments: error message is unclear
+  Created: 2026-01-30 | Assignee: Marcus | Status: Waiting on customer | Priority: P1
+  Low impact, but it shows up in support chats regularly.
+
+LST-1150 | Notifications: totals do not match the invoice
+  Created: 2026-02-04 | Assignee: Priyanka | Status: Open | Priority: P4
+  Started after the last release according to the customer.
+
+LST-1151 | Login: crash when the list is empty
+  Created: 2026-01-27 | Assignee: Marcus | Status: Closed | Priority: P3
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1152 | Mobile app: button does nothing on first tap
+  Created: 2026-01-09 | Assignee: Sofia | Status: Open | Priority: P4
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1153 | Notifications: page loads slowly for large accounts
+  Created: 2026-02-13 | Assignee: Tom | Status: In progress | Priority: P2
+  Workaround exists but customers find it confusing.
+
+LST-1154 | Attachments: upload fails for files over 20 MB
+  Created: 2026-02-18 | Assignee: Lena | Status: Waiting on customer | Priority: P4
+  Low impact, but it shows up in support chats regularly.
+
+LST-1155 | Settings: reminder fires an hour late
+  Created: 2026-02-17 | Assignee: Jonas | Status: Open | Priority: P1
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1156 | Reports: wrong language after switching accounts
+  Created: 2026-01-24 | Assignee: Sofia | Status: Open | Priority: P2
+  Customer sent a screen recording; see attachment.
+
+LST-1157 | Search: crash when the list is empty
+  Created: 2026-01-27 | Assignee: Aisha | Status: Waiting on customer | Priority: P4
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1158 | Attachments: wrong language after switching accounts
+  Created: 2026-02-16 | Assignee: Priya | Status: In progress | Priority: P2
+  Low impact, but it shows up in support chats regularly.
+
+LST-1159 | Attachments: button does nothing on first tap
+  Created: 2026-02-07 | Assignee: Lena | Status: Closed | Priority: P1
+  Workaround exists but customers find it confusing.
+
+LST-1160 | Notifications: sort order changes randomly
+  Created: 2026-01-30 | Assignee: Wei | Status: Open | Priority: P3
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1161 | Mobile app: share link expires too early
+  Created: 2026-02-26 | Assignee: Jonas | Status: Closed | Priority: P3
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1162 | Sharing: dark text on dark background
+  Created: 2026-02-15 | Assignee: Priyanka | Status: In progress | Priority: P2
+  Started after the last release according to the customer.
+
+LST-1163 | Billing: CSV file is missing the header row
+  Created: 2026-01-09 | Assignee: Tom | Status: Closed | Priority: P2
+  Only some users are affected; we have not found the pattern yet.
+
+LST-1164 | Export: crash when the list is empty
+  Created: 2026-02-12 | Assignee: Marcus | Status: Open | Priority: P4
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1165 | Login: crash when the list is empty
+  Created: 2026-02-14 | Assignee: Lena | Status: Waiting on customer | Priority: P2
+  Started after the last release according to the customer.
+
+LST-1166 | Billing: page loads slowly for large accounts
+  Created: 2026-02-22 | Assignee: Wei | Status: In progress | Priority: P2
+  Customer reports the issue happens every time on their account.
+
+LST-1167 | Attachments: reminder fires an hour late
+  Created: 2026-01-07 | Assignee: Aisha | Status: Open | Priority: P2
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1168 | Settings: button does nothing on first tap
+  Created: 2026-01-25 | Assignee: Marcus | Status: Waiting on customer | Priority: P3
+  Low impact, but it shows up in support chats regularly.
+
+LST-1169 | Reports: CSV file is missing the header row
+  Created: 2026-01-12 | Assignee: Wei | Status: Waiting on customer | Priority: P3
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1170 | Notifications: dark text on dark background
+  Created: 2026-02-22 | Assignee: Sofia | Status: Closed | Priority: P3
+  Workaround exists but customers find it confusing.
+
+LST-1171 | Calendar: reminder fires an hour late
+  Created: 2026-01-15 | Assignee: Jonas | Status: In progress | Priority: P2
+  Workaround exists but customers find it confusing.
+
+LST-1172 | API: upload fails for files over 20 MB
+  Created: 2026-02-07 | Assignee: Priya | Status: In progress | Priority: P2
+  Customer reports the issue happens every time on their account.
+
+LST-1173 | Web app: page loads slowly for large accounts
+  Created: 2026-01-14 | Assignee: Marcus | Status: In progress | Priority: P4
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1174 | Attachments: reminder fires an hour late
+  Created: 2026-02-25 | Assignee: Marcus | Status: Waiting on customer | Priority: P3
+  Customer reports the issue happens every time on their account.
+
+LST-1175 | Onboarding: error message is unclear
+  Created: 2026-02-03 | Assignee: Sofia | Status: In progress | Priority: P4
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1176 | Notifications: upload fails for files over 20 MB
+  Created: 2026-01-07 | Assignee: Tom | Status: Waiting on customer | Priority: P3
+  Reported by three different customers this week.
+
+LST-1177 | Reports: duplicate items after reconnecting
+  Created: 2026-02-16 | Assignee: Lena | Status: In progress | Priority: P3
+  Reproduced internally on staging; steps attached to the ticket.
+
+LST-1178 | Onboarding: error message is unclear
+  Created: 2026-01-22 | Assignee: Aisha | Status: Closed | Priority: P4
+  Customer sent a screen recording; see attachment.
+
+LST-1179 | API: permissions not applied to new members
+  Created: 2026-02-03 | Assignee: Sofia | Status: Closed | Priority: P4
+  Low impact, but it shows up in support chats regularly.
+
+LST-1180 | Settings: page loads slowly for large accounts
+  Created: 2026-01-17 | Assignee: Priyanka | Status: Closed | Priority: P2
+  Reproduced internally on staging; steps attached to the ticket.
+
+=== PART 2: ACTIVITY LOG, 2026-03-02 TO 2026-03-31 ===
+
+2026-03-02 08:04  LST-1114  Priority changed: P1 -> P2  (by Wei)
+2026-03-02 08:22  LST-1134  Status changed: Waiting on customer -> Closed  (resolution: fixed)  (by Jonas)
+2026-03-02 08:58  LST-1016  Comment by Wei: "Customer confirmed the workaround helps for now."
+2026-03-02 09:06  LST-1101  Comment by Lena: "Same report came in through chat today."
+2026-03-02 11:26  LST-1071  Comment by Priyanka: "Customer confirmed the workaround helps for now."
+2026-03-02 11:48  LST-1178  Assignee changed: Aisha -> Sofia  (by Marcus)
+2026-03-02 11:52  LST-1153  Assignee changed: Tom -> Aisha  (by Wei)
+2026-03-02 13:05  LST-1037  Status changed: In progress -> Closed  (resolution: duplicate)  (by Sofia)
+2026-03-02 13:32  LST-1166  Label added: needs-info  (by Sofia)
+2026-03-02 13:54  LST-1006  Status changed: In progress -> Closed  (resolution: cannot reproduce)  (by Lena)
+2026-03-02 14:18  LST-1085  Status changed: Waiting on customer -> Closed  (resolution: duplicate)  (by Marcus)
+2026-03-02 14:43  LST-1021  Comment by Lena: "Linked to LST-1103 for tracking."
+2026-03-02 14:57  LST-1039  Label added: regression  (by Lena)
+2026-03-02 16:02  LST-1158  Label added: regression  (by Wei)
+2026-03-02 17:21  LST-1058  Comment by Sofia: "Could not reproduce on the latest build. Asking for more details."
+2026-03-02 17:24  LST-1049  Comment by Priyanka: "Linked to LST-1052 for tracking."
+2026-03-02 18:08  LST-1014  Comment by Sofia: "Could not reproduce on the latest build. Asking for more details."
+2026-03-03 08:59  LST-1013  Comment by Wei: "Adding this to the next sprint's candidate list."
+2026-03-03 09:07  LST-1063  Label added: ux  (by Tom)
+2026-03-03 09:35  LST-1041  Comment by Aisha: "Adding this to the next sprint's candidate list."
+2026-03-03 10:00  LST-1028  Status changed: Closed -> Open  (reopened: customer reports the problem is back)  (by Marcus)
+2026-03-03 11:32  LST-1125  Comment by Priyanka: "Customer asked for an update; replied with the current status."
+2026-03-03 11:36  LST-1059  Priority changed: P2 -> P3  (by Aisha)
+2026-03-03 12:07  LST-1002  Priority changed: P2 -> P4  (by Tom)
+2026-03-03 13:19  LST-1022  Comment by Tom: "Same report came in through chat today."
+2026-03-03 15:27  LST-1049  Status changed: In progress -> Closed  (resolution: cannot reproduce)  (by Marcus)
+2026-03-03 16:18  LST-1069  Label added: ux  (by Sofia)
+2026-03-03 16:26  LST-1081  Assignee changed: Priya -> Tom  (by Wei)
+2026-03-03 16:26  LST-1097  Comment by Marcus: "Customer confirmed the workaround helps for now."
+2026-03-04 08:04  LST-1156  Priority changed: P2 -> P3  (by Sofia)
+2026-03-04 08:58  LST-1172  Assignee changed: Priya -> Sofia  (by Lena)
+2026-03-04 10:26  LST-1170  Comment by Wei: "Linked to LST-1166 for tracking."
+2026-03-04 12:18  LST-1099  Status changed: Waiting on customer -> Closed  (resolution: duplicate)  (by Aisha)
+2026-03-04 12:34  LST-1148  Priority changed: P4 -> P1  (by Aisha)
+2026-03-04 12:37  LST-1099  Comment by Wei: "Looked at the logs; this may share a root cause with LST-1016."
+2026-03-04 12:50  LST-1031  Comment by Priyanka: "Customer asked for an update; replied with the current status."
+2026-03-04 12:53  LST-1040  Comment by Priya: "Adding this to the next sprint's candidate list."
+2026-03-04 13:31  LST-1152  Label added: needs-info  (by Sofia)
+2026-03-04 14:02  LST-1043  Comment by Priyanka: "Adding this to the next sprint's candidate list."
+2026-03-04 16:23  LST-1087  Comment by Lena: "Needs a decision from product before we continue."
+2026-03-04 17:24  LST-1150  Comment by Wei: "Looked at the logs; this may share a root cause with LST-1057."
+2026-03-04 17:33  LST-1026  Comment by Marcus: "Same report came in through chat today."
+2026-03-05 09:27  LST-1048  Comment by Jonas: "Needs a decision from product before we continue."
+2026-03-05 09:58  LST-1013  Label added: ux  (by Tom)
+2026-03-05 11:24  LST-1159  Label added: needs-info  (by Marcus)
+2026-03-05 12:09  LST-1039  Comment by Tom: "Adding this to the next sprint's candidate list."
+2026-03-05 12:29  LST-1038  Comment by Lena: "Customer confirmed the workaround helps for now."
+2026-03-05 12:39  LST-1047  Assignee changed: Marcus -> Priya  (by Aisha)
+2026-03-05 13:37  LST-1044  Comment by Marcus: "Needs a decision from product before we continue."
+2026-03-05 14:18  LST-1064  Status changed: In progress -> Closed  (resolution: fixed)  (by Jonas)
+2026-03-05 15:26  LST-1118  Status changed: Waiting on customer -> Closed  (resolution: fixed)  (by Tom)
+2026-03-05 16:20  LST-1011  Comment by Sofia: "Could not reproduce on the latest build. Asking for more details."
+2026-03-05 17:51  LST-1051  Comment by Sofia: "Same report came in through chat today."
+2026-03-05 18:51  LST-1123  Label added: customer-impact  (by Aisha)
+2026-03-06 09:52  LST-1155  Status changed: Open -> Waiting on customer  (by Wei)
+2026-03-06 11:28  LST-1051  Assignee changed: Jonas -> Tom  (by Sofia)
+2026-03-06 12:33  LST-1072  Assignee changed: Aisha -> Jonas  (by Sofia)
+2026-03-06 12:50  LST-1100  Label added: customer-impact  (by Tom)
+2026-03-06 14:32  LST-1068  Comment by Tom: "Customer asked for an update; replied with the current status."
+2026-03-06 14:50  LST-1154  Assignee changed: Lena -> Priya  (by Aisha)
+2026-03-06 16:22  LST-1080  Comment by Aisha: "Same report came in through chat today."
+2026-03-06 17:18  LST-1160  Comment by Tom: "Linked to LST-1024 for tracking."
+2026-03-06 17:28  LST-1055  Comment by Lena: "Adding this to the next sprint's candidate list."
+2026-03-06 17:34  LST-1096  Comment by Lena: "Linked to LST-1063 for tracking."
+2026-03-06 17:45  LST-1118  Comment by Jonas: "Adding this to the next sprint's candidate list."
+2026-03-07 09:06  LST-1092  Label added: ux  (by Wei)
+2026-03-07 09:16  LST-1169  Comment by Marcus: "Adding this to the next sprint's candidate list."
+2026-03-07 11:00  LST-1165  Comment by Priyanka: "Adding this to the next sprint's candidate list."
+2026-03-07 11:16  LST-1125  Status changed: In progress -> Waiting on customer  (by Lena)
+2026-03-07 11:40  LST-1144  Priority changed: P2 -> P3  (by Sofia)
+2026-03-07 13:50  LST-1130  Status changed: In progress -> Closed  (resolution: cannot reproduce)  (by Aisha)
+2026-03-07 14:11  LST-1030  Comment by Jonas: "Same report came in through chat today."
+2026-03-07 15:48  LST-1088  Comment by Priyanka: "Needs a decision from product before we continue."
+2026-03-07 16:03  LST-1007  Label added: customer-impact  (by Aisha)
+2026-03-07 18:17  LST-1134  Label added: ux  (by Sofia)
+2026-03-07 18:21  LST-1079  Label added: regression  (by Tom)
+2026-03-08 08:32  LST-1047  Comment by Priyanka: "Linked to LST-1179 for tracking."
+2026-03-08 12:15  LST-1132  Priority changed: P1 -> P2  (by Tom)
+2026-03-08 12:32  LST-1004  Label added: regression  (by Aisha)
+2026-03-08 13:11  LST-1109  Comment by Lena: "Adding this to the next sprint's candidate list."
+2026-03-08 14:14  LST-1094  Label added: ux  (by Sofia)
+2026-03-08 14:22  LST-1041  Comment by Wei: "Customer confirmed the workaround helps for now."
+2026-03-08 14:29  LST-1085  Label added: needs-info  (by Aisha)
+2026-03-08 15:52  LST-1146  Comment by Tom: "Same report came in through chat today."
+2026-03-08 17:48  LST-1026  Status changed: In progress -> Open  (by Lena)
+2026-03-09 08:05  LST-1127  Label added: customer-impact  (by Tom)
+2026-03-09 08:06  LST-1072  Comment by Tom: "Could not reproduce on the latest build. Asking for more details."
+2026-03-09 09:06  LST-1109  Comment by Marcus: "Needs a decision from product before we continue."
+2026-03-09 09:20  LST-1167  Comment by Priyanka: "Same report came in through chat today."
+2026-03-09 10:49  LST-1129  Assignee changed: Lena -> Aisha  (by Lena)
+2026-03-09 10:54  LST-1102  Label added: regression  (by Aisha)
+2026-03-09 12:30  LST-1140  Priority changed: P4 -> P1  (by Sofia)
+2026-03-09 13:45  LST-1135  Status changed: Open -> Closed  (resolution: fixed)  (by Sofia)
+2026-03-09 14:04  LST-1077  Comment by Wei: "Customer confirmed the workaround helps for now."
+2026-03-09 14:23  LST-1067  Label added: quick-win  (by Sofia)
+2026-03-09 17:59  LST-1018  Comment by Lena: "Linked to LST-1031 for tracking."
+2026-03-10 08:21  LST-1102  Comment by Aisha: "Adding this to the next sprint's candidate list."
+2026-03-10 10:04  LST-1037  Priority changed: P3 -> P2  (by Tom)
+2026-03-10 10:10  LST-1168  Status changed: Waiting on customer -> Closed  (resolution: cannot reproduce)  (by Tom)
+2026-03-10 11:46  LST-1151  Label added: needs-info  (by Wei)
+2026-03-10 12:39  LST-1047  Status changed: Waiting on customer -> Closed  (resolution: duplicate)  (by Aisha)
+2026-03-10 13:39  LST-1052  Comment by Aisha: "Adding this to the next sprint's candidate list."
+2026-03-10 14:15  LST-1135  Comment by Aisha: "Could not reproduce on the latest build. Asking for more details."
+2026-03-10 14:55  LST-1017  Status changed: Open -> Closed  (resolution: duplicate)  (by Sofia)
+2026-03-10 16:40  LST-1137  Status changed: Open -> In progress  (by Marcus)
+2026-03-10 17:33  LST-1047  Comment by Aisha: "Could not reproduce on the latest build. Asking for more details."
+2026-03-10 18:15  LST-1051  Label added: regression  (by Jonas)
+2026-03-11 09:00  LST-1012  Comment by Marcus: "Customer asked for an update; replied with the current status."
+2026-03-11 09:26  LST-1073  Assignee changed: Wei -> Lena  (by Aisha)
+2026-03-11 11:16  LST-1132  Label added: regression  (by Aisha)
+2026-03-11 11:23  LST-1040  Comment by Aisha: "Looked at the logs; this may share a root cause with LST-1125."
+2026-03-11 11:28  LST-1093  Comment by Marcus: "Customer asked for an update; replied with the current status."
+2026-03-11 12:39  LST-1010  Comment by Wei: "Customer asked for an update; replied with the current status."
+2026-03-11 13:37  LST-1157  Priority changed: P4 -> P3  (by Jonas)
+2026-03-11 13:41  LST-1043  Label added: quick-win  (by Tom)
+2026-03-11 15:51  LST-1057  Status changed: In progress -> Open  (by Jonas)
+2026-03-12 09:36  LST-1071  Comment by Jonas: "Customer asked for an update; replied with the current status."
+2026-03-12 10:45  LST-1044  Comment by Sofia: "Could not reproduce on the latest build. Asking for more details."
+2026-03-12 10:55  LST-1001  Status changed: Waiting on customer -> Closed  (resolution: fixed)  (by Sofia)
+2026-03-12 13:30  LST-1013  Comment by Aisha: "Needs a decision from product before we continue."
+2026-03-12 13:44  LST-1065  Comment by Aisha: "Looked at the logs; this may share a root cause with LST-1144."
+2026-03-12 14:02  LST-1030  Comment by Priyanka: "Adding this to the next sprint's candidate list."
+2026-03-12 15:44  LST-1039  Comment by Jonas: "Linked to LST-1056 for tracking."
+2026-03-12 16:36  LST-1113  Comment by Wei: "Adding this to the next sprint's candidate list."
+2026-03-12 17:04  LST-1036  Comment by Aisha: "Looked at the logs; this may share a root cause with LST-1058."
+2026-03-12 18:28  LST-1030  Assignee changed: Jonas -> Marcus  (by Marcus)
+2026-03-13 08:11  LST-1093  Status changed: Waiting on customer -> Open  (by Marcus)
+2026-03-13 08:47  LST-1022  Comment by Tom: "Could not reproduce on the latest build. Asking for more details."
+2026-03-13 09:11  LST-1142  Comment by Sofia: "Needs a decision from product before we continue."
+2026-03-13 09:41  LST-1127  Assignee changed: Tom -> Sofia  (by Lena)
+2026-03-13 10:46  LST-1094  Comment by Sofia: "Customer confirmed the workaround helps for now."
+2026-03-13 10:59  LST-1016  Comment by Tom: "Could not reproduce on the latest build. Asking for more details."
+2026-03-13 13:32  LST-1005  Label added: ux  (by Wei)
+2026-03-13 16:47  LST-1030  Status changed: In progress -> Closed  (resolution: fixed)  (by Aisha)
+2026-03-13 16:57  LST-1142  Label added: ux  (by Sofia)
+2026-03-13 17:18  LST-1027  Label added: regression  (by Tom)
+2026-03-14 09:12  LST-1156  Status changed: Open -> In progress  (by Aisha)
+2026-03-14 09:42  LST-1007  Comment by Jonas: "Same report came in through chat today."
+2026-03-14 10:24  LST-1070  Comment by Priyanka: "Looked at the logs; this may share a root cause with LST-1070."
+2026-03-14 11:04  LST-1033  Assignee changed: Aisha -> Jonas  (by Jonas)
+2026-03-14 12:10  LST-1140  Priority changed: P1 -> P2  (by Jonas)
+2026-03-14 12:22  LST-1062  Label added: customer-impact  (by Wei)
+2026-03-14 13:04  LST-1098  Assignee changed: Marcus -> Jonas  (by Jonas)
+2026-03-14 13:10  LST-1170  Comment by Aisha: "Adding this to the next sprint's candidate list."
+2026-03-14 14:47  LST-1078  Priority changed: P4 -> P2  (by Sofia)
+2026-03-14 15:02  LST-1045  Priority changed: P2 -> P1  (by Tom)
+2026-03-14 15:06  LST-1029  Comment by Lena: "Linked to LST-1141 for tracking."
+2026-03-14 15:45  LST-1136  Label added: ux  (by Tom)
+2026-03-14 16:14  LST-1068  Assignee changed: Wei -> Tom  (by Sofia)
+2026-03-15 08:31  LST-1163  Label added: regression  (by Marcus)
+2026-03-15 09:01  LST-1026  Comment by Wei: "Looked at the logs; this may share a root cause with LST-1152."
+2026-03-15 10:26  LST-1165  Assignee changed: Lena -> Sofia  (by Jonas)
+2026-03-15 12:52  LST-1029  Priority changed: P3 -> P2  (by Sofia)
+2026-03-15 16:26  LST-1081  Assignee changed: Tom -> Priya  (by Sofia)
+2026-03-15 18:07  LST-1090  Comment by Jonas: "Adding this to the next sprint's candidate list."
+2026-03-16 08:23  LST-1143  Status changed: In progress -> Open  (by Lena)
+2026-03-16 08:38  LST-1168  Priority changed: P3 -> P1  (by Sofia)
+2026-03-16 09:03  LST-1101  Comment by Lena: "Needs a decision from product before we continue."
+2026-03-16 09:27  LST-1010  Label added: needs-info  (by Tom)
+2026-03-16 09:45  LST-1134  Priority changed: P1 -> P3  (by Marcus)
+2026-03-16 10:16  LST-1063  Label added: needs-info  (by Marcus)
+2026-03-16 10:44  LST-1159  Comment by Tom: "Linked to LST-1031 for tracking."
+2026-03-16 11:14  LST-1069  Status changed: Waiting on customer -> In progress  (by Tom)
+2026-03-16 13:30  LST-1012  Label added: customer-impact  (by Jonas)
+2026-03-16 14:05  LST-1168  Comment by Tom: "Customer confirmed the workaround helps for now."
+2026-03-16 16:37  LST-1058  Priority changed: P3 -> P2  (by Lena)
+2026-03-17 09:10  LST-1027  Comment by Aisha: "Could not reproduce on the latest build. Asking for more details."
+2026-03-17 09:33  LST-1044  Comment by Lena: "Customer confirmed the workaround helps for now."
+2026-03-17 10:09  LST-1085  Label added: ux  (by Tom)
+2026-03-17 11:23  LST-1025  Status changed: Waiting on customer -> Closed  (resolution: fixed)  (by Sofia)
+2026-03-17 12:08  LST-1084  Comment by Sofia: "Linked to LST-1044 for tracking."
+2026-03-17 13:38  LST-1174  Comment by Jonas: "Adding this to the next sprint's candidate list."
+2026-03-17 13:57  LST-1169  Priority changed: P3 -> P4  (by Lena)
+2026-03-17 14:52  LST-1088  Status changed: Waiting on customer -> Closed  (resolution: cannot reproduce)  (by Lena)
+2026-03-17 17:28  LST-1162  Priority changed: P2 -> P4  (by Jonas)
+2026-03-17 17:43  LST-1098  Label added: ux  (by Aisha)
+2026-03-18 13:13  LST-1091  Comment by Wei: "Looked at the logs; this may share a root cause with LST-1154."
+2026-03-18 13:58  LST-1067  Status changed: In progress -> Closed  (resolution: duplicate)  (by Sofia)
+2026-03-18 14:55  LST-1055  Priority changed: P4 -> P3  (by Lena)
+2026-03-18 15:35  LST-1007  Assignee changed: Jonas -> Tom  (by Aisha)
+2026-03-18 16:26  LST-1109  Priority changed: P2 -> P3  (by Sofia)
+2026-03-18 16:43  LST-1007  Assignee changed: Tom -> Lena  (by Tom)
+2026-03-18 16:48  LST-1066  Priority changed: P2 -> P4  (by Wei)
+2026-03-18 17:31  LST-1080  Label added: regression  (by Wei)
+2026-03-19 08:03  LST-1059  Comment by Wei: "Looked at the logs; this may share a root cause with LST-1098."
+2026-03-19 09:08  LST-1025  Assignee changed: Jonas -> Lena  (by Marcus)
+2026-03-19 09:22  LST-1015  Comment by Lena: "Customer confirmed the workaround helps for now."
+2026-03-19 09:51  LST-1126  Assignee changed: Lena -> Priya  (by Marcus)
+2026-03-19 11:34  LST-1014  Label added: customer-impact  (by Jonas)
+2026-03-19 11:43  LST-1080  Priority changed: P3 -> P2  (by Lena)
+2026-03-19 12:43  LST-1155  Assignee changed: Jonas -> Aisha  (by Tom)
+2026-03-19 13:16  LST-1040  Comment by Priya: "Could not reproduce on the latest build. Asking for more details."
+2026-03-19 14:32  LST-1161  Priority changed: P3 -> P1  (by Tom)
+2026-03-19 15:19  LST-1069  Status changed: In progress -> Closed  (resolution: fixed)  (by Sofia)
+2026-03-19 16:03  LST-1095  Assignee changed: Tom -> Aisha  (by Tom)
+2026-03-19 17:50  LST-1055  Comment by Priyanka: "Same report came in through chat today."
+2026-03-19 18:06  LST-1014  Assignee changed: Sofia -> Jonas  (by Tom)
+2026-03-20 09:56  LST-1089  Comment by Jonas: "Customer asked for an update; replied with the current status."
+2026-03-20 11:05  LST-1068  Label added: quick-win  (by Aisha)
+2026-03-20 11:27  LST-1128  Status changed: Waiting on customer -> Closed  (resolution: cannot reproduce)  (by Wei)
+2026-03-20 11:47  LST-1137  Status changed: In progress -> Closed  (resolution: cannot reproduce)  (by Jonas)
+2026-03-20 12:01  LST-1064  Comment by Marcus: "Looked at the logs; this may share a root cause with LST-1122."
+2026-03-20 12:51  LST-1015  Comment by Tom: "Needs a decision from product before we continue."
+2026-03-20 14:14  LST-1158  Priority changed: P2 -> P4  (by Marcus)
+2026-03-20 14:42  LST-1098  Comment by Tom: "Same report came in through chat today."
+2026-03-20 15:42  LST-1097  Label added: customer-impact  (by Marcus)
+2026-03-20 16:33  LST-1112  Label added: regression  (by Sofia)
+2026-03-20 16:58  LST-1132  Comment by Marcus: "Same report came in through chat today."
+2026-03-20 17:01  LST-1027  Comment by Tom: "Customer confirmed the workaround helps for now."
+2026-03-20 18:17  LST-1111  Status changed: In progress -> Waiting on customer  (by Tom)
+2026-03-20 18:29  LST-1149  Comment by Priya: "Same report came in through chat today."
+2026-03-20 18:45  LST-1140  Comment by Marcus: "Linked to LST-1163 for tracking."
+2026-03-21 08:25  LST-1035  Comment by Priyanka: "Looked at the logs; this may share a root cause with LST-1139."
+2026-03-21 10:16  LST-1119  Assignee changed: Jonas -> Tom  (by Marcus)
+2026-03-21 10:20  LST-1116  Comment by Priyanka: "Looked at the logs; this may share a root cause with LST-1020."
+2026-03-21 11:47  LST-1133  Assignee changed: Tom -> Marcus  (by Tom)
+2026-03-21 12:43  LST-1079  Comment by Tom: "Adding this to the next sprint's candidate list."
+2026-03-21 13:57  LST-1038  Priority changed: P3 -> P4  (by Tom)
+2026-03-21 14:41  LST-1126  Comment by Jonas: "Linked to LST-1105 for tracking."
+2026-03-21 14:56  LST-1130  Comment by Jonas: "Needs a decision from product before we continue."
+2026-03-21 16:21  LST-1159  Priority changed: P1 -> P2  (by Marcus)
+2026-03-21 16:58  LST-1121  Comment by Jonas: "Adding this to the next sprint's candidate list."
+2026-03-21 17:00  LST-1157  Comment by Tom: "Customer asked for an update; replied with the current status."
+2026-03-21 17:31  LST-1083  Comment by Priyanka: "Same report came in through chat today."
+2026-03-21 18:29  LST-1029  Comment by Marcus: "Looked at the logs; this may share a root cause with LST-1121."
+2026-03-22 09:11  LST-1111  Comment by Jonas: "Adding this to the next sprint's candidate list."
+2026-03-22 09:15  LST-1149  Comment by Priya: "Could not reproduce on the latest build. Asking for more details."
+2026-03-22 09:53  LST-1051  Assignee changed: Tom -> Wei  (by Sofia)
+2026-03-22 10:48  LST-1152  Label added: needs-info  (by Lena)
+2026-03-22 11:41  LST-1152  Priority changed: P4 -> P1  (by Aisha)
+2026-03-22 12:34  LST-1082  Status changed: Waiting on customer -> Closed  (resolution: fixed)  (by Tom)
+2026-03-22 13:57  LST-1129  Priority changed: P3 -> P2  (by Aisha)
+2026-03-22 14:38  LST-1164  Comment by Aisha: "Could not reproduce on the latest build. Asking for more details."
+2026-03-22 16:02  LST-1096  Status changed: In progress -> Open  (by Jonas)
+2026-03-22 17:44  LST-1023  Label added: customer-impact  (by Marcus)
+2026-03-22 18:31  LST-1082  Status changed: Closed -> Waiting on customer  (reopened: customer reports the problem is back)  (by Sofia)
+2026-03-22 18:45  LST-1105  Priority changed: P3 -> P4  (by Aisha)
+2026-03-23 08:03  LST-1153  Status changed: In progress -> Waiting on customer  (by Tom)
+2026-03-23 08:28  LST-1139  Comment by Wei: "Adding this to the next sprint's candidate list."
+2026-03-23 10:51  LST-1058  Assignee changed: Sofia -> Tom  (by Jonas)
+2026-03-23 10:54  LST-1003  Assignee changed: Marcus -> Jonas  (by Jonas)
+2026-03-23 11:08  LST-1017  Comment by Jonas: "Customer confirmed the workaround helps for now."
+2026-03-23 12:10  LST-1105  Label added: ux  (by Tom)
+2026-03-23 12:18  LST-1073  Comment by Jonas: "Customer asked for an update; replied with the current status."
+2026-03-23 12:58  LST-1129  Label added: customer-impact  (by Wei)
+2026-03-23 14:59  LST-1030  Comment by Aisha: "Customer confirmed the workaround helps for now."
+2026-03-23 15:17  LST-1065  Assignee changed: Marcus -> Aisha  (by Tom)
+2026-03-23 15:36  LST-1162  Comment by Wei: "Same report came in through chat today."
+2026-03-23 17:22  LST-1169  Comment by Marcus: "Linked to LST-1178 for tracking."
+2026-03-24 08:51  LST-1047  Comment by Sofia: "Needs a decision from product before we continue."
+2026-03-24 10:58  LST-1078  Comment by Sofia: "Adding this to the next sprint's candidate list."
+2026-03-24 11:56  LST-1093  Label added: customer-impact  (by Sofia)
+2026-03-24 13:41  LST-1118  Label added: ux  (by Jonas)
+2026-03-24 13:44  LST-1005  Comment by Priyanka: "Customer asked for an update; replied with the current status."
+2026-03-24 15:06  LST-1012  Label added: ux  (by Jonas)
+2026-03-24 16:24  LST-1099  Status changed: Closed -> Waiting on customer  (reopened: customer reports the problem is back)  (by Aisha)
+2026-03-24 18:47  LST-1002  Comment by Aisha: "Could not reproduce on the latest build. Asking for more details."
+2026-03-25 09:19  LST-1094  Comment by Tom: "Could not reproduce on the latest build. Asking for more details."
+2026-03-25 09:33  LST-1106  Status changed: In progress -> Closed  (resolution: duplicate)  (by Wei)
+2026-03-25 09:35  LST-1020  Comment by Wei: "Needs a decision from product before we continue."
+2026-03-25 10:47  LST-1158  Status changed: In progress -> Closed  (resolution: duplicate)  (by Sofia)
+2026-03-25 15:07  LST-1095  Comment by Tom: "Needs a decision from product before we continue."
+2026-03-25 15:40  LST-1105  Assignee changed: Priya -> Tom  (by Jonas)
+2026-03-25 16:07  LST-1135  Priority changed: P3 -> P1  (by Jonas)
+2026-03-25 16:39  LST-1060  Label added: ux  (by Tom)
+2026-03-25 18:43  LST-1161  Comment by Sofia: "Linked to LST-1057 for tracking."
+2026-03-26 08:08  LST-1006  Comment by Tom: "Customer confirmed the workaround helps for now."
+2026-03-26 08:58  LST-1062  Priority changed: P4 -> P1  (by Marcus)
+2026-03-26 09:31  LST-1081  Comment by Lena: "Linked to LST-1057 for tracking."
+2026-03-26 11:47  LST-1063  Label added: needs-info  (by Lena)
+2026-03-26 12:15  LST-1080  Status changed: Waiting on customer -> In progress  (by Tom)
+2026-03-26 13:12  LST-1099  Comment by Wei: "Same report came in through chat today."
+2026-03-26 13:39  LST-1153  Status changed: Waiting on customer -> Closed  (resolution: fixed)  (by Sofia)
+2026-03-26 15:16  LST-1081  Priority changed: P3 -> P2  (by Jonas)
+2026-03-26 16:39  LST-1141  Priority changed: P2 -> P3  (by Jonas)
+2026-03-26 16:45  LST-1101  Comment by Aisha: "Linked to LST-1159 for tracking."
+2026-03-27 08:17  LST-1157  Assignee changed: Aisha -> Tom  (by Wei)
+2026-03-27 10:05  LST-1101  Label added: ux  (by Jonas)
+2026-03-27 10:31  LST-1156  Comment by Sofia: "Adding this to the next sprint's candidate list."
+2026-03-27 11:58  LST-1099  Priority changed: P1 -> P2  (by Tom)
+2026-03-27 13:34  LST-1045  Assignee changed: Jonas -> Priya  (by Aisha)
+2026-03-27 14:07  LST-1133  Priority changed: P3 -> P1  (by Aisha)
+2026-03-27 14:37  LST-1065  Status changed: Open -> Closed  (resolution: duplicate)  (by Sofia)
+2026-03-27 15:57  LST-1124  Status changed: In progress -> Closed  (resolution: fixed)  (by Tom)
+2026-03-27 16:41  LST-1061  Comment by Priyanka: "Needs a decision from product before we continue."
+2026-03-27 17:55  LST-1142  Priority changed: P3 -> P2  (by Marcus)
+2026-03-27 18:05  LST-1102  Label added: ux  (by Tom)
+2026-03-28 08:45  LST-1044  Comment by Aisha: "Linked to LST-1171 for tracking."
+2026-03-28 09:04  LST-1034  Label added: ux  (by Aisha)
+2026-03-28 11:11  LST-1034  Comment by Lena: "Customer confirmed the workaround helps for now."
+2026-03-28 11:54  LST-1032  Comment by Jonas: "Could not reproduce on the latest build. Asking for more details."
+2026-03-28 13:44  LST-1128  Comment by Aisha: "Linked to LST-1097 for tracking."
+2026-03-28 15:29  LST-1170  Comment by Sofia: "Same report came in through chat today."
+2026-03-28 16:01  LST-1129  Comment by Tom: "Looked at the logs; this may share a root cause with LST-1061."
+2026-03-28 17:48  LST-1172  Priority changed: P2 -> P4  (by Tom)
+2026-03-28 18:06  LST-1175  Assignee changed: Sofia -> Aisha  (by Wei)
+2026-03-29 09:02  LST-1073  Comment by Priyanka: "Looked at the logs; this may share a root cause with LST-1037."
+2026-03-29 09:21  LST-1159  Comment by Priyanka: "Customer asked for an update; replied with the current status."
+2026-03-29 11:24  LST-1127  Label added: customer-impact  (by Tom)
+2026-03-29 12:12  LST-1015  Priority changed: P2 -> P3  (by Sofia)
+2026-03-29 13:13  LST-1158  Comment by Jonas: "Adding this to the next sprint's candidate list."
+2026-03-29 15:20  LST-1125  Assignee changed: Wei -> Jonas  (by Lena)
+2026-03-29 18:08  LST-1033  Status changed: Waiting on customer -> Closed  (resolution: cannot reproduce)  (by Marcus)
+2026-03-29 18:55  LST-1027  Priority changed: P2 -> P3  (by Marcus)
+2026-03-30 08:06  LST-1026  Comment by Jonas: "Linked to LST-1045 for tracking."
+2026-03-30 11:00  LST-1095  Comment by Tom: "Customer confirmed the workaround helps for now."
+2026-03-30 12:53  LST-1077  Comment by Priyanka: "Could not reproduce on the latest build. Asking for more details."
+2026-03-30 13:17  LST-1084  Comment by Wei: "Looked at the logs; this may share a root cause with LST-1096."
+2026-03-30 13:43  LST-1096  Assignee changed: Wei -> Jonas  (by Jonas)
+2026-03-30 15:07  LST-1148  Comment by Jonas: "Adding this to the next sprint's candidate list."
+2026-03-30 17:21  LST-1030  Priority changed: P4 -> P2  (by Lena)
+2026-03-31 08:33  LST-1036  Comment by Priyanka: "Linked to LST-1048 for tracking."
+2026-03-31 08:52  LST-1060  Label added: ux  (by Tom)
+2026-03-31 10:08  LST-1033  Status changed: Closed -> Waiting on customer  (reopened: customer reports the problem is back)  (by Wei)
+2026-03-31 10:54  LST-1119  Assignee changed: Tom -> Aisha  (by Tom)
+2026-03-31 11:04  LST-1059  Comment by Marcus: "Adding this to the next sprint's candidate list."
+2026-03-31 13:33  LST-1044  Status changed: Closed -> Open  (reopened: customer reports the problem is back)  (by Jonas)
+2026-03-31 14:10  LST-1059  Comment by Sofia: "Same report came in through chat today."
+2026-03-31 15:11  LST-1027  Assignee changed: Jonas -> Wei  (by Jonas)
+
+=== END OF EXPORT ===

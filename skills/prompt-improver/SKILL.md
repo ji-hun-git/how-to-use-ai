@@ -19,7 +19,7 @@ Good prompts are not long; they leave little for the model to guess. Improve pro
    - **Examples**: 2–5 varied examples if style or format is hard to describe (try none first for reasoning models)
    - **Role**: only for tone or perspective; it doesn't improve accuracy
 3. **Predict failures.** List the most likely ways the prompt could fail: misunderstanding (ambiguity), omission (too many requirements, buried in a long input), fabrication (no source, no permission to say "I don't know"), sycophancy (asking for opinions on "my" work).
-4. **Rewrite.** Return the improved prompt in a code block. Put long documents first and the question last; separate parts with consistent tags or headings; add "If something isn't in the material, say so" where facts matter.
+4. **Rewrite.** Return the improved prompt in a code block. Put long documents first and the question last; separate parts with consistent tags or headings; add "If something isn't in the material, say so" where facts matter. Use clearly marked placeholders for facts you don't have (policies, prices, limits, names), and keep invented example values out of the prompt: the model will treat them as real.
 5. **Trim.** Remove ALL-CAPS emphasis, "think step by step" for reasoning models, threats, tips, flattery of the model, and duplicate rules.
 6. **Explain and test.** Give a short table of what changed and why, and suggest 3–5 test inputs (including an edge case) to compare old vs. new.
 

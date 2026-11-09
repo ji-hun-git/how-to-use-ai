@@ -36,3 +36,4 @@
 - [How this repo compares](https://github.com/ji-hun-git/how-to-use-ai/blob/main/COMPARISON.md)
 - [Curated resources](https://github.com/ji-hun-git/how-to-use-ai/blob/main/resources/awesome.md)
 - [Runnable eval](https://github.com/ji-hun-git/how-to-use-ai/blob/main/evals/README.md)
+- [Skill eval results](https://github.com/ji-hun-git/how-to-use-ai/blob/main/evals/results/README.md): with-vs-without results for all 10 skills on two suites (36 cases), with raw answers

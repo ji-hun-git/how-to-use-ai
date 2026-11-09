@@ -4,6 +4,29 @@ This repository is updated as AI tools and official guides change. The evidence 
 
 ---
 
+## 2026-11-09 · Harder evals
+
+### Added
+- **Harder eval suite** ([evals/skills/cases-hard.yaml](evals/skills/cases-hard.yaml)): 16 cases aimed at what still breaks current models:
+  - long inputs, including a generated 9,000-word ticket export whose answer is computed by replaying its log
+  - requirements that change and change back over 25 turns
+  - a 12-constraint email
+  - near-miss and false-premise questions
+  - subtle errors next to true claims
+  - expert pushback
+  - reviewing the assistant's own code
+- **Code checks** in the harness for word counts, banned words, bullet counts and exact IDs; `--cases-file`; per-criterion partial credit in summaries
+- **Results** ([evals/results/](evals/results/README.md)), rounds 4 and 5:
+  - Harder suite, trigger cases with skills: Sonnet 39/42 → 41/42, Haiku 36/42 → 39/42; no control regressions
+  - Tutoring 0/6 → 6/6 again (0/12 → 12/12 across both suites)
+  - 10 of 16 cases at ceiling either way
+
+### Fixed
+- **fresh-start-handoff:** resolves reversals ("go back to the original") to the value they mean, treats outlines written before later changes as stale, and flags only what is genuinely undecided. Haiku on the reversal case: 1/3 → 5/5.
+- **prompt-improver:** uses marked placeholders for missing facts and keeps invented example values (such as a refund window) out of the prompt. Support-bot case: 5/5 on both models after the fix.
+
+---
+
 ## 2026-11-09 · Installable edition
 
 Made the guide usable inside AI tools, not just readable, after comparing it with the most popular repositories in this space ([COMPARISON.md](COMPARISON.md)).

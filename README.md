@@ -21,7 +21,7 @@ Read the guide, or install it into your AI agent in one line.
 
 What you get: [10 skills](skills/README.md) that load automatically when a task needs them, or one [18-rule file](drop-in/AGENTS.md) that's always on. Every rule links to the research behind it. Other install options: [skills/README.md](skills/README.md) · [drop-in/README.md](drop-in/README.md).
 
-**Measured, not assumed.** In a blind with-vs-without test, loading the skills raised Claude Haiku from 41/48 to **48/48** passing runs on trigger cases and Claude Sonnet from 42/48 to **47/48**, with no regressions on control cases. The biggest change was tutoring: 0/6 → 6/6. On most cases, current models already did fine without the skills, and the test caught (and we fixed) a flaw in one skill. → [Eval results](evals/results/README.md)
+**Measured, not assumed.** In blind with-vs-without tests on Claude Sonnet and Haiku (36 cases in two suites, 432 graded runs), loading the skills raised passing runs on trigger cases from 158/180 to **175/180**, with no regressions on control cases. The biggest change was tutoring: without the skill, the models handed over the answer in 12 of 12 runs; with it, they gave hints in 12 of 12. On most cases, current models already did fine without the skills, even on a 9,000-word input, and the tests exposed weak spots in three of our skills that we fixed and re-tested. → [Eval results](evals/results/README.md)
 
 ---
 

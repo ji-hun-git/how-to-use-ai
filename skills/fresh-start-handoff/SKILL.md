@@ -32,8 +32,8 @@ Long, patched-up conversations degrade: models lock in early assumptions, errors
    ## Next step
    ```
 
-3. **Resolve, don't copy, history.** Where a requirement changed over the conversation, keep only the final version. Don't carry over discarded drafts or the argument itself.
-4. **Flag gaps.** List anything you're unsure was decided, so the user can confirm before pasting.
+3. **Resolve, don't copy, history.** Where a requirement changed over the conversation, keep only the final version, written out in full. Watch for reversals: when the user says "go back to the original", "undo that" or "the earlier one is better", find the value they mean and write it out; don't carry forward whatever was mentioned last. Treat drafts and outlines written before later changes as stale, and don't carry over the argument itself.
+4. **Flag gaps.** List anything that is genuinely undecided, so the user can confirm before pasting. If the conversation settled something, state the settled value instead of flagging it.
 5. **Tell the user** to open a new chat or run `/clear`, paste the handoff, and re-attach the listed source files.
 
 ## Evidence
